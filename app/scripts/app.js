@@ -10,6 +10,7 @@
  */
 angular
   .module('propertyManagementApp', [
+    'config',
     'ngAnimate',
     'ngCookies',
     'ngMessages',
