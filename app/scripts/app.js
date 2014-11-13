@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name propertyManagementAppApp
+ * @name propertyManagementApp
  * @description
- * # propertyManagementAppApp
+ * # propertyManagementApp
  *
  * Main module of the application.
  */
 angular
-  .module('propertyManagementAppApp', [
+  .module('propertyManagementApp', [
     'ngAnimate',
     'ngCookies',
     'ngMessages',

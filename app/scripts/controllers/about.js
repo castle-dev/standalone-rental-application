@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name propertyManagementAppApp.controller:AboutCtrl
+ * @name propertyManagementApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the propertyManagementAppApp
+ * Controller of the propertyManagementApp
  */
-angular.module('propertyManagementAppApp')
+angular.module('propertyManagementApp')
   .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
