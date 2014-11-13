@@ -380,6 +380,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'ngconstant:build',
+      'karma',
       'wiredep',
       'concurrent:server',
       'autoprefixer',
