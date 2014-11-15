@@ -11,6 +11,6 @@
 angular.module('propertyManagementApp')
   .directive('signupForm', function () {
     return {
-      template: 'TODO: Signup form template'
+      templateUrl: 'views/partials/signupForm.html'
     };
   });

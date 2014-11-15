@@ -11,7 +11,7 @@
 angular.module('propertyManagementApp')
   .directive('profileForm', function () {
     return {
-      template: 'TODO: Profile form template'
+      templateUrl: 'views/partials/profileForm.html'
     };
   });
 
