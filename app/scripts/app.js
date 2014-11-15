@@ -26,6 +26,15 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/signup', {
+        templateUrl: 'views/signup.html',
+      })
+      .when('/profile/:profileId/edit', {
+        templateUrl: 'views/profile.html',
+      })
+      .when('/welcome', {
+        templateUrl: 'views/welcome.html',
+      })
       .otherwise({
         redirectTo: '/'
       });

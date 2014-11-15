@@ -1,0 +1,50 @@
+<div class="solo-form">
+
+  <img src="images/logo-solo.png" class="centered-logo" alt="Castle">
+
+  <h1>You&lsquo;re almost there...</h1>
+
+  <h4>We just need your payment information.</h4>
+
+  <form>
+
+    <fieldset>
+      <label for="name">Your name (as it appears on your card):</label>
+      <input type="text" name="name" placeholder="Ralph Rental">
+    </fieldset>
+
+    <div class="credit-card">
+
+      <fieldset class="secure-fieldset">
+        <label for="name">Card number:</label>
+        <input type="text" name="card-number" placeholder=""> <i class="fa fa-lock"></i>
+      </fieldset>
+
+      <div class="expiration-and-code">
+
+        <fieldset class="expiration-date">
+          <label for="name">Expiration date:</label>
+          <input type="text" name="expiration-month" placeholder="MM" maxlength="2">
+          <input type="text" name="expiration-year" placeholder="YYYY" maxlength="4">
+        </fieldset>
+
+        <fieldset class="cv-code">
+          <label for="name">CV code:</label>
+          <input type="text" name="security-code" maxlength="4">
+        </fieldset>
+
+      </div><!--expiration-and-code-->
+
+    </div><!--credit-card-->
+
+    <fieldset>
+      <label for="name">Billing ZIP code:</label>
+      <input type="text" class="zipcode" name="name" maxlength="5">
+    </fieldset>
+
+
+    <button type="submit" class="btn btn-medium btn-green">Save My Payment Information</button>
+
+  </form>
+
+</div>
