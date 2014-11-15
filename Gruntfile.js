@@ -35,7 +35,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all'],
+        tasks: ['newer:jshint:all, karma'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
@@ -47,6 +47,10 @@ module.exports = function (grunt) {
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
+      },
+      html: {
+        files: ['<%= yeoman.app %>/{,*/}*.html'],
+        tasks: ['karma']
       },
       gruntfile: {
         files: ['Gruntfile.js']
