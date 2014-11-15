@@ -11,6 +11,7 @@
 angular.module('propertyManagementApp')
   .directive('profileForm', function () {
     return {
+      restrict: 'E',
       templateUrl: 'views/partials/profileForm.html'
     };
   });

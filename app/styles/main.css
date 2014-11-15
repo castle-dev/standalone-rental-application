@@ -845,7 +845,7 @@ fieldset.expiration-date input + input {
   width: 70px;
   margin-left: 9px;
 }
-fieldset.cv-code {
+fieldset.cvv-code {
   width: 82px;
   position: absolute;
   top: 0;

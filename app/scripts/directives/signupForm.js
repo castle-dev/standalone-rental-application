@@ -11,6 +11,7 @@
 angular.module('propertyManagementApp')
   .directive('signupForm', function () {
     return {
+      restrict: 'E',
       templateUrl: 'views/partials/signupForm.html'
     };
   });
