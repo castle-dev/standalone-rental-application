@@ -24,9 +24,7 @@ angular.module('propertyManagementApp')
         };
 
         scope.submit = function () {
-          authController.signup(scope.newUser).then(
-            function () { console.log('account created! TODO: Implement logic'); },
-            function (err) { console.log('account not created!' + err); }
+          authController.signup(scope.newUser).catch(            function (err) { console.log('account not created!' + err); }
           );
         };
       }

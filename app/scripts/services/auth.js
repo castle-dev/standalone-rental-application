@@ -10,7 +10,7 @@
  * authenticating users
  */
 angular.module('propertyManagementApp')
-  .factory('Auth', function ($firebase, $firebaseSimpleLogin, FIREBASE_URL, $window, $rootScope) {
+  .factory('Auth', function ($firebase, $firebaseSimpleLogin, FIREBASE_URL, $window, $rootScope, $q) {
     var ref = new $window.Firebase(FIREBASE_URL); // firebase plugin attaches Firebase object to window
     var auth = $firebaseSimpleLogin(ref);
     var currentUser = {};
@@ -22,13 +22,19 @@ angular.module('propertyManagementApp')
       loginUser: function (user) {
         return auth.$login('password', user);
       },
-      logoutCurrentUser: function() {
+      logoutCurrentUser: function () {
         auth.$logout();
       },
       getCurrentUser: function () {
-        return currentUser;
+        var deferred = $q.defer();
+        auth.$getCurrentUser().then(function () {
+          deferred.resolve(currentUser);
+        }, function (err) {
+          deferred.reject(err);
+        });
+        return deferred.promise;
       },
-      isUserAuthenticated: function() {
+      isUserAuthenticated: function () {
         return !!currentUser.provider;
       },
       updateUserProfile: function (user) {

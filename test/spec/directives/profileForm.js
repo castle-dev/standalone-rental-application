@@ -2,14 +2,17 @@
 
 describe('Directive: profileForm', function() {
 
+  var element, scope, inputs;
+
   // load the directive's module
   beforeEach(module('propertyManagementApp'));
   // load the cached templates
   beforeEach(module('partials'));
+  // load the firebase mock
+  beforeEach(module('mock.firebase'));
 
-  var element, scope, inputs;
 
-  beforeEach(inject(function($compile, $rootScope) {
+  beforeEach(inject(function($compile, $rootScope, $injector) {
     scope = $rootScope;
     element = angular.element(
       '<profile-form></profile-form>'
@@ -17,6 +20,8 @@ describe('Directive: profileForm', function() {
     $compile(element)(scope);
     scope.$apply();
     inputs = element.find('input');
+    var Auth = $injector.get('Auth');
+    spyOn(Auth, 'getCurrentUser');
   }));
 
   it('should display a single form', function () {
