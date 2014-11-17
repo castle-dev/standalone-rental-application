@@ -1,31 +1,31 @@
-<form>
+<form ng-submit="submit()">
 
   <div class="both-names-input">
     <fieldset>
       <label for="first-name">Your name:</label>
-      <input type="text" name="first-name" placeholder="Ralph">
+      <input type="text" name="first-name" placeholder="Ralph" ng-model="newUser.firstName">
     </fieldset>
 
     <fieldset>
       <label for="last-name"></label>
-      <input type="text" name="last-name" placeholder="Rental">
+      <input type="text" name="last-name" placeholder="Rental" ng-model="newUser.lastName">
     </fieldset>
   </div><!--both-names-input-->
 
   <fieldset>
     <label for="email-address">Your email address:</label>
-    <input type="email" name="email-address" placeholder="ralph@rentalco.com">
+    <input type="email" name="email-address" placeholder="ralph@rentalco.com" ng-model="newUser.email">
     <div class="help-text">We won&rsquo;t send you spam or anything lame.</div>
   </fieldset>
 
   <fieldset>
     <label for="phone-number">Your cell phone number:</label>
-    <input type="tel" name="phone-number" placeholder="">
+    <input type="tel" name="phone-number" placeholder="" ng-model="newUser.phoneNumber">
   </fieldset>
 
   <fieldset>
     <label for="password">Choose a password:</label>
-    <input type="password" name="password" placeholder="Easy to remember, hard to guess">
+    <input type="password" name="password" placeholder="Easy to remember, hard to guess" ng-model="newUser.password">
 
     <div class="password-requirements">
       <div class="requirement">

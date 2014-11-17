@@ -1,13 +1,16 @@
 'use strict';
 
 describe('Directive: signupForm', function() {
+  var element, scope, inputs;
 
   // load the directive's module
-  beforeEach(module('propertyManagementApp'));
+  beforeEach(module('propertyManagementApp', function ($controllerProvider) {
+    // mock the AuthController
+    $controllerProvider.register('AuthController', function() {});
+  }));
   // load the cached templates
   beforeEach(module('partials'));
 
-  var element, scope, inputs;
 
   beforeEach(inject(function($compile, $rootScope) {
     scope = $rootScope;
