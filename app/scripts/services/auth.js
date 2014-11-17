@@ -27,11 +27,15 @@ angular.module('propertyManagementApp')
       },
       getCurrentUser: function () {
         var deferred = $q.defer();
-        auth.$getCurrentUser().then(function () {
+        if (currentUser && currentUser.profile) {
           deferred.resolve(currentUser);
-        }, function (err) {
-          deferred.reject(err);
-        });
+        } else {
+          auth.$getCurrentUser().then(function () {
+            deferred.resolve(currentUser);
+          }, function (err) {
+            deferred.reject(err);
+          });
+        }
         return deferred.promise;
       },
       isUserAuthenticated: function () {
