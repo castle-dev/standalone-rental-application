@@ -9,11 +9,9 @@ angular.module('propertyManagementApp')
 
       // Create new user
       Auth.registerUser(newUser).then(function (user) {
-        console.log(user);
         Auth.loginUser(newUser).then(function () {
-          console.log(newUser.email + ' is now logged in');
-          deferred.resolve(newUser);
-          //TODO: Create user's profile
+          newUser.uid = user.uid; // Get uid of the newly stored user
+          deferred.resolve(Auth.updateUserProfile(newUser));
         });
       }, function (err) {
         deferred.reject(err);

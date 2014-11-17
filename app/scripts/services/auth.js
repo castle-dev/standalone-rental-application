@@ -26,12 +26,23 @@ angular.module('propertyManagementApp')
         auth.$logout();
       },
       getCurrentUser: function () {
-        return auth.$getCurrentUser();
+        return currentUser;
       },
       isUserAuthenticated: function() {
         return !!currentUser.provider;
       },
-      
+      updateUserProfile: function (user) {
+        var profile = {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          phoneNumber: user.phoneNumber
+        };
+
+        var profileRef = $firebase(ref.child('profile'));
+        return profileRef.$set(user.uid, profile);
+      }
+
     };
 
     $rootScope.$on('$firebaseSimpleLogin:login', function (err, user) {
