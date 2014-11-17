@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'firebase'
+    'firebase',
+    'angularPayments'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -34,4 +35,7 @@ angular
       .otherwise({
         redirectTo: '/signup'
       });
+  })
+  .run(function ($window, STRIPE_API_KEY) {
+    $window.Stripe.setPublishableKey(STRIPE_API_KEY);
   });

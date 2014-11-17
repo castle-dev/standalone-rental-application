@@ -9,7 +9,7 @@
  * for updating a user's profile
  */
 angular.module('propertyManagementApp')
-  .directive('profileForm', function (Auth) {
+  .directive('profileForm', function (Auth, Bank) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/profileForm.html',
@@ -25,6 +25,16 @@ angular.module('propertyManagementApp')
             scope.cardholder.fullName = newValue.firstName + ' ' + newValue.lastName;
           }
         });
+
+        scope.$watch('expiryMonth', function (newValue) {
+          scope.expiry = newValue + '/' + scope.expiryYear;
+        });
+
+        scope.$watch('expiryYear', function (newValue) {
+          scope.expiry = scope.expiryMonth + '/' + newValue;
+        });
+
+        scope.callback = Bank.storeCreditCardToken;
       }
     };
   });

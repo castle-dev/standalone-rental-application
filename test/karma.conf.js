@@ -34,12 +34,14 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/mockfirebase/dist/mockfirebase.js',
       'bower_components/angularfire/dist/angularfire.min.js',
+      'bower_components/angular-payments/lib/angular-payments.js',
       'node_modules/jasmine-expect/dist/jasmine-matchers.js',
       'test/lib/**/*.js',
       'app/scripts/**/*.js',
       'app/views/partials/**/*.html',
       'test/mock/**/*.js',
-      'test/spec/**/*.js'
+      'test/spec/**/*.js',
+      'https://js.stripe.com/v2/'
     ],
 
     ngHtml2JsPreprocessor: {
