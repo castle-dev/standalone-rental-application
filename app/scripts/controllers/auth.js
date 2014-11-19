@@ -2,7 +2,7 @@
 
 angular.module('propertyManagementApp')
 
-  .controller('AuthController', function (Auth, $q, $location) {
+  .controller('AuthController', function (Auth, $q, $location, $anchorScroll) {
 
     this.signup = function (newUser) {
       var deferred = $q.defer();
@@ -13,6 +13,9 @@ angular.module('propertyManagementApp')
           newUser.uid = user.uid; // Get uid of the newly stored user
           deferred.resolve(Auth.updateUserProfile(newUser));
           $location.path('/profile/' + newUser.uid + '/edit' );
+          $anchorScroll();
+        }, function (err) {
+          deferred.reject(err);
         });
       }, function (err) {
         deferred.reject(err);
