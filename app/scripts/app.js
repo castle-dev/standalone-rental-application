@@ -26,6 +26,13 @@ angular
       .when('/signup', {
         templateUrl: 'views/signup.html',
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+      })
+      .when('/logout', {
+        template: '',
+        controller: 'LogoutController'
+      })
       .when('/profile/:profileId/edit', {
         templateUrl: 'views/profile.html',
       })

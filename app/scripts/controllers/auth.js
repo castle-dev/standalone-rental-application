@@ -3,10 +3,8 @@
 angular.module('propertyManagementApp')
 
   .controller('AuthController', function (Auth, $q, $location, $anchorScroll) {
-
     this.signup = function (newUser) {
       var deferred = $q.defer();
-
       // Create new user
       Auth.registerUser(newUser).then(function (user) {
         Auth.loginUser(newUser).then(function () {
@@ -20,8 +18,18 @@ angular.module('propertyManagementApp')
       }, function (err) {
         deferred.reject(err);
       });
-
       return deferred.promise;
     };
+    this.login = function (user) {
+      return Auth.loginUser(user).then(function (user) {
+        $location.path('/profile/' + user.uid + '/edit' );
+        $anchorScroll();
+      });
+    };
+  })
 
+  .controller('LogoutController', function (Auth, $location, $anchorScroll) {
+      Auth.logoutCurrentUser();
+      $location.path('/login');
+      $anchorScroll();
   });
