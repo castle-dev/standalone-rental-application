@@ -11,13 +11,11 @@ angular.module('propertyManagementApp')
   .directive('currentUserName', function (Auth) {
     return {
       restrict: 'E',
-      template: '{{ currentUserProfile.firstName }}',
+      template: '{{ profile.firstName }}',
       link: function (scope) {
-        Auth.getCurrentUser().then(function (currentUser) {
-          scope.name = currentUser.profile.firstName;
-          currentUser.profile.$bindTo(scope, 'currentUserProfile');
+        Auth.getCurrentUser().profile.$loaded().then(function (profileData) {
+          scope.profile = profileData;
         });
       }
-
     };
   });

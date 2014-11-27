@@ -2,17 +2,31 @@
 
 describe('Directive: profileForm', function() {
 
-  var element, scope, inputs;
+  var element, scope, inputs, q;
 
   // load the directive's module
-  beforeEach(module('propertyManagementApp'));
+  beforeEach(module('propertyManagementApp', function ($provide) {
+    var mockedAuth = {
+      getCurrentUser: function () {
+        return {
+          profile: {
+            $loaded: function () {
+              var deferred = q.defer();
+              deferred.resolve({});
+              return deferred.promise;
+            }
+          }
+        };
+      }
+    };
+    $provide.value('Auth', mockedAuth);
+  }));
   // load the cached templates
   beforeEach(module('partials'));
-  // load the firebase mock
-  beforeEach(module('mock.firebase'));
 
 
-  beforeEach(inject(function($compile, $rootScope, $injector) {
+  beforeEach(inject(function(Auth, $compile, $rootScope, $q) {
+    q = $q;
     scope = $rootScope;
     element = angular.element(
       '<profile-form></profile-form>'
@@ -20,8 +34,6 @@ describe('Directive: profileForm', function() {
     $compile(element)(scope);
     scope.$apply();
     inputs = element.find('input');
-    var Auth = $injector.get('Auth');
-    spyOn(Auth, 'getCurrentUser');
   }));
 
   it('should display a single form', function () {

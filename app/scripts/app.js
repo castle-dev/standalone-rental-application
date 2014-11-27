@@ -31,9 +31,13 @@ angular
       })
       .when('/logout', {
         template: '',
-        controller: 'LogoutController'
+        resolve: {
+          loggedIn: function (Auth) {
+            Auth.logoutCurrentUser(); // redirects to login
+          }
+        }
       })
-      .when('/profile/:profileId/edit', {
+      .when('/profile', {
         templateUrl: 'views/profile.html',
       })
       .when('/welcome', {

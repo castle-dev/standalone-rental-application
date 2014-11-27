@@ -3,14 +3,12 @@
 describe('Directive: signupForm', function() {
   var element, scope, inputs;
 
-  // load the directive's module
-  beforeEach(module('propertyManagementApp', function ($controllerProvider) {
-    // mock the AuthController
-    $controllerProvider.register('AuthController', function() {});
-  }));
-  // load the cached templates
+  beforeEach(module('propertyManagementApp'));
   beforeEach(module('partials'));
-
+  beforeEach(module(function ($provide) {
+    var Auth = {};
+    $provide.value('Auth', Auth);
+  }));
 
   beforeEach(inject(function($compile, $rootScope) {
     scope = $rootScope;

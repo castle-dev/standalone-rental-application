@@ -10,8 +10,7 @@
  * money stuff
  */
 angular.module('propertyManagementApp')
-  .factory('Bank', function ($location, $window, $q, $firebase, FIREBASE_URL, Auth) {
-    var ref = new $window.Firebase(FIREBASE_URL);
+  .factory('Bank', function ($location, $window, $q, Auth) {
 
     var Bank = {
       storeCreditCardToken: function (code, result) {
@@ -19,12 +18,9 @@ angular.module('propertyManagementApp')
           if (result.error) {
             deferred.reject(result.error.message);
           } else {
-            Auth.getCurrentUser().then(function (currentUser) {
-              var creditCardToken = $firebase(ref.child('profile').child(currentUser.uid).child('creditCardToken'));
-              creditCardToken.$set(result.id).then(function () {
-                deferred.resolve();
-              });
-            });
+            var currentUser = Auth.getCurrentUser();
+            currentUser.profile.creditCardToken = result.id;
+            deferred.resolve(currentUser.profile.$save());
           }
 
           return deferred.promise;

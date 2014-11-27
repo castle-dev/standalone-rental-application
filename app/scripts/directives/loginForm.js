@@ -9,18 +9,18 @@
  * for signing in
  */
 angular.module('propertyManagementApp')
-  .directive('loginForm', function () {
+  .directive('loginForm', function (Auth, $location) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/loginForm.html',
-      controller: 'AuthController',
-      controllerAs: 'authController',
-      link: function (scope, element, attr, authController) {
+      link: function (scope) {
         scope.submit = function (user) {
           scope.errors = [];
-          authController.login(user).catch(function (err) {
-            scope.errors.push(err);
-          });
+          Auth.loginUser(user)
+            .then(function () { $location.path('/welcome'); })
+            .catch(function (err) {
+              scope.errors.push(err);
+            });
         };
       }
     };

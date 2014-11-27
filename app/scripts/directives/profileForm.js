@@ -16,14 +16,8 @@ angular.module('propertyManagementApp')
     link: function (scope) {
       scope.cardholder = { };
 
-      Auth.getCurrentUser().then(function (currentUser) {
-        currentUser.profile.$bindTo(scope, 'currentUserProfile');
-      });
-
-      scope.$watch('currentUserProfile', function (newValue) {
-        if (newValue !== undefined && newValue.firstName !== undefined) {
-          scope.cardholder.fullName = newValue.firstName + ' ' + newValue.lastName;
-        }
+      Auth.getCurrentUser().profile.$loaded().then(function (profileData) {
+        scope.cardholder.fullName = profileData.firstName + ' ' + profileData.lastName;
       });
 
       scope.$watch('expiryMonth', function (newValue) {

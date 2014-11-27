@@ -9,13 +9,11 @@
  * for creating a new acount
  */
 angular.module('propertyManagementApp')
-  .directive('signupForm', function () {
+  .directive('signupForm', function (Auth, $location) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/signupForm.html',
-      controller: 'AuthController',
-      controllerAs: 'authController',
-      link: function (scope, element, attr, authController) {
+      link: function (scope) {
         scope.newUser = { password: '' };
 
         scope.$watch('newUser.password', function (newValue) {
@@ -29,17 +27,24 @@ angular.module('propertyManagementApp')
           if (!scope.passwordIsLongEnough || !scope.passwordContainsNumber) {
              return scope.errors.push('That password isn\'t sercure! Please include a number and make it at least 8 characters long');
           }
-          authController.signup(scope.newUser).catch( function (err) { 
-            if (err.code === 'INVALID_EMAIL') {
-              scope.errors.push('Invalid email. Please check that you have entered a valid email address');
-            } else if (err.code === 'INVALID_PASSWORD') {
-              scope.errors.push('Invalid password. Please check that you have entered a secure password');
-            } else if (err.code === 'EMAIL_TAKEN') {
-              scope.errors.push('That email is already associated with a Castle account. Please use another email address or contact us at (313) 214-2663 for help.');
-            } else {
+          Auth.registerUser(scope.newUser)
+            .then(function (user) { // log the new user in
+              return Auth.loginUser(user);
+            })
+            .then(function () { // update the user's profile
+              return Auth.updateProfile({
+                firstName: scope.newUser.firstName,
+                lastName: scope.newUser.lastName,
+                email: scope.newUser.email,
+                phoneNumber: scope.newUser.phoneNumber,
+              });
+            })
+            .then(function () { // redirect to profile page
+              $location.path('/profile');
+            })
+            .catch(function (err) {
               scope.errors.push(err);
-            }
-          });
+            });
         };
       }
     };

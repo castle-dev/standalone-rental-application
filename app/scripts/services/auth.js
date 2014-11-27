@@ -10,60 +10,73 @@
  * authenticating users
  */
 angular.module('propertyManagementApp')
-  .factory('Auth', function ($firebase, $firebaseSimpleLogin, FIREBASE_URL, $window, $rootScope, $q) {
+  .factory('Auth', function ($firebase, FIREBASE_URL, $window, $location, $q) {
     var ref = new $window.Firebase(FIREBASE_URL); // firebase plugin attaches Firebase object to window
-    var auth = $firebaseSimpleLogin(ref);
     var currentUser = {};
 
     var Auth = {
       registerUser: function (newUser) {
-        return auth.$createUser(newUser.email, newUser.password);
-      },
-      loginUser: function (user) {
-        return auth.$login('password', user);
-      },
-      logoutCurrentUser: function () {
-        auth.$logout();
-      },
-      getCurrentUser: function () {
         var deferred = $q.defer();
-        if (currentUser && currentUser.profile) {
-          deferred.resolve(currentUser);
-        } else {
-          auth.$getCurrentUser().then(function () {
-            deferred.resolve(currentUser);
-          }, function (err) {
-            deferred.reject(err);
-          });
-        }
+        ref.createUser({
+          email: newUser.email,
+          password: newUser.password
+        }, function (err) {
+          if (err) { deferred.reject(Auth.translateError(err)); }
+          deferred.resolve(newUser);
+        });
         return deferred.promise;
       },
-      isUserAuthenticated: function () {
-        return !!currentUser.provider;
+      loginUser: function (user) {
+        var deferred = $q.defer();
+        ref.authWithPassword(user, function (err, authData) {
+          if (err) { deferred.reject(Auth.translateError(err)); }
+          deferred.resolve(authData);
+        });
+        return deferred.promise;
       },
-      updateUserProfile: function (user) {
-        var profile = {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: user.email,
-          phoneNumber: user.phoneNumber
-        };
-
+      logoutCurrentUser: function () {
+        ref.unauth();
+        $location.path('/login');
+      },
+      getCurrentUser: function () {
+        if (!Auth.isUserAuthenticated()) {
+          $location.path('/login');
+        }
+        return currentUser;
+      },
+      isUserAuthenticated: function () {
+        return !!currentUser.uid;
+      },
+      updateProfile: function (profile) {
         var profileRef = $firebase(ref.child('profile'));
-        return profileRef.$set(user.uid, profile);
+        return profileRef.$set(Auth.getCurrentUser().uid, profile);
+      },
+      translateError: function (err) {
+        if (err.code === 'INVALID_EMAIL') {
+          return 'Invalid email. Please check that you have entered a valid email address';
+        } else if (err.code === 'INVALID_PASSWORD') {
+          return 'Invalid password. Please check that you have entered a secure password';
+        } else if (err.code === 'EMAIL_TAKEN') {
+          return 'That email is already associated with a Castle account. Please use another email address or contact us at (313) 214-2663 for help.';
+        } else {
+          return err;
+        }
       }
 
     };
 
-    $rootScope.$on('$firebaseSimpleLogin:login', function (err, user) {
-      angular.copy(user, currentUser);
-      currentUser.profile = $firebase(ref.child('profile').child(currentUser.uid)).$asObject();
-    });
-    $rootScope.$on('$firebaseSimpleLogin:logout', function () {
-      if(currentUser && currentUser.profile) {
-        currentUser.profile.$destroy();
+    ref.onAuth(function (authData) {
+      if (authData) {
+        // User just logged in, cache their data
+        angular.copy(authData, currentUser);
+        currentUser.profile = $firebase(ref.child('profile').child(currentUser.uid)).$asObject();
+      } else {
+        // User just logged out
+        if(currentUser && currentUser.profile) {
+          currentUser.profile.$destroy();
+        }
+        angular.copy({}, currentUser);
       }
-      angular.copy({}, currentUser);
     });
 
     return Auth;
