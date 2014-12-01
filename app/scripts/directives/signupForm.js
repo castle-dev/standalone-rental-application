@@ -40,7 +40,7 @@ angular.module('propertyManagementApp')
               });
             })
             .then(function () { // redirect to profile page
-              $location.path('/profile');
+              $location.path('/creditCard');
             })
             .catch(function (err) {
               scope.errors.push(err);

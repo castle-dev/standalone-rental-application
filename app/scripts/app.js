@@ -37,8 +37,8 @@ angular
           }
         }
       })
-      .when('/profile', {
-        templateUrl: 'views/profile.html',
+      .when('/creditCard', {
+        templateUrl: 'views/creditCard.html',
       })
       .when('/welcome', {
         templateUrl: 'views/welcome.html',

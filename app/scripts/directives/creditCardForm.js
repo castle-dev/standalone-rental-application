@@ -2,17 +2,17 @@
 
 /**
  * @ngdoc function
- * @name propertyManagementApp.directive:profileForm
+ * @name propertyManagementApp.directive:creditCardForm
  * @description
- * # profileForm
+ * # creditCardForm
  * Directive containing template and logic
  * for updating a user's profile
  */
 angular.module('propertyManagementApp')
-.directive('profileForm', function (Auth, Bank, $location) {
+.directive('creditCardForm', function (Auth, Bank, $location) {
   return {
     restrict: 'E',
-    templateUrl: 'views/partials/profileForm.html',
+    templateUrl: 'views/partials/creditCardForm.html',
     link: function (scope) {
       scope.cardholder = { };
 

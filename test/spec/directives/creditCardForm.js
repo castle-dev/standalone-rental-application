@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: profileForm', function() {
+describe('Directive: creditCardForm', function() {
 
   var element, scope, inputs, q;
 
@@ -29,7 +29,7 @@ describe('Directive: profileForm', function() {
     q = $q;
     scope = $rootScope;
     element = angular.element(
-      '<profile-form></profile-form>'
+      '<credit-card-form></credit-card-form>'
     );
     $compile(element)(scope);
     scope.$apply();
