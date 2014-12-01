@@ -5,12 +5,12 @@ describe('Module: config', function () {
   // load the controller's module
   beforeEach(module('config'));
 
-  var env, firebaseUrl, stripeApiKey;
+  var env, firebaseUrl, stripePublishableKey;
 
   beforeEach(inject(function($injector) {
     env = $injector.get('ENV');
     firebaseUrl = $injector.get('FIREBASE_URL');
-    stripeApiKey = $injector.get('STRIPE_API_KEY');
+    stripePublishableKey = $injector.get('STRIPE_PUBLISHABLE_KEY');
   }));
 
 
@@ -24,7 +24,7 @@ describe('Module: config', function () {
   });
 
   it('should have a stripe API key defined', function () {
-    expect(env).toBeDefined();
-    expect(env).not.toEqual('');
+    expect(stripePublishableKey).toBeDefined();
+    expect(stripePublishableKey).not.toEqual('');
   });
 });

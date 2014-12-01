@@ -47,6 +47,6 @@ angular
         redirectTo: '/signup'
       });
   })
-  .run(function ($window, STRIPE_API_KEY) {
-    $window.Stripe.setPublishableKey(STRIPE_API_KEY);
+  .run(function ($window, STRIPE_PUBLISHABLE_KEY) {
+    $window.Stripe.setPublishableKey(STRIPE_PUBLISHABLE_KEY);
   });

@@ -365,7 +365,7 @@ module.exports = function (grunt) {
         constants: {
           ENV: process.env.ENV,
           FIREBASE_URL: process.env.FIREBASE_URL,
-          STRIPE_API_KEY: process.env.STRIPE_API_KEY
+          STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY
         }
       },
       build: {
