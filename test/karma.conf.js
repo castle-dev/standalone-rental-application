@@ -35,6 +35,7 @@ module.exports = function(config) {
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angularfire/dist/angularfire.min.js',
       'bower_components/angular-payments/lib/angular-payments.js',
+      'bower_components/angular-ui-utils/mask.js',
       'node_modules/jasmine-expect/dist/jasmine-matchers.js',
       'app/scripts/**/*.js',
       'app/views/partials/**/*.html',

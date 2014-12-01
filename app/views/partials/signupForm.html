@@ -14,13 +14,13 @@
 
   <fieldset>
     <label for="email-address">Your email address:</label>
-    <input type="email" name="email-address" placeholder="ralph@rentalco.com" ng-model="newUser.email">
+    <input type="email" name="email-address" placeholder="ralph@rentalco.com" ng-model="newUser.email" required>
     <div class="help-text">We won&rsquo;t send you spam or anything lame.</div>
   </fieldset>
 
   <fieldset>
     <label for="phone-number">Your cell phone number:</label>
-    <input type="tel" name="phone-number" placeholder="" ng-model="newUser.phoneNumber" required>
+    <input type="tel" name="phone-number" ng-model="newUser.phoneNumber" required ui-mask="(999) 999-9999" >
   </fieldset>
 
   <fieldset>

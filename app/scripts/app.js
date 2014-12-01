@@ -19,7 +19,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'firebase',
-    'angularPayments'
+    'angularPayments',
+    'ui.mask'
   ])
   .config(function ($routeProvider) {
     $routeProvider
