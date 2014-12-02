@@ -41,8 +41,36 @@
     <label for="monthly-income">What is your average monthly income?</label>
     <input type="number" pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$" required>
   </fieldset>
-  
-  <!-- Ask for at least one landlord reference -->
+ 
+  <div class="landlord-reference" ng-hide="isFirstRental"> 
+    <div class="both-names-input">
+      <fieldset>
+        <label for="first-name">Landlord's name:</label>
+        <input type="text" name="first-name" placeholder="Larry" ng-model="applicant.reference.firstName" required>
+      </fieldset>
+
+      <fieldset>
+        <label for="last-name"></label>
+          <input type="text" name="last-name" placeholder="Landlord" ng-model="applicant.reference.lastName" required>
+      </fieldset>
+    </div>
+  </div>
+
+  <fieldset>
+    <label for="email-address">Landlord's  email address:</label>
+    <input type="email" name="email-address" placeholder="larrylandlord@yahoo.com" ng-model="applicant.reference.email">
+    <div class="help-text">We won&rsquo;t send you spam or anything lame</div>
+  </fieldset>
+
+  <fieldset>
+    <label for="phone-number">Landlord's phone number:</label>
+    <input type="tel" name="phone-number" placeholder="" ng-model="applicant.reference.phoneNumber" required>
+  </fieldset>
+
+  <fieldset>
+    <label for="firstRental">This is my first time renting</label>
+    <input type="checkbox" ng-model="isFirstRental">
+  </fieldset>
 
   <errors></errors>
 
