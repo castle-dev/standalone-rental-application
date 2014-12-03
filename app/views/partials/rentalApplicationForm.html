@@ -24,22 +24,22 @@
     </fieldset>
 
     <fieldset>
-      <label for="previous-evictions">Have you ever had a landlord file an eviction against you?</label>
+      <label for="previous-evictions">Have you ever had a landlord file an eviction claim against you?</label>
       <div>
-        <input type="radio" name="previous-evictions" ng-value="true" ng-model="applicant.hasEviction">Yes
+        <input type="radio" name="previous-evictions" ng-value="true" ng-model="applicant.hasEviction" id="previous-evictions-yes"><label for="previous-evictions-yes">Yes</label>
       </div>
       <div>
-        <input type="radio" name="previous-evictions" ng-value="false" ng-model="applicant.hasEviction">No
+        <input type="radio" name="previous-evictions" ng-value="false" ng-model="applicant.hasEviction" id="previous-evictions-no"><label for="previous-evictions-no">No<label>
       </div>
     </fieldset>
 
     <fieldset>
       <label for="breaking-lease">Will you be breaking your current lease to live here?</label>
       <div>
-        <input type="radio" name="breaking-lease" ng-value="true" ng-model="applicant.breakingLease">Yes
+        <input type="radio" name="breaking-lease" ng-value="true" ng-model="applicant.breakingLease" id="break-lease-yes"><label for="break-lease-yes">Yes</label>
       </div>
       <div>
-        <input type="radio" name="breaking-lease" ng-value="false" ng-model="applicant.breakingLease">No
+        <input type="radio" name="breaking-lease" ng-value="false" ng-model="applicant.breakingLease" id="break-lease-no"><label for="break-lease-no">No</label>
       </div>
     </fieldset>
 
