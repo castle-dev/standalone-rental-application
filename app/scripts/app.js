@@ -44,6 +44,9 @@ angular
       .when('/welcome', {
         templateUrl: 'views/welcome.html',
       })
+      .when('/apply', {
+        templateUrl: 'views/rentalApplication.html',
+      })
       .otherwise({
         redirectTo: '/signup'
       });
