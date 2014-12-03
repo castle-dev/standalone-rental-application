@@ -1,59 +1,65 @@
-<form name="renalApplication" ng-submit="submit()">
-  <div class="both-names-input">
+<div>
+  <form ng-hide="submitted" name="rentalApplication" ng-submit="submit()">
+    <div class="both-names-input">
+      <fieldset>
+        <label for="first-name">Your name:</label>
+        <input type="text" name="first-name" placeholder="Tommy" ng-model="applicant.firstName" required>
+      </fieldset>
+
+      <fieldset>
+              <label for="last-name"></label>
+              <input type="text" name="last-name" placeholder="Tenant" ng-model="applicant.lastName" required>
+      </fieldset>
+    </div>
+
     <fieldset>
-      <label for="first-name">Your name:</label>
-      <input type="text" name="first-name" placeholder="Tommy" ng-model="applicant.firstName" required>
+      <label for="email-address">Your email address:</label>
+      <input type="email" name="email-address" placeholder="tommytenant@gmail.com" ng-model="applicant.email">
+      <div class="help-text">We won&rsquo;t send you spam or anything lame</div>
     </fieldset>
 
     <fieldset>
-            <label for="last-name"></label>
-            <input type="text" name="last-name" placeholder="Tenant" ng-model="applicant.lastName" required>
+      <label for="phone-number">Your cell phone number:</label>
+      <input type="tel" name="phone-number" placeholder="" ng-model="applicant.phoneNumber" required>
     </fieldset>
+
+    <fieldset>
+      <label for="previous-evictions">Have you ever had a landlord file an eviction against you?</label>
+      <div>
+        <input type="radio" name="previous-evictions" ng-value="true" ng-model="applicant.hasEviction">Yes
+      </div>
+      <div>
+        <input type="radio" name="previous-evictions" ng-value="false" ng-model="applicant.hasEviction">No
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <label for="breaking-lease">Will you be breaking your current lease to live here?</label>
+      <div>
+        <input type="radio" name="breaking-lease" ng-value="true" ng-model="applicant.breakingLease">Yes
+      </div>
+      <div>
+        <input type="radio" name="breaking-lease" ng-value="false" ng-model="applicant.breakingLease">No
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <label for="monthly-income">What is your average monthly income?</label>
+      <input type="text" ng-model="applicant.monthlyIncome" required>
+    </fieldset>
+
+    <fieldset>
+      <label for="firstRental">This is my first time renting</label>
+      <input type="checkbox" ng-model="isFirstRental">
+    </fieldset>
+
+    <errors></errors>
+
+    <button type="submit" class="btn btn-medium btn-green">Submit Application &rarr;</button>
+
+  </form>
+
+  <div ng-show="submitted">
+    <h1>Thanks! We'll be in touch soon.</h1>
   </div>
-
-  <fieldset>
-    <label for="email-address">Your email address:</label>
-    <input type="email" name="email-address" placeholder="tommytenant@gmail.com" ng-model="applicant.email">
-    <div class="help-text">We won&rsquo;t send you spam or anything lame</div>
-  </fieldset>
-
-  <fieldset>
-    <label for="phone-number">Your cell phone number:</label>
-    <input type="tel" name="phone-number" placeholder="" ng-model="applicant.phoneNumber" required>
-  </fieldset>
-
-  <fieldset>
-    <label for="previous-evictions">Have you ever had a landlord file an eviction against you?</label>
-    <div>
-      <input type="radio" name="previous-evictions" ng-value="true" ng-model="applicant.hasEviction">Yes
-    </div>
-    <div>
-      <input type="radio" name="previous-evictions" ng-value="false" ng-model="applicant.hasEviction">No
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <label for="breaking-lease">Will you be breaking your current lease to live here?</label>
-    <div>
-      <input type="radio" name="breaking-lease" ng-value="true" ng-model="applicant.breakingLease">Yes
-    </div>
-    <div>
-      <input type="radio" name="breaking-lease" ng-value="false" ng-model="applicant.breakingLease">No
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <label for="monthly-income">What is your average monthly income?</label>
-    <input type="text" ng-model="applicant.monthlyIncome" required>
-  </fieldset>
-
-  <fieldset>
-    <label for="firstRental">This is my first time renting</label>
-    <input type="checkbox" ng-model="isFirstRental">
-  </fieldset>
-
-  <errors></errors>
-
-  <button type="submit" class="btn btn-medium btn-green">Submit Application &rarr;</button>
-
-</form>
+</div>
