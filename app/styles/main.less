@@ -1,0 +1,1719 @@
+/* Castle Styles
+by Max Nussenbaum */
+
+
+// Globals
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  }
+
+body {
+  background: @basecolor;
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 2em;
+  color: @bodytext;
+  } 
+  
+::selection {
+  color: #fafafa;
+  background: @green;
+  }
+
+::-moz-selection {
+  color: #fafafa;
+  background: @green;
+  }
+
+strong {
+  font-weight: 400;
+  }
+  
+img {
+  max-width: 100%;
+  }
+
+[ui-sref] {
+  cursor: pointer;
+  }
+  
+a {
+	cursor: pointer;
+	}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  //Hide spinners in Chrome and Safari
+  -webkit-appearance: none;
+  margin: 0; 
+  }
+  
+  
+// Mixins
+.transition(...) {
+  transition: @arguments;
+  -moz-transition: @arguments;
+  -webkit-transition: @arguments;
+  -ms-transition: @arguments;
+  -o-transition: @arguments;
+  }
+
+
+// Animations
+[ui-view="content"] {
+  .transition(all 0.5s);
+    &.ng-enter {
+      opacity: 0; 
+      }
+    &.ng-enter-active {
+      opacity: 1;
+      }
+    &.ng-leave,
+    &.ng-leave-active {
+      display: none;
+      }
+  }
+  
+[ui-view="content"].ng-enter {
+	opacity: 0;
+	}
+
+[ui-view="content"].ng-enter-active {
+	opacity: 1;
+	}
+
+[ui-view="content"].ng-leave,
+[ui-view="content"].ng-leave-active {
+	display: none;
+	}
+
+.fade-in.ng-enter,
+.fade-in.ng-leave,
+.fade-in.ng-move {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+  }
+
+/* starting enter animation */
+.fade-in.ng-enter,
+.fade-in.ng-move { opacity:0; }
+
+/* ending enter animation */
+.fade-in.ng-enter.ng-enter-active,
+.fade-in.ng-move.ng-move-active { opacity:1; }
+
+/* starting leave animation */
+.fade-in.ng-leave { display:none; }
+
+/* ending leave animation */
+.fade-in.ng-leave.ng-leave-active { opacity:0; }
+
+.stagger.ng-enter-stagger,
+.stagger.ng-leave-stagger,
+.stagger.ng-move-stagger {
+  /* 100ms between each item being animated after the other */
+  -webkit-transition-delay:100ms;
+  transition-delay:100ms;
+
+  /* this is required here to prevent any CSS inheritance issues */
+  -webkit-transition-duration:0;
+  transition-duration:0;
+  }
+
+// Sidebar + Structure
+#mobile-header {
+  display: none;
+  }
+  
+.centered-logo {
+  display: block;
+  margin: 0 auto;
+  width: 110px;
+  }
+
+.sticky-footer-wrapper {
+	min-height: 100%;
+	margin: 0 auto -250px;
+	}
+
+.sticky-footer-push,
+.sticky-footer {
+	height: 250px;
+	}
+  
+.row {
+  margin: 0;
+  }
+
+#wrapper {
+  padding-left: 250px;
+  }
+
+[sidebar] {
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: darken(@basecolor,7%);
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  }
+
+[content] {
+  width: 100%;
+  padding: 30px 40px;
+  }
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  }
+
+.sidebar-nav li {
+  line-height: 50px;
+  text-indent: 10px;
+  height: 50px;
+  }
+  
+.sidebar-nav li i {
+  margin-right: 15px;
+  }
+
+.sidebar-nav li a {
+  color: lighten(@grey, 5%);
+  display: block;
+  border: 0;
+  font-weight: 400;
+  }
+  
+.sidebar-nav li a.current,
+.sidebar-nav li a:hover {
+  color: darken(@grey, 10%);
+  background: darken(@basecolor, 3%);
+  }
+  
+.sidebar-nav i {
+  width: 30px;
+  }
+
+.sidebar-nav > .sidebar-brand {
+  height: 250px;
+  }
+  
+.sidebar-nav > .sidebar-brand a,
+.sidebar-nav > .sidebar-brand a:hover {
+  height: 250px;
+  background-color: @bodytext;
+  background-image: url('img/logo-solo.png');
+  background-size: auto 80%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 0;
+  text-indent: -9000px;
+  .transition(0);
+  }
+  
+.sidebar-nav > .sidebar-brand a:hover {
+  background-color: lighten(@bodytext,5%);
+  }
+
+
+// Colors
+@green: #3ab4ad;
+@blue: #75bbde;
+@red: #e15e5b;
+@purple: #b799c8;
+@yellow: #f7bf3a;
+
+@brown: #553c01;
+
+@basecolor: #f9f9f9;
+@lightgrey: #ebebec;
+@grey: #5f7378;
+@darkgrey: #444444;
+@bodytext: #34495E;
+@darkblue: #2c3e50;
+  
+  
+// Text 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  line-height: 130%;
+  }
+  
+h1 {
+  font-size: 250%;
+  }
+  
+h2 {
+  font-size: 220%;
+  }
+  
+h3 {
+  font-size: 180%;
+  }
+  
+h4 {
+  font-size: 140%;
+  }
+  
+h5 {
+  font-size: 130%;
+  }
+  
+p {
+  line-height: 140%;
+  color: @bodytext;
+  margin: 0;
+  }
+  
+p + p {
+  margin-top: 10px;
+  }
+  
+p.large {
+  font-size: 180%;
+  font-weight: 200;
+  }
+  
+p.medium {
+  font-size: 150%;
+  font-weight: 300;
+  }
+
+p.small {
+  font-size: 120%;
+  }
+  
+p.tiny {
+  font-size: 80%;
+  }
+  
+.light-text,
+.light-text p,
+.light-text h1,
+.light-text h2,
+.light-text h3 {
+  color: @basecolor;
+  }
+  
+.quiet {
+  color: @grey;
+  font-size: 80%;
+  font-style: italic;
+  }
+  
+
+// Links
+a {
+  color: #198e85;
+  text-decoration: none;
+  border-bottom: 1px dotted #C4C4C4;
+  .transition(all .1s ease);
+  }
+  
+a:hover {
+  text-decoration: none;
+  color: #4D97B5;
+  border-color: #5F7378;
+  }
+
+a.back:before {
+   content: "\f053";
+   font-family: FontAwesome;
+   font-size: 80%;
+   margin-right: 8px;
+  }
+    
+  
+// Buttons
+.btn {
+  font-size: 90%;
+  background: @bodytext;
+  color: @basecolor;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid darken(@bodytext, 15%);
+  color: #5f7378;
+  font-weight: 300;
+  .transition(color .2s ease, background .2s ease;);
+  margin: 0;
+  position: relative;
+  top: 0;
+  margin-bottom: 1px;
+  color: @basecolor;
+  height: 40px;
+  }
+  
+.btn:hover {
+  background: darken(@bodytext,10%);
+  color: @basecolor;
+  border-color: darken(@bodytext, 15%);
+  }
+  
+.btn:active {
+  top: 1px;
+  border-bottom: none;
+  }
+  
+.btn:active,
+.btn:focus {
+  outline: none !important;
+  }
+
+.btn-large {
+  font-size: 160%;
+  border-bottom: 4px solid darken(@bodytext, 15%);
+  position: relative;
+  top: 0;
+  margin-top: 0;
+  margin-bottom: 4px;
+  height: 60px;
+  }
+  
+.btn-large:active {
+  top: 2px;
+  border-bottom: 1px solid darken(@bodytext, 15%);
+  }
+  
+.btn-medium {
+  font-size: 120%;
+  border-bottom: 3px solid darken(@bodytext, 15%);
+  position: relative;
+  top: 0;
+  margin-top: 0;
+  margin-bottom: 3px;
+  height: 50px;
+  padding: 0 30px;
+  }
+  
+.btn-medium:active {
+  top: 2px;
+  border-bottom: 1px solid;
+  }
+  
+.btn-two-lines {
+  .btn-medium;
+  height: 74px;
+  line-height: 125%;
+  }
+  
+.btn-two-lines div {
+  font-size: 80%;
+  }
+  
+.btn-fullwidth {
+  width: 100%;
+  border-radius: 0;
+  margin-top: 10px;
+  }
+
+.btn.btn-green {
+  background: @green;
+  border-color: darken(@green, 15%);
+  }
+  
+.btn.btn-green:hover {
+  background: darken(@green, 10%);
+  }
+  
+.btn.btn-blue {
+  background: @blue;
+  border-color: darken(@blue, 15%);
+  }
+  
+.btn.btn-blue:hover {
+  background: darken(@blue, 10%);
+  }
+  
+.btn.btn-red {
+  background: @red;
+  border-color: darken(@red, 15%);
+  }
+  
+.btn.btn-red:hover {
+  background: darken(@red, 7%);
+  }
+  
+.btn.btn-purple {
+  background: @purple;
+  border-color: darken(@purple, 15%);
+  }
+  
+.btn.btn-purple:hover {
+  background: darken(@purple, 10%);
+  }
+
+.btn.btn-yellow {
+  background: @yellow;
+  border-color: darken(@yellow, 15%);
+  }
+  
+.btn.btn-yellow:hover {
+  background: darken(@yellow, 10%);
+  }
+  
+.btn.btn-disabled {
+  cursor: default;
+  background: darken(@basecolor, 10%);
+  color: lighten(@grey, 15%);
+  border-color: darken(@basecolor, 30%);
+  }
+  
+.btn.btn-disabled:active {
+  top: 0 !important;
+  margin-top: 0 !important;
+  box-shadow: none !important;
+  border-bottom: 2px solid darken(@basecolor, 30%);
+  }
+  
+input[type="submit"],
+button[type="submit"] {
+  display: block;
+  margin: 20px auto;
+  }
+  
+button[type="submit"]:focus {
+  color: @basecolor;
+  }
+  
+a.more {
+  display: block;
+  width: 200px;
+  margin: 30px auto 50px auto;
+  font-size: 70%;
+  line-height: 150%;
+  text-transform: uppercase;
+  text-align: center;
+  color: darken(@bodytext, 10%);
+  font-weight: 400;
+  padding: 2px 12px;
+  border: 1px solid @bodytext;
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+  }
+  
+a.more:before {
+    content: "\f055";
+    font-family: FontAwesome;
+    font-size: 90%;
+    margin-right: 3px;
+    }
+    
+a.more:hover {
+  background: @bodytext;
+  color: @basecolor;
+  }
+    
+a.less {
+  display: block;
+  font-size: 70%;
+  line-height: 150%;
+  text-transform: uppercase;
+  text-align: right;
+  font-weight: 400;
+  cursor: pointer;
+  border-bottom: none;
+  }
+
+a.less:before {
+    content: "\f056";
+    font-family: FontAwesome;
+    font-size: 90%;
+    margin-right: 3px;
+    }
+  
+// Forms
+.solo-form form {
+	max-width: 400px;
+	width: 90%;
+	margin: 0 auto;
+	}
+	
+.solo-form h4 {
+	margin-bottom: 20px;
+	}
+
+input,
+select {
+  border-radius: 4px;
+  border: 2px solid lighten(@grey, 10%);
+  padding: 2px 4px;
+  background-color: white;
+  }
+  
+input:hover,
+select:hover {
+  border-color: lighten(@grey,20%);
+  }
+  
+input:focus,
+select:focus {
+  border-color: darken(@blue, 10%);
+  outline: none;
+  }
+    
+label {
+  font-weight: 300;
+  }
+  
+select,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"] {
+  -webkit-appearance: none;
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 400px;
+  }
+
+select {
+  background-image: url('img/select-bg.png');
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  }
+  
+select:hover {
+  background-color: darken(@basecolor, 5%);
+  }
+    
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-appearance: none;
+  background-color: white;
+  vertical-align: text-bottom;
+  margin-right: 4px;
+  border: 2px solid @grey;
+  padding: 9px;
+  position: relative;
+  outline: none !important;
+  }
+  
+input[type="checkbox"] {
+  border-radius: 3px;
+  }
+  
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  border-color: @blue;
+  }
+  
+input[type="checkbox"]:checked:after {
+  content: '\2714';
+  font-size: 24px;
+  position: absolute;
+  top: -6px;
+  left: 2px;
+  color: @grey;
+  }
+  
+input[type="radio"] {
+  border-radius: 12px;
+  }
+  
+input[type="radio"]:checked:after {
+  content: ' ';
+  width: 12px;
+  height: 12px;
+  border-radius: 50px;
+  position: absolute;
+  top: 3px;
+  background: @grey;
+  left: 3px;
+  font-size: 32px;
+  }
+
+fieldset {
+  margin: 10px 0;
+  }
+    
+label {
+  font-weight: 400;
+  margin-right: 10px;
+  }
+  
+input.zipcode {
+	width: 140px;
+	}
+  
+.help-text,
+.top-help-text {
+  font-size: 80%;
+  color: darken(@grey, 10%);
+  margin-top: -4px;
+  margin-bottom: 6px;
+  font-style: italic;
+  }
+
+.right-help-text {
+  text-align: right;
+  }
+
+.top-help-text {
+  text-align: right;
+  float: right;
+  margin-top: 5px;
+  }
+  
+form:not(.ng-submitted) .invalid-text {
+  display: none;
+  }
+
+.secure-fieldset {
+	position: relative;
+	}
+
+.secure-fieldset i {
+	font-size: 130%;
+	color: @grey;
+	display: inline-block;
+	position: absolute;
+	right: 10px;
+	top: 39px;
+	}
+	
+.secure-fieldset input:focus + i {
+	color: @blue;
+	}
+		
+	
+// Solo form
+.solo-form {
+	margin: 30px auto;
+	width: 100%;
+	max-width: 800px;
+	}
+	
+.solo-form h1,
+.solo-form h4 {
+	text-align: center;
+	}
+
+
+// nl-form
+.nl-form {
+  text-align: center;
+  font-size: 120%;
+  margin: 20px 0;
+  }
+  
+.nl-form select,
+.nl-form input {
+  	display: inline-block;
+	line-height: 100%;
+	margin-bottom: 5px;
+	margin-right: 4px;
+	margin-left: 4px;
+	font-weight: 400;
+	font-size: 90%;
+	}
+	
+.nl-form select {
+	width: auto;
+	}
+	
+.nl-form select.due-date {
+	padding-right: 14px;
+	}
+	
+.nl-form select.frequency,
+.nl-form select.days-late {
+	padding-right: 22px;
+	}
+	
+.nl-form input[type="text"], 
+.nl-form input[type="number"] {
+	width: 52px;
+	padding: 0 0 0 18px;
+	margin-left: -2px;
+	}
+	
+.nl-form ::-webkit-input-placeholder {
+	padding-top: 4px;
+	}
+	
+.nl-form-dollar {
+	position: relative;
+	left: 14px;
+	font-weight: 400;
+	font-size: 90%;
+	}
+
+
+  
+// Puts first and last name on the same line
+.both-names-input {
+	margin-bottom: 10px;
+	}
+	
+.both-names-input label[for="last-name"],
+.both-names-input label[for="lastName"] {
+	visibility: hidden; // Hack to fix misaligned labels on Firefox
+	}
+	
+.both-names-input fieldset {
+  width: 45%;
+  display: inline-block;
+  margin: 10px 16px 0 0;
+  }
+  
+.both-names-input fieldset input {
+  width: 100%;
+  }
+  
+.both-names-input fieldset + fieldset {
+  width: 50%;
+  margin: 10px 0 0 0;
+  }
+  
+.both-names-input + fieldset {
+  margin-top: 0px;
+  }
+  
+// Day, Month, Year on the same line
+.date-input fieldset {
+  display: inline-block;
+  margin-right: 16px;
+  margin-bottom: 0;
+  vertical-align: bottom;
+  }
+  
+.date-input fieldset:first-child {
+  width: 38%;
+  margin-top: 0;
+  }
+  
+.date-input fieldset:nth-child(2) {
+	width: 16%;
+  margin-top: 0;
+	}
+   
+.date-input fieldset:nth-child(3) {
+  width: 34%;
+  margin-right: 0;
+  margin-top: 0;
+  }
+  
+.date-input label {
+	width: 150%;
+	}
+
+
+// Password requirements
+.password-requirements {
+  font-size: 80%;
+  color: lighten(@grey, 10%);
+  }
+  
+.password-requirements .requirement {
+  display: inline-block;
+  width: 49%;
+  }
+  
+.password-requirements .requirement:nth-child(even) {
+  text-align: right;
+  }
+  
+.password-requirements input[type="checkbox"] {
+  border: 1px solid lighten(@grey, 10%);
+  padding: 5px;
+  border-radius: 2px;
+  top: -4px;
+  }
+  
+.password-requirements input[type="checkbox"]:checked {
+  border-color: darken(@blue, 10%);
+  }
+  
+.password-requirements input[type="checkbox"]:checked:after {
+  font-size: 12px;
+  top: -2px;
+  left: 2px;
+  }
+  
+// Errors
+// Inline
+.invalid, .ng-submitted .ng-invalid {
+	border-color: @red;
+	}
+	
+.invalid-text {
+  font-size: 80%;
+  font-weight: 400;
+  color: @red;
+  display: block;
+  margin: -5px 0 5px 0;
+  }
+
+// At top
+.errors {
+	background: lighten(@yellow, 32%);
+	padding: 15px 0;
+	font-size: 80%;
+	border-radius: 5px;
+	margin: 20px 0;
+	width: 100%;
+	max-width: 400px;
+	}
+	
+.errors-bang,
+.errors-text {
+	display: inline-block;
+	vertical-align: top;
+	}
+	
+.errors-bang {
+	width: 22%;
+	font-size: 350%;
+	color: @yellow;
+	text-align: center;
+	}
+	
+.errors-text {
+	width: 75%;
+	}
+
+.errors h3,
+.errors p {
+	color: @darkgrey;
+	}
+	
+.errors h3 {
+	font-size: 130%;
+	text-align: left;
+	line-height: 100%;
+	font-weight: 400;
+	margin: 5px 0 10px 0;
+	}
+
+
+// Signup
+.signup-body {
+	border-top: 6px solid @green;
+	}
+
+ul.signup-pointers {
+	margin: 0 auto 20px;
+	width: 90%;
+	max-width: 400px;
+	}
+	
+.signup-faq {
+	margin: 70px auto 0;
+	max-width: 550px;
+	width: 90%;
+	}
+	
+.signup-faq h5 {
+	font-weight: 400;
+	margin-top: 30px;
+	}
+	
+.happy-castle-guy {
+	display: block;
+	margin: 0 auto;
+	width: 250px;
+	}
+	
+.signup-thanks {
+	max-width: 400px;
+	margin: 0 auto;
+	}
+	
+
+// Credit card
+.credit-card {
+	width: 430px;
+	margin: 20px -16px 20px;
+	padding: 1px 16px;
+	background: darken(@basecolor, 5%);
+	border-radius: 7px;
+	}
+	
+.expiration-and-code fieldset {
+	display: inline-block;
+	margin-top: 0;
+	}
+	
+fieldset.expiration-date {
+	width: 150px;
+	}
+	
+fieldset.expiration-date input {
+	display: inline-block;
+	width: 50px;
+	}
+	
+fieldset.expiration-date input + input {
+	width: 70px;
+	margin-left: 9px;
+	}
+	
+fieldset.cv-code {
+	width: 82px;
+	float: right;
+	}
+	
+	
+// Signup footer
+.cityscape {
+	background-image: url('../img/cityscape.png');
+	background-position: top center;
+	background-repeat: repeat-x;
+	background-size: 1100px auto;
+	}
+	
+.signup-footer {
+	font-size: 75%;
+	text-align: center;
+	position: relative;
+	top: 135px;
+	}
+	
+.signup-footer p,
+.signup-footer a {
+	color: @basecolor;
+	}
+	
+.signup-footer a:hover {
+	border-color: @yellow;
+	color: @yellow;
+	}
+	
+.signup-footer a.home-link {
+	display: block;
+	height: 30px;
+	width: 109px;
+	margin: 15px auto;
+	border: 0;
+	text-indent: -9000px;
+	background: url('../img/logo-horizontal-white.png');
+	background-size: 100% auto;
+	.transition(all);
+	}
+	
+.signup-footer a.home-link:hover {
+	opacity: 0.9;
+	}
+	
+.footer-heart {
+	color: lighten(@red, 10%);
+	font-size: 80%;
+	margin: 0 3px;
+	}
+	
+.spacer {
+	display: inline-block;
+	width: 50px;
+	}
+
+
+// Rent Status
+.rent-status-date {
+	font-size: 50%;
+	display: inline-block;
+	margin-left: 40px;
+	}
+
+table.rent-status {
+	width: auto;
+	min-width: 700px;
+	margin-top: 10px;
+	border: 1px solid darken(@basecolor,6%);
+	margin-left: -10px;
+	border-radius: 10px;
+	}
+	
+table.rent-status-small {
+	min-width: 0;
+	width: 450px;
+	max-width: 100%;
+	}
+	
+table.rent-status + table.rent-status {
+	margin-top: 40px;
+	}
+	
+.rent-status tr.rent-status-header:nth-child(even),
+.rent-status tr.rent-status-header:nth-child(odd) {
+	font-size: 120%;
+	white-space: nowrap;
+	font-weight: 400;
+	line-height: 110%;
+	vertical-align: bottom;
+	background: @grey;
+	color: @basecolor;
+	}
+		
+.rent-status td.month {
+	font-size: 60%;
+	text-align: center;
+	text-transform: uppercase;
+	padding-top: 15px;
+	line-height: 110%;
+	}
+		
+.rent-status tr:nth-child(even) {
+	background: darken(@basecolor,3%);
+	}
+	
+.rent-status td {
+	padding: 5px 10px;
+	}
+	
+.rent-status td.name {
+	min-width: 240px;
+	}
+
+.rent-status td.amount {
+	color: lighten(@grey, 15%);
+	padding-right: 20px;
+	font-size: 85%;
+	}
+	
+.rent-status td.status {
+	font-size: 85%;
+	text-align: center;
+	border: 1px solid darken(@basecolor, 6%);
+	padding: 5px 25px;
+	}
+	
+.rent-circle {
+	display: block;
+	margin: 0 auto 5px auto;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	position: relative;
+	top: 2px;
+	background: lighten(@grey, 30%);
+	}
+	
+.rent-circle-invited {
+	background: lighten(@grey, 30%);
+	}
+	
+.rent-circle-linked {
+	background: lighten(@grey, 10%);
+	}
+
+.rent-circle-due {
+	background: @basecolor;
+	border: 1px solid @bodytext;
+	}
+	
+.rent-circle-paid {
+	background: @green;
+	}
+
+.rent-circle-late {
+	background: @red;
+	}
+
+.rent-circle-past-due {
+	background: @yellow;
+	}
+	
+.rent-status tr.late {
+	background: lighten(@red, 30%);
+	border: 1px solid lighten(@red, 30%);
+	}
+	
+.rent-status tr.past-due {
+	background: lighten(@yellow, 30%);
+	}
+	
+tr.rent-status-spacer {
+	border: 1px solid darken(@basecolor, 6%);
+	}
+	
+tr.rent-status-spacer,
+tr.rent-status-spacer td {
+	background: 0 !important;
+	height: 40px;
+	}
+	
+	
+
+// Properties
+ul.properties {
+	padding-left: 6px;
+	margin-top: 20px;
+	max-width: 600px;
+	}
+	
+ul.properties li {
+	display: block;
+	height: 110px;
+	line-height: 100px;
+	text-indent: 6px;
+	margin-left: -20px;
+	font-size: 120%;
+	padding: 10px;
+	}
+	
+ul.properties li.border {
+	height: 1px;
+	padding: 0;
+	margin-top: 12px;
+	background: lighten(@grey, 45%);
+	}
+	
+ul.properties li a {
+	display: block;
+	border: 0;
+	padding: 0 6px 3px;
+	border-radius: 10px;
+	}
+	
+ul.properties li a:hover {
+	display: block;
+	border: 0;
+	background: @green;
+	color: @basecolor;
+	}
+	
+ul.properties li a img {
+	display: inline;
+	max-width: 90px;
+	max-height: 100px;
+	margin-right: 10px;
+	}
+	
+ul.properties li.add-property {
+	height: 50px;
+	line-height: 50px;
+	}
+
+.add-disabled,
+.add-disabled:hover {
+	color: lighten(@grey, 25%) !important;
+	background: none !important;
+	cursor: default !important;
+	}
+	
+.add-property i {
+	width: 90px;
+	margin-right: 10px;
+	text-align: center;
+	}
+	
+	
+// Add a property	
+#add-property {
+	display: none;
+	position: fixed;
+	top: 150px;
+	left: 280px;
+	width: 770px;
+	max-width: 70%;
+	height: auto;
+	min-height: 240px;
+	overflow: hidden;
+	background-color: darken(@basecolor, 8%);
+	background-image: url('../img/forgot_password.png');
+	background-size: 230px auto;
+	background-position: -40px 10px;
+	background-repeat: no-repeat;
+	border-radius: 12px;
+	border: 1px solid darken(@basecolor, 20%);
+	padding: 0 20px 20px 200px;
+	box-shadow: 4px 4px 5px rgba(0,0,0,0.1);
+	}
+	
+#add-property h3 {
+	font-weight: 400;
+	}
+	
+#add-property a {
+	font-weight: 400;
+	}
+	
+.close-add-property {
+	margin-top: 20px;
+	margin-left: 180px;
+	}
+	
+.close-add-property a {
+	text-transform: uppercase;
+	font-size: 90%;
+	color: @grey;
+	border: 0;
+	padding: 0 5px;
+	border-radius: 3px;
+	}
+	
+.close-add-property a:hover {
+	background: @grey;
+	color: @basecolor;
+	}
+		
+.property-address {
+	margin: -5px 0 30px 0;
+	line-height: 100%;
+	color: lighten(@grey, 5%);
+	}
+	
+
+// Image carousel
+.image-carousel div {
+	margin-right: 10px;
+	}
+
+.slick-prev {
+	margin-left: -5px;
+	}
+	
+.slick-next {
+	right: -15px !important;
+	}
+
+.slick-prev:before,
+.slick-next:before {
+	color: @grey !important;
+	}
+	
+.slick-prev:hover:before,
+.slick-next:hover:before {
+	color: @green !important;
+	}
+	
+
+// Tenants
+.tenant-overview {
+	margin-bottom: 40px;
+	margin-left: -10px;
+	background: darken(@basecolor, 4%);
+	border-radius: 10px;
+	}
+	
+.tenant-overview td {
+	padding: 6px 10px;
+	vertical-align: top;
+	}
+
+.tenant-photo img {
+	max-width: 115px;
+	border-radius: 10px;
+	}
+	
+.tenant-description {
+	font-size: 95%;
+	}
+	
+.tenant-description .tenant-name {
+	font-weight: 400;
+	font-size: 110%;
+	}
+	
+.tenant-description .tenant-item {
+	color: lighten(@grey, 5%);
+	}
+	
+.tenant-description .tenant-income {
+	font-size: 90%;
+	font-style: italic;
+	color: lighten(@grey, 5%);
+	}
+	
+	
+// Maintenance
+ul.maintenance {
+	border: 1px solid darken(@basecolor, 5%);
+	border-radius: 10px;
+	padding: 0;
+	margin-top: 10px;
+	margin-left: -10px;
+	width: 100%;
+	max-width: 700px;
+	}
+	
+ul.maintenance li {
+	list-style-type: none;
+	padding: 6px 10px;
+	border-bottom: 1px solid darken(@basecolor, 5%);
+	}
+	
+ul.maintenance li:last-child {
+	border: 0;
+	}
+	
+li.maintenance-title {
+	background: @grey;
+	color: @basecolor;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	font-weight: 400;
+	font-size: 110%;
+	}
+		
+.maintenance .maintenance-item:hover {
+	background: darken(@basecolor, 3%);
+	}
+	
+.maintenance li a {
+	display: block;
+	width: 100%;
+	color: @bodytext;
+	border: 0;
+	.transition(0);
+	}
+
+.maintenance a:hover {
+	color: darken(@blue, 10%);
+	}	
+
+.maintenance span {
+	color: lighten(@grey, 18%);
+	font-style: italic;
+	font-size: 80%;
+	margin-left: 15px;
+	}
+	
+.maintenance-author {
+	color: @grey;
+	font-size: 85%;
+	}
+	
+.maintenance-future {
+	font-size: 90%;
+	}
+	
+.maintenance-future span {
+	text-transform: uppercase;
+	font-weight: 400;
+	color: @grey;
+	font-style: normal;
+	margin-left: 0;
+	}
+
+// Password Reset
+img.forgot-password {
+  display: block;
+  margin: 0 auto 20px auto;
+  width: 250px;
+  }
+  
+
+      
+@media only screen and (max-width: 1024px) {
+
+// Text
+h1 {
+  font-size: 230%;
+  }
+  
+h2 {
+  font-size: 210%;
+  }
+  
+h1 {
+  font-size: 250%;
+  }
+  
+h3 {
+  font-size: 170%;
+  }
+  
+h4 {
+  font-size: 130%;
+  }
+  
+p.large {
+  font-size: 150%;
+  }
+
+p.medium {
+  font-size: 140%;
+  }
+  
+p.small {
+  font-size: 120%;
+  }
+  
+
+// Buttons
+.btn-large {
+  font-size: 150%;
+  height: 56px;
+  }
+  
+.btn-medium {
+  font-size: 110%;
+  height: 46px;
+  }
+
+// Rent Status
+.rent-status td.name {
+	min-width: 0;
+	}
+
+// Properties {
+.add-property {
+	position: relative;
+	top: 0;
+	left: 0;
+	}
+
+  
+} // End 1024 px
+
+
+@media only screen and (max-width: 768px) {
+
+// Text
+h1 {
+  font-size: 250%;
+  }
+  
+h2 {
+  font-size: 220%;
+  }
+  
+p.large {
+  font-size: 130%;
+  }
+
+p.medium {
+  font-size: 120%;
+  }
+  
+p.small {
+  font-size: 110%;
+  }
+  
+}
+
+
+// When nav collapses
+@media only screen and (max-width: 767px) {
+
+#wrapper {
+  padding-left: 0;
+  }
+
+[sidebar] {
+  left: -250px;
+  position: fixed;
+  border-radius: 0;
+
+  &.sidebar-open {
+    left: 0px;
+    }
+  }
+
+.sidebar-nav > .sidebar-brand,
+.sidebar-nav > .sidebar-brand a,
+.sidebar-nav > .sidebar-brand a:hover {
+  height: 180px;
+  }
+
+[content] {
+  position: relative;
+  padding: 0;
+  height: 100%;
+
+  &.sidebar-open {
+    left: 250px;
+    }
+  }
+  
+#mobile-header {
+  display: block;
+  width: 100%;
+  height: 60px;
+  background: @green;
+  text-align: center;
+  line-height: 60px;
+  color: @basecolor;
+  font-weight: 400;
+  font-size: 140%;
+  }
+  
+#mobile-wrapper {
+  padding: 10px;
+  }
+
+#menu-toggle {
+  display: inline-block;
+  position: absolute;
+  left: 0px;
+  padding: 0px 20px;
+  color: @basecolor;
+  border: 0;
+  }
+
+
+// Properties
+ul.properties {
+	padding: 0;
+	max-width: 100%;
+	margin: 0;
+	}
+	
+ul.properties li {
+	margin-left: 0;
+	}
+	
+#add-property {
+	position: fixed;
+	margin: 0 5%;
+	width: 90%;
+	max-width: 90%;
+	top: 50px;
+	left: 0;
+	padding: 150px 10px 10px 10px;
+	background-image: url('../img/forgot_password.png');
+	background-size: 150px auto;
+	background-position: center 10px;
+	background-repeat: no-repeat;
+	}
+	
+#add-property h3 {
+	text-align: center;
+	}
+		
+.close-add-property {
+	margin-top: 20px;
+	margin-left: 0;
+	text-align: center;
+	}
+	
+// Rent Status
+table.rent-status {
+	width: 100%;
+	min-width: 0;
+	white-space: normal;
+	font-size: 85%;
+	margin: 0 auto;
+	}
+	
+.rent-status td.month,
+.rent-status-header td {
+	white-space: normal;
+	}
+	
+.rent-status-header td {
+	font-size: 80%;
+	line-height: 120%;
+	}
+	
+.rent-status td.status {
+	padding: 10px 0;
+	}
+	
+// Hide the amount display	
+.rent-status td:nth-child(2) {
+	display: none;
+	}
+
+
+} // End 767px
+  
+  
+@media only screen and (max-width: 500px) {
+
+// Structure
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  padding: 0;
+  }
+  
+.centered-logo {
+  display: block;
+  margin: 0 auto;
+  width: 120px;
+  }
+
+// Text
+h1 {
+  font-size: 190%;
+  }
+  
+h2 {
+  font-size: 150%;
+  }
+  
+h3 {
+  font-size: 140%;
+  }
+  
+h4 {
+  font-size: 110%;
+  }
+  
+p.large {
+  font-size: 140%;
+  }
+
+p.medium {
+  font-size: 120%;
+  }
+  
+p.small {
+  font-size: 110%;
+  }
+  
+h3.rent-title {
+  font-size: 120%;
+  }
+
+
+// Forms
+.both-names-input fieldset {
+	margin-right: 10px;
+	}
+  
+.date-input fieldset:first-child,
+.date-input fieldset:nth-child(2) {
+  width: 21%;
+  }
+  
+.date-input fieldset:nth-child(3) {
+  width: 45%;
+  }
+
+
+// Buttons
+.btn-large {
+  font-size: 120%;
+  height: 46px;
+  }
+  
+.btn-medium {
+  font-size: 105%;
+  height: 44px;
+  }
+  
+  
+// Signup
+.password-requirements .requirement {
+  width: 100%;
+  display: block;
+  }
+  
+.password-requirements .requirement:nth-child(even) {
+  text-align: left;
+  }
+    
+
+// Rent Status
+table.rent-status {
+  max-width: 320px;
+  }
+
+} // end max-width 500

@@ -7,7 +7,7 @@ body {
   height: 100%;
 }
 body {
-  background-color: #f9f9f9;
+  background: #f9f9f9;
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
   font-weight: 300;
   font-size: 2em;
@@ -44,6 +44,16 @@ input::-webkit-inner-spin-button {
   -webkit-transition: all 0.5s;
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
+}
+[ui-view="content"].ng-enter {
+  opacity: 0;
+}
+[ui-view="content"].ng-enter-active {
+  opacity: 1;
+}
+[ui-view="content"].ng-leave,
+[ui-view="content"].ng-leave-active {
+  display: none;
 }
 [ui-view="content"].ng-enter {
   opacity: 0;
@@ -224,9 +234,6 @@ p.small {
 p.tiny {
   font-size: 80%;
 }
-ul {
-  font-size: 110%;
-}
 .light-text,
 .light-text p,
 .light-text h1,
@@ -391,7 +398,7 @@ a.back:before {
 input[type="submit"],
 button[type="submit"] {
   display: block;
-  margin: 30px auto;
+  margin: 20px auto;
 }
 button[type="submit"]:focus {
   color: #f9f9f9;
@@ -733,67 +740,6 @@ form:not(.ng-submitted) .invalid-text {
   font-weight: 400;
   margin: 5px 0 10px 0;
 }
-table.rent-status {
-  width: 370px;
-  margin-bottom: 40px;
-  border: 1px solid #eaeaea;
-  margin-left: -10px;
-}
-.rent-status td {
-  padding: 10px;
-}
-.rent-status tr:nth-child(even) {
-  background: #f1f1f1;
-}
-.rent-status td.status,
-.rent-status td.amount {
-  text-align: right;
-}
-.rent-status td.amount {
-  color: #5f7378;
-  padding-right: 20px;
-}
-.rent-status td.status {
-  text-transform: uppercase;
-  font-size: 85%;
-  width: 40px;
-}
-h3.rent-title {
-  font-size: 140%;
-}
-td.circle {
-  text-align: center;
-}
-.rent-circle {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  border-radius: 9px;
-  position: relative;
-  top: 2px;
-  background: #b0bdc0;
-}
-.invited .rent-circle {
-  background: #b0bdc0;
-}
-.linked .rent-circle {
-  background: #778e93;
-}
-.paid .rent-circle {
-  background: #3ab4ad;
-}
-tr.late {
-  background: #f9dddc;
-}
-.late .rent-circle {
-  background: #e15e5b;
-}
-tr.past-due {
-  background: #fdefcd;
-}
-.past-due .rent-circle {
-  background: #f7bf3a;
-}
 .signup-body {
   border-top: 6px solid #3ab4ad;
 }
@@ -827,9 +773,6 @@ ul.signup-pointers {
   background: #ececec;
   border-radius: 7px;
 }
-.expiration-and-code {
-  position: relative;
-}
 .expiration-and-code fieldset {
   display: inline-block;
   margin-top: 0;
@@ -845,24 +788,12 @@ fieldset.expiration-date input + input {
   width: 70px;
   margin-left: 9px;
 }
-fieldset.cvv-code {
-  width: 92px;
-  text-align: right;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-fieldset.cvv-code label {
-  margin-right: 0px;
-}
-fieldset.cvv-code input {
-  width: 56px;
-  text-align: right;
-  padding-right: 5px;
+fieldset.cv-code {
+  width: 82px;
   float: right;
 }
 .cityscape {
-  background-image: url('../images/cityscape.png');
+  background-image: url('../img/cityscape.png');
   background-position: top center;
   background-repeat: repeat-x;
   background-size: 1100px auto;
@@ -888,7 +819,7 @@ fieldset.cvv-code input {
   margin: 15px auto;
   border: 0;
   text-indent: -9000px;
-  background: url('../images/logo-horizontal-white.png');
+  background: url('../img/logo-horizontal-white.png');
   background-size: 100% auto;
   transition: all;
   -moz-transition: all;
@@ -907,6 +838,316 @@ fieldset.cvv-code input {
 .spacer {
   display: inline-block;
   width: 50px;
+}
+.rent-status-date {
+  font-size: 50%;
+  display: inline-block;
+  margin-left: 40px;
+}
+table.rent-status {
+  width: auto;
+  min-width: 700px;
+  margin-top: 10px;
+  border: 1px solid #eaeaea;
+  margin-left: -10px;
+  border-radius: 10px;
+}
+table.rent-status-small {
+  min-width: 0;
+  width: 450px;
+  max-width: 100%;
+}
+table.rent-status + table.rent-status {
+  margin-top: 40px;
+}
+.rent-status tr.rent-status-header:nth-child(even),
+.rent-status tr.rent-status-header:nth-child(odd) {
+  font-size: 120%;
+  white-space: nowrap;
+  font-weight: 400;
+  line-height: 110%;
+  vertical-align: bottom;
+  background: #5f7378;
+  color: #f9f9f9;
+}
+.rent-status td.month {
+  font-size: 60%;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 15px;
+  line-height: 110%;
+}
+.rent-status tr:nth-child(even) {
+  background: #f1f1f1;
+}
+.rent-status td {
+  padding: 5px 10px;
+}
+.rent-status td.name {
+  min-width: 240px;
+}
+.rent-status td.amount {
+  color: #85999e;
+  padding-right: 20px;
+  font-size: 85%;
+}
+.rent-status td.status {
+  font-size: 85%;
+  text-align: center;
+  border: 1px solid #eaeaea;
+  padding: 5px 25px;
+}
+.rent-circle {
+  display: block;
+  margin: 0 auto 5px auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  position: relative;
+  top: 2px;
+  background: #b0bdc0;
+}
+.rent-circle-invited {
+  background: #b0bdc0;
+}
+.rent-circle-linked {
+  background: #778e93;
+}
+.rent-circle-due {
+  background: #f9f9f9;
+  border: 1px solid #34495e;
+}
+.rent-circle-paid {
+  background: #3ab4ad;
+}
+.rent-circle-late {
+  background: #e15e5b;
+}
+.rent-circle-past-due {
+  background: #f7bf3a;
+}
+.rent-status tr.late {
+  background: #f9dddc;
+  border: 1px solid #f9dddc;
+}
+.rent-status tr.past-due {
+  background: #fdefcd;
+}
+tr.rent-status-spacer {
+  border: 1px solid #eaeaea;
+}
+tr.rent-status-spacer,
+tr.rent-status-spacer td {
+  background: 0 !important;
+  height: 40px;
+}
+ul.properties {
+  padding-left: 6px;
+  margin-top: 20px;
+  max-width: 600px;
+}
+ul.properties li {
+  display: block;
+  height: 110px;
+  line-height: 100px;
+  text-indent: 6px;
+  margin-left: -20px;
+  font-size: 120%;
+  padding: 10px;
+}
+ul.properties li.border {
+  height: 1px;
+  padding: 0;
+  margin-top: 12px;
+  background: #dae1e2;
+}
+ul.properties li a {
+  display: block;
+  border: 0;
+  padding: 0 6px 3px;
+  border-radius: 10px;
+}
+ul.properties li a:hover {
+  display: block;
+  border: 0;
+  background: #3ab4ad;
+  color: #f9f9f9;
+}
+ul.properties li a img {
+  display: inline;
+  max-width: 90px;
+  max-height: 100px;
+  margin-right: 10px;
+}
+ul.properties li.add-property {
+  height: 50px;
+  line-height: 50px;
+}
+.add-disabled,
+.add-disabled:hover {
+  color: #a2b1b5 !important;
+  background: none !important;
+  cursor: default !important;
+}
+.add-property i {
+  width: 90px;
+  margin-right: 10px;
+  text-align: center;
+}
+#add-property {
+  display: none;
+  position: fixed;
+  top: 150px;
+  left: 280px;
+  width: 770px;
+  max-width: 70%;
+  height: auto;
+  min-height: 240px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+  background-image: url('../img/forgot_password.png');
+  background-size: 230px auto;
+  background-position: -40px 10px;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  border: 1px solid #c6c6c6;
+  padding: 0 20px 20px 200px;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.1);
+}
+#add-property h3 {
+  font-weight: 400;
+}
+#add-property a {
+  font-weight: 400;
+}
+.close-add-property {
+  margin-top: 20px;
+  margin-left: 180px;
+}
+.close-add-property a {
+  text-transform: uppercase;
+  font-size: 90%;
+  color: #5f7378;
+  border: 0;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+.close-add-property a:hover {
+  background: #5f7378;
+  color: #f9f9f9;
+}
+.property-address {
+  margin: -5px 0 30px 0;
+  line-height: 100%;
+  color: #6a8186;
+}
+.image-carousel div {
+  margin-right: 10px;
+}
+.slick-prev {
+  margin-left: -5px;
+}
+.slick-next {
+  right: -15px !important;
+}
+.slick-prev:before,
+.slick-next:before {
+  color: #5f7378 !important;
+}
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  color: #3ab4ad !important;
+}
+.tenant-overview {
+  margin-bottom: 40px;
+  margin-left: -10px;
+  background: #efefef;
+  border-radius: 10px;
+}
+.tenant-overview td {
+  padding: 6px 10px;
+  vertical-align: top;
+}
+.tenant-photo img {
+  max-width: 115px;
+  border-radius: 10px;
+}
+.tenant-description {
+  font-size: 95%;
+}
+.tenant-description .tenant-name {
+  font-weight: 400;
+  font-size: 110%;
+}
+.tenant-description .tenant-item {
+  color: #6a8186;
+}
+.tenant-description .tenant-income {
+  font-size: 90%;
+  font-style: italic;
+  color: #6a8186;
+}
+ul.maintenance {
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  padding: 0;
+  margin-top: 10px;
+  margin-left: -10px;
+  width: 100%;
+  max-width: 700px;
+}
+ul.maintenance li {
+  list-style-type: none;
+  padding: 6px 10px;
+  border-bottom: 1px solid #ececec;
+}
+ul.maintenance li:last-child {
+  border: 0;
+}
+li.maintenance-title {
+  background: #5f7378;
+  color: #f9f9f9;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-weight: 400;
+  font-size: 110%;
+}
+.maintenance .maintenance-item:hover {
+  background: #f1f1f1;
+}
+.maintenance li a {
+  display: block;
+  width: 100%;
+  color: #34495e;
+  border: 0;
+  transition: 0;
+  -moz-transition: 0;
+  -webkit-transition: 0;
+  -ms-transition: 0;
+  -o-transition: 0;
+}
+.maintenance a:hover {
+  color: #4ca7d4;
+}
+.maintenance span {
+  color: #8ea0a5;
+  font-style: italic;
+  font-size: 80%;
+  margin-left: 15px;
+}
+.maintenance-author {
+  color: #5f7378;
+  font-size: 85%;
+}
+.maintenance-future {
+  font-size: 90%;
+}
+.maintenance-future span {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #5f7378;
+  font-style: normal;
+  margin-left: 0;
 }
 img.forgot-password {
   display: block;
@@ -946,6 +1187,14 @@ img.forgot-password {
     font-size: 110%;
     height: 46px;
   }
+  .rent-status td.name {
+    min-width: 0;
+  }
+  .add-property {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
 }
 @media only screen and (max-width: 768px) {
   h1 {
@@ -962,9 +1211,6 @@ img.forgot-password {
   }
   p.small {
     font-size: 110%;
-  }
-  ul {
-    font-size: 100%;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -1013,6 +1259,56 @@ img.forgot-password {
     padding: 0px 20px;
     color: #f9f9f9;
     border: 0;
+  }
+  ul.properties {
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
+  }
+  ul.properties li {
+    margin-left: 0;
+  }
+  #add-property {
+    position: fixed;
+    margin: 0 5%;
+    width: 90%;
+    max-width: 90%;
+    top: 50px;
+    left: 0;
+    padding: 150px 10px 10px 10px;
+    background-image: url('../img/forgot_password.png');
+    background-size: 150px auto;
+    background-position: center 10px;
+    background-repeat: no-repeat;
+  }
+  #add-property h3 {
+    text-align: center;
+  }
+  .close-add-property {
+    margin-top: 20px;
+    margin-left: 0;
+    text-align: center;
+  }
+  table.rent-status {
+    width: 100%;
+    min-width: 0;
+    white-space: normal;
+    font-size: 85%;
+    margin: 0 auto;
+  }
+  .rent-status td.month,
+  .rent-status-header td {
+    white-space: normal;
+  }
+  .rent-status-header td {
+    font-size: 80%;
+    line-height: 120%;
+  }
+  .rent-status td.status {
+    padding: 10px 0;
+  }
+  .rent-status td:nth-child(2) {
+    display: none;
   }
 }
 @media only screen and (max-width: 500px) {
@@ -1080,8 +1376,7 @@ img.forgot-password {
   h3 {
     font-size: 140%;
   }
-  h4,
-  h5 {
+  h4 {
     font-size: 110%;
   }
   p.large {
@@ -1093,9 +1388,8 @@ img.forgot-password {
   p.small {
     font-size: 110%;
   }
-  p,
-  ul {
-    font-size: 90%;
+  h3.rent-title {
+    font-size: 120%;
   }
   .both-names-input fieldset {
     margin-right: 10px;
@@ -1126,4 +1420,3 @@ img.forgot-password {
     max-width: 320px;
   }
 }
-
