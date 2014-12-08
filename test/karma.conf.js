@@ -87,7 +87,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
     // Show passing tests
-    reporters: ['spec'],
+    reporters: ['dots'],
 
     // Uncomment the following lines if you are using grunt's server to run the tests
     // proxies: {
