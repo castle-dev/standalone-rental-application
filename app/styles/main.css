@@ -806,7 +806,7 @@ fieldset.cvv-code input {
   float: right;
 }
 .cityscape {
-  background-image: url('../img/cityscape.png');
+  background-image: url('/images/cityscape.png');
   background-position: top center;
   background-repeat: repeat-x;
   background-size: 1100px auto;
@@ -832,7 +832,7 @@ fieldset.cvv-code input {
   margin: 15px auto;
   border: 0;
   text-indent: -9000px;
-  background: url('../img/logo-horizontal-white.png');
+  background: url('/images/logo-horizontal-white.png');
   background-size: 100% auto;
   transition: all;
   -moz-transition: all;
@@ -1018,7 +1018,7 @@ ul.properties li.add-property {
   min-height: 240px;
   overflow: hidden;
   background-color: #e5e5e5;
-  background-image: url('../img/forgot_password.png');
+  background-image: url('/images/forgot_password.png');
   background-size: 230px auto;
   background-position: -40px 10px;
   background-repeat: no-repeat;
@@ -1289,7 +1289,7 @@ img.forgot-password {
     top: 50px;
     left: 0;
     padding: 150px 10px 10px 10px;
-    background-image: url('../img/forgot_password.png');
+    background-image: url('/images/forgot_password.png');
     background-size: 150px auto;
     background-position: center 10px;
     background-repeat: no-repeat;
