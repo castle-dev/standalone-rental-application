@@ -26,20 +26,9 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-      <div class="sticky-footer-wrapper">
-        <div ng-view="" autoscroll="true"></div>
-
-        <div class="sticky-footer-push"></div>
-      </div>
-
-      <div class="sticky-footer cityscape">
-        <div class="signup-footer">
-          <a href="http://entercastle.com" class="home-link">Castle</a>
-          <p>With <i class="fa fa-heart footer-heart"></i> from Detroit <span class="spacer">&bull;</span> <a href="http://entercastle.com/termsofservice">Terms of Service</a></p>
-          <p>© 2014 All Rights Reserved. Have a great day!</p>
-        </div><!--signup-footer-->
-      </div>
+    <footer-wrapper>
+      <div ng-view="" autoscroll="true"></div>
+    </footer-wrapper>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -88,6 +77,7 @@
         <script src="scripts/directives/loginForm.js"></script>
         <script src="scripts/directives/currentUserName.js"></script>
         <script src="scripts/directives/prescreenForm.js"></script>
+        <script src="scripts/directives/footerWrapper.js"></script>
         <script src="scripts/directives/errors.js"></script>
         <!-- endbuild -->
 
