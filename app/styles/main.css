@@ -773,6 +773,9 @@ ul.signup-pointers {
   background: #ececec;
   border-radius: 7px;
 }
+.expiration-and-code {
+  position: relative;
+}
 .expiration-and-code fieldset {
   display: inline-block;
   margin-top: 0;
