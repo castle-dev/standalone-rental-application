@@ -2,17 +2,17 @@
 
 /**
  * @ngdoc function
- * @name propertyManagementApp.directive:rentalApplicationForm
+ * @name propertyManagementApp.directive:prescreenForm
  * @description
- * # rentalApplicationForm
+ * # prescreenForm
  * Directive containing template and logic
  * for signing in
  */
 angular.module('propertyManagementApp')
-  .directive('rentalApplicationForm', function ($firebase, FIREBASE_URL, $window, $anchorScroll) {
+  .directive('prescreenForm', function ($firebase, FIREBASE_URL, $window, $anchorScroll) {
     return {
       restrict: 'E',
-      templateUrl: 'views/partials/rentalApplicationForm.html',
+      templateUrl: 'views/partials/prescreenForm.html',
       link: function (scope) {
         var ref = new $window.Firebase(FIREBASE_URL);
         var applicants = $firebase(ref.child('applicant')).$asArray();
