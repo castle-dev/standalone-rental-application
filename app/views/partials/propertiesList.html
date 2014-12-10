@@ -1,0 +1,4 @@
+<ul class="properties">
+  <li ng-repeat="property in properties"><a href="properties/{{ property.id }}"><img ng-src="{{ property.imageUrl }}"> {{ property.street }}</a> </li>
+  <li class="add-property"><a ng-click="addProperty()"><i class="fa fa-plus-circle"></i> Add a Property</a></li>
+</ul>
