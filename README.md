@@ -13,7 +13,7 @@ For managing properties and stuff
 When js files are saved, all js will be linted, unit tests will run, and if both pass, the page will reload
 
 
-# Environment variables: mac
+# Environment variables
 export ENV=develop
 export FIREBASE_URL=https://castle-development.firebaseio.com/                                                                                  
-export STRIPE_PUBLISHABLE_KEY=pk_test_ezgQYWkPV0W4Npb6E5LpMngz (edited)
+export STRIPE_PUBLISHABLE_KEY=pk_test_ezgQYWkPV0W4Npb6E5LpMngz
