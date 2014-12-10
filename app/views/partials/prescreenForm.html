@@ -1,5 +1,5 @@
 <div>
-  <form ng-hide="submitted" name="rentalApplication" ng-submit="submit()">
+  <form ng-hide="submitted" name="prescreen" ng-submit="submit()">
     <div class="both-names-input">
       <fieldset>
         <label for="first-name">Your name:</label>
@@ -24,13 +24,8 @@
     </fieldset>
 
     <fieldset>
-      <label for="previous-evictions">Have you ever had a landlord file an eviction claim against you?</label>
-      <div>
-        <input type="radio" name="previous-evictions" ng-value="true" ng-model="applicant.hasEviction" id="previous-evictions-yes"><label for="previous-evictions-yes">Yes</label>
-      </div>
-      <div>
-        <input type="radio" name="previous-evictions" ng-value="false" ng-model="applicant.hasEviction" id="previous-evictions-no"><label for="previous-evictions-no">No<label>
-      </div>
+      <label for="previous-evictions">How many times have you had a landlord file an eviction claim against you?</label>
+      <input type="number" min="0" step="1" name="previous-evictions" ng-model="applicant.evictions" id="previous-evictions" required>
     </fieldset>
 
     <fieldset>
