@@ -1,4 +1,11 @@
-<ul class="properties">
-  <li ng-repeat="property in properties"><a href="properties/{{ property.id }}"><img ng-src="{{ property.imageUrl }}"> {{ property.street }}</a> </li>
-  <li class="add-property"><a ng-click="addProperty()"><i class="fa fa-plus-circle"></i> Add a Property</a></li>
-</ul>
+<div>
+  <ul class="properties">
+    <li ng-repeat="property in properties"><a ng-href="#/properties/{{ property.$id }}"><img ng-src="images/logo-solo.png"> {{ property.street }}</a> </li>
+    <li class="add-property"><a ng-click="isModalOpen = true"><i class="fa fa-plus-circle"></i> Add a Property</a></li>
+  </ul>
+  <div id="add-property" style="display: block;" ng-show="isModalOpen">
+    <h3>Awesome!</h3>
+    <p class="small">To set up more properties with Castle&rsquo;s management services, please <a href="http://entercastle.com/contact">contact us</a>.</p>
+    <p class="close-add-property"><a ng-click="isModalOpen = false"><i class="fa fa-close"></i> Close</a></p>
+  </div>
+</div

@@ -967,9 +967,9 @@ ul.properties li {
   height: 110px;
   line-height: 100px;
   text-indent: 6px;
-  margin-left: -20px;
+  margin: 10px 0px 10px -20px;
   font-size: 120%;
-  padding: 10px;
+  padding: 8px;
   border-top: 1px solid #dae1e2;
 }
 ul.properties li.border {
@@ -1022,7 +1022,7 @@ ul.properties li.add-property {
   min-height: 240px;
   overflow: hidden;
   background-color: #e5e5e5;
-  background-image: url('/images/forgot_password.png');
+  background-image: url('/images/happy-castle-guy.png');
   background-size: 230px auto;
   background-position: -40px 10px;
   background-repeat: no-repeat;

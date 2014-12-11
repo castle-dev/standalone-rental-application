@@ -9,14 +9,15 @@
  * for creating a new acount
  */
 angular.module('propertyManagementApp')
-  .directive('propertiesList', function ($window) {
+  .directive('propertiesList', function (Property) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/propertiesList.html',
       link: function (scope) {
-        scope.addProperty = function () {
-          $window.alert('Todo!');
-        };
+        Property.getCurrentUserProperties()
+        .then(function (properties) { 
+          scope.properties = properties;
+        });
       }
     };
   });
