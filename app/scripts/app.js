@@ -50,6 +50,9 @@ angular
       .when('/properties', {
         templateUrl: 'views/properties.html',
       })
+      .when('/properties/:id', {
+        templateUrl: 'views/property.html',
+      })
       .otherwise({
         redirectTo: '/signup'
       });

@@ -6,7 +6,7 @@
  * @description
  * # propertiesList
  * Directive containing template and logic
- * for creating a new acount
+ * for displaying a list of properties
  */
 angular.module('propertyManagementApp')
   .directive('propertiesList', function (Property) {
