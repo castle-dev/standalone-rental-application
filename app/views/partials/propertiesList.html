@@ -1,6 +1,6 @@
 <div>
   <ul class="properties">
-    <li ng-repeat="property in properties"><a ng-href="#/properties/{{ property.$id }}"><img ng-src="images/logo-solo.png"> {{ property.street }}</a> </li>
+    <li ng-repeat="property in properties"><a ng-href="#/properties/{{ property.$id }}"><img ng-src="{{ property.thumbnailUrl || 'images/logo-solo.png' }}"> {{ property.street }}</a> </li>
     <li class="add-property"><a ng-click="isModalOpen = true"><i class="fa fa-plus-circle"></i> Add a Property</a></li>
   </ul>
   <div id="add-property" style="display: block;" ng-show="isModalOpen">
