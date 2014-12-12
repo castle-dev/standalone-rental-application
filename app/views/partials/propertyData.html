@@ -1,11 +1,8 @@
-<h2>742 Evergreen Terrace</h2>
-<p class="medium property-address">Detroit, MI 48202</p>
+<h2>{{ property.street }}</h2>
+<p class="medium property-address">{{ property.city }}, {{ property.stateAbbreviation }} {{ property.zip }}</p>
 
-<slick infinite="true" slides-to-show="2" slides-to-scroll="1" dots="true" class="image-carousel">
-  <div><img src="//entercastle.com/demo/img/742_evergreen_terrace/overview.jpg" /></div>
-  <div><img src="//entercastle.com/demo/img/742_evergreen_terrace/living_room.jpg" /></div>
-  <div><img src="//entercastle.com/demo/img/742_evergreen_terrace/dining_room.jpg" /></div>
-  <div><img src="//entercastle.com/demo/img/742_evergreen_terrace/kitchen.jpg" /></div>
+<slick infinite="true" slides-to-show="2" slides-to-scroll="1" dots="true" init-onload="true" data="property" class="image-carousel">
+  <div ng-repeat="imageUrl in property.images"><img ng-src="{{imageUrl}}" /></div>
 </slick>
 
 <h3>Tenants</h3>
@@ -38,7 +35,8 @@
 
 <h3>Maintenance</h3>
 <div class="maintenance-status">
-  <p>742 Evergreen Terrace currently has no open maintenance issues.</p>
+  <p ng-repeat="issue in property.issues">{{ issue }}</p>
+  <p ng-show="!property.issues">742 Evergreen Terrace currently has no open maintenance issues.</p>
 </div>
 
 <a href="#/properties" class="back">Back to Properties</a>

@@ -51,7 +51,7 @@ angular
       .when('/properties', {
         templateUrl: 'views/properties.html',
       })
-      .when('/properties/:id', {
+      .when('/properties/:propertyId', {
         templateUrl: 'views/property.html',
       })
       .otherwise({

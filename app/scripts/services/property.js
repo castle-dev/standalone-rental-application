@@ -16,7 +16,6 @@ angular.module('propertyManagementApp')
     var Property = {
       getCurrentUserProperties: function () {
         var deferred = $q.defer();
-
         $firebase(ref.child('properties').child(Auth.getCurrentUser().uid))
         .$asArray()
         .$loaded()
@@ -27,6 +26,12 @@ angular.module('propertyManagementApp')
           deferred.reject(err);
         });
         return deferred.promise;
+      },
+      getPropertyData: function (id) {
+        var promise = $firebase(ref.child('properties').child(Auth.getCurrentUser().uid).child(id))
+        .$asObject()
+        .$loaded();
+        return promise;
       }
     };
 
