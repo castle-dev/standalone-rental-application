@@ -863,9 +863,8 @@ fieldset.cvv-code input {
 table.rent-status {
   width: auto;
   min-width: 700px;
-  margin-top: 10px;
+  margin: 10px 0px 40px -10px;
   border: 1px solid #eaeaea;
-  margin-left: -10px;
   border-radius: 10px;
 }
 table.rent-status-small {
@@ -983,6 +982,9 @@ ul.properties li a {
   border: 0;
   padding: 0 6px 3px;
   border-radius: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 ul.properties li a:hover {
   display: block;
@@ -1103,6 +1105,9 @@ ul.properties li.add-property {
   font-size: 90%;
   font-style: italic;
   color: #6a8186;
+}
+.maintenance-status {
+  margin-bottom: 40px;
 }
 ul.maintenance {
   border: 1px solid #ececec;
@@ -1293,7 +1298,6 @@ img.forgot-password {
     top: 50px;
     left: 0;
     padding: 150px 10px 10px 10px;
-    background-image: url('/images/forgot_password.png');
     background-size: 150px auto;
     background-position: center 10px;
     background-repeat: no-repeat;
@@ -1326,6 +1330,10 @@ img.forgot-password {
   }
   .rent-status td:nth-child(2) {
     display: none;
+  }
+  slick button.slick-next,
+  slick button.slick-prev {
+    display: none !important;
   }
 }
 @media only screen and (max-width: 500px) {
