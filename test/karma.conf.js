@@ -23,6 +23,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-animate/angular-animate.js',
@@ -35,6 +36,8 @@ module.exports = function(config) {
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angularfire/dist/angularfire.min.js',
       'bower_components/angular-payments/lib/angular-payments.js',
+      'bower_components/slick-carousel/slick/slick.min.js',
+      'bower_components/angular-slick/dist/slick.js',
       'bower_components/angular-ui-utils/mask.js',
       'node_modules/jasmine-expect/dist/jasmine-matchers.js',
       'app/scripts/**/*.js',

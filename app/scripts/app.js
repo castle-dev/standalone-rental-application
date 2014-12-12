@@ -20,7 +20,8 @@ angular
     'ngTouch',
     'firebase',
     'angularPayments',
-    'ui.mask'
+    'ui.mask',
+    'slick'
   ])
   .config(function ($routeProvider) {
     $routeProvider
