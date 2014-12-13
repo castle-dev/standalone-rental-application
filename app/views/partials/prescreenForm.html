@@ -29,6 +29,27 @@
     </fieldset>
 
     <fieldset>
+      <label for="smoker">Are you a smoker?</label>
+      <div>
+        <input type="radio" name="smoker" ng-value="true" ng-model="applicant.smoker" id="smoker-yes"><label for="smoker-yes">Yes</label>
+      </div>
+      <div>
+        <input type="radio" name="smoker" ng-value="false" ng-model="applicant.smoker" id="smoker-no"><label for="smoker-no">No</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <label for="hasPets">Do you have pets?</label>
+      <div>
+        <input type="radio" name="hasPets" ng-value="true" ng-model="applicant.hasPets" id="has-pets-yes"><label for="has-pets-yes">Yes</label>
+      </div>
+      <div>
+        <input type="radio" name="hasPets" ng-value="false" ng-model="applicant.hasPets" id="has-pets-no"><label for="has-pets-no">No</label>
+      </div>
+      <div class="help-text">Aside from service animals</div>
+    </fieldset>
+
+    <fieldset>
       <label for="breaking-lease">Will you be breaking your current lease to live here?</label>
       <div>
         <input type="radio" name="breaking-lease" ng-value="true" ng-model="applicant.breakingLease" id="break-lease-yes"><label for="break-lease-yes">Yes</label>
@@ -42,6 +63,8 @@
       <label for="monthly-income">What is your average monthly income?</label>
       <input type="text" ng-model="applicant.monthlyIncome" required>
     </fieldset>
+
+    
 
     <fieldset>
       <label for="firstRental">This is my first time renting</label>
