@@ -16,6 +16,7 @@ angular.module('propertyManagementApp')
         scope.sidebar = {
           data: Sidebar.getData()
         };
+        scope.collapseSidebar = Sidebar.toggle;
         var unwatch = scope.$watch('sidebar.data.collapsed', function (collapsed) {
           if (collapsed) {
             elem.removeClass('sidebar-open');
