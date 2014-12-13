@@ -6,33 +6,35 @@
 </slick>
 
 <h3>Tenants</h3>
-<table class="tenant-overview">
-  <tbody>
-    <tr ng-repeat="tenant in tenants">
-      <td class="tenant-photo"><img ng-src="{{ tenant.picture }}" alt="{{ tenant.firstName + ' ' + tenant.lastName }}"></td>
-      <td class="tenant-description">
-        <span class="tenant-name">{{ tenant.firstName + ' ' + tenant.lastName }}</span><br>
-        <span class="tenant-item">Moved in on:</span> {{ tenant.moveInDate | date }}<br>
-        <span class="tenant-item">Salary:</span> ${{ tenant.monthlyIncome | number }}/month<br>
-        <span class="tenant-item">Employment:</span> {{ tenant.jobTitle }}, {{ tenant.employer }}<br>
-        <span class="tenant-income">This property requires {{ tenant.rent.share / tenant.monthlyIncome | percentage }} of {{ tenant.firstName }}&rsquo;s yearly income.</span>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<p ng-show="!tenants">{{ property.street }} is currently vacant.</p>
+<div ng-show="tenants.length">
+  <table class="tenant-overview">
+    <tbody>
+      <tr ng-repeat="tenant in tenants">
+        <td class="tenant-photo"><img ng-src="{{ tenant.picture }}" alt="{{ tenant.firstName + ' ' + tenant.lastName }}"></td>
+        <td class="tenant-description">
+          <span class="tenant-name">{{ tenant.firstName + ' ' + tenant.lastName }}</span><br>
+          <span class="tenant-item">Moved in on:</span> {{ tenant.moveInDate | date }}<br>
+          <span class="tenant-item">Salary:</span> ${{ tenant.monthlyIncome | number }}/month<br>
+          <span class="tenant-item">Employment:</span> {{ tenant.jobTitle }}, {{ tenant.employer }}<br>
+          <span class="tenant-income">This property requires {{ tenant.rent.share / tenant.monthlyIncome | percentage }} of {{ tenant.firstName }}&rsquo;s yearly income.</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<h3>Rent Status</h3>
-<table class="rent-status rent-status-small">
-  <tbody>
-    <tr ng-repeat="tenant in tenants">
-      <td>{{ tenant.firstName + ' ' + tenant.lastName }}</td>
-      <td class="amount">${{ tenant.monthlyIncome | number }}</td>
-      <td><div class="rent-circle rent-circle-{{ tenant.rent.status }}"></div></td>
-      <td class="status">{{ tenant.rent.label }}</td>
-    </tr>
-  </tbody>
-</table>
+  <h3>Rent Status</h3>
+  <table class="rent-status rent-status-small">
+    <tbody>
+      <tr ng-repeat="tenant in tenants">
+        <td>{{ tenant.firstName + ' ' + tenant.lastName }}</td>
+        <td class="amount">${{ tenant.monthlyIncome | number }}</td>
+        <td><div class="rent-circle rent-circle-{{ tenant.rent.status }}"></div></td>
+        <td class="status">{{ tenant.rent.label }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p ng-show="!tenants.length">{{ property.street }} is currently vacant.</p>
 
 <h3>Maintenance</h3>
 <div class="maintenance-status">
