@@ -212,7 +212,7 @@ input::-webkit-inner-spin-button {
 .sidebar-nav > .sidebar-brand a:hover {
   height: 250px;
   background-color: @bodytext;
-  background-image: url('img/logo-solo.png');
+  background-image: url('/images/logo-solo.png');
   background-size: auto 80%;
   background-position: center center;
   background-repeat: no-repeat;
@@ -583,7 +583,7 @@ input[type="url"] {
   }
 
 select {
-  background-image: url('img/select-bg.png');
+  background-image: url('/images/select-bg.png');
   background-repeat: no-repeat;
   background-position: right 6px center;
   }
@@ -1051,9 +1051,8 @@ fieldset.cvv-code input {
 table.rent-status {
 	width: auto;
 	min-width: 700px;
-	margin-top: 10px;
+	margin: 10px 0px 40px -10px;
 	border: 1px solid darken(@basecolor,6%);
-	margin-left: -10px;
 	border-radius: 10px;
 	}
 	
@@ -1180,9 +1179,10 @@ ul.properties li {
 	height: 110px;
 	line-height: 100px;
 	text-indent: 6px;
-	margin-left: -20px;
+	margin: 10px 0px 10px -20px;
 	font-size: 120%;
-	padding: 10px;
+	padding: 8px;
+	border-top: 1px solid #dae1e2;
 	}
 	
 ul.properties li.border {
@@ -1197,6 +1197,9 @@ ul.properties li a {
 	border: 0;
 	padding: 0 6px 3px;
 	border-radius: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 	}
 	
 ul.properties li a:hover {
@@ -1244,7 +1247,7 @@ ul.properties li.add-property {
 	min-height: 240px;
 	overflow: hidden;
 	background-color: darken(@basecolor, 8%);
-	background-image: url('/images/forgot_password.png');
+	background-image: url('/images/happy-castle-guy.png');
 	background-size: 230px auto;
 	background-position: -40px 10px;
 	background-repeat: no-repeat;
@@ -1351,6 +1354,9 @@ ul.properties li.add-property {
 	
 	
 // Maintenance
+.maintenance-status {
+	margin-bottom: 40px;
+}
 ul.maintenance {
 	border: 1px solid darken(@basecolor, 5%);
 	border-radius: 10px;
@@ -1596,7 +1602,6 @@ ul.properties li {
 	top: 50px;
 	left: 0;
 	padding: 150px 10px 10px 10px;
-	background-image: url('/images/forgot_password.png');
 	background-size: 150px auto;
 	background-position: center 10px;
 	background-repeat: no-repeat;
@@ -1640,6 +1645,10 @@ table.rent-status {
 	display: none;
 	}
 
+slick button.slick-next,
+slick button.slick-prev {
+  display: none !important;
+  }
 
 } // End 767px
   

@@ -20,7 +20,8 @@ angular
     'ngTouch',
     'firebase',
     'angularPayments',
-    'ui.mask'
+    'ui.mask',
+    'slick'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -47,8 +48,14 @@ angular
       .when('/apply', {
         templateUrl: 'views/prescreen.html',
       })
+      .when('/properties', {
+        templateUrl: 'views/properties.html',
+      })
+      .when('/properties/:propertyId', {
+        templateUrl: 'views/property.html',
+      })
       .otherwise({
-        redirectTo: '/signup'
+        redirectTo: '/properties'
       });
   })
   .run(function ($window, STRIPE_PUBLISHABLE_KEY) {
