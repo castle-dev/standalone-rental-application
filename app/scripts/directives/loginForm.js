@@ -17,7 +17,7 @@ angular.module('propertyManagementApp')
         scope.submit = function (user) {
           scope.errors = [];
           Auth.loginUser(user)
-            .then(function () { $location.path('/welcome'); })
+            .then(function () { $location.path('/properties'); })
             .catch(function (err) {
               scope.errors.push(err);
             });

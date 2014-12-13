@@ -1,4 +1,6 @@
 <form name="signup" ng-submit="submit()">
+  
+  <p><em>Already have a Castle account? <a href="#/login" >Log in</a>.</em></p>
 
   <div class="both-names-input">
     <fieldset>
@@ -20,7 +22,7 @@
 
   <fieldset>
     <label for="phone-number">Your cell phone number:</label>
-    <input type="tel" name="phone-number" ng-model="newUser.phoneNumber" required ui-mask="(999) 999-9999" >
+    <input type="tel" name="phone-number" ng-model="newUser.phoneNumber" numeric required>
   </fieldset>
 
   <fieldset>

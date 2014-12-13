@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="with=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Castle">
@@ -14,6 +14,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic" rel="stylesheet" type="text/css">
@@ -21,25 +22,12 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="propertyManagementApp" class="signup-body">
+  <body ng-app="propertyManagementApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-      <div class="sticky-footer-wrapper">
-        <div ng-view="" autoscroll="true"></div>
-
-        <div class="sticky-footer-push"></div>
-      </div>
-
-      <div class="sticky-footer cityscape">
-        <div class="signup-footer">
-          <a href="http://entercastle.com" class="home-link">Castle</a>
-          <p>With <i class="fa fa-heart footer-heart"></i> from Detroit <span class="spacer">&bull;</span> <a href="http://entercastle.com/termsofservice">Terms of Service</a></p>
-          <p>© 2014 All Rights Reserved. Have a great day!</p>
-        </div><!--signup-footer-->
-      </div>
+    <div ng-view="" autoscroll="true"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -74,6 +62,8 @@
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
     <script src="bower_components/angular-payments/lib/angular-payments.js"></script>
+    <script src="bower_components/slick-carousel/slick/slick.min.js"></script>
+    <script src="bower_components/angular-slick/dist/slick.js"></script>
     <!-- endbower -->
     <script src="bower_components/angular-ui-utils/mask.js"></script>
     <!-- endbuild -->
@@ -83,12 +73,21 @@
         <script src="scripts/config.js"></script>
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/services/bank.js"></script>
+        <script src="scripts/services/sidebar.js"></script>
+        <script src="scripts/services/property.js"></script>
         <script src="scripts/directives/creditCardForm.js"></script>
         <script src="scripts/directives/signupForm.js"></script>
         <script src="scripts/directives/loginForm.js"></script>
         <script src="scripts/directives/currentUserName.js"></script>
         <script src="scripts/directives/prescreenForm.js"></script>
+        <script src="scripts/directives/footerWrapper.js"></script>
+        <script src="scripts/directives/sidebar.js"></script>
+        <script src="scripts/directives/mobileHeader.js"></script>
+        <script src="scripts/directives/propertiesList.js"></script>
+        <script src="scripts/directives/propertyData.js"></script>
+        <script src="scripts/directives/numeric.js"></script>
         <script src="scripts/directives/errors.js"></script>
+        <script src="scripts/filters/percentage.js"></script>
         <!-- endbuild -->
 
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
