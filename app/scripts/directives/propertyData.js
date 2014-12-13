@@ -18,6 +18,11 @@ angular.module('propertyManagementApp')
         .then(function (propertyData) {
           scope.property = propertyData;
         });
+
+        Property.getTenants($routeParams.propertyId)
+        .then(function (tenants) {
+          scope.tenants = tenants;
+        });
       }
     };
   });

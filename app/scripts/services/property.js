@@ -32,6 +32,27 @@ angular.module('propertyManagementApp')
         .$asObject()
         .$loaded();
         return promise;
+      },
+      getTenants: function (id) {
+        var promise = $firebase(ref.child('tenants').child(id))
+        .$asArray()
+        .$loaded()
+        .then(function (tenants) {
+          // translate server time to client time
+          var deferred = $q.defer();
+          $firebase(ref.child('.info/serverTimeOffset'))
+          .$asObject()
+          .$loaded()
+          .then(function (snapshot) {
+            var offset = snapshot.$value;
+            for (var i = 0; i < tenants.length; i++) {
+              tenants[i].moveInDate += offset;
+            }
+            deferred.resolve(tenants);
+          });
+          return deferred.promise;
+        });
+        return promise;
       }
     };
 
