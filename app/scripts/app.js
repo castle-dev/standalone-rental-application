@@ -55,7 +55,7 @@ angular
         templateUrl: 'views/property.html',
       })
       .otherwise({
-        redirectTo: '/signup'
+        redirectTo: '/properties'
       });
   })
   .run(function ($window, STRIPE_PUBLISHABLE_KEY) {
