@@ -13,7 +13,34 @@ For managing properties and stuff
 When js files are saved, all js will be linted, unit tests will run, and if both pass, the page will reload
 
 
-# Environment variables
+## Environment variables
 export ENV=develop
-export FIREBASE_URL=https://castle-development.firebaseio.com/                                                                                  
+export FIREBASE_URL=https://castle-development.firebaseio.com/
 export STRIPE_PUBLISHABLE_KEY=pk_test_ezgQYWkPV0W4Npb6E5LpMngz
+
+## Firebase Schema
+* profile - user profiles, keyed by firebase-generated user id
+  * firstName: string
+  * lastName: string
+  * email: string
+  * phoneNumber: string
+* properties - property data, keyed by user id, then property id
+  * street: string
+  * city: string
+  * stateAbbreviation: string
+  * zip: string
+  * rent: int
+  * thumbnail: url
+  * images: array of urls
+* tenants - tenant data, keyed by property id, then tenant id
+  * firstName: string
+  * lastName: string
+  * jobTitle: string
+  * employer: string
+  * monthlyIncome: int
+  * moveInDate: timestamp
+  * picture: url
+  * rent: object
+    * share: int
+    * label: string
+    * status: enum {paid, late}
