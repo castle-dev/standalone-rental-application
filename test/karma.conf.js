@@ -42,7 +42,7 @@ module.exports = function(config) {
       'node_modules/jasmine-expect/dist/jasmine-matchers.js',
       'app/scripts/**/*.js',
       'app/views/partials/**/*.html',
-      'test/spec/**/*.js',
+      'test/unit/**/*.js',
       'https://js.stripe.com/v2/'
     ],
 
