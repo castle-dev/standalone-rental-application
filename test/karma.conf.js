@@ -39,6 +39,7 @@ module.exports = function(config) {
       'bower_components/slick-carousel/slick/slick.min.js',
       'bower_components/angular-slick/dist/slick.js',
       'bower_components/angular-ui-utils/mask.js',
+      'bower_components/ng-fab-form/dist/ng-fab-form.min.js',
       'node_modules/jasmine-expect/dist/jasmine-matchers.js',
       'app/scripts/**/*.js',
       'app/views/partials/**/*.html',

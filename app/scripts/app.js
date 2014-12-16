@@ -21,7 +21,9 @@ angular
     'firebase',
     'angularPayments',
     'ui.mask',
-    'slick'
+    'slick',
+    'ngFabForm',
+    'ngMessages'
   ])
   .config(function ($routeProvider) {
     $routeProvider
