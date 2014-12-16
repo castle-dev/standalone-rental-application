@@ -1210,9 +1210,6 @@ img.forgot-password {
   font-size: 14px;
   overflow: visible;
   background: #E15E5B; }
-  .validation ul {
-    display: block;
-    overflow: hidden; }
   .validation li {
     display: block;
     line-height: 1;
