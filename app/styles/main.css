@@ -1178,7 +1178,7 @@ img.forgot-password {
 }
 .validation-success {
   opacity: 1;
-  display: block;
+  display: none;
   position: absolute;
   right: -7.2px;
   bottom: 2.8px;
@@ -1245,6 +1245,19 @@ form[class*="ng-invalid"] button.btn {
 form button.btn {
   transition: all ease-in 0.5s;
   background: #3AB4AD; }
+
+.money {
+  position: relative;
+}
+.money label::after {
+  content: '$';
+  position: absolute;
+  left: 6px;
+  top: 37px;
+}
+.money input {
+  padding-left: 15px;
+}
 
 @media only screen and (max-width: 1024px) {
   h1 {

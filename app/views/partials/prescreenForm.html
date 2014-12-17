@@ -7,20 +7,20 @@
       </fieldset>
 
       <fieldset>
-              <label for="last-name"></label>
-              <input type="text" name="last-name" placeholder="Tenant" ng-model="applicant.lastName" required>
+        <label for="last-name"></label>
+        <input type="text" name="last-name" placeholder="Tenant" ng-model="applicant.lastName" required>
       </fieldset>
     </div>
 
     <fieldset>
       <label for="email-address">Your email address:</label>
-      <input type="email" name="email-address" placeholder="tommytenant@gmail.com" ng-model="applicant.email">
+      <input type="email" name="email-address" placeholder="tommytenant@gmail.com" ng-model="applicant.email" required>
       <div class="help-text">We won&rsquo;t send you spam or anything lame</div>
     </fieldset>
 
     <fieldset>
       <label for="phone-number">Your cell phone number:</label>
-      <input type="tel" name="phone-number" placeholder="" ng-model="applicant.phoneNumber" required>
+      <input type="tel" name="phone-number" placeholder="" ng-model="applicant.phoneNumber" numeric required>
     </fieldset>
 
     <fieldset>
@@ -31,20 +31,20 @@
     <fieldset>
       <label for="smoker">Are you a smoker?</label>
       <div>
-        <input type="radio" name="smoker" ng-value="true" ng-model="applicant.smoker" id="smoker-yes"><label for="smoker-yes">Yes</label>
+        <input type="radio" name="smoker" ng-value="true" ng-model="applicant.smoker" id="smoker-yes" required><label for="smoker-yes">Yes</label>
       </div>
       <div>
-        <input type="radio" name="smoker" ng-value="false" ng-model="applicant.smoker" id="smoker-no"><label for="smoker-no">No</label>
+        <input type="radio" name="smoker" ng-value="false" ng-model="applicant.smoker" id="smoker-no" required><label for="smoker-no">No</label>
       </div>
     </fieldset>
 
     <fieldset>
       <label for="hasPets">Do you have pets?</label>
       <div>
-        <input type="radio" name="hasPets" ng-value="true" ng-model="applicant.hasPets" id="has-pets-yes"><label for="has-pets-yes">Yes</label>
+        <input type="radio" name="hasPets" ng-value="true" ng-model="applicant.hasPets" id="has-pets-yes" required><label for="has-pets-yes">Yes</label>
       </div>
       <div>
-        <input type="radio" name="hasPets" ng-value="false" ng-model="applicant.hasPets" id="has-pets-no"><label for="has-pets-no">No</label>
+        <input type="radio" name="hasPets" ng-value="false" ng-model="applicant.hasPets" id="has-pets-no" required><label for="has-pets-no">No</label>
       </div>
       <div class="help-text">Aside from service animals</div>
     </fieldset>
@@ -52,16 +52,16 @@
     <fieldset>
       <label for="breaking-lease">Will you be breaking your current lease to live here?</label>
       <div>
-        <input type="radio" name="breaking-lease" ng-value="true" ng-model="applicant.breakingLease" id="break-lease-yes"><label for="break-lease-yes">Yes</label>
+        <input type="radio" name="breaking-lease" ng-value="true" ng-model="applicant.breakingLease" id="break-lease-yes" required><label for="break-lease-yes">Yes</label>
       </div>
       <div>
-        <input type="radio" name="breaking-lease" ng-value="false" ng-model="applicant.breakingLease" id="break-lease-no"><label for="break-lease-no">No</label>
+        <input type="radio" name="breaking-lease" ng-value="false" ng-model="applicant.breakingLease" id="break-lease-no" required><label for="break-lease-no">No</label>
       </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset class="money">
       <label for="monthly-income">What is your average monthly income?</label>
-      <input type="text" ng-model="applicant.monthlyIncome" required>
+      <input type="number" ng-model="applicant.monthlyIncome" required>
     </fieldset>
 
     
