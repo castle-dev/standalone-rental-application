@@ -212,7 +212,7 @@ input::-webkit-inner-spin-button {
 .sidebar-nav > .sidebar-brand a:hover {
   height: 250px;
   background-color: @bodytext;
-  background-image: url('img/logo-solo.png');
+  background-image: url('/images/logo-solo.png');
   background-size: auto 80%;
   background-position: center center;
   background-repeat: no-repeat;
@@ -583,7 +583,7 @@ input[type="url"] {
   }
 
 select {
-  background-image: url('img/select-bg.png');
+  background-image: url('/images/select-bg.png');
   background-repeat: no-repeat;
   background-position: right 6px center;
   }
@@ -860,7 +860,111 @@ form:not(.ng-submitted) .invalid-text {
   margin: -5px 0 5px 0;
   }
 
-// At top
+
+// form validation styling
+.validation-success {
+  opacity: 1;
+  display: none;
+  position: absolute;
+  right: -7.2px;
+  bottom: 2.8px;
+  font-size: 28.8px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 36px;
+  color: #3AB4AD;
+  transition: all ease-out 0.32s;
+  }
+
+.validation-success:after {
+	display: block;
+   content: '\e013';
+   font-family: 'Glyphicons Halflings';
+   }
+
+.validation-success.ng-hide {
+   transition-delay: 0s;
+   transition: all ease-out 0.12s;
+   opacity: 0;
+   transform: rotate(360deg);
+   }
+
+.ng-hide-remove li {
+  opacity: 0;
+  }
+
+.validation {
+  color: #fff;
+  margin: 0;
+  position: relative;
+  font-size: 14px;
+  overflow: visible;
+  background: #E15E5B;
+  }
+
+.validation li {
+   display: block;
+   line-height: 1;
+   background: #E15E5B;
+   position: absolute;
+   right: -4px;
+   top: -24px;
+   text-align: center;
+   font-weight: bold;
+   padding: 2px 10px;
+   color: #fff;
+   transform: rotate(0deg);
+   transition: all ease-in 0.2s;
+   opacity: 1;
+   transition-delay: 0s;
+   }
+
+.validation li.ng-enter {
+   opacity: 0;
+   top: 0;
+   }
+.validation li.ng-leave {
+   transition: all ease-in 0s;
+   opacity: 0;
+   }
+
+*:focus + .validation li {
+  background-color: #63bff8 !important;
+  }
+
+input.ng-touched.ng-invalid:not(.ng-valid), textarea.ng-touched.ng-invalid:not(.ng-valid), select.ng-touched.ng-invalid:not(.ng-valid) {
+  border-color: #E15E5B;
+  }
+
+input:focus.ng-touched.ng-invalid:not(.ng-valid),
+textarea:focus.ng-touched.ng-invalid:not(.ng-valid),
+select:focus, select:focus.ng-touched.ng-invalid:not(.ng-valid) {
+  border-color: #63bff8;
+  }
+
+input.ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid-required.ng-valid:not(.ng-invalid), select.ng-valid-required.ng-valid:not(.ng-invalid) {
+  border-color: #3AB4AD;
+  }
+
+.money {
+	position: relative;
+	}
+
+.money label::after {
+	content: '$';
+	position: absolute;
+	left: 6px;
+	top: 37px;
+	}
+
+.money input {
+	padding-left: 15px;
+	}
+
+
+// Errors at top
 .errors {
 	background: lighten(@yellow, 32%);
 	padding: 15px 0;
@@ -947,6 +1051,11 @@ ul.signup-pointers {
 
 .expiration-and-code {
 	position: relative;
+	}
+
+// Prevent error block from pushing credit card year onto a new line	
+.expiration-and-code .ng-scope {
+	display: inline-block;
 	}
 	
 .expiration-and-code fieldset {
@@ -1051,9 +1160,8 @@ fieldset.cvv-code input {
 table.rent-status {
 	width: auto;
 	min-width: 700px;
-	margin-top: 10px;
+	margin: 10px 0px 40px -10px;
 	border: 1px solid darken(@basecolor,6%);
-	margin-left: -10px;
 	border-radius: 10px;
 	}
 	
@@ -1180,9 +1288,10 @@ ul.properties li {
 	height: 110px;
 	line-height: 100px;
 	text-indent: 6px;
-	margin-left: -20px;
+	margin: 10px 0px 10px -20px;
 	font-size: 120%;
-	padding: 10px;
+	padding: 8px;
+	border-top: 1px solid #dae1e2;
 	}
 	
 ul.properties li.border {
@@ -1197,6 +1306,9 @@ ul.properties li a {
 	border: 0;
 	padding: 0 6px 3px;
 	border-radius: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 	}
 	
 ul.properties li a:hover {
@@ -1216,6 +1328,7 @@ ul.properties li a img {
 ul.properties li.add-property {
 	height: 50px;
 	line-height: 50px;
+	border: 0;
 	}
 
 .add-disabled,
@@ -1244,7 +1357,7 @@ ul.properties li.add-property {
 	min-height: 240px;
 	overflow: hidden;
 	background-color: darken(@basecolor, 8%);
-	background-image: url('/images/forgot_password.png');
+	background-image: url('/images/happy-castle-guy.png');
 	background-size: 230px auto;
 	background-position: -40px 10px;
 	background-repeat: no-repeat;
@@ -1351,6 +1464,9 @@ ul.properties li.add-property {
 	
 	
 // Maintenance
+.maintenance-status {
+	margin-bottom: 40px;
+}
 ul.maintenance {
 	border: 1px solid darken(@basecolor, 5%);
 	border-radius: 10px;
@@ -1427,7 +1543,6 @@ img.forgot-password {
   width: 250px;
   }
   
-
       
 @media only screen and (max-width: 1024px) {
 
@@ -1596,7 +1711,6 @@ ul.properties li {
 	top: 50px;
 	left: 0;
 	padding: 150px 10px 10px 10px;
-	background-image: url('/images/forgot_password.png');
 	background-size: 150px auto;
 	background-position: center 10px;
 	background-repeat: no-repeat;
@@ -1640,6 +1754,10 @@ table.rent-status {
 	display: none;
 	}
 
+slick button.slick-next,
+slick button.slick-prev {
+  display: none !important;
+  }
 
 } // End 767px
   
