@@ -373,6 +373,47 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.app %>/scripts/config.js',
         }
       }
+    },
+
+    protractor: {
+      options: {
+        configFile: "test/protractor.conf.js"
+      },
+      runChrome: {
+        options: {
+          args: { browser: "chrome" }
+        }
+      },
+      runFirefox: {
+        options: {
+          args: { browser: "firefox" }
+        }
+      },
+      runSafari: {
+        options: {
+          args: { browser: "safari" }
+        }
+      },
+      runAndroid: {
+        options: {
+          args: { browser: 'android' }
+        }
+      },
+      runiPhone: {
+        options: {
+          args: { browser: 'iPhone' }
+        }
+      },
+      runiPad: {
+        options: {
+          args: { browser: 'iPad' }
+        }
+      },
+      runInternetExplorer: {
+        options: {
+          args: { browser: "internet explorer" }
+        }
+      },
     }
   });
 
@@ -431,4 +472,19 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('e2e:browsers', [
+    'protractor:runChrome',
+    'protractor:runFirefox',
+  ]);
+  grunt.registerTask('e2e:android', [
+    'protractor:runAndroid'
+  ]);
+  grunt.registerTask('e2e:iPhone', [
+    'protractor:runiPhone'
+  ]);
+  grunt.registerTask('e2e:iPad', [
+    'protractor:runiPhone'
+  ]);
+
 };
