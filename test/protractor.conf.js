@@ -1,5 +1,6 @@
 exports.config = {
-  allScriptsTimeout: 11000,
+  allScriptsTimeout: 30000,
+  getPageTimeout: 30000,
 
   specs: [
     'e2e/*.js'
@@ -22,5 +23,11 @@ exports.config = {
 
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000
+  },
+
+  onPrepare: function () {
+    // implicit and page load timeouts
+    browser.manage().timeouts().pageLoadTimeout(40000);
+    browser.manage().timeouts().implicitlyWait(25000);
   }
 };
