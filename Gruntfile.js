@@ -475,7 +475,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('e2e:browsers', [
     'protractor:runChrome',
-    'protractor:runFirefox'
+    'protractor:runFirefox',
+    'protractor:runInternetExplorer'
   ]);
   grunt.registerTask('e2e:android', [ 'protractor:runAndroid' ]);
   grunt.registerTask('e2e:iPhone', [ 'protractor:runiPhone' ]);
