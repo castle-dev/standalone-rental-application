@@ -1,19 +1,16 @@
 /* global element, by */
 'use strict';
 
-function makeId()
-{
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+function makeId () {
+  var text = '';
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   for( var i=0; i < 6; i++ ) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
   return text;
 }
-
-function waitForUrlToChangeTo(urlRegex) {
+function waitForUrlToChangeTo (urlRegex) {
     var currentUrl;
-
     return browser.getCurrentUrl()
     .then(function storeCurrentUrl(url) {
       currentUrl = url;
@@ -26,6 +23,10 @@ function waitForUrlToChangeTo(urlRegex) {
       });
     });
 }
+var testUser = {
+  email: 'optimus.prime.' + makeId() + '@gmail.com',
+  password: 'fakepassword1'
+};
 
 describe('Property Management App ::', function() {
 
@@ -73,7 +74,6 @@ describe('Property Management App ::', function() {
     var creditCardCvcInput;
     var signupSubmitButton;
     var creditCardSubmitButton;
-    var errors;
 
     beforeEach(function () {
       firstNameInput = element(by.model('newUser.firstName'));
@@ -93,9 +93,9 @@ describe('Property Management App ::', function() {
       browser.get('/#/signup');
       firstNameInput.sendKeys('Optimus');
       lastNameInput.sendKeys('Prime');
-      emailInput.sendKeys('optimus.prime.' + makeId() + '@gmail.com');
+      emailInput.sendKeys(testUser.email);
       phoneNumberInput.sendKeys('1011011100');
-      passwordInput.sendKeys('fakepassword1\n');
+      passwordInput.sendKeys(testUser.password + '\n');
       waitForUrlToChangeTo(/creditCard/);
       expect(browser.getCurrentUrl()).toMatch(/creditCard/);
     });
@@ -110,6 +110,46 @@ describe('Property Management App ::', function() {
       expect(browser.getCurrentUrl()).toMatch(/welcome/);
     });
 
+    it('should allow users to log out', function () {
+      browser.get('/#/logout');
+      waitForUrlToChangeTo(/login/);
+      expect(browser.getCurrentUrl()).toMatch(/login/);
+    });
+
   });
 
+  describe('Bank Account ::', function () { 
+    //Go to properties page
+    describe('Valid login :: ', function () {
+
+      var emailInput;
+      var passwordInput;
+      var submitButton;
+      var errors;
+
+      beforeEach(function () {
+        emailInput = element(by.model('user.email'));
+        passwordInput = element(by.model('user.password'));
+        submitButton = element(by.id('login-submit-button'));
+        errors = element.all(by.repeater('error in errors'));
+      });
+
+      it('should submit a valid form and redirect to home', function () {
+        emailInput.sendKeys(testUser.email);
+        passwordInput.sendKeys(testUser.password + '\n');
+        waitForUrlToChangeTo(/properties/);
+        expect(browser.getCurrentUrl()).toMatch(/properties/);
+      });
+
+    });
+
+    it('should display notice to new users', function () {
+        expect(element(by.css('notice-bank-account')).isPresent()).toBeTruthy();
+    });
+    //click error link
+    //expect bank account form
+    //fill out bank account form and submit
+    //expect properties page
+    //expect no error message
+  });
 });
