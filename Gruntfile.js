@@ -377,21 +377,21 @@ module.exports = function (grunt) {
 
     protractor: {
       options: {
-        configFile: "test/protractor.conf.js"
+        configFile: 'test/protractor.conf.js'
       },
       runChrome: {
         options: {
-          args: { browser: "chrome" }
+          args: { browser: 'chrome' }
         }
       },
       runFirefox: {
         options: {
-          args: { browser: "firefox" }
+          args: { browser: 'firefox' }
         }
       },
       runSafari: {
         options: {
-          args: { browser: "safari" }
+          args: { browser: 'safari' }
         }
       },
       runAndroid: {
@@ -411,7 +411,7 @@ module.exports = function (grunt) {
       },
       runInternetExplorer: {
         options: {
-          args: { browser: "internet explorer" }
+          args: { browser: 'internet explorer' }
         }
       },
     }

@@ -44,6 +44,9 @@ angular
       .when('/creditCard', {
         templateUrl: 'views/creditCard.html',
       })
+      .when('/bankAccount', {
+        templateUrl: 'views/bankAccount.html',
+      })
       .when('/welcome', {
         templateUrl: 'views/welcome.html',
       })

@@ -24,9 +24,13 @@ angular.module('propertyManagementApp')
           }
 
           return deferred.promise;
+      },
+      storeBankAccountToken: function (token) {
+        var currentUser = Auth.getCurrentUser();
+        currentUser.profile.bankAccountToken = token;
+        return currentUser.profile.$save();
       }
     };
-
 
     return Bank;
 
