@@ -119,37 +119,59 @@ describe('Property Management App ::', function() {
   });
 
   describe('Bank Account ::', function () { 
-    //Go to properties page
-    describe('Valid login :: ', function () {
 
-      var emailInput;
-      var passwordInput;
-      var submitButton;
-      var errors;
+    var emailInput;
+    var passwordInput;
+    var bankAccountHoldersNameInput;
+    var bankAccountRoutingNumberInput;
+    var bankAccountAccountNumberInput;
+    var bankAccountAccountNumberConfirmationInput;
+    var errors;
 
-      beforeEach(function () {
-        emailInput = element(by.model('user.email'));
-        passwordInput = element(by.model('user.password'));
-        submitButton = element(by.id('login-submit-button'));
-        errors = element.all(by.repeater('error in errors'));
-      });
-
-      it('should submit a valid form and redirect to home', function () {
-        emailInput.sendKeys(testUser.email);
-        passwordInput.sendKeys(testUser.password + '\n');
-        waitForUrlToChangeTo(/properties/);
-        expect(browser.getCurrentUrl()).toMatch(/properties/);
-      });
-
+    beforeEach(function () {
+      emailInput = element(by.model('user.email'));
+      passwordInput = element(by.model('user.password'));
+      errors = element.all(by.repeater('error in errors'));
+      bankAccountHoldersNameInput = element(by.model('bankAccount.holderName'));
+      bankAccountRoutingNumberInput = element(by.model('bankAccount.routingNumber'));
+      bankAccountAccountNumberInput = element(by.model('bankAccount.accountNumber'));
+      bankAccountAccountNumberConfirmationInput = element(by.model('bankAccount.accountNumberConfirmation'));
     });
+
+    it('should submit a valid form and redirect to home', function () {
+      emailInput.sendKeys(testUser.email);
+      passwordInput.sendKeys(testUser.password + '\n');
+      waitForUrlToChangeTo(/properties/);
+      expect(browser.getCurrentUrl()).toMatch(/properties/);
+    });
+
 
     it('should display notice to new users', function () {
-        expect(element(by.css('notice-bank-account')).isPresent()).toBeTruthy();
+      expect(element(by.css('notice-bank-account .errors:not(.hidden)')).isPresent()).toBeTruthy();
     });
-    //click error link
-    //expect bank account form
-    //fill out bank account form and submit
-    //expect properties page
-    //expect no error message
+
+    it('should provide a path to resolve the error', function () {
+      element(by.css('div.errors-text a')).click();
+      waitForUrlToChangeTo(/bankAccount/);
+      expect(browser.getCurrentUrl()).toMatch(/bankAccount/);
+    });
+
+    it('should display bank account form', function () {
+      expect(element(by.css('bank-account-form')).isPresent()).toBeTruthy();
+    });
+
+    it('should allow users to link bank accounts', function () {
+      bankAccountHoldersNameInput.sendKeys('Optimus Prime');
+      bankAccountRoutingNumberInput.sendKeys('021000021');
+      bankAccountAccountNumberInput.sendKeys('9900000002');
+      bankAccountAccountNumberConfirmationInput.sendKeys('9900000002\n');
+      waitForUrlToChangeTo(/properties/);
+      expect(browser.getCurrentUrl()).toMatch(/properties/);
+    });
+
+    it('should not display notice to new users', function () {
+      expect(element(by.css('notice-bank-account .errors:not(.hidden)')).isPresent()).toBeFalsy();
+    });
+
   });
 });
