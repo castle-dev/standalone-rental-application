@@ -758,6 +758,10 @@ form:not(.ng-submitted) .invalid-text {
   transition: all ease-in 0.2s;
   opacity: 1;
   transition-delay: 0s;
+  z-index: 100;
+}
+.validation li[ng-message="required"] {
+  display: none;
 }
 .validation li.ng-enter {
   opacity: 0;
@@ -767,8 +771,8 @@ form:not(.ng-submitted) .invalid-text {
   transition: all ease-in 0s;
   opacity: 0;
 }
-*:focus + .validation li {
-  background-color: #63bff8 !important;
+*:focus + div .validation li {
+  opacity: 0;
 }
 input.ng-touched.ng-invalid:not(.ng-valid),
 textarea.ng-touched.ng-invalid:not(.ng-valid),
@@ -805,7 +809,7 @@ select.ng-valid-required.ng-valid:not(.ng-invalid) {
   border-radius: 5px;
   margin: 20px 0;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
 }
 .errors-bang,
 .errors-text {

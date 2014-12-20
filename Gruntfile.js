@@ -377,21 +377,21 @@ module.exports = function (grunt) {
 
     protractor: {
       options: {
-        configFile: "test/protractor.conf.js"
+        configFile: 'test/protractor.conf.js'
       },
       runChrome: {
         options: {
-          args: { browser: "chrome" }
+          args: { browser: 'chrome' }
         }
       },
       runFirefox: {
         options: {
-          args: { browser: "firefox" }
+          args: { browser: 'firefox' }
         }
       },
       runSafari: {
         options: {
-          args: { browser: "safari" }
+          args: { browser: 'safari' }
         }
       },
       runAndroid: {
@@ -411,7 +411,7 @@ module.exports = function (grunt) {
       },
       runInternetExplorer: {
         options: {
-          args: { browser: "internet explorer" }
+          args: { browser: 'internet explorer' }
         }
       },
     }
@@ -476,15 +476,12 @@ module.exports = function (grunt) {
   grunt.registerTask('e2e:browsers', [
     'protractor:runChrome',
     'protractor:runFirefox',
+    'protractor:runInternetExplorer'
   ]);
-  grunt.registerTask('e2e:android', [
-    'protractor:runAndroid'
-  ]);
-  grunt.registerTask('e2e:iPhone', [
-    'protractor:runiPhone'
-  ]);
-  grunt.registerTask('e2e:iPad', [
-    'protractor:runiPhone'
-  ]);
+  grunt.registerTask('e2e:chrome', [ 'protractor:runChrome' ]);
+  grunt.registerTask('e2e:android', [ 'protractor:runAndroid' ]);
+  grunt.registerTask('e2e:iPhone', [ 'protractor:runiPhone' ]);
+  grunt.registerTask('e2e:iPad', [ 'protractor:runiPhone' ]);
+  grunt.registerTask('e2e', [ 'e2e:browsers' ]);
 
 };

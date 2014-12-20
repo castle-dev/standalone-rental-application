@@ -1,4 +1,9 @@
+'use strict';
+var Firebase;
+var ref;
+
 exports.config = {
+
   allScriptsTimeout: 120000,
 
   specs: [
@@ -13,9 +18,22 @@ exports.config = {
   framework: 'jasmine',
 
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 120000
+    defaultTimeoutInterval: 120000,
   },
 
-  'appium-version' : '1.2.1'
+  'appium-version' : '1.2.1',
+
+  onPrepare: function () {
+    Firebase = require('firebase');
+    ref = new Firebase(process.env.FIREBASE_URL);
+    ref.set({}); // empty the database
+    // implicit and page load timeouts
+    browser.manage().timeouts().pageLoadTimeout(40000);
+    browser.manage().timeouts().implicitlyWait(25000);
+  },
+
+  onComplete: function () {
+    ref.set({});
+  }
 
 };
