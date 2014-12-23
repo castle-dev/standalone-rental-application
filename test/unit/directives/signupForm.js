@@ -15,7 +15,8 @@ describe('Directive: signupForm', function() {
     element = angular.element(
       '<signup-form></signup-form>'
     );
-    $compile(element)(scope);
+    var directive = $compile(element)(scope);
+    scope = directive.scope();
     scope.$apply();
     inputs = element.find('input');
   }));
@@ -52,6 +53,25 @@ describe('Directive: signupForm', function() {
   it('should have a submit button', function () {
     var button = angular.element(element.find('button'));
     expect(button.attr('type') === 'submit');
+  });
+
+  it('should check password requirements', function () {
+    scope.newUser.password = 'badpwd';
+    scope.$digest();
+    expect(scope.passwordIsLongEnough).toBe(false);
+    expect(scope.passwordContainsNumber).toBe(false);
+    scope.newUser.password = 'fakepassword1';
+    scope.$digest();
+    expect(scope.passwordIsLongEnough).toBe(true);
+    expect(scope.passwordContainsNumber).toBe(true);
+    scope.newUser.password = 'longenough';
+    scope.$digest();
+    expect(scope.passwordIsLongEnough).toBe(true);
+    expect(scope.passwordContainsNumber).toBe(false);
+    scope.newUser.password = '1234567';
+    scope.$digest();
+    expect(scope.passwordIsLongEnough).toBe(false);
+    expect(scope.passwordContainsNumber).toBe(true);
   });
 
 });
