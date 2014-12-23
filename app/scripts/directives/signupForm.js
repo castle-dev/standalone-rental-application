@@ -15,18 +15,15 @@ angular.module('propertyManagementApp')
       templateUrl: 'views/partials/signupForm.html',
       link: function (scope) {
         scope.newUser = { password: '' };
-
-        scope.$watch('newUser.password', function (newValue) {
-          scope.passwordIsLongEnough = newValue && (newValue.length > 7);
-          var matches = scope.newUser.password.match(/\d+/g);
-          scope.passwordContainsNumber = (matches !== null);
+        scope.$watch('signup.password.$error.pattern', function (newValue) {
+          scope.passwordContainsNumber = (newValue === undefined) && !scope.signup.password.$error.required;
+        });
+        scope.$watch('signup.password.$error.minlength', function (newValue) {
+          scope.passwordIsLongEnough = (newValue === undefined) && !scope.signup.password.$error.required;
         });
 
         scope.submit = function () {
           scope.errors = [];
-          if (!scope.passwordIsLongEnough || !scope.passwordContainsNumber) {
-             return scope.errors.push('That password isn\'t sercure! Please include a number and make it at least 8 characters long');
-          }
           Auth.registerUser(scope.newUser)
             .then(function (user) { // log the new user in
               return Auth.loginUser(user);
