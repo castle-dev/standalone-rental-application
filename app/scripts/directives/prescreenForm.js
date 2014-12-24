@@ -9,13 +9,15 @@
  * for signing in
  */
 angular.module('propertyManagementApp')
-  .directive('prescreenForm', function ($firebase, FIREBASE_URL, $window, $anchorScroll) {
+  .directive('prescreenForm', function ($routeParams, $firebase, FIREBASE_URL, $window, $anchorScroll) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/prescreenForm.html',
       link: function (scope) {
         var ref = new $window.Firebase(FIREBASE_URL);
         var applicants = $firebase(ref.child('applicant')).$asArray();
+
+        //scope.applicant.propertyAddress = $routeParams.address;
 
         scope.submit = function () {
           applicants.$add(scope.applicant)
