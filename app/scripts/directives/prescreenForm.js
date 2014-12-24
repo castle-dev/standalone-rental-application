@@ -17,7 +17,13 @@ angular.module('propertyManagementApp')
         var ref = new $window.Firebase(FIREBASE_URL);
         var applicants = $firebase(ref.child('applicant')).$asArray();
 
-        //scope.applicant.propertyAddress = $routeParams.address;
+        if ($routeParams.address) {
+          // Links to the prescreen should always
+          // have the property address in the URL
+          var rpAddress = $routeParams.address;
+          var address = rpAddress.replace(/_/g, ' ');
+          scope.propertyAddress = address;
+        }
 
         scope.submit = function () {
           applicants.$add(scope.applicant)

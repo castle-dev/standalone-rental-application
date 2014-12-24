@@ -53,6 +53,9 @@ angular
       .when('/apply/:address', {
         templateUrl: 'views/prescreen.html',
       })
+      .when('/apply', {
+        templateUrl: 'views/prescreen.html',
+      })
       .when('/properties', {
         templateUrl: 'views/properties.html',
       })
