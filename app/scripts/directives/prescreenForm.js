@@ -9,13 +9,13 @@
  * for signing in
  */
 angular.module('propertyManagementApp')
-  .directive('prescreenForm', function ($routeParams, $firebase, FIREBASE_URL, $window, $anchorScroll) {
+  .directive('prescreenForm', function ($routeParams, $location, $firebase, FIREBASE_URL) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/prescreenForm.html',
       link: function (scope) {
         var ref = new $window.Firebase(FIREBASE_URL);
-        var applicants = $firebase(ref.child('applicant')).$asArray();
+        var applicants = $firebase(ref.child('applicants')).$asArray();
 
         if ($routeParams.address) {
           // Links to the prescreen should always
@@ -28,8 +28,7 @@ angular.module('propertyManagementApp')
         scope.submit = function () {
           applicants.$add(scope.applicant)
             .then(function () {
-              scope.submitted = true;
-              $anchorScroll();
+              $location.path('/prescreen-submitted');
             });
         };
       }
