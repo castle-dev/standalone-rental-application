@@ -130,7 +130,7 @@ input::-webkit-inner-spin-button {
   
 .centered-logo {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 30px;
   width: 110px;
   }
 
@@ -597,7 +597,7 @@ input[type="radio"] {
   -webkit-appearance: none;
   background-color: white;
   vertical-align: text-bottom;
-  margin-right: 4px;
+  margin-right: 8px;
   border: 2px solid @grey;
   padding: 9px;
   position: relative;
@@ -639,7 +639,7 @@ input[type="radio"]:checked:after {
   }
 
 fieldset {
-  margin: 10px 0;
+  margin: 15px 0;
   }
     
 label {
@@ -758,7 +758,7 @@ form:not(.ng-submitted) .invalid-text {
   
 // Puts first and last name on the same line
 .both-names-input {
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	}
 	
 .both-names-input label[for="last-name"],
@@ -784,6 +784,10 @@ form:not(.ng-submitted) .invalid-text {
 .both-names-input + fieldset {
   margin-top: 0px;
   }
+  
+fieldset + .both-names-input {
+	margin-top: -10px;
+	}
   
 // Day, Month, Year on the same line
 .date-input fieldset {
@@ -921,9 +925,11 @@ form:not(.ng-submitted) .invalid-text {
    transition-delay: 0s;
    z-index: 100;
    }
+   
 .validation li[ng-message="required"] {
   display: none;
-}
+	}
+
 .validation li.ng-enter {
    opacity: 0;
    top: 0;
@@ -933,20 +939,18 @@ form:not(.ng-submitted) .invalid-text {
    transition: all ease-in 0s;
    opacity: 0;
    }
-<<<<<<< HEAD
-   
-=======
 
 *:focus + div .validation li {
   opacity: 0;
   }
 
->>>>>>> eb6d395b1e148d0226054ff5e6c86fa5cf8dcbd8
 input.ng-touched.ng-invalid:not(.ng-valid), textarea.ng-touched.ng-invalid:not(.ng-valid), select.ng-touched.ng-invalid:not(.ng-valid) {
   border-color: @red;
   }
 
-input.ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid-required.ng-valid:not(.ng-invalid), select.ng-valid-required.ng-valid:not(.ng-invalid) {
+input[type="text"].ng-valid-required.ng-valid:not(.ng-invalid), input[type="number"].ng-valid-required.ng-valid:not(.ng-invalid),
+input[type="password"].ng-valid-required.ng-valid:not(.ng-invalid), 
+input[type="tel"].ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid-required.ng-valid:not(.ng-invalid), select.ng-valid-required.ng-valid:not(.ng-invalid) {
   border-color: @green;
   }
 
