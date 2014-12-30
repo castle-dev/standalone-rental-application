@@ -921,7 +921,9 @@ form:not(.ng-submitted) .invalid-text {
    transition-delay: 0s;
    z-index: 100;
    }
-
+.validation li[ng-message="required"] {
+  display: none;
+}
 .validation li.ng-enter {
    opacity: 0;
    top: 0;
@@ -931,7 +933,15 @@ form:not(.ng-submitted) .invalid-text {
    transition: all ease-in 0s;
    opacity: 0;
    }
+<<<<<<< HEAD
    
+=======
+
+*:focus + div .validation li {
+  opacity: 0;
+  }
+
+>>>>>>> eb6d395b1e148d0226054ff5e6c86fa5cf8dcbd8
 input.ng-touched.ng-invalid:not(.ng-valid), textarea.ng-touched.ng-invalid:not(.ng-valid), select.ng-touched.ng-invalid:not(.ng-valid) {
   border-color: @red;
   }
@@ -964,7 +974,7 @@ input.ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid-required.ng
 	border-radius: 5px;
 	margin: 20px 0;
 	width: 100%;
-	max-width: 400px;
+	max-width: 600px;
 	}
 	
 .errors-bang,
@@ -1535,7 +1545,6 @@ img.forgot-password {
   width: 250px;
   }
   
-      
 @media only screen and (max-width: 1024px) {
 
 // Text

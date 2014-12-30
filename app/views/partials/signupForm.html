@@ -27,7 +27,7 @@
 
   <fieldset>
     <label for="password">Choose a password:</label>
-    <input type="password" name="password" placeholder="Easy to remember, hard to guess" ng-model="newUser.password" required ng-minlength="8" ng-pattern="/\d+/g" validation-msg-pattern="still needs a number!">
+    <input type="password" name="password" placeholder="Easy to remember, hard to guess" ng-model="newUser.password"  ng-minlength="8" ng-pattern="/[0-9]/" ng-required="true" validation-msg-pattern="still needs a number!" />
 
     <div class="password-requirements">
       <div class="requirement">
@@ -42,6 +42,6 @@
 
   <errors></errors>
 
-  <button type="submit" class="btn btn-medium btn-green">Create My Account &rarr;</button>
+  <button id="signup-submit-button" type="submit" class="btn btn-medium btn-green">Create My Account &rarr;</button>
 
 </form>
