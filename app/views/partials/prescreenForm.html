@@ -68,7 +68,15 @@
       <input type="number" ng-model="applicant.monthlyIncome" required>
     </fieldset>
 
-    
+    <fieldset>
+      <label for="bank-account">Do you have a bank account?</label>
+      <div>
+        <input type="radio" name="bank-account" ng-value="true" ng-model="applicant.hasBankAccount" id="bank-account-yes" required><label for="bank-account-yes">Yes</label>
+      </div>
+      <div>
+        <input type="radio" name="bank-account" ng-value="false" ng-model="applicant.hasBankAccount" id="bank-account-no" required><label for="bank-account-no">No</label>
+      </div>
+    </fieldset>
 
     <fieldset>
       <label for="firstRental">This is my first time renting</label>
