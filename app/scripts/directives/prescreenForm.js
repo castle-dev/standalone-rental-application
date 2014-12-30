@@ -9,7 +9,7 @@
  * for signing in
  */
 angular.module('propertyManagementApp')
-  .directive('prescreenForm', function ($routeParams, $location, $firebase, FIREBASE_URL) {
+  .directive('prescreenForm', function ($routeParams, $location, $window, $firebase, FIREBASE_URL) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/prescreenForm.html',
