@@ -1,5 +1,9 @@
 <div>
   <form ng-hide="submitted" name="prescreen" ng-submit="submit()">
+    <fieldset>
+      <label for="property-address">Address of rental property:</label>
+      <input type="text" name="property-address" placeholder="123 Main St" ng-model="propertyAddress" required>
+    </fieldset>
     <div class="both-names-input">
       <fieldset>
         <label for="first-name">Your name:</label>
@@ -40,13 +44,13 @@
 
     <fieldset>
       <label for="hasPets">Do you have pets?</label>
+      <div class="help-text">Aside from service animals</div>
       <div>
         <input type="radio" name="hasPets" ng-value="true" ng-model="applicant.hasPets" id="has-pets-yes" required><label for="has-pets-yes">Yes</label>
       </div>
       <div>
         <input type="radio" name="hasPets" ng-value="false" ng-model="applicant.hasPets" id="has-pets-no" required><label for="has-pets-no">No</label>
       </div>
-      <div class="help-text">Aside from service animals</div>
     </fieldset>
 
     <fieldset>
@@ -77,7 +81,4 @@
 
   </form>
 
-  <div ng-show="submitted">
-    <h1>Thanks! We'll be in touch soon.</h1>
-  </div>
 </div>

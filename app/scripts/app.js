@@ -50,6 +50,9 @@ angular
       .when('/welcome', {
         templateUrl: 'views/welcome.html',
       })
+      .when('/apply/:address', {
+        templateUrl: 'views/prescreen.html',
+      })
       .when('/apply', {
         templateUrl: 'views/prescreen.html',
       })
