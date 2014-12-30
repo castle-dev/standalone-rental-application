@@ -707,8 +707,8 @@ form:not(.ng-submitted) .invalid-text {
   margin: -5px 0 5px 0;
 }
 .validation-success {
-  opacity: 1;
   display: none;
+  opacity: 1;
   position: absolute;
   right: -7.2px;
   bottom: 2.8px;
@@ -718,7 +718,7 @@ form:not(.ng-submitted) .invalid-text {
   line-height: 36px;
   text-align: center;
   border-radius: 36px;
-  color: #3AB4AD;
+  color: #3ab4ad;
   transition: all ease-out 0.32s;
 }
 .validation-success:after {
@@ -736,28 +736,29 @@ form:not(.ng-submitted) .invalid-text {
   opacity: 0;
 }
 .validation {
-  color: #fff;
+  color: #f9f9f9;
   margin: 0;
   position: relative;
   font-size: 14px;
   overflow: visible;
-  background: #E15E5B;
+  background: #e15e5b;
 }
 .validation li {
   display: block;
   line-height: 1;
-  background: #E15E5B;
+  background: #e15e5b;
   position: absolute;
   right: -4px;
   top: -24px;
   text-align: center;
   font-weight: bold;
   padding: 2px 10px;
-  color: #fff;
+  color: #f9f9f9;
   transform: rotate(0deg);
   transition: all ease-in 0.2s;
   opacity: 1;
   transition-delay: 0s;
+  z-index: 100;
 }
 .validation li.ng-enter {
   opacity: 0;
@@ -767,24 +768,15 @@ form:not(.ng-submitted) .invalid-text {
   transition: all ease-in 0s;
   opacity: 0;
 }
-*:focus + .validation li {
-  background-color: #63bff8 !important;
-}
 input.ng-touched.ng-invalid:not(.ng-valid),
 textarea.ng-touched.ng-invalid:not(.ng-valid),
 select.ng-touched.ng-invalid:not(.ng-valid) {
-  border-color: #E15E5B;
-}
-input:focus.ng-touched.ng-invalid:not(.ng-valid),
-textarea:focus.ng-touched.ng-invalid:not(.ng-valid),
-select:focus,
-select:focus.ng-touched.ng-invalid:not(.ng-valid) {
-  border-color: #63bff8;
+  border-color: #e15e5b;
 }
 input.ng-valid-required.ng-valid:not(.ng-invalid),
 textarea.ng-valid-required.ng-valid:not(.ng-invalid),
 select.ng-valid-required.ng-valid:not(.ng-invalid) {
-  border-color: #3AB4AD;
+  border-color: #3ab4ad;
 }
 .money {
   position: relative;
