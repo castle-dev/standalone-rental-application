@@ -56,9 +56,6 @@ angular
       .when('/apply', {
         templateUrl: 'views/prescreen.html',
       })
-      .when('/prescreen-submitted', {
-        templateUrl: 'views/prescreen.submitted.html',
-      })
       .when('/properties', {
         templateUrl: 'views/properties.html',
       })

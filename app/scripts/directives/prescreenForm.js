@@ -9,7 +9,7 @@
  * for signing in
  */
 angular.module('propertyManagementApp')
-  .directive('prescreenForm', function ($routeParams, $location, $window, $firebase, FIREBASE_URL) {
+  .directive('prescreenForm', function ($routeParams, $window, $firebase, FIREBASE_URL, $anchorScroll) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/prescreenForm.html',
@@ -28,7 +28,8 @@ angular.module('propertyManagementApp')
         scope.submit = function () {
           applicants.$add(scope.applicant)
             .then(function () {
-              $location.path('/prescreen-submitted');
+              scope.successfulSubmit = true;
+              $anchorScroll();
             });
         };
       }
