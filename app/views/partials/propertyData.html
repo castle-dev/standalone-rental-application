@@ -2,7 +2,7 @@
 <p class="medium property-address">{{ property.city }}, {{ property.stateAbbreviation }} {{ property.zip }}</p>
 
 <slick infinite="true" slides-to-show="2" slides-to-scroll="1" dots="true" init-onload="true" data="property" class="image-carousel">
-  <div ng-repeat="imageUrl in property.images"><img ng-src="{{imageUrl}}" /></div>
+  <div ng-repeat="imageUrl in property.images"><img ng-src="{{ imageUrl }}" /></div>
 </slick>
 
 <h3>Tenants</h3>
@@ -10,7 +10,7 @@
   <table class="tenant-overview">
     <tbody>
       <tr ng-repeat="tenant in tenants">
-        <td class="tenant-photo"><img ng-src="{{ tenant.picture }}" alt="{{ tenant.firstName + ' ' + tenant.lastName }}"></td>
+        <td class="tenant-photo"><img ng-src="{{ tenant.picture || '/images/logo-solo.png' }}" alt="{{ tenant.firstName + ' ' + tenant.lastName }}"></td>
         <td class="tenant-description">
           <span class="tenant-name">{{ tenant.firstName + ' ' + tenant.lastName }}</span><br>
           <span class="tenant-item">Moved in on:</span> {{ tenant.moveInDate | date }}<br>
@@ -27,7 +27,7 @@
     <tbody>
       <tr ng-repeat="tenant in tenants">
         <td>{{ tenant.firstName + ' ' + tenant.lastName }}</td>
-        <td class="amount">${{ tenant.monthlyIncome | number }}</td>
+        <td class="amount">${{ tenant.rent.share | number }}</td>
         <td><div class="rent-circle rent-circle-{{ tenant.rent.status }}"></div></td>
         <td class="status">{{ tenant.rent.label }}</td>
       </tr>
