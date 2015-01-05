@@ -12,11 +12,11 @@
       <tr ng-repeat="tenant in tenants">
         <td class="tenant-photo"><img ng-src="{{ tenant.picture || '/images/logo-solo.png' }}" alt="{{ tenant.firstName + ' ' + tenant.lastName }}"></td>
         <td class="tenant-description">
-          <span class="tenant-name">{{ tenant.firstName + ' ' + tenant.lastName }}</span><br>
-          <span class="tenant-item">Moved in on:</span> {{ tenant.moveInDate | date }}<br>
-          <span class="tenant-item">Salary:</span> ${{ tenant.monthlyIncome | number }}/month<br>
-          <span class="tenant-item">Employment:</span> {{ tenant.jobTitle }}, {{ tenant.employer }}<br>
-          <span class="tenant-income">This property requires {{ tenant.rent.share / tenant.monthlyIncome | percentage }} of {{ tenant.firstName }}&rsquo;s yearly income.</span>
+          <span class="tenant-name">{{ tenant.firstName + ' ' + tenant.lastName }}</span>
+          <span class="tenant-item" ng-if="tenant.moveInDate">Moved in on: {{ tenant.moveInDate | date }}</span>
+          <span class="tenant-item" ng-if="tenant.monthlyIncome">Salary: ${{ tenant.monthlyIncome | number }}/month</span>
+          <span class="tenant-item" ng-if="tenant.jobTitle && tenant.employer">Employment: {{ tenant.jobTitle }}, {{ tenant.employer }}</span>
+          <span class="tenant-income" ng-if="tenant.rent.share && tenant.monthlyIncome">This property requires {{ tenant.rent.share / tenant.monthlyIncome | percentage }} of {{ tenant.firstName }}&rsquo;s yearly income.</span>
         </td>
       </tr>
     </tbody>

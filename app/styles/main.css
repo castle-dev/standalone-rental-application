@@ -1212,6 +1212,9 @@ ul.properties li.add-property {
   font-style: italic;
   color: #6a8186;
 }
+.tenant-description span {
+  display: block;
+}
 .maintenance-status {
   margin-bottom: 40px;
 }
