@@ -123,7 +123,7 @@ input::-webkit-inner-spin-button {
 #wrapper {
   padding-left: 250px;
 }
-[sidebar] {
+#sidebar {
   left: 0;
   width: 250px;
   background: #e7e7e7;
@@ -132,7 +132,7 @@ input::-webkit-inner-spin-button {
   overflow-y: auto;
   z-index: 1000;
 }
-[content] {
+#content {
   width: 100%;
   padding: 30px 40px;
 }
@@ -1212,6 +1212,9 @@ ul.properties li.add-property {
   font-style: italic;
   color: #6a8186;
 }
+.tenant-description span {
+  display: block;
+}
 .maintenance-status {
   margin-bottom: 40px;
 }
@@ -1345,12 +1348,12 @@ img.forgot-password {
   #wrapper {
     padding-left: 0;
   }
-  [sidebar] {
+  #sidebar {
     left: -250px;
     position: fixed;
     border-radius: 0;
   }
-  [sidebar].sidebar-open {
+  #sidebar.sidebar-open {
     left: 0px;
   }
   .sidebar-nav > .sidebar-brand,
@@ -1358,12 +1361,12 @@ img.forgot-password {
   .sidebar-nav > .sidebar-brand a:hover {
     height: 180px;
   }
-  [content] {
+  #content {
     position: relative;
     padding: 0;
     height: 100%;
   }
-  [content].sidebar-open {
+  #content.sidebar-open {
     left: 250px;
   }
   #mobile-header {
