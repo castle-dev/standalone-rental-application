@@ -803,7 +803,7 @@ select.ng-valid-required.ng-valid:not(.ng-invalid) {
   content: '$';
   position: absolute;
   left: 6px;
-  top: 37px;
+  bottom: 13px;
 }
 .money input {
   padding-left: 15px;
