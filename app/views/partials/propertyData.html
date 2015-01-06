@@ -10,7 +10,10 @@
   <table class="tenant-overview">
     <tbody>
       <tr ng-repeat="tenant in tenants">
-        <td class="tenant-photo"><img ng-src="{{ tenant.picture || '/images/logo-solo.png' }}" alt="{{ tenant.firstName + ' ' + tenant.lastName }}"></td>
+        <td class="tenant-photo">
+          <img ng-show="tenant.picture" ng-src="{{ tenant.picture }}" alt="{{ tenant.firstName + ' ' + tenant.lastName }}">
+          <img ng-hide="tenant.picture" src="/images/logo-solo.png" alt="{{ tenant.firstName + ' ' + tenant.lastName }}">
+        </td>
         <td class="tenant-description">
           <span class="tenant-name">{{ tenant.firstName + ' ' + tenant.lastName }}</span>
           <span class="tenant-item" ng-if="tenant.moveInDate">Moved in on: {{ tenant.moveInDate | date }}</span>
