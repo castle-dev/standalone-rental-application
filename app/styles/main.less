@@ -225,6 +225,12 @@ input::-webkit-inner-spin-button {
   background-color: lighten(@bodytext,5%);
   }
 
+.breadcrumbs {
+	font-size: 90%;
+	font-weight: 400;
+	color: @grey;
+	}
+
 
 // Colors
 @green: #3ab4ad;
@@ -1333,6 +1339,10 @@ ul.properties li a:hover {
 	color: @basecolor;
 	}
 	
+ul.properties li a:active {
+	background: darken(@green, 10%);
+	}
+	
 ul.properties li a img {
 	display: inline;
 	max-width: 90px;
@@ -1689,6 +1699,7 @@ p.small {
   
 #mobile-header {
   display: block;
+  position: fixed;
   width: 100%;
   height: 60px;
   background: @green;
@@ -1700,7 +1711,7 @@ p.small {
   }
   
 #mobile-wrapper {
-  padding: 10px;
+  padding: 20px 10px 10px 10px;
   }
 
 #menu-toggle {
