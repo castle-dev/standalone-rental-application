@@ -19,7 +19,15 @@ describe('Directive: creditCardForm', function() {
         };
       }
     };
+    var mockedProperty = {
+      getCurrentUserProperties: function () {
+        var deferred = q.defer();
+        deferred.resolve({});
+        return deferred.promise;
+      }
+    }
     $provide.value('Auth', mockedAuth);
+    $provide.value('Property', mockedProperty);
   }));
   // load the cached templates
   beforeEach(module('partials'));

@@ -14,7 +14,7 @@ angular.module('propertyManagementApp')
       restrict: 'E',
       templateUrl: 'views/partials/notice.html',
       link: function (scope, elem) {
-        scope.text = 'You need to have a valid credit card on file';
+        scope.text = 'It appears we don\'t have a valid credit card on file for your account';
         scope.nextStep = 'Enter your credit card info \u2192';
         scope.linksTo = '#/creditCard';
         Auth.getCurrentUser().profile.$loaded().then(function (profileData) {
