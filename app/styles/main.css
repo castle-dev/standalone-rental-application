@@ -1187,10 +1187,11 @@ ul.properties li.add-property {
   margin-left: -10px;
   background: #efefef;
   border-radius: 10px;
+  min-width: 300px;
 }
 .tenant-overview td {
   padding: 6px 10px;
-  vertical-align: top;
+  vertical-align: middle;
 }
 .tenant-photo img {
   max-width: 115px;
