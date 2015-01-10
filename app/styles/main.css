@@ -1375,12 +1375,16 @@ img.forgot-password {
   }
   #content {
     position: relative;
+    left: 0;
     padding: 0;
     height: 100%;
-    transition: all 1s linear;
   }
   #content.sidebar-open {
     left: 250px;
+  }
+  #content,
+  #sidebar {
+    transition: all .15s linear;
   }
   #mobile-header {
     display: block;

@@ -1689,14 +1689,19 @@ p.small {
 
 #content {
   position: relative;
+  left: 0;
   padding: 0;
   height: 100%;
-  transition: all 1s linear;
 
   &.sidebar-open {
     left: 250px;
     }
   }
+  
+#content,
+#sidebar {
+  transition: all .15s linear;
+}
   
 #mobile-header {
   display: block;
