@@ -1393,6 +1393,7 @@ img.forgot-password {
     color: #f9f9f9;
     font-weight: 400;
     font-size: 140%;
+    z-index: 1000;
   }
   #mobile-wrapper {
     padding: 30px 20px 0 20px;
