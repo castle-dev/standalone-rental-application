@@ -1377,6 +1377,7 @@ img.forgot-password {
     position: relative;
     padding: 0;
     height: 100%;
+    transition: all 1s linear;
   }
   #content.sidebar-open {
     left: 250px;
@@ -1394,7 +1395,7 @@ img.forgot-password {
     font-size: 140%;
   }
   #mobile-wrapper {
-    padding: 20px 10px 10px 10px;
+    padding: 30px 20px 0 20px;
   }
   #menu-toggle {
     display: inline-block;
@@ -1437,7 +1438,6 @@ img.forgot-password {
     min-width: 0;
     white-space: normal;
     font-size: 85%;
-    margin: 0 auto;
   }
   .rent-status td.month,
   .rent-status-header td {
