@@ -1016,6 +1016,7 @@ table.rent-status + table.rent-status {
   text-align: center;
   border: 1px solid #eaeaea;
   padding: 5px 25px;
+  text-transform: uppercase;
 }
 .rent-circle {
   display: block;
@@ -1106,7 +1107,6 @@ ul.properties li a img {
 ul.properties li.add-property {
   height: 50px;
   line-height: 50px;
-  border: 0;
 }
 .add-disabled,
 .add-disabled:hover {
@@ -1169,6 +1169,9 @@ ul.properties li.add-property {
 .image-carousel div {
   margin-right: 10px;
 }
+.image-carousel img {
+  max-width: 300px;
+}
 .slick-prev {
   margin-left: -5px;
 }
@@ -1188,10 +1191,11 @@ ul.properties li.add-property {
   margin-left: -10px;
   background: #efefef;
   border-radius: 10px;
+  min-width: 300px;
 }
 .tenant-overview td {
-  padding: 6px 10px;
-  vertical-align: top;
+  padding: 6px 10px 0;
+  vertical-align: middle;
 }
 .tenant-photo img {
   max-width: 115px;
