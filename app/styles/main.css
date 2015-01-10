@@ -189,9 +189,16 @@ input::-webkit-inner-spin-button {
   background-color: #3d566e;
 }
 .breadcrumbs {
-  font-size: 90%;
+  font-size: 85%;
   font-weight: 400;
   color: #5f7378;
+}
+.breadcrumbs a {
+  border: 0;
+}
+.breadcrumb-caret {
+  margin: 0 4px;
+  color: #a2b1b5;
 }
 h1,
 h2,

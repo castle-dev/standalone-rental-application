@@ -1,3 +1,7 @@
+<div class="breadcrumbs">
+	<a href="#/properties">Properties</a> <span class="breadcrumb-caret">></span> {{ property.street }}
+</div><!--breadcrumb-->
+
 <h2>{{ property.street }}</h2>
 <p class="medium property-address">{{ property.city }}, {{ property.stateAbbreviation }} {{ property.zip }}</p>
 
@@ -44,5 +48,3 @@
   <p ng-repeat="issue in property.issues">{{ issue }}</p>
   <p ng-show="!property.issues">{{ property.street }} currently has no open maintenance issues.</p>
 </div>
-
-<a href="#/properties" class="back">Back to Properties</a>
