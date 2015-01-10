@@ -13,6 +13,7 @@ angular.module('propertyManagementApp')
   .factory('Auth', function ($firebase, FIREBASE_URL, $window, $location, $q) {
     var ref = new $window.Firebase(FIREBASE_URL); // firebase plugin attaches Firebase object to window
     var currentUser = {};
+    var redirect = null;
 
     var Auth = {
       registerUser: function (newUser) {
@@ -28,9 +29,10 @@ angular.module('propertyManagementApp')
       },
       loginUser: function (user) {
         var deferred = $q.defer();
-        ref.authWithPassword(user, function (err, authData) {
+        ref.authWithPassword(user, function (err) {
           if (err) { deferred.reject(Auth.translateError(err)); }
-          deferred.resolve(authData);
+          deferred.resolve(redirect || '/properties');
+          redirect = null;
         });
         return deferred.promise;
       },
@@ -40,6 +42,7 @@ angular.module('propertyManagementApp')
       },
       getCurrentUser: function () {
         if (!Auth.isUserAuthenticated()) {
+          redirect = $location.path();
           $location.path('/login');
         }
         return currentUser;
@@ -50,6 +53,9 @@ angular.module('propertyManagementApp')
       updateProfile: function (profile) {
         var profileRef = $firebase(ref.child('profile'));
         return profileRef.$set(Auth.getCurrentUser().uid, profile);
+      },
+      getRedirect: function () {
+        return redirect;
       },
       translateError: function (err) {
         if (err.code === 'INVALID_EMAIL') {

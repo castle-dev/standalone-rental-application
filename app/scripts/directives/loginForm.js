@@ -14,10 +14,11 @@ angular.module('propertyManagementApp')
       restrict: 'E',
       templateUrl: 'views/partials/loginForm.html',
       link: function (scope) {
+        scope.redirect = Auth.getRedirect();
         scope.submit = function (user) {
           scope.errors = [];
           Auth.loginUser(user)
-            .then(function () { $location.path('/properties'); })
+            .then(function (to) { $location.path(to); })
             .catch(function (err) {
               scope.errors.push(err);
             });

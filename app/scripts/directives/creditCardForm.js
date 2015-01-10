@@ -9,7 +9,7 @@
  * for updating a user's profile
  */
 angular.module('propertyManagementApp')
-.directive('creditCardForm', function (Auth, Bank, $location) {
+.directive('creditCardForm', function (Auth, Bank, Property, $location) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/creditCardForm.html',
@@ -31,9 +31,15 @@ angular.module('propertyManagementApp')
       scope.callback = function (code, result) {
         scope.errors = [];
         Bank.storeCreditCardToken(code, result).then(function () {
-          $location.path('/welcome');
+          return Property.getCurrentUserProperties();
         }, function (err) {
           scope.errors.push(err);
+        }).then(function (properties) {
+          if (properties.length) {
+            $location.path('/properties');
+          } else {
+            $location.path('/welcome');
+          }
         });
       };
     }

@@ -9,11 +9,12 @@
  * for updating a user's profile
  */
 angular.module('propertyManagementApp')
-.directive('bankAccountForm', function (Bank, $location) {
+.directive('bankAccountForm', function (Bank, $location, Auth) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/bankAccountForm.html',
     link: function (scope) {
+      Auth.getCurrentUser();
       scope.bankAccount = { };
       scope.submit = function () {
         Bank

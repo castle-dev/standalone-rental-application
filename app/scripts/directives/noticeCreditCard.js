@@ -9,17 +9,17 @@
  * for displaying a notice
  */
 angular.module('propertyManagementApp')
-  .directive('noticeBankAccount', function (Auth) {
+  .directive('noticeCreditCard', function (Auth) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/notice.html',
       scope: {},
       link: function (scope, elem) {
-        scope.text = 'Before we can issue payouts to you, you\u2019ll need to link your bank account.';
-        scope.nextStep = 'Link your bank account now \u2192';
-        scope.linksTo = '#/bankAccount';
+        scope.text = 'It appears we don\'t have a valid credit card on file for your account';
+        scope.nextStep = 'Enter your credit card info \u2192';
+        scope.linksTo = '#/creditCard';
         Auth.getCurrentUser().profile.$loaded().then(function (profileData) {
-          if (!profileData.bankAccountToken && !profileData.balancedBankAccountId) { elem.find('.hidden').removeClass('hidden'); }
+          if (!profileData.creditCardToken && !profileData.stripeCustomerId) { elem.find('.hidden').removeClass('hidden'); }
           else { elem.find('.error').addClass('hidden'); }
         });
       }
