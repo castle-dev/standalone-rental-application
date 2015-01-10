@@ -13,6 +13,7 @@ angular.module('propertyManagementApp')
     return {
       restrict: 'E',
       templateUrl: 'views/partials/notice.html',
+      scope: {},
       link: function (scope, elem) {
         scope.text = 'It appears we don\'t have a valid credit card on file for your account';
         scope.nextStep = 'Enter your credit card info \u2192';

@@ -13,6 +13,7 @@ angular.module('propertyManagementApp')
     return {
       restrict: 'E',
       templateUrl: 'views/partials/notice.html',
+      scope: {},
       link: function (scope, elem) {
         scope.text = 'Before we can issue payouts to you, you\u2019ll need to link your bank account.';
         scope.nextStep = 'Link your bank account now \u2192';
