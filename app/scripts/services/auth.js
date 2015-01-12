@@ -61,9 +61,11 @@ angular.module('propertyManagementApp')
         if (err.code === 'INVALID_EMAIL') {
           return 'Invalid email. Please check that you have entered a valid email address';
         } else if (err.code === 'INVALID_PASSWORD') {
-          return 'Invalid password. Please check that you have entered a secure password';
+          return 'Invalid password';
         } else if (err.code === 'EMAIL_TAKEN') {
           return 'That email is already associated with a Castle account. Please use another email address or contact us at (313) 214-2663 for help.';
+        } else if (err.code === 'INVALID_USER') {
+          return 'Hmm... we can\'t find that email in our system';
         } else {
           return err;
         }
