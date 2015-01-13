@@ -52,4 +52,11 @@
   </ul>
 </div>
 
+<div class="documents" ng-if="property.documents.length">
+  <h3>Documents</h3>
+  <ul>
+    <li ng-repeat="document in property.documents"><a ng-href="{{ document.url }}">{{ document.name }}</a></li>
+  </ul>
+</div>
+
 <a href="#/properties" class="back">Back to Properties</a>
