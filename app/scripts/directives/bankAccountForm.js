@@ -9,7 +9,7 @@
  * for updating a user's profile
  */
 angular.module('propertyManagementApp')
-.directive('bankAccountForm', function (Bank, $location, Auth) {
+.directive('bankAccountForm', function (Bank, $location, Auth, Flash) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/bankAccountForm.html',
@@ -20,6 +20,7 @@ angular.module('propertyManagementApp')
         Bank
         .tokenizeBankAccount(scope.bankAccount)
         .then(function (token) { return Bank.storeBankAccountToken(token); })
+        .then(function () { Flash.setMessage('Your bank account has been linked successfully.'); })
         .then(function () { $location.path('/properties'); })
         .catch(function (errors) { scope.errors = errors; });
       };
