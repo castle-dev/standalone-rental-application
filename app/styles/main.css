@@ -1169,9 +1169,6 @@ ul.properties li.add-property {
 .image-carousel div {
   margin-right: 10px;
 }
-.image-carousel img {
-  max-width: 300px;
-}
 .slick-prev {
   margin-left: -5px;
 }
