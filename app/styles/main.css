@@ -1183,6 +1183,14 @@ ul.properties li.add-property {
 .slick-next:hover:before {
   color: #3ab4ad !important;
 }
+@font-face {
+  font-family: "slick";
+  src: url("./fonts/slick.eot");
+  src: url("/images/fonts/slick.eot?#iefix") format("embedded-opentype"), url("/images/fonts/slick.woff") format("woff"), url("/images/fonts/slick.ttf") format("truetype"), url("/images/fonts/slick.svg#slick") format("svg");
+}
+.slick-loading .slick-list {
+  background: #ffffff url("./ajax-loader.gif") center center no-repeat;
+}
 .tenant-overview {
   margin-bottom: 40px;
   margin-left: -10px;

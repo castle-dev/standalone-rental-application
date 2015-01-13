@@ -1438,6 +1438,17 @@ ul.properties li.add-property {
 	color: @green !important;
 	}
 	
+// Image carousel image location overrides
+@font-face {
+	font-family: "slick";
+	src: url("./fonts/slick.eot");
+	src: url("/images/fonts/slick.eot?#iefix") format("embedded-opentype"), url("/images/fonts/slick.woff") format("woff"), url("/images/fonts/slick.ttf") format("truetype"), url("/images/fonts/slick.svg#slick") format("svg");
+	}
+
+.slick-loading .slick-list {
+	background: #fff url("./ajax-loader.gif") center center no-repeat;
+	}
+	
 
 // Tenants
 .tenant-overview {
