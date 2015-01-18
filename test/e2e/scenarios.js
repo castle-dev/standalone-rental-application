@@ -151,7 +151,7 @@ describe('Property Management App ::', function() {
     });
 
     it('should provide a path to resolve the error', function () {
-      element(by.css('div.errors-text a')).click();
+      element(by.css('notice-bank-account div.errors-text a')).click();
       waitForUrlToChangeTo(/bankAccount/);
       expect(browser.getCurrentUrl()).toMatch(/bankAccount/);
     });

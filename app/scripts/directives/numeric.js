@@ -15,12 +15,13 @@ angular.module('propertyManagementApp')
       require: 'ngModel',
       link: function (scope, element, attributes, ngModelCtrl) {
         function fromUser(text) {
+          var input = text;
           var transformedInput = text.replace(/[^0-9]/g, '');
-          if(transformedInput !== text) {
-              ngModelCtrl.$setViewValue(transformedInput);
+          if(transformedInput !== input) {
+              ngModelCtrl.$setViewValue(input);
               ngModelCtrl.$render();
           }
-          return transformedInput;  // or return Number(transformedInput)
+          return transformedInput;
         }
         ngModelCtrl.$parsers.push(fromUser);
       }

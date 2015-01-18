@@ -48,3 +48,17 @@
   <p ng-repeat="issue in property.issues">{{ issue }}</p>
   <p ng-show="!property.issues">{{ property.street }} currently has no open maintenance issues.</p>
 </div>
+
+<div class="additional-info" ng-if="property.additionalInfo.length">
+  <h3>Alerts</h3>
+  <ul>
+    <li ng-repeat="info in property.additionalInfo">{{ info }}</li>
+  </ul>
+</div>
+
+<div class="documents" ng-if="property.documents.length">
+  <h3>Documents</h3>
+  <ul>
+    <li ng-repeat="document in property.documents"><a ng-href="{{ document.url }}">{{ document.name }}</a></li>
+  </ul>
+</div>

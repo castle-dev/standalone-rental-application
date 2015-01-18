@@ -815,7 +815,7 @@ select.ng-valid-required.ng-valid:not(.ng-invalid) {
   content: '$';
   position: absolute;
   left: 6px;
-  bottom: 13px;
+  bottom: 14px;
 }
 .money input {
   padding-left: 15px;
@@ -1183,9 +1183,6 @@ ul.properties li.add-property {
 }
 .image-carousel div {
   margin-right: 10px;
-}
-.image-carousel img {
-  max-width: 300px;
 }
 .slick-prev {
   margin-left: -5px;
