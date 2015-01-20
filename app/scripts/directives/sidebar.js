@@ -8,7 +8,7 @@
  * Directive containing template for the sidebar
  */
 angular.module('propertyManagementApp')
-  .directive('sidebar', function (Sidebar) {
+  .directive('sidebar', function (Sidebar, $location) {
     return {
       restrict: 'A',
       templateUrl: 'views/partials/sidebar.html',
@@ -16,6 +16,7 @@ angular.module('propertyManagementApp')
         scope.sidebar = {
           data: Sidebar.getData()
         };
+        scope.path = $location.path();
         scope.collapseSidebar = Sidebar.toggle;
         var unwatch = scope.$watch('sidebar.data.collapsed', function (collapsed) {
           if (collapsed) {
