@@ -473,9 +473,9 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('e2e:browsers', [
-    'protractor:runChrome',
+    'protractor:runInternetExplorer',
     'protractor:runFirefox',
-    'protractor:runInternetExplorer'
+    'protractor:runChrome'
   ]);
   grunt.registerTask('e2e:chrome', [ 'protractor:runChrome' ]);
   grunt.registerTask('e2e:android', [ 'protractor:runAndroid' ]);
