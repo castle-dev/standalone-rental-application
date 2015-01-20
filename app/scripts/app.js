@@ -62,6 +62,9 @@ angular
       .when('/properties/:propertyId', {
         templateUrl: 'views/property.html',
       })
+      .when('/tenants/:tenantId', {
+        templateUrl: 'views/tenant.html',
+      })
       .otherwise({
         redirectTo: '/properties'
       });
