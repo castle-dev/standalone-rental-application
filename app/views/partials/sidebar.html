@@ -1,6 +1,6 @@
 <ul class="sidebar-nav">
-  <li class="sidebar-brand"><a href="#/properties" ng-click="collapseSidebar()">Castle</a></li>
-  <li><a href="#/properties" ng-click="collapseSidebar()"><i class="fa fa-home"></i> Properties</a></li>
+<li class="sidebar-brand"><a href="#/properties" ng-click="collapseSidebar()">castle</a></li>
+  <li><a href="#/properties" ng-click="collapseSidebar()" ng-class="{ current : path === '/properties' }"><i class="fa fa-home"></i> Properties</a></li>
   <li><a href="http://entercastle.com/contact/" target="_new" ng-click="collapseSidebar()"><i class="fa fa-envelope"></i> Contact Us</a></li>
-  <li><a href="#/logout" ng-click="collapseSidebar()"><i class="fa fa-sign-out"></i> Logout</a></li>
+  <li><a href="#/logout" ng-click="collapseSidebar()"><i class="fa fa-sign-out"></i> Log out</a></li>
 </ul>
