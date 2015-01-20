@@ -188,6 +188,18 @@ input::-webkit-inner-spin-button {
 .sidebar-nav > .sidebar-brand a:hover {
   background-color: #3d566e;
 }
+.breadcrumbs {
+  font-size: 85%;
+  font-weight: 400;
+  color: #5f7378;
+}
+.breadcrumbs a {
+  border: 0;
+}
+.breadcrumb-caret {
+  margin: 0 4px;
+  color: #a2b1b5;
+}
 h1,
 h2,
 h3,
@@ -1098,6 +1110,9 @@ ul.properties li a:hover {
   background: #3ab4ad;
   color: #f9f9f9;
 }
+ul.properties li a:active {
+  background: #2e8d88;
+}
 ul.properties li a img {
   display: inline;
   max-width: 90px;
@@ -1364,14 +1379,20 @@ img.forgot-password {
   }
   #content {
     position: relative;
+    left: 0;
     padding: 0;
     height: 100%;
   }
   #content.sidebar-open {
     left: 250px;
   }
+  #content,
+  #sidebar {
+    transition: all .15s linear;
+  }
   #mobile-header {
     display: block;
+    position: fixed;
     width: 100%;
     height: 60px;
     background: #3ab4ad;
@@ -1380,9 +1401,10 @@ img.forgot-password {
     color: #f9f9f9;
     font-weight: 400;
     font-size: 140%;
+    z-index: 1000;
   }
   #mobile-wrapper {
-    padding: 10px;
+    padding: 80px 20px 0 20px;
   }
   #menu-toggle {
     display: inline-block;
@@ -1425,7 +1447,6 @@ img.forgot-password {
     min-width: 0;
     white-space: normal;
     font-size: 85%;
-    margin: 0 auto;
   }
   .rent-status td.month,
   .rent-status-header td {

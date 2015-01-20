@@ -1,3 +1,7 @@
+<div class="breadcrumbs">
+	<a href="#/properties">Properties</a> <span class="breadcrumb-caret">></span> {{ property.street }}
+</div><!--breadcrumb-->
+
 <h2>{{ property.street }}</h2>
 <p class="medium property-address">{{ property.city }}, {{ property.stateAbbreviation }} {{ property.zip }}</p>
 
@@ -58,5 +62,3 @@
     <li ng-repeat="document in property.documents"><a ng-href="{{ document.url }}">{{ document.name }}</a></li>
   </ul>
 </div>
-
-<a href="#/properties" class="back">Back to Properties</a>

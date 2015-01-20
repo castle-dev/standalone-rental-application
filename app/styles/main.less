@@ -225,6 +225,21 @@ input::-webkit-inner-spin-button {
   background-color: lighten(@bodytext,5%);
   }
 
+.breadcrumbs {
+	font-size: 85%;
+	font-weight: 400;
+	color: @grey;
+	}
+
+.breadcrumbs a {
+	border: 0;
+	}
+
+.breadcrumb-caret {
+	margin: 0 4px;
+	color: lighten(@grey, 25%);
+	}
+	
 
 // Colors
 @green: #3ab4ad;
@@ -1333,6 +1348,10 @@ ul.properties li a:hover {
 	color: @basecolor;
 	}
 	
+ul.properties li a:active {
+	background: darken(@green, 10%);
+	}
+	
 ul.properties li a img {
 	display: inline;
 	max-width: 90px;
@@ -1663,7 +1682,7 @@ p.small {
   border-radius: 0;
 
   &.sidebar-open {
-    left: 0px;
+    left: 0px;  
     }
   }
 
@@ -1675,6 +1694,7 @@ p.small {
 
 #content {
   position: relative;
+  left: 0;
   padding: 0;
   height: 100%;
 
@@ -1683,8 +1703,14 @@ p.small {
     }
   }
   
+#content,
+#sidebar {
+  transition: all .15s linear;
+}
+  
 #mobile-header {
   display: block;
+  position: fixed;
   width: 100%;
   height: 60px;
   background: @green;
@@ -1693,10 +1719,11 @@ p.small {
   color: @basecolor;
   font-weight: 400;
   font-size: 140%;
+  z-index: 1000;
   }
   
 #mobile-wrapper {
-  padding: 10px;
+  padding: 80px 20px 0 20px;
   }
 
 #menu-toggle {
@@ -1749,7 +1776,6 @@ table.rent-status {
 	min-width: 0;
 	white-space: normal;
 	font-size: 85%;
-	margin: 0 auto;
 	}
 	
 .rent-status td.month,
