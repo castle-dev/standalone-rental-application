@@ -1,6 +1,6 @@
 <h1>Welcome, {{ tenant.firstName }}.</h1>
 
-<form ng-submit="submit()" name="tenantBankAccountForm">
+<form ng-submit="submit()" name="tenantBankAccountForm" ng-show="!linked">
 
   <p>Let&rsquo;s get you set up to pay rent online. Here&rsquo;s how it works:</p>
 
@@ -80,3 +80,10 @@
   <p class="termsofservice">By submitting your information, you&rsquo;re agreeing to our <a href="http://entercastle.com/termsofservice" target="_new">Terms of Service</a>.</p>
 
 </form>
+
+<div ng-show="linked">
+
+    <h4>You&rsquo;re all set! We&rsquo;re glad to have you on board.</h4>
+
+    <p class="signup-thanks">We&rsquo;ll text you in a few days, once the micro-deposits are in your account. In the meantime, please enjoy <a href="http://open.spotify.com/user/maxnuss/playlist/1LpOnU0S7GSFg8xpc5oK4h">this Spotify playlist of songs about houses</a>.</p>
+</div>
