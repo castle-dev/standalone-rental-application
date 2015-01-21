@@ -29,14 +29,15 @@ angular.module('propertyManagementApp')
       });
       scope.submit = function () {
         scope.errors = [];
+        var tenant = scope.tenant;
+        var bankAccount = scope.bankAccount;
         if (scope.confirmationMatches) {
-          console.log('Matches, submitting...');
-          //TODO: Store the tenant's phone number
-          //TODO: Tokenize and store the tenant's bank account
+          Tenant.updatePhoneNumber(tenant)
+          .then(function () { return Tenant.linkBankAccount(tenant, bankAccount); })
+          .catch(function (err) { scope.errors.push(err); });
         } else {
           scope.errors.push('Your bank account confirmation doesn\'t match!');
         }
-        console.log(scope.bankAccount);
       };
     }
   };
