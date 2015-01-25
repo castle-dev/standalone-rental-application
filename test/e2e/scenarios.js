@@ -9,6 +9,20 @@ function makeId () {
   }
   return text;
 }
+function waitForUrlToChangeTo (urlRegex) {
+    var currentUrl;
+    return browser.getCurrentUrl()
+    .then(function storeCurrentUrl(url) {
+      currentUrl = url;
+    })
+    .then(function waitForUrlToChangeTo() {
+      return browser.wait(function waitForUrlToChangeTo() {
+        return browser.getCurrentUrl().then(function compareCurrentUrl(url) {
+          return urlRegex.test(url);
+        });
+      });
+    });
+}
 var testUser = {
   email: 'optimus.prime.' + makeId() + '@gmail.com',
   password: 'fakepassword1'
@@ -18,6 +32,7 @@ describe('Property Management App ::', function() {
 
   it('should redirect to the login page', function() {
     browser.get('/');
+    waitForUrlToChangeTo(/login/);
     expect(browser.getCurrentUrl()).toMatch(/login/);
   });
 
@@ -81,6 +96,7 @@ describe('Property Management App ::', function() {
       emailInput.sendKeys(testUser.email);
       phoneNumberInput.sendKeys('1011011100');
       passwordInput.sendKeys(testUser.password + '\n');
+      waitForUrlToChangeTo(/creditCard/);
       expect(browser.getCurrentUrl()).toMatch(/creditCard/);
     });
 
@@ -90,11 +106,13 @@ describe('Property Management App ::', function() {
       creditCardExpiryMonthInput.sendKeys('11');
       creditCardExpiryYearInput.sendKeys('2017');
       creditCardCvcInput.sendKeys('123\n');
+      waitForUrlToChangeTo(/welcome/);
       expect(browser.getCurrentUrl()).toMatch(/welcome/);
     });
 
     it('should allow users to log out', function () {
       browser.get('/#/logout');
+      waitForUrlToChangeTo(/login/);
       expect(browser.getCurrentUrl()).toMatch(/login/);
     });
 
@@ -123,6 +141,7 @@ describe('Property Management App ::', function() {
     it('should submit a valid form and redirect to home', function () {
       emailInput.sendKeys(testUser.email);
       passwordInput.sendKeys(testUser.password + '\n');
+      waitForUrlToChangeTo(/properties/);
       expect(browser.getCurrentUrl()).toMatch(/properties/);
     });
 
@@ -133,6 +152,7 @@ describe('Property Management App ::', function() {
 
     it('should provide a path to resolve the error', function () {
       element(by.css('notice-bank-account div.errors-text a')).click();
+      waitForUrlToChangeTo(/bankAccount/);
       expect(browser.getCurrentUrl()).toMatch(/bankAccount/);
     });
 
@@ -145,6 +165,7 @@ describe('Property Management App ::', function() {
       bankAccountRoutingNumberInput.sendKeys('021000021');
       bankAccountAccountNumberInput.sendKeys('9900000002');
       bankAccountAccountNumberConfirmationInput.sendKeys('9900000002\n');
+      waitForUrlToChangeTo(/properties/);
       expect(browser.getCurrentUrl()).toMatch(/properties/);
     });
 
