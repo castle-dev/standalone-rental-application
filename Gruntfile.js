@@ -380,12 +380,22 @@ module.exports = function (grunt) {
       },
       runChrome: {
         options: {
-          args: { browser: 'chrome' }
+          args: {
+            capabilities: {
+              browserName: 'chrome',
+              platform: 'WINDOWS'
+            }
+          }
         }
       },
       runFirefox: {
         options: {
-          args: { browser: 'firefox' }
+          args: {
+            capabilities: {
+              browserName: 'firefox',
+              platform: 'WINDOWS'
+            }
+          }
         }
       },
       runSafari: {
