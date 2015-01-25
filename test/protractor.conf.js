@@ -4,7 +4,7 @@ var ref;
 
 exports.config = {
 
-  allScriptsTimeout: 30000,
+  allScriptsTimeout: 120000,
 
   specs: [
     'e2e/*.js'
@@ -18,7 +18,7 @@ exports.config = {
   framework: 'jasmine',
 
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 120000,
   },
 
   'appium-version' : '1.2.1',
@@ -27,6 +27,9 @@ exports.config = {
     Firebase = require('firebase');
     ref = new Firebase(process.env.FIREBASE_URL);
     ref.set({}); // empty the database
+    // implicit and page load timeouts
+    browser.manage().timeouts().pageLoadTimeout(40000);
+    browser.manage().timeouts().implicitlyWait(25000);
   },
 
   onComplete: function () {
