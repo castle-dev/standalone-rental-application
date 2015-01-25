@@ -4,8 +4,6 @@ var ref;
 
 exports.config = {
 
-  allScriptsTimeout: 30000,
-
   specs: [
     'e2e/*.js'
   ],
@@ -16,12 +14,6 @@ exports.config = {
   baseUrl: process.env.BASE_URL,
 
   framework: 'jasmine',
-
-  jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000,
-  },
-
-  'appium-version' : '1.2.1',
 
   onPrepare: function () {
     Firebase = require('firebase');
