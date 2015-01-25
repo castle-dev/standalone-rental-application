@@ -383,7 +383,7 @@ module.exports = function (grunt) {
           args: {
             capabilities: {
               browserName: 'chrome',
-              platform: 'WINDOWS'
+              platform: 'VISTA'
             }
           }
         }
@@ -393,7 +393,7 @@ module.exports = function (grunt) {
           args: {
             capabilities: {
               browserName: 'firefox',
-              platform: 'WINDOWS'
+              platform: 'MAC'
             }
           }
         }
@@ -488,6 +488,8 @@ module.exports = function (grunt) {
     'protractor:runChrome'
   ]);
   grunt.registerTask('e2e:chrome', [ 'protractor:runChrome' ]);
+  grunt.registerTask('e2e:firefox', [ 'protractor:runFirefox' ]);
+  grunt.registerTask('e2e:ie', [ 'protractor:runInternetExplorer' ]);
   grunt.registerTask('e2e:android', [ 'protractor:runAndroid' ]);
   grunt.registerTask('e2e:iPhone', [ 'protractor:runiPhone' ]);
   grunt.registerTask('e2e:iPad', [ 'protractor:runiPhone' ]);
