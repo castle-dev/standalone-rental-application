@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+	<title>Add a Property | Castle: Demo App</title>
+
+	<meta name="viewport" content="with=device-width, initial-scale=1.0, user-scalable=no">
+
+	<!--iOS-specific stuff-->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="Castle">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+	<!-- Jquery -->
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	
+	<!--Bootstrap css-->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+	<!-- Bootstrap js -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<!--fonts-->
+	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic" rel="stylesheet" type="text/css" />
+
+	<!--Font Awesome-->
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="../css/main.css" />
+
+	<link rel="shortcut icon" href="../images/favicon.png" />
+
+</head>
+
+<body>
+
+	 <div id="wrapper">
+
+		  <div id="sidebar">
+				<ul class="sidebar-nav">
+					 <li class="sidebar-brand"><a href="index.html">Castle</a></li>
+					<li><a href="properties.html"><i class="fa fa-home"></i> Properties</a></li>
+					 <li><a href="documents.html"><i class="fa fa-newspaper-o"></i> Documents</a></li>
+					 <li><a href="http://entercastle.com/contact/" target="_new"><i class="fa fa-envelope"></i> Contact Us</a></li>
+					 <li><a href="http://entercastle.com/contact/" target="_new"><i class="fa fa-circle"></i> Log Out</a></li>
+				</ul>
+		  </div><!--sidebar-->
+
+		  <div id="content">
+				<div id="mobile-header">
+					  <a id="menu-toggle" href="#"><i class="fa fa-bars"></i></a>
+					  Add a Property
+				</div><!--mobile-header-->
+													
+					<div id="multi-progress" class="four-items">
+					 <div class="item complete">
+						<div class="circle"></div>
+						Basic Information
+					 </div><!--item-->
+
+					 <div class="item in-progress">
+						<div class="circle"></div>
+						Maintenance and Utilities
+					 </div><!--item-->
+
+					 <div class="item">
+						<div class="circle"></div>
+						Tenants
+					 </div><!--item-->
+
+					 <div class="item">
+						<div class="circle"></div>
+						Miscellaneous
+					 </div><!--item-->
+				  </div><!--multi-progress-->
+
+					<h2>Add a Property</h2>
+					
+					<div class="need-help">
+						<p>Need help? Use the chat box below, or call us at (313) 214-2664.</p>
+						<img src="../images/castle-guy-on-phone.png" alt="Man on phone" />
+					</div><!--need-help-->
+										
+						<div class="solo-form left">
+	 
+							<form action="add_property_3.html">
+							
+								<fieldset>
+									<label for="known-issues">Does this property have any known maintenance issues?</label>
+									<div class="one-line-radio">
+									  	<input type="radio" name="known-issues" id="known-issues-yes" required><label for="known-issues-yes">Yes</label>
+									 	<input type="radio" name="known-issues" id="known-issues-no" required><label for="known-issues-no">No</label>
+									</div><!--one-line-radio-->
+								</fieldset>
+								
+								<!--This next section shows only if they select "Yes" above-->
+								<fieldset>
+									<textarea name="known-issues-details" placeholder="Please elaborate..."></textarea>
+								</fieldset>
+								
+								<fieldset>
+									<label for="utilities-name">In whose name are the utilities at this property?</label>
+									<input type="text" name="utilities-name" />
+								</fieldset>		
+								
+								<fieldset>
+									<label for="utility-bills">Does this property have any unpaid utility bills or utility shutoffs?</label>
+									<div class="one-line-radio">
+									  	<input type="radio" name="utility-bills" id="utility-bills-yes" required><label for="utility-bills-yes">Yes</label>
+									 	<input type="radio" name="utility-bills" id="utility-bills-no" required><label for="utility-bills-no">No</label>
+									</div><!--one-line-radio-->
+								</fieldset>
+								
+								<!--This next section shows only if they select "Yes" above-->
+								<fieldset>
+									<textarea name="utility-bills-details" placeholder="Please elaborate..."></textarea>
+								</fieldset>
+								
+								<fieldset>
+									<label for="utility-providers">Who are the utility providers for this property?</label>
+									<table class="utility-providers">
+										<tr>
+											<td><label for="utility-heat">Heat:</label></td>
+											<td><input type="text" name="utility-heat" /></td>
+										</tr>		
+										<tr>
+											<td><label for="utility-electric">Electric:</label></td>
+											<td><input type="text" name="utility-electric" /></td>
+										</tr>
+										<tr>
+											<td><label for="utility-water">Water:</label></td>
+											<td><input type="text" name="utility-water" /></td>
+										</tr>		
+										<tr>
+											<td><label for="utility-sewage">Sewage:</label></td>
+											<td><input type="text" name="utility-sewage" /></td>
+										</tr>
+									</table>
+								</fieldset>
+								
+								<fieldset>
+									<label for="avg-bill">What is this property&rsquo;s average monthly utility bill?</label>
+									<input type="text" name="avg-bill" />
+									<div class="help-text">For all utilities combined.</div>
+								</fieldset>
+							
+							<button class="btn btn-green btn-medium">Save and Continue</button>
+				
+							</form>
+							
+						</div><!--solo-form-->
+						
+
+				
+		  </div><!--content-->
+
+	 </div><!--wrapper-->
+    
+<!-- Olark -->
+<script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+f[z]=function(){
+(a.s=a.s||[]).push(arguments)};var a=f[z]._={
+},q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+0:+new Date};a.P=function(u){
+a.p[u]=new Date-a.p[0]};function s(){
+a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+b.contentWindow[g].open()}catch(w){
+c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('9301-588-10-5711');/*]]>*/</script><noscript><a href="https://www.olark.com/site/9301-588-10-5711/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+</body>
+
+</html>
+
+<!-- JS for sidebar toggle. Must come after body. -->
+<script src="js/sidebar.js"></script>
