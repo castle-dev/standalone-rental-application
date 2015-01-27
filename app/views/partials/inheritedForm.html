@@ -1,0 +1,62 @@
+<div>
+  <form ng-hide="submitted" name="inherited" ng-submit="submit()">
+
+    <fieldset>
+      <label for="property-address">Address of rental property:</label>
+      <input type="text" name="property-address" placeholder="123 Main St" ng-model="address" required>
+    </fieldset>
+    <div class="both-names-input">
+      <fieldset>
+        <label for="first-name">Your name:</label>
+        <input type="text" name="first-name" placeholder="Tommy" ng-model="tenant.firstName" required>
+      </fieldset>
+
+      <fieldset>
+        <label for="last-name"></label>
+        <input type="text" name="last-name" placeholder="Tenant" ng-model="tenant.lastName" required>
+      </fieldset>
+    </div>
+
+    <fieldset>
+      <label for="email-address">Your email address:</label>
+      <input type="email" name="email-address" placeholder="tommytenant@gmail.com" ng-model="tenant.email" required>
+      <div class="help-text">We won&rsquo;t send you spam or anything lame</div>
+    </fieldset>
+
+    <fieldset>
+      <label for="phone-number">Your cell phone number:</label>
+      <input type="tel" name="phone-number" ui-mask="(999) 999-9999" ng-model="tenant.phoneNumber" required>
+    </fieldset>
+    
+    <fieldset>
+      <label for="other-occupants">Name(s) of other occupant(s):</label>
+      <input type="email" name="email-address" placeholder="Tammy Tenant, Teddy Tenant" ng-model="tenant.otherOccupants">
+    </fieldset>
+    
+    <fieldset>
+      <label for="pets">Name(s) and type(s) of pet(s):</label>
+      <input type="email" name="email-address" placeholder="Rex, Dog; Shirley, Cat" ng-model="tenant.pets">
+    </fieldset>
+   
+    <fieldset>
+      <label for="on-lease">Are you on a lease?:</label>
+      <div class="one-line-radio">
+        <input type="radio" name="on-lease" ng-value="true" ng-model="tenant.onLease" id="on-lease-yes" required><label for="on-lease-yes">Yes</label>
+        <input type="radio" name="on-lease" ng-value="false" ng-model="tenant.onLease" id="on-lease-no" required><label for="on-lease-no">No</label>
+      </div><!--one-line-radio-->
+    </fieldset>
+
+    <fieldset class="money" ng-show="tenant.onLease">
+      <label for="rent-amount">Rent amount:</label>
+      <input type="number" ng-model="tenant.rentAmount" required>
+    </fieldset>
+
+    
+
+    <errors></errors>
+
+    <button type="submit" class="btn btn-medium btn-green">Submit Application &rarr;</button>
+
+  </form>
+
+</div>
