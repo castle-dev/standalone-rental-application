@@ -804,6 +804,7 @@ select.ng-touched.ng-invalid:not(.ng-valid) {
   border-color: #e15e5b;
 }
 input[type="text"].ng-valid-required.ng-valid:not(.ng-invalid),
+input[type="email"].ng-valid-required.ng-valid:not(.ng-invalid),
 input[type="number"].ng-valid-required.ng-valid:not(.ng-invalid),
 input[type="password"].ng-valid-required.ng-valid:not(.ng-invalid),
 input[type="tel"].ng-valid-required.ng-valid:not(.ng-invalid),
