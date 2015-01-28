@@ -27,17 +27,17 @@
       <label for="phone-number">Your cell phone number:</label>
       <input type="tel" name="phone-number" ui-mask="(999) 999-9999" ng-model="tenant.phoneNumber" required>
     </fieldset>
-    
+
     <fieldset>
       <label for="other-occupants">Name(s) of other occupant(s):</label>
-      <input type="email" name="email-address" placeholder="Tammy Tenant, Teddy Tenant" ng-model="tenant.otherOccupants">
+      <input type="text" name="other-occupants" placeholder="Tammy Tenant, Teddy Tenant" ng-model="tenant.otherOccupants">
     </fieldset>
-    
+
     <fieldset>
       <label for="pets">Name(s) and type(s) of pet(s):</label>
-      <input type="email" name="email-address" placeholder="Rex, Dog; Shirley, Cat" ng-model="tenant.pets">
+      <input type="text" name="pets" placeholder="Rex, Dog; Shirley, Cat" ng-model="tenant.pets">
     </fieldset>
-   
+
     <fieldset>
       <label for="on-lease">Are you on a lease?:</label>
       <div class="one-line-radio">
@@ -48,10 +48,8 @@
 
     <fieldset class="money" ng-show="tenant.onLease">
       <label for="rent-amount">Rent amount:</label>
-      <input type="number" ng-model="tenant.rentAmount" required>
+      <input type="number" ng-model="tenant.rentAmount" ng-required="tenant.onLease">
     </fieldset>
-
-    
 
     <errors></errors>
 
