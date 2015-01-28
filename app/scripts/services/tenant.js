@@ -56,6 +56,9 @@ angular.module('propertyManagementApp')
           }
           return deferred.promise;
         });
+      },
+      saveInherited: function (inheritedTenant, address) {
+        return $firebase(ref.child('tenants').child('inherited').child(address)).$push(inheritedTenant);
       }
     };
 

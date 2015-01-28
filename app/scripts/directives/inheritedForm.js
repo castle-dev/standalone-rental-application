@@ -9,12 +9,11 @@
  * for signing in
  */
 angular.module('propertyManagementApp')
-  .directive('inheritedForm', function ($routeParams, $window, $firebase, FIREBASE_URL, $anchorScroll) {
+  .directive('inheritedForm', function ($routeParams, $anchorScroll, Tenant) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/inheritedForm.html',
       link: function (scope) {
-        var ref = new $window.Firebase(FIREBASE_URL);
 
         if ($routeParams.address) {
           // Links to the form should always
@@ -25,12 +24,11 @@ angular.module('propertyManagementApp')
         }
 
         scope.submit = function () {
-          var inherited = $firebase(ref.child('inheriteds').child(scope.address)).$asArray();
-          inherited.$add(scope.tenant)
-            .then(function () {
-              scope.successfulSubmit = true;
-              $anchorScroll();
-            });
+          Tenant.saveInherited(scope.tenant, scope.address)
+          .then(function () {
+            scope.successfulSubmit = true;
+            $anchorScroll();
+          });
         };
       }
     };
