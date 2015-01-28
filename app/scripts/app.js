@@ -59,6 +59,9 @@ angular
       .when('/inherited/:address', {
         templateUrl: 'views/inherited.html',
       })
+      .when('/inherited/', {
+        templateUrl: 'views/inherited.html',
+      })
       .when('/properties', {
         templateUrl: 'views/properties.html',
       })
