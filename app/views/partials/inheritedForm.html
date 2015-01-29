@@ -51,6 +51,16 @@
       <input type="number" ng-model="tenant.rentAmount" ng-required="tenant.onLease">
     </fieldset>
 
+    <fieldset ng-show="tenant.onLease">
+      <label for="lease">Please upload a copy of your lease</label>
+      <span class="btn btn-default btn-file">
+          Browse <input type="file" name="lease" file>
+      </span>
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        60%
+      </div>
+    </fieldset>
+
     <errors></errors>
 
     <button type="submit" class="btn btn-medium btn-green">Submit Application &rarr;</button>
