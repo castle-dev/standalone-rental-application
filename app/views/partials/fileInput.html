@@ -1,6 +1,6 @@
 <div>
   <span class="btn btn-default btn-file">
-    Browse <input type="file" name="lease">
+    {{ file.name || 'Browse' }} <input type="file" name="lease">
   </span>
   <div class="progress-bar" role="progressbar" style="width: {{ progress }}%;">
     {{ progress }}%
