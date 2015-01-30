@@ -396,7 +396,8 @@ module.exports = function (grunt) {
           args: {
             capabilities: {
               browserName: 'firefox',
-              platform: 'MAC'
+              platform: 'MAC',
+              version: '34'
             }
           }
         }
