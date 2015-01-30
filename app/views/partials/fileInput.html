@@ -3,6 +3,6 @@
     {{ file.name || 'Browse' }} <input type="file" name="lease">
   </span>
   <div class="progress-bar" role="progressbar" style="width: {{ progress }}%;">
-    {{ progress }}%
+    {{ progress | number:0 }}%
   </div>
 </div>

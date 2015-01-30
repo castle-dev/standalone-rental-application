@@ -9,17 +9,26 @@
  * for uploading files from the app
  */
 angular.module('propertyManagementApp')
-.directive('fileInput', function() {
+.directive('fileInput', function (Uploader) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/fileInput.html',
     link: function(scope, el){
-      el.find('input').bind('change', function(event){
-        scope.progress = 60;
+      el.find('input').bind('change', function (event){
         var files = event.target.files;
         var file = files[0];
         scope.file = file;
-        //TODO: upload the file
+        scope.progress = 0;
+        scope.file.uploaded = false;
+        Uploader.saveFile(scope.file)
+        .then(function (url) {
+          scope.file.uploaded = true;
+          scope.file.url = url;
+        }, function (err) {
+          if (err) { scope.errors.push('There was an error uploading your file, sorry about that! Please try again'); }
+        }, function (progress) {
+          scope.progress = progress;
+        });
         scope.$apply();
       });
     }
