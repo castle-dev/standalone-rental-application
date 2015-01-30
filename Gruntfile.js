@@ -364,7 +364,10 @@ module.exports = function (grunt) {
         constants: {
           ENV: process.env.ENV,
           FIREBASE_URL: process.env.FIREBASE_URL,
-          STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY
+          STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
+          AMAZON_S3_PUBLIC_ACCESS_KEY: process.env.AMAZON_S3_PUBLIC_ACCESS_KEY,
+          AMAZON_S3_PUBLIC_SECRET_KEY: process.env.AMAZON_S3_PUBLIC_SECRET_KEY,
+          AMAZON_S3_PUBLIC_BUCKET: process.env.AMAZON_S3_PUBLIC_BUCKET
         }
       },
       build: {
@@ -393,7 +396,8 @@ module.exports = function (grunt) {
           args: {
             capabilities: {
               browserName: 'firefox',
-              platform: 'MAC'
+              platform: 'MAC',
+              version: '34'
             }
           }
         }

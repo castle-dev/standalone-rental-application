@@ -56,6 +56,12 @@ angular
       .when('/apply', {
         templateUrl: 'views/prescreen.html',
       })
+      .when('/inherited/:address', {
+        templateUrl: 'views/inherited.html',
+      })
+      .when('/inherited/', {
+        templateUrl: 'views/inherited.html',
+      })
       .when('/properties', {
         templateUrl: 'views/properties.html',
       })
