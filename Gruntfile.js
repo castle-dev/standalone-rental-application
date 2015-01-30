@@ -41,7 +41,7 @@ module.exports = function (grunt) {
         }
       },
       jsTest: {
-        files: ['test/{,*/}*.js'],
+        files: ['test/**/*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
       styles: {
