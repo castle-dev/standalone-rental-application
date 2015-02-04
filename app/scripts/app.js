@@ -65,6 +65,9 @@ angular
       .when('/properties', {
         templateUrl: 'views/properties.html',
       })
+      .when('/properties/add', {
+        templateUrl: 'views/addProperty.html',
+      })
       .when('/properties/:propertyId', {
         templateUrl: 'views/property.html',
       })
