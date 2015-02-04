@@ -15,7 +15,7 @@ angular.module('propertyManagementApp')
       templateUrl: 'views/partials/propertiesList.html',
       link: function (scope) {
         Property.getCurrentUserProperties()
-        .then(function (properties) { 
+        .then(function (properties) {
           scope.properties = properties;
         });
       }
