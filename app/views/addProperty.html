@@ -3,7 +3,13 @@
   <div sidebar id="sidebar"></div>
 
   <div content id="content">
-    <mobile-header>Properties</mobile-header>
   </div><!--content-->
+
+  <div content id="content" ng-init="steps = ['Basic Information', 'Maintenance and Utilities', 'Tenants', 'Miscellaneous']; currentStep = 'Basic Information'">
+    <mobile-header>Add a Property</mobile-header>
+
+    <multi-step steps="steps" current-step="currentStep"></multi-step>
+
+  </div>
 
 </div>
