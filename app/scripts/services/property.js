@@ -12,6 +12,7 @@
 angular.module('propertyManagementApp')
   .factory('Property', function ($firebase, FIREBASE_URL, $window, $q, Auth) {
     var ref = new $window.Firebase(FIREBASE_URL);
+    var _newProperty = {};
 
     var Property = {
       getCurrentUserProperties: function () {
@@ -53,6 +54,14 @@ angular.module('propertyManagementApp')
           return deferred.promise;
         });
         return promise;
+      },
+      getNewProperty: function () {
+        return _newProperty;
+      },
+      saveNewProperty: function () {
+        //TODO: Store the new property in firebase
+        _newProperty = {};
+        return;
       }
     };
 
