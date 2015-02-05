@@ -13,6 +13,9 @@ angular.module('propertyManagementApp')
   return {
     restrict: 'E',
     templateUrl: 'views/partials/fileInput.html',
+    scope: {
+      'output': '=for'
+    },
     link: function(scope, el){
       el.find('input').bind('change', function (event){
         var files = event.target.files;
@@ -24,6 +27,7 @@ angular.module('propertyManagementApp')
         .then(function (url) {
           scope.file.uploaded = true;
           scope.file.url = url;
+          scope.output = url;
         }, function (err) {
           if (err) { scope.errors.push('There was an error uploading your file, sorry about that! Please try again'); }
         }, function (progress) {

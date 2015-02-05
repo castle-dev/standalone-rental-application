@@ -3,7 +3,7 @@
 <div class="solo-form left">
 
   <!-- Basic Information -->
-  <form name="addproperty1" ng-submit="submit()" ng-show="currentStep === addPropertySteps[0]">
+  <form name="addproperty1" ng-submit="submit()" ng-if="currentStep === addPropertySteps[0]">
 
     <fieldset>
       <label for="property-address">Property address:</label>
@@ -20,7 +20,7 @@
       </fieldset>
 
       <fieldset>
-        <input ng-model="newProperty.zip" name="zip-code" type="text" class="zipcode" placeholder="ZIP" required>
+        <input ng-model="newProperty.zip" name="zip-code" type="text" class="zipcode" placeholder="ZIP" required numeric ng-minlength="5" ng-maxlength="5">
       </fieldset>
     </div><!--address-input-->
 
@@ -45,7 +45,7 @@
 
 
   <!-- Maintenance and Utilities -->
-  <form name="addproperty2" ng-submit="submit()" ng-show="currentStep === addPropertySteps[1]">
+  <form name="addproperty2" ng-submit="submit()" ng-if="currentStep === addPropertySteps[1]">
 
     <fieldset>
       <label for="known-issues">Does this property have any known maintenance issues?</label>
@@ -110,11 +110,88 @@
 
 
   <!-- Tenants -->
+  <form name="addproperty3" ng-submit="submit()" ng-if="currentStep === addPropertySteps[2]">
+
+    <fieldset>
+      <label for="has-tenants">Does this property currently have tenants?</label>
+      <div class="one-line-radio">
+        <input ng-model="newProperty.occupied" ng-value="true" type="radio" name="known-issues" id="has-tenants-yes" required><label for="has-tenants-yes">Yes</label>
+        <input ng-model="newProperty.occupied" ng-value="false" type="radio" name="known-issues" id="has-tenants-no" required><label for="has-tenants-no">No</label>
+      </div><!--one-line-radio-->
+    </fieldset>
+
+    <div ng-show="newProperty.occupied">
+      <fieldset>
+        <label for="tenant-name">Tenant’s name:</label>
+        <input ng-model="newProperty.tenant.name" type="text" name="tenant-name" placeholder="Tommy Tenant">
+      </fieldset>
+
+      <fieldset>
+        <label for="tenant-phone">Tenant’s phone number:</label>
+        <input ng-model="newProperty.tenant.phone" type="tel" name="tenant-phone" ui-mask="(999) 999-9999">
+      </fieldset>
+
+      <fieldset>
+        <label for="tenant-email">Tenant’s email address:</label>
+        <input ng-model="newProperty.tenant.email" type="email" name="tenant-email">
+      </fieldset>
+
+      <fieldset class="money">
+        <label for="current-rent">What is this property’s current monthly rent?</label>
+        <input ng-model="newProperty.tenant.rent" type="number" name="current-rent">
+      </fieldset>
+    </div>
+
+    <fieldset ng-show="newProperty.occupied === false" class="ng-hide">
+      <label for="had-tenants">Has this property ever had tenants?</label>
+      <div class="one-line-radio">
+        <input ng-model="newProperty.everHadTenants" ng-value="true" type="radio" name="had-tenants" id="had-tenants-yes" ng-required="newProperty.occupied === false"><label for="had-tenants-yes">Yes</label>
+        <input ng-model="newProperty.everHadTenants" ng-value="false" type="radio" name="had-tenants" id="had-tenants-no" ng-required="newProperty.occupied === false"><label for="had-tenants-no">No</label>
+      </div><!--one-line-radio-->
+    </fieldset>
+
+    <fieldset ng-show="newProperty.occupied || newProperty.everHadTenants">
+      <label for="current-lease">If you have it, please upload a copy of the property’s most recent lease.</label>
+      <file-input for="newProperty.lease"></file-input>
+    </fieldset>
+
+    <button class="btn btn-green btn-medium">Save and Continue</button>
+
+  </form>
+
 
   <!-- Miscellaneous -->
+  <form name="addproperty4" ng-submit="submit()" ng-if="currentStep === addPropertySteps[3]">
+
+    <fieldset>
+      <label for="has-tenants">Do you have a Certificate of Occupancy for this property?</label>
+      <div class="one-line-radio">
+        <input ng-model="newProperty.hasCertificateOfOccupancy" ng-value="true" type="radio" name="has-coo" id="has-coo-yes" required><label for="has-coo-yes">Yes</label>
+        <input ng-model="newProperty.hasCertificateOfOccupancy" ng-value="false" type="radio" name="has-coo" id="has-coo-no" required><label for="has-coo-no">No</label>
+      </div><!--one-line-radio-->
+    </fieldset>
+
+    <fieldset>
+      <label for="hasPaidTaxes">Are you up-to-date on your taxes for this property?</label>
+      <div class="one-line-radio">
+        <input ng-model="newProperty.hasPaidTaxes" ng-value="true" type="radio" name="paid-taxes" id="paid-taxes-yes" required><label for="paid-taxes-yes">Yes</label>
+        <input ng-model="newProperty.hasPaidTaxes" ng-value="false" type="radio" name="paid-taxes" id="paid-taxes-no" required><label for="paid-taxes-no">No</label>
+      </div><!--one-line-radio-->
+    </fieldset>
+
+    <fieldset>
+      <label for="anything-else">Anything else we should know?</label>
+      <textarea ng-model="newProperty.additionalComments" id="anthing-else"></textarea>
+    </fieldset>
+
+    <button class="btn btn-green btn-medium">Save and Complete</button>
+
+  </form>
 
 </div>
 
 {{ newProperty }}
+
+{{ steps }}
 
 <a ng-click="nextStep()">Next</a>

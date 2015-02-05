@@ -15,8 +15,8 @@ angular.module('propertyManagementApp')
     restrict: 'E',
     templateUrl: 'views/partials/multiStep.html',
     scope: {
-      'steps': '=', // array
-      'current': '=', // string
+      'steps': '=',
+      'current': '=',
       'next': '='
     },
     link: function (scope) {
