@@ -1,2 +1,120 @@
-<input type="text" ng-model="newProperty.address">
+<h2>Add a Property</h2>
+
+<div class="solo-form left">
+
+  <!-- Basic Information -->
+  <form name="addproperty1" ng-submit="submit()" ng-show="currentStep === addPropertySteps[0]">
+
+    <fieldset>
+      <label for="property-address">Property address:</label>
+      <input ng-model="newProperty.street" name="property-address" type="text" placeholder="Street Address" required>
+    </fieldset>
+
+    <div class="address-input">
+      <fieldset>
+        <input ng-model="newProperty.city" name="city" type="text" placeholder="City" required>
+      </fieldset>
+
+      <fieldset>
+        <select ng-model="newProperty.state" name="state" required ng-options="o as o for o in availableStates"></select>
+      </fieldset>
+
+      <fieldset>
+        <input ng-model="newProperty.zip" name="zip-code" type="text" class="zipcode" placeholder="ZIP" required>
+      </fieldset>
+    </div><!--address-input-->
+
+    <fieldset>
+      <label for="what-type">What kind of property is this?</label>
+      <select ng-model="newProperty.type" name="what-type" required ng-options="o as o for o in propertyTypes">
+      </select>
+    </fieldset>
+
+    <fieldset ng-show="newProperty.type == 'Other'">
+      <input ng-model="newProperty.otherType" type="text" name="if-other-what" placeholder="Please elaborate...">
+    </fieldset>
+
+    <fieldset>
+      <label for="ownership-duration">For how long have you owned this property?</label>
+      <select ng-model="newProperty.ownershipDuration" name="what-type" required ng-options="o as o for o in ownershipDurations"></select>
+    </fieldset>
+
+    <button class="btn btn-green btn-medium">Save and Continue</button>
+
+  </form>
+
+
+  <!-- Maintenance and Utilities -->
+  <form name="addproperty2" ng-submit="submit()" ng-show="currentStep === addPropertySteps[1]">
+
+    <fieldset>
+      <label for="known-issues">Does this property have any known maintenance issues?</label>
+      <div class="one-line-radio">
+        <input ng-model="newProperty.hasKnownIssues" ng-value="true" type="radio" name="known-issues" id="known-issues-yes" required><label for="known-issues-yes">Yes</label>
+        <input ng-model="newProperty.hasKnownIssues" ng-value="false" type="radio" name="known-issues" id="known-issues-no" required=""><label for="known-issues-no">No</label>
+      </div><!--one-line-radio-->
+    </fieldset>
+
+    <fieldset ng-show="newProperty.hasKnownIssues">
+      <textarea ng-model="newProperty.knownIssuesDetails" name="known-issues-details" placeholder="Please elaborate..."></textarea>
+    </fieldset>
+
+    <fieldset>
+      <label for="utilities-name">In whose name are the utilities at this property?</label>
+      <input ng-model="newProperty.utilitiesName" type="text" name="utilities-name">
+    </fieldset>
+
+    <fieldset>
+      <label for="utility-bills">Does this property have any unpaid utility bills or utility shutoffs?</label>
+      <div class="one-line-radio">
+        <input ng-model="newProperty.hasUnpaidUtilities" ng-value="true" type="radio" name="utility-bills" id="utility-bills-yes" required=""><label for="utility-bills-yes">Yes</label>
+        <input ng-model="newProperty.hasUnpaidUtilities" ng-value="false" type="radio" name="utility-bills" id="utility-bills-no" required=""><label for="utility-bills-no">No</label>
+      </div><!--one-line-radio-->
+    </fieldset>
+
+    <fieldset ng-show="newProperty.hasUnpaidUtilities">
+      <textarea ng-model="newProperty.unpaidUtilitiesDetails" name="utility-bills-details" placeholder="Please elaborate..."></textarea>
+    </fieldset>
+
+    <fieldset>
+      <label for="utility-providers">Who are the utility providers for this property?</label>
+      <table class="utility-providers">
+        <tbody><tr>
+            <td><label for="utility-heat">Heat:</label></td>
+            <td><input ng-model="newProperty.utilities.heat" type="text" name="utility-heat"></td>
+          </tr>
+          <tr>
+            <td><label for="utility-electric">Electric:</label></td>
+            <td><input ng-model="newProperty.utilities.electric" type="text" name="utility-electric"></td>
+          </tr>
+          <tr>
+            <td><label for="utility-water">Water:</label></td>
+            <td><input ng-model="newProperty.utilities.water" type="text" name="utility-water"></td>
+          </tr>
+          <tr>
+            <td><label for="utility-sewage">Sewage:</label></td>
+            <td><input ng-model="newProperty.utilities.sewage" type="text" name="utility-sewage"></td>
+          </tr>
+        </tbody></table>
+    </fieldset>
+
+    <fieldset class="money">
+      <label for="avg-bill">What is this property’s average monthly utility bill?</label>
+      <div class="help-text">For all utilities combined.</div>
+      <input ng-model="newProperty.averageMonthlyUtilities" type="text" name="avg-bill">
+    </fieldset>
+
+    <button class="btn btn-green btn-medium">Save and Continue</button>
+
+  </form>
+
+
+  <!-- Tenants -->
+
+  <!-- Miscellaneous -->
+
+</div>
+
 {{ newProperty }}
+
+<a ng-click="nextStep()">Next</a>

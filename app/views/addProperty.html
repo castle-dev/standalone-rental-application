@@ -5,10 +5,10 @@
   <div content id="content">
   </div><!--content-->
 
-  <div content id="content" ng-init="steps = ['Basic Information', 'Maintenance and Utilities', 'Tenants', 'Miscellaneous']">
+  <div content id="content" ng-init="addPropertySteps = ['Basic Information', 'Maintenance and Utilities', 'Tenants', 'Miscellaneous']">
     <mobile-header>Add a Property</mobile-header>
 
-    <multi-step steps="steps" next="continue"></multi-step>
+    <multi-step steps="addPropertySteps" next="nextStep" current="currentStep"></multi-step>
 
     <add-property-form></add-property-form>
 

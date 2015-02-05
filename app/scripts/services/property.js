@@ -62,6 +62,23 @@ angular.module('propertyManagementApp')
         //TODO: Store the new property in firebase
         _newProperty = {};
         return;
+      },
+      getTypes: function () {
+        return [
+          'Single-family home',
+          'Duplex',
+          'Triplex',
+          'Condo',
+          'Other'
+        ];
+      },
+      getOwnershipDurations: function () {
+        return [
+          'Just acquired',
+          'Less than 1 year',
+          '1-5 years',
+          'More than 5 years'
+        ];
       }
     };
 

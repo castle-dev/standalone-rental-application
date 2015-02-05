@@ -15,22 +15,23 @@ angular.module('propertyManagementApp')
     restrict: 'E',
     templateUrl: 'views/partials/multiStep.html',
     scope: {
-      'steps': '=',
+      'steps': '=', // array
+      'current': '=', // string
       'next': '='
     },
     link: function (scope) {
-      scope._currentStep = scope.steps[0];
+      scope.current = scope.steps[0];
       scope.getStatus = function (step) {
-        if (scope.steps.indexOf(step) === scope.steps.indexOf(scope._currentStep)) {
+        if (scope.steps.indexOf(step) === scope.steps.indexOf(scope.current)) {
           return 'in-progress';
-        } else if (scope.steps.indexOf(step) < scope.steps.indexOf(scope._currentStep)) {
+        } else if (scope.steps.indexOf(step) < scope.steps.indexOf(scope.current)) {
           return 'complete';
         } else {
           return '';
         }
       };
       scope.next = function () {
-        scope._currentStep = scope.steps[scope.steps.indexOf(scope._currentStep) + 1];
+        scope.current = scope.steps[scope.steps.indexOf(scope.current) + 1];
       };
     }
   };
