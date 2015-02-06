@@ -59,9 +59,12 @@ angular.module('propertyManagementApp')
         return _newProperty;
       },
       saveNewProperty: function () {
-        //TODO: Store the new property in firebase
-        _newProperty = {};
-        return;
+        var uid = Auth.getCurrentUser().uid;
+        var propertiesSync = $firebase(ref.child('properties').child(uid));
+        //TODO: Add url lease to documents
+        return propertiesSync.$asArray().$add(_newProperty).then(function () {
+          _newProperty = {};
+        });
       },
       getTypes: function () {
         return [
