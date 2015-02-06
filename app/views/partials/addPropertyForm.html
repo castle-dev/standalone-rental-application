@@ -124,12 +124,12 @@
       <div class="both-names-input">
         <fieldset>
           <label for="first-name">Tenant's name:</label>
-          <input type="text" name="first-name" placeholder="First" ng-model="newProperty.tenant.firstName" required>
+          <input type="text" name="first-name" placeholder="First" ng-model="newProperty.tenant.firstName" ng-required="newProperty.occupied" ->
         </fieldset>
 
         <fieldset>
           <label for="last-name"></label>
-          <input type="text" name="last-name" placeholder="Last" ng-model="newProperty.tenant.lastName" required>
+          <input type="text" name="last-name" placeholder="Last" ng-model="newProperty.tenant.lastName" ng-required="newProperty.occupied">
         </fieldset>
       </div><!--both-names-input-->
 
