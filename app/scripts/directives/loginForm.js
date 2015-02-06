@@ -15,6 +15,9 @@ angular.module('propertyManagementApp')
       templateUrl: 'views/partials/loginForm.html',
       link: function (scope) {
         scope.redirect = Auth.getRedirect();
+        if (Auth.isUserAuthenticated()) {
+          $location.path('/');
+        }
         scope.submit = function (user) {
           scope.errors = [];
           Auth.loginUser(user)
