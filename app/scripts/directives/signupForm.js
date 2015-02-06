@@ -36,8 +36,8 @@ angular.module('propertyManagementApp')
                 phoneNumber: scope.newUser.phoneNumber,
               });
             })
-            .then(function () { // redirect to profile page
-              $location.path('/creditCard');
+            .then(function () { // redirect to home page
+              $location.path('/');
             })
             .catch(function (err) {
               scope.errors.push(err);

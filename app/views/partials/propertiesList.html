@@ -1,7 +1,22 @@
-<div>
+<div ng-show="properties.length">
   <h2 class="property-hello">Properties</h2>
   <ul class="properties">
     <li ng-repeat="property in properties"><a ng-href="#/properties/{{ property.$id }}"><img ng-src="{{ property | propertyImageUrl : '90' : '90' }}"> {{ property.street }}</a> </li>
     <li class="add-property"><a href="#/properties/add"><i class="fa fa-plus-circle"></i> Add a Property</a></li>
   </ul>
+</div>
+
+<div ng-hide="properties.length">
+
+    <img src="images/happy-castle-guy.png" class="first-run-guy">
+
+    <h2>Welcome, <current-user-name></current-user-name>!</h2>
+
+    <p class="medium">It looks like you don’t have any properties set up yet.</p>
+
+    <p><a href="#/properties/add" class="btn btn-green btn-medium"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add a property</a></p>
+
+
+  </div>
+
 </div>
