@@ -1,7 +1,7 @@
 <div>
   <h2 class="property-hello">Properties</h2>
   <ul class="properties">
-    <li ng-repeat="property in properties"><a ng-href="#/properties/{{ property.$id }}"><img ng-src="{{ property.thumbnail || 'images/logo-solo.png' }}"> {{ property.street }}</a> </li>
+    <li ng-repeat="property in properties"><a ng-href="#/properties/{{ property.$id }}"><img ng-src="{{ property | propertyImageUrl }}"> {{ property.street }}</a> </li>
     <li class="add-property"><a href="#/properties/add"><i class="fa fa-plus-circle"></i> Add a Property</a></li>
   </ul>
 </div>

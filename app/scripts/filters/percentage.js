@@ -4,7 +4,7 @@
  * @ngdoc function
  * @name propertyManagementApp.filter:percentage
  * @description
- * # percentage 
+ * # percentage
  * Filter that eats a number and spits out a percent
  */
 angular.module('propertyManagementApp')
