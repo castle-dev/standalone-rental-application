@@ -15,17 +15,17 @@ angular.module('propertyManagementApp')
       templateUrl: 'views/partials/prescreenForm.html',
       link: function (scope) {
         var ref = new $window.Firebase(FIREBASE_URL);
-        var applicants = $firebase(ref.child('applicants')).$asArray();
 
         if ($routeParams.address) {
           // Links to the prescreen should always
           // have the property address in the URL
           var rpAddress = $routeParams.address;
           var address = rpAddress.replace(/_/g, ' ');
-          scope.propertyAddress = address;
+          scope.address = address;
         }
 
         scope.submit = function () {
+          var applicants = $firebase(ref.child('applications').child(scope.address)).$asArray();
           applicants.$add(scope.applicant)
             .then(function () {
               scope.successfulSubmit = true;
