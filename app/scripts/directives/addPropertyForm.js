@@ -19,8 +19,9 @@ angular.module('propertyManagementApp')
       scope.ownershipDurations = Property.getOwnershipDurations();
       scope.newProperty = Property.getNewProperty();
       scope.submit = function () {
+
         if (scope.currentStep === scope.addPropertySteps[scope.addPropertySteps.length - 1]) {
-          // Last step, save the new property
+          // Submitting on the last step, so save the new property
           Property.saveNewProperty()
           .then(function () { $location.path('/'); });
         } else {

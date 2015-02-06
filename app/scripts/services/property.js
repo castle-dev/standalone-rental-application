@@ -10,7 +10,7 @@
  * from the database
  */
 angular.module('propertyManagementApp')
-  .factory('Property', function ($firebase, FIREBASE_URL, $window, $q, Auth) {
+  .factory('Property', function ($firebase, FIREBASE_URL, $window, $q, Auth, Tenant) {
     var ref = new $window.Firebase(FIREBASE_URL);
     var _newProperty = {};
 
@@ -62,7 +62,13 @@ angular.module('propertyManagementApp')
         var uid = Auth.getCurrentUser().uid;
         var propertiesSync = $firebase(ref.child('properties').child(uid));
         //TODO: Add url lease to documents
-        return propertiesSync.$asArray().$add(_newProperty).then(function () {
+        return propertiesSync.$asArray().$add(_newProperty).then(function (ref) {
+          var tenant = _newProperty.tenant;
+          var propertyId = ref.key();
+          if (tenant.firstName && tenant.lastName) {
+            return Tenant.saveNewTenant(propertyId, tenant);
+          }
+        }).then(function () {
           _newProperty = {};
         });
       },
