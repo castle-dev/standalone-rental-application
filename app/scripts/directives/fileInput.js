@@ -24,10 +24,9 @@ angular.module('propertyManagementApp')
         scope.progress = 0;
         scope.file.uploaded = false;
         Uploader.saveFile(scope.file)
-        .then(function (url) {
+        .then(function (file) {
           scope.file.uploaded = true;
-          scope.file.url = url;
-          scope.output = url;
+          scope.output = file;
         }, function (err) {
           if (err) { scope.errors.push('There was an error uploading your file, sorry about that! Please try again'); }
         }, function (progress) {

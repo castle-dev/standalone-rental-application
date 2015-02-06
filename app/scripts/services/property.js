@@ -61,7 +61,11 @@ angular.module('propertyManagementApp')
       saveNewProperty: function () {
         var uid = Auth.getCurrentUser().uid;
         var propertiesSync = $firebase(ref.child('properties').child(uid));
-        //TODO: Add url lease to documents
+        _newProperty.documents = [];
+        _newProperty.documents.push({
+          name: 'Uploaded Lease',
+          url: _newProperty.lease.url
+        });
         return propertiesSync.$asArray().$add(_newProperty).then(function (ref) {
           var tenant = _newProperty.tenant;
           var propertyId = ref.key();

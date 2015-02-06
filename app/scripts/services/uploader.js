@@ -6,7 +6,7 @@
  * @name propertyManagementApp.factory:Uploader
  * @description
  * # Uploader
- * Factory containing logic for 
+ * Factory containing logic for
  * reading and writing tenant data
  */
 angular.module('propertyManagementApp')
@@ -32,7 +32,13 @@ angular.module('propertyManagementApp')
           };
           bucket.putObject(params, function (err) {
             if (err) { deferred.reject(err.message); }
-            else { deferred.resolve(bucketName + '/' + params.Key); }
+            else {
+              deferred.resolve({
+                bucket: bucketName,
+                name: params.Key,
+                url: 'https://s3.amazonaws.com/' + bucketName + '/' + params.Key
+              });
+            }
           })
           .on('httpUploadProgress', function (progress) {
             deferred.notify(progress.loaded / progress.total * 100);
