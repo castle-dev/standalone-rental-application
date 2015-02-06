@@ -8,6 +8,7 @@
 <slick infinite="true" slides-to-show="2" slides-to-scroll="1" dots="true" init-onload="true" data="property" class="image-carousel">
   <div ng-repeat="imageUrl in property.images"><img ng-src="{{ imageUrl }}" /></div>
 </slick>
+<div ng-if="!property.images"><img ng-src="{{ property | propertyImageUrl : '500' : '300' }}" /></div>
 
 <h3>Tenants</h3>
 <div ng-show="tenants.length">

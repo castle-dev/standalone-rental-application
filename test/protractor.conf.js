@@ -1,6 +1,4 @@
 'use strict';
-var Firebase;
-var ref;
 
 exports.config = {
 
@@ -24,16 +22,9 @@ exports.config = {
   'appium-version' : '1.2.1',
 
   onPrepare: function () {
-    Firebase = require('firebase');
-    ref = new Firebase(process.env.FIREBASE_URL);
-    ref.set({}); // empty the database
     // implicit and page load timeouts
     browser.manage().timeouts().pageLoadTimeout(40000);
     browser.manage().timeouts().implicitlyWait(25000);
   },
-
-  onComplete: function () {
-    ref.set({});
-  }
 
 };

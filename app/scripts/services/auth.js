@@ -6,7 +6,7 @@
  * @name propertyManagementApp.factory:Auth
  * @description
  * # Auth
- * Factory containing logic for 
+ * Factory containing logic for
  * authenticating users
  */
 angular.module('propertyManagementApp')

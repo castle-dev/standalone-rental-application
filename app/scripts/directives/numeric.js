@@ -4,7 +4,7 @@
  * @ngdoc function
  * @name propertyManagementApp.directive:numeric
  * @description
- * # numeric 
+ * # numeric
  * Directive that restricts an input form
  * to only numeric values
  */

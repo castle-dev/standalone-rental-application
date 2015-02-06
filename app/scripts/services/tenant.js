@@ -6,7 +6,7 @@
  * @name propertyManagementApp.factory:Tenant
  * @description
  * # Tenant
- * Factory containing logic for 
+ * Factory containing logic for
  * reading and writing tenant data
  */
 angular.module('propertyManagementApp')
@@ -37,7 +37,7 @@ angular.module('propertyManagementApp')
         if (tenant.id && tenant.propertyId) {
           ref.child('tenants').child(tenant.propertyId).child(tenant.id).child('phoneNumber').set(tenant.phoneNumber, function (err) {
             if (err) { deferred.reject(err); }
-            else { deferred.resolve(); } 
+            else { deferred.resolve(); }
           });
         } else { deferred.reject('There was an error while trying to save the tenant (property and tenant IDs required)'); }
         return deferred.promise;
@@ -59,6 +59,12 @@ angular.module('propertyManagementApp')
       },
       saveInherited: function (inheritedTenant, address) {
         return $firebase(ref.child('tenants').child('inherited').child(address)).$push(inheritedTenant);
+      },
+      saveNewTenant: function (propertyId, tenant) {
+        if (tenant.rent) {
+          tenant.rent.label = 'Unlinked';
+        }
+        return $firebase(ref.child('tenants').child(propertyId)).$push(tenant);
       }
     };
 

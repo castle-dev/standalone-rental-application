@@ -1,0 +1,16 @@
+<div id="wrapper">
+
+  <div sidebar id="sidebar"></div>
+
+  <div content id="content" ng-init="addPropertySteps = ['Basic Information', 'Maintenance and Utilities', 'Tenants', 'Miscellaneous']">
+    <mobile-header>Add a Property</mobile-header>
+
+    <multi-step steps="addPropertySteps" next="nextStep" current="currentStep"></multi-step>
+
+    <add-property-form></add-property-form>
+
+    <olark help="true"></olark>
+
+  </div>
+
+</div>

@@ -59,119 +59,41 @@ describe('Property Management App ::', function() {
       });
     });
 
-  });
+    describe('Signup ::', function () {
 
-  describe('Signup ::', function () {
+      var firstNameInput;
+      var lastNameInput;
+      var emailInput;
+      var phoneNumberInput;
+      var passwordInput;
+      var signupSubmitButton;
 
-    var firstNameInput;
-    var lastNameInput;
-    var emailInput;
-    var phoneNumberInput;
-    var passwordInput;
-    var creditCardNumberInput;
-    var creditCardExpiryMonthInput;
-    var creditCardExpiryYearInput;
-    var creditCardCvcInput;
-    var signupSubmitButton;
-    var creditCardSubmitButton;
+      beforeEach(function () {
+        firstNameInput = element(by.model('newUser.firstName'));
+        lastNameInput = element(by.model('newUser.lastName'));
+        emailInput = element(by.model('newUser.email'));
+        phoneNumberInput = element(by.model('newUser.phoneNumber'));
+        passwordInput = element(by.model('newUser.password'));
+        signupSubmitButton = element(by.id('signup-submit-button'));
+      });
 
-    beforeEach(function () {
-      firstNameInput = element(by.model('newUser.firstName'));
-      lastNameInput = element(by.model('newUser.lastName'));
-      emailInput = element(by.model('newUser.email'));
-      phoneNumberInput = element(by.model('newUser.phoneNumber'));
-      passwordInput = element(by.model('newUser.password'));
-      signupSubmitButton = element(by.id('signup-submit-button'));
-      creditCardNumberInput = element(by.model('number'));
-      creditCardExpiryMonthInput = element(by.model('expiryMonth'));
-      creditCardExpiryYearInput = element(by.model('expiryYear'));
-      creditCardCvcInput = element(by.model('cvc'));
-      creditCardSubmitButton = element(by.id('credit-card-submit-button'));
+      it('should allow users to sign up and redirect to /properties', function () {
+        browser.get('/#/signup');
+        firstNameInput.sendKeys('Optimus');
+        lastNameInput.sendKeys('Prime');
+        emailInput.sendKeys(testUser.email);
+        phoneNumberInput.sendKeys('1011011100');
+        passwordInput.sendKeys(testUser.password + '\n');
+        waitForUrlToChangeTo(/properties/);
+        expect(browser.getCurrentUrl()).toMatch(/properties/);
+      });
+
+      it('should allow users to log out', function () {
+        browser.get('/#/logout');
+        waitForUrlToChangeTo(/login/);
+        expect(browser.getCurrentUrl()).toMatch(/login/);
+      });
+
     });
-
-    it('should allow users to sign up', function () {
-      browser.get('/#/signup');
-      firstNameInput.sendKeys('Optimus');
-      lastNameInput.sendKeys('Prime');
-      emailInput.sendKeys(testUser.email);
-      phoneNumberInput.sendKeys('1011011100');
-      passwordInput.sendKeys(testUser.password + '\n');
-      waitForUrlToChangeTo(/creditCard/);
-      expect(browser.getCurrentUrl()).toMatch(/creditCard/);
-    });
-
-    it('should allow users to enter their credit card info', function () {
-      //Stripe test info
-      creditCardNumberInput.sendKeys('4242424242424242');
-      creditCardExpiryMonthInput.sendKeys('11');
-      creditCardExpiryYearInput.sendKeys('2017');
-      creditCardCvcInput.sendKeys('123\n');
-      waitForUrlToChangeTo(/welcome/);
-      expect(browser.getCurrentUrl()).toMatch(/welcome/);
-    });
-
-    it('should allow users to log out', function () {
-      browser.get('/#/logout');
-      waitForUrlToChangeTo(/login/);
-      expect(browser.getCurrentUrl()).toMatch(/login/);
-    });
-
-  });
-
-  describe('Bank Account ::', function () { 
-
-    var emailInput;
-    var passwordInput;
-    var bankAccountHoldersNameInput;
-    var bankAccountRoutingNumberInput;
-    var bankAccountAccountNumberInput;
-    var bankAccountAccountNumberConfirmationInput;
-    var errors;
-
-    beforeEach(function () {
-      emailInput = element(by.model('user.email'));
-      passwordInput = element(by.model('user.password'));
-      errors = element.all(by.repeater('error in errors'));
-      bankAccountHoldersNameInput = element(by.model('bankAccount.holderName'));
-      bankAccountRoutingNumberInput = element(by.model('bankAccount.routingNumber'));
-      bankAccountAccountNumberInput = element(by.model('bankAccount.accountNumber'));
-      bankAccountAccountNumberConfirmationInput = element(by.model('bankAccount.accountNumberConfirmation'));
-    });
-
-    it('should submit a valid form and redirect to home', function () {
-      emailInput.sendKeys(testUser.email);
-      passwordInput.sendKeys(testUser.password + '\n');
-      waitForUrlToChangeTo(/properties/);
-      expect(browser.getCurrentUrl()).toMatch(/properties/);
-    });
-
-
-    it('should display notice to new users', function () {
-      expect(element(by.css('notice-bank-account .errors:not(.hidden)')).isPresent()).toBeTruthy();
-    });
-
-    it('should provide a path to resolve the error', function () {
-      element(by.css('notice-bank-account div.errors-text a')).click();
-      waitForUrlToChangeTo(/bankAccount/);
-      expect(browser.getCurrentUrl()).toMatch(/bankAccount/);
-    });
-
-    it('should display bank account form', function () {
-      expect(element(by.css('bank-account-form')).isPresent()).toBeTruthy();
-    });
-
-    it('should allow users to link bank accounts', function () {
-      bankAccountHoldersNameInput.sendKeys('Optimus Prime');
-      bankAccountRoutingNumberInput.sendKeys('021000021');
-      bankAccountAccountNumberInput.sendKeys('9900000002');
-      bankAccountAccountNumberConfirmationInput.sendKeys('9900000002\n');
-      waitForUrlToChangeTo(/properties/);
-      expect(browser.getCurrentUrl()).toMatch(/properties/);
-    });
-
-    it('should not display notice to new users', function () {
-      expect(element(by.css('notice-bank-account .errors:not(.hidden)')).isPresent()).toBeFalsy();
-    });
-
   });
 });

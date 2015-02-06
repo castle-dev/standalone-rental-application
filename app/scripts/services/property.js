@@ -10,8 +10,9 @@
  * from the database
  */
 angular.module('propertyManagementApp')
-  .factory('Property', function ($firebase, FIREBASE_URL, $window, $q, Auth) {
+  .factory('Property', function ($firebase, FIREBASE_URL, $window, $q, Auth, Tenant) {
     var ref = new $window.Firebase(FIREBASE_URL);
+    var _newProperty = {};
 
     var Property = {
       getCurrentUserProperties: function () {
@@ -53,6 +54,46 @@ angular.module('propertyManagementApp')
           return deferred.promise;
         });
         return promise;
+      },
+      getNewProperty: function () {
+        return _newProperty;
+      },
+      saveNewProperty: function () {
+        var uid = Auth.getCurrentUser().uid;
+        var propertiesSync = $firebase(ref.child('properties').child(uid));
+        if (_newProperty.lease && _newProperty.lease.url) {
+          _newProperty.documents = [];
+          _newProperty.documents.push({
+            name: 'Uploaded Lease',
+            url: _newProperty.lease.url
+          });
+        }
+        return propertiesSync.$asArray().$add(_newProperty).then(function (ref) {
+          var tenant = _newProperty.tenant;
+          var propertyId = ref.key();
+          if (tenant.firstName && tenant.lastName) {
+            return Tenant.saveNewTenant(propertyId, tenant);
+          }
+        }).then(function () {
+          _newProperty = {};
+        });
+      },
+      getTypes: function () {
+        return [
+          'Single-family home',
+          'Duplex',
+          'Triplex',
+          'Condo',
+          'Other'
+        ];
+      },
+      getOwnershipDurations: function () {
+        return [
+          'Just acquired',
+          'Less than 1 year',
+          '1-5 years',
+          'More than 5 years'
+        ];
       }
     };
 

@@ -25,14 +25,9 @@ angular.module('propertyManagementApp')
 
         scope.submit = function () {
           scope.errors = [];
-          if (scope.tenant.onLease && !scope.file) {
+          if (scope.tenant.onLease && !scope.tenant.leaseUrl) {
             scope.errors.push('We need a copy of your current lease to continue');
-          } else if (scope.tenant.onLease && scope.file && !scope.file.uploaded) {
-            scope.errors.push('Please wait until your lease is finished uploading');
           } else {
-            if (scope.file && scope.file.url) {
-              scope.tenant.leaseUrl = scope.file.url;
-            }
             Tenant.saveInherited(scope.tenant, scope.address)
             .then(function () {
               scope.successfulSubmit = true;

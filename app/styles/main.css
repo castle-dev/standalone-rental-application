@@ -173,7 +173,7 @@ input::-webkit-inner-spin-button {
 .sidebar-nav > .sidebar-brand a:hover {
   height: 250px;
   background-color: #34495e;
-  background-image: url('/images/logo-solo.png');
+  background-image: url('../images/logo-solo.png');
   background-size: auto 80%;
   background-position: center center;
   background-repeat: no-repeat;
@@ -230,7 +230,7 @@ p {
   margin: 0;
 }
 p + p {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 p.large {
   font-size: 180%;
@@ -334,6 +334,7 @@ a.back:before {
   margin-top: 0;
   margin-bottom: 3px;
   height: 50px;
+  line-height: 50px;
   padding: 0 30px;
 }
 .btn-medium:active {
@@ -348,6 +349,7 @@ a.back:before {
   margin-top: 0;
   margin-bottom: 3px;
   height: 50px;
+  line-height: 50px;
   padding: 0 30px;
   height: 74px;
   line-height: 125%;
@@ -457,30 +459,49 @@ a.less:before {
   font-size: 90%;
   margin-right: 3px;
 }
+.solo-form {
+  margin: 30px auto;
+  width: 100%;
+  max-width: 800px;
+}
 .solo-form form {
   max-width: 400px;
   width: 90%;
   margin: 0 auto;
 }
-.solo-form h4 {
-  margin-bottom: 20px;
+.solo-form.left,
+.solo-form.left form {
+  margin: 0;
 }
+.solo-form h1,
+.solo-form h4,
 .solo-form h5 {
   text-align: center;
 }
+.solo-form.left h1,
+.solo-form.left h4,
+.solo-form.left h5 {
+  text-align: left;
+}
+.solo-form h4 {
+  margin-bottom: 20px;
+}
 input,
-select {
+select,
+textarea {
   border-radius: 4px;
   border: 2px solid #778e93;
   padding: 2px 4px;
   background-color: white;
 }
 input:hover,
-select:hover {
+select:hover,
+textarea:hover {
   border-color: #93a5aa;
 }
 input:focus,
-select:focus {
+select:focus,
+textarea:focus {
   border-color: #4ca7d4;
   outline: none;
 }
@@ -502,7 +523,7 @@ input[type="url"] {
   max-width: 400px;
 }
 select {
-  background-image: url('/images/select-bg.png');
+  background-image: url('../images/select-bg.png');
   background-repeat: no-repeat;
   background-position: right 6px center;
 }
@@ -565,6 +586,12 @@ label {
 input.zipcode {
   width: 140px;
 }
+input[type="file"] {
+  border: 0;
+  background: none;
+  height: 50px;
+  font-size: 80%;
+}
 .help-text,
 .top-help-text {
   font-size: 80%;
@@ -598,14 +625,26 @@ form:not(.ng-submitted) .invalid-text {
 .secure-fieldset input:focus + i {
   color: #75bbde;
 }
-.solo-form {
-  margin: 30px auto;
-  width: 100%;
-  max-width: 800px;
+.address-input {
+  margin-top: -10px;
 }
-.solo-form h1,
-.solo-form h4 {
-  text-align: center;
+.address-input fieldset {
+  display: inline-block;
+  margin: 0;
+}
+.address-input fieldset:first-child {
+  width: 212px;
+}
+.address-input fieldset:nth-child(2) {
+  width: 60px;
+  margin: 0 15px;
+}
+.address-input .help-text {
+  margin-top: -12px;
+  margin-bottom: 14px;
+}
+input.zipcode {
+  width: 90px;
 }
 .nl-form {
   text-align: center;
@@ -906,6 +945,94 @@ ul.signup-pointers {
 .signup-thanks {
   max-width: 400px;
   margin: 0 auto;
+}
+.first-run-guy {
+  max-width: 200px;
+}
+.need-help {
+  position: fixed;
+  bottom: 36px;
+  right: 20px;
+  width: 250px;
+  height: 150px;
+}
+.need-help img {
+  max-width: 80px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.need-help p {
+  width: 170px;
+  position: absolute;
+  top: 20px;
+  left: 5px;
+  font-size: 80%;
+  font-weight: 400;
+  color: #4ca7d4;
+}
+#multi-progress {
+  height: 60px;
+  width: 360px;
+  position: fixed;
+  top: 60px;
+  right: 30px;
+  text-align: center;
+}
+#multi-progress:after {
+  content: "";
+  position: absolute;
+  bottom: 72%;
+  left: 0;
+  right: 0;
+  border-bottom: 2px solid #93a5aa;
+  width: 80%;
+  margin: 0 auto;
+}
+#multi-progress .item {
+  font-size: 65%;
+  width: 20%;
+  display: inline-block;
+  line-height: 110%;
+  vertical-align: top;
+  color: #5f7378;
+}
+#multi-progress .item.in-progress,
+#multi-progress .item.complete {
+  color: #34495e;
+}
+#multi-progress.four-items .item {
+  margin-right: 18px;
+}
+#multi-progress.three-items .item {
+  margin-right: 62px;
+}
+#multi-progress .item:last-child {
+  margin-right: 0;
+}
+#multi-progress .item .circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background: #e9eced;
+  border: 1px solid #ccd5d7;
+  z-index: 2;
+  position: relative;
+  margin: 0 auto 5px auto;
+}
+#multi-progress .item.complete .circle {
+  background: #3ab4ad;
+  border-color: #3ab4ad;
+}
+#multi-progress .item.in-progress .circle {
+  background: #75bbde;
+  border-color: #75bbde;
+}
+table.utility-providers {
+  width: 98%;
+}
+table.utility-providers label {
+  font-weight: 300;
 }
 .credit-card {
   width: 430px;
@@ -1402,6 +1529,26 @@ img.forgot-password {
   .btn-medium {
     font-size: 110%;
     height: 46px;
+  }
+  #multi-progress {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+    margin: 30px auto;
+  }
+  #multi-progress:after {
+    width: 70%;
+  }
+  #multi-progress.four-items .item {
+    margin-right: 15px;
+  }
+  #multi-progress.four-items .item:last-child {
+    margin-right: 0;
+  }
+  .need-help {
+    display: none;
   }
   .rent-status td.name {
     min-width: 0;
