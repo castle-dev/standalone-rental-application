@@ -50,6 +50,16 @@ angular.module('propertyManagementApp')
       isUserAuthenticated: function () {
         return !!currentUser.uid;
       },
+      isUserAdmin: function () {
+        var deferred = $q.defer();
+        $firebase(ref.child('admins').child(currentUser.uid))
+        .$asObject()
+        .$loaded()
+        .then(function (data) {
+          deferred.resolve(data.$value);
+        });
+        return deferred.promise;
+      },
       updateProfile: function (profile) {
         var profileRef = $firebase(ref.child('profile'));
         return profileRef.$set(Auth.getCurrentUser().uid, profile);

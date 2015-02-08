@@ -15,6 +15,30 @@ angular.module('propertyManagementApp')
     var _newProperty = {};
 
     var Property = {
+      getAll: function () {
+        var deferred = $q.defer();
+        var allProperties = [];
+        $firebase(ref.child('properties'))
+        .$asArray()
+        .$loaded()
+        .then(function (uids) {
+          var finished = 0;
+          uids.forEach(function (uid) {
+            $firebase(ref.child('properties').child(uid.$id))
+            .$asArray()
+            .$loaded()
+            .then(function (properties) {
+              allProperties = allProperties.concat(properties);
+              finished += 1;
+              if (finished === uids.length) {
+                deferred.resolve(allProperties);
+              }
+            });
+          });
+        })
+        .catch(deferred.reject);
+        return deferred.promise;
+      },
       getCurrentUserProperties: function () {
         var deferred = $q.defer();
         $firebase(ref.child('properties').child(Auth.getCurrentUser().uid))
