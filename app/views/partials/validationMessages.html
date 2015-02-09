@@ -17,8 +17,8 @@
         <li ng-message="url">This is not a valid url</li>
         <li ng-message="file">This not a valid file</li>
 
-        <li ng-message="minlength">Your field should have at least {{ attrs.minlength }} characters</li>
-        <li ng-message="maxlength">Your field should have max {{ attrs.maxlength }} characters</li>
+        <li ng-message="minlength">Needs at least {{ attrs.minlength }} characters</li>
+        <li ng-message="maxlength">No more than {{ attrs.maxlength }} characters</li>
 
         <li ng-if="attrs.type == 'time' "
             ng-message="min">The time provided should be no earlier than {{ attrs.min |date: 'HH:MM' }}
