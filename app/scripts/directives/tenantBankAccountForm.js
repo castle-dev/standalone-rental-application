@@ -22,7 +22,10 @@ angular.module('propertyManagementApp')
         scope.confirmationMatches = (newVal && newVal === scope.bankAccount.accountNumber);
       });
       Tenant.getById($routeParams.tenantId)
-      .then(function (tenant) { scope.tenant = tenant; })
+      .then(function (tenant) {
+        scope.tenant = tenant;
+        scope.bankAccount.holderName = tenant.firstName + ' ' + tenant.lastName;
+      })
       .catch(function () {
         $window.alert('There was an error looking up your record in the system. Please contact us at (313) 214-2663.');
         $window.location.href = 'http://entercastle.com/contact/';
