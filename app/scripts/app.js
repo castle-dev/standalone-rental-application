@@ -82,6 +82,9 @@ angular
         redirectTo: '/properties'
       });
   })
-  .run(function ($window, STRIPE_PUBLISHABLE_KEY) {
+  .run(function ($window, $rootScope, $location, STRIPE_PUBLISHABLE_KEY) {
     $window.Stripe.setPublishableKey(STRIPE_PUBLISHABLE_KEY);
+    $rootScope.$on('$routeChangeSuccess', function () {
+      $window.ga('send', 'pageview', { page: $location.path() });
+    });
   });
