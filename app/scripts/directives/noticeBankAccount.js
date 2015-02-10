@@ -19,7 +19,7 @@ angular.module('propertyManagementApp')
         scope.nextStep = 'Link your bank account now \u2192';
         scope.linksTo = '#/bankAccount';
         Auth.getCurrentUser().profile.$loaded().then(function (profileData) {
-          if (profileData.notices && profileData.notices.bankAccount) { elem.find('.hidden').removeClass('hidden'); }
+          if (!profileData.bankAccountToken && !profileData.balancedBankAccountId) { elem.find('.hidden').removeClass('hidden'); }
           else { elem.find('.error').addClass('hidden'); }
         });
       }

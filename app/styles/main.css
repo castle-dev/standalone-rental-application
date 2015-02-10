@@ -823,9 +823,6 @@ fieldset + .both-names-input {
   transition-delay: 0s;
   z-index: 100;
 }
-.validation li[ng-message="required"] {
-  display: none;
-}
 .validation li.ng-enter {
   opacity: 0;
   top: 0;

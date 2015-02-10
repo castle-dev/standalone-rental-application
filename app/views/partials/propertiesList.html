@@ -1,4 +1,6 @@
 <div ng-show="properties.length">
+  <notice-bank-account></notice-bank-account>
+  <notice-credit-card></notice-credit-card>
   <h2 class="property-hello">Properties</h2>
   <ul class="properties">
     <li ng-repeat="property in properties"><a ng-href="#/properties/{{ property.$id }}"><img ng-src="{{ property | propertyImageUrl : '90' : '90' }}"> {{ property.street }}</a> </li>

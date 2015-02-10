@@ -19,7 +19,7 @@ angular.module('propertyManagementApp')
         scope.nextStep = 'Enter your credit card info \u2192';
         scope.linksTo = '#/creditCard';
         Auth.getCurrentUser().profile.$loaded().then(function (profileData) {
-          if (profileData.notices && profileData.notices.creditCard) { elem.find('.hidden').removeClass('hidden'); }
+          if (!profileData.creditCardToken && !profileData.stripeCustomerId) { elem.find('.hidden').removeClass('hidden'); }
           else { elem.find('.error').addClass('hidden'); }
         });
       }

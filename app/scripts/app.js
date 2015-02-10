@@ -25,7 +25,11 @@ angular
     'ngFabForm',
     'ngMessages'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, ngFabFormProvider) {
+    ngFabFormProvider.extendConfig({
+      validationsTemplate : 'views/partials/validationMessages.html'
+
+    });
     $routeProvider
       .when('/signup', {
         templateUrl: 'views/signup.html',
