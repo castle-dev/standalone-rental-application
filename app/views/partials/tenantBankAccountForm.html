@@ -35,7 +35,7 @@
 
   <fieldset>
     <label for="phoneNumber">Your cell phone number:</label>
-    <input type="tel" name="phoneNumber" ng-model="tenant.phoneNumber" numeric required>
+    <input type="tel" name="phoneNumber" ng-model="tenant.phoneNumber" required ui-mask="(999) 999-9999">
     <div class="help-text">We&rsquo;ll text you reminders when rent is due, so this needs to be a cell phone.</div>
   </fieldset>
 
