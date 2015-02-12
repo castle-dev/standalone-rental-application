@@ -23,7 +23,8 @@ angular
     'ui.mask',
     'slick',
     'ngFabForm',
-    'ngMessages'
+    'ngMessages',
+    'ngTable'
   ])
   .config(function ($routeProvider, ngFabFormProvider) {
     ngFabFormProvider.extendConfig({

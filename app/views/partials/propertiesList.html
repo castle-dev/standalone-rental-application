@@ -1,5 +1,11 @@
 <admin-only>
-  <h1>Hello Admin</h1>
+  <h1>Hello Admin!</h1>
+  <table ng-table class="table">
+    <tr ng-repeat="property in properties">
+      <td data-title="'Street'" sortable="'street'">{{ property.street }}</td>
+      <td data-title="'Owner'" sortable="'owner'">OWNER</td>
+    </tr>
+  </table>
 </admin-only>
 <owner-only>
   <div ng-show="properties.length">

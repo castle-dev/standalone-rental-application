@@ -59,9 +59,7 @@ angular.module('propertyManagementApp')
           deferred.resolve(data.$value);
         });
         return deferred.promise.then(function (data) {
-          if (data !== true) {
-            return false;
-          }
+          return !!data;
         });
       },
       updateProfile: function (profile) {
