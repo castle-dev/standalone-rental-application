@@ -41,14 +41,21 @@ angular.module('propertyManagementApp')
       },
       getCurrentUserProperties: function () {
         var deferred = $q.defer();
-        $firebase(ref.child('properties').child(Auth.getCurrentUser().uid))
-        .$asArray()
-        .$loaded()
-        .then(function (currentUserProperties) {
-          deferred.resolve(currentUserProperties);
-        })
-        .catch(function (err) {
-          deferred.reject(err);
+        Auth.isUserAdmin()
+        .then(function (isAdmin) {
+          if (isAdmin) {
+            deferred.resolve(Property.getAll());
+          } else {
+            $firebase(ref.child('properties').child(Auth.getCurrentUser().uid))
+            .$asArray()
+            .$loaded()
+            .then(function (currentUserProperties) {
+              deferred.resolve(currentUserProperties);
+            })
+            .catch(function (err) {
+              deferred.reject(err);
+            });
+          }
         });
         return deferred.promise;
       },
