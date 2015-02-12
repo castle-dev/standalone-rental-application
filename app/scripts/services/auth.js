@@ -58,7 +58,11 @@ angular.module('propertyManagementApp')
         .then(function (data) {
           deferred.resolve(data.$value);
         });
-        return deferred.promise;
+        return deferred.promise.then(function (data) {
+          if (data !== true) {
+            return false;
+          }
+        });
       },
       updateProfile: function (profile) {
         var profileRef = $firebase(ref.child('profile'));
