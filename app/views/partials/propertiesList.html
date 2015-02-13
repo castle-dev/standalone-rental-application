@@ -3,7 +3,7 @@
   <search-box query="searchQuery"></search-box>
   <table ng-table="tableParams" class="table">
     <tr ng-repeat="property in $data | filter:searchQuery">
-      <td data-title="'Street'" sortable="'street'">{{ property.street }}</td>
+      <td data-title="'Street'" sortable="'street'"><a ng-href="#/properties/{{ property.$id }}">{{ property.street }}</a></td>
       <td data-title="'Owner'" sortable="'owner'">{{ property.owner }}</td>
     </tr>
   </table>
