@@ -20,11 +20,12 @@ angular.module('propertyManagementApp')
           scope.properties = properties;
           scope.tableParams = new ngTableParams({
             page: 1,
-            count: 10,
+            count: scope.properties.length,
             sorting: {
               street: 'asc'
             }
           }, {
+            counts: [],
             total: scope.properties.length, // length of scope.properties
             getData: function($defer, params) {
                 var orderedData = params.sorting() ?
