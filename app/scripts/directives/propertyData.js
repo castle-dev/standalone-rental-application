@@ -19,7 +19,6 @@ angular.module('propertyManagementApp')
           scope.property = propertyData;
           return Property.getTenants($routeParams.propertyId);
         })
-
         .then(function (tenants) {
           scope.tenants = tenants;
         });

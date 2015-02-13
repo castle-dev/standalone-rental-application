@@ -63,10 +63,13 @@ angular.module('propertyManagementApp')
         return deferred.promise;
       },
       getPropertyData: function (id) {
-        var promise = $firebase(ref.child('properties').child(Auth.getCurrentUser().uid).child(id))
-        .$asObject()
-        .$loaded();
-        return promise;
+        var deferred = $q.defer();
+        ref.child('indexes').child('properties').child(id).once('value', function (snapshot) {
+          ref.child('properties').child(snapshot.val().uid).child(id).once('value', function (snapshot) {
+            deferred.resolve(snapshot.val());
+          }, deferred.reject);
+        });
+        return deferred.promise;
       },
       getTenants: function (id) {
         var promise = $firebase(ref.child('tenants').child(id))
