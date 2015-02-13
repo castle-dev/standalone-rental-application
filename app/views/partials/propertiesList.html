@@ -1,6 +1,6 @@
 <admin-only>
 <h1>Properties ({{ properties.length }} total)</h1>
-  <input type="text" ng-model="searchQuery" placeholder="Search..." class="pull-right">
+  <search-box query="searchQuery"></search-box>
   <table ng-table="tableParams" class="table">
     <tr ng-repeat="property in $data | filter:searchQuery">
       <td data-title="'Street'" sortable="'street'">{{ property.street }}</td>
