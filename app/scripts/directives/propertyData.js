@@ -14,6 +14,7 @@ angular.module('propertyManagementApp')
       restrict: 'E',
       templateUrl: 'views/partials/propertyData.html',
       link: function (scope) {
+        scope.mode = {};
         Property.getPropertyData($routeParams.propertyId)
         .then(function (propertyData) {
           scope.property = propertyData;
