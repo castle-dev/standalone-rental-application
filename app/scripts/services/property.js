@@ -18,19 +18,22 @@ angular.module('propertyManagementApp')
       getAll: function () {
         var deferred = $q.defer();
         var allProperties = [];
-        $firebase(ref.child('properties'))
+        $firebase(ref.child('profile'))
         .$asArray()
         .$loaded()
-        .then(function (uids) {
+        .then(function (users) {
           var finished = 0;
-          uids.forEach(function (uid) {
-            $firebase(ref.child('properties').child(uid.$id))
+          users.forEach(function (user) {
+            $firebase(ref.child('properties').child(user.$id))
             .$asArray()
             .$loaded()
             .then(function (properties) {
+              properties.forEach(function (property) {
+                property.owner = user.firstName + ' ' + user.lastName;
+              });
               allProperties = allProperties.concat(properties);
               finished += 1;
-              if (finished === uids.length) {
+              if (finished === users.length) {
                 deferred.resolve(allProperties);
               }
             });

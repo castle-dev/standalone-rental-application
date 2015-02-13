@@ -1,10 +1,10 @@
 <admin-only>
-  <h1>Hello Admin!</h1>
-  <input type="text" ng-model="searchQuery" placeholder="Search...">
+<h1>Properties ({{ properties.length }} total)</h1>
+  <input type="text" ng-model="searchQuery" placeholder="Search..." class="pull-right">
   <table ng-table="tableParams" class="table">
     <tr ng-repeat="property in $data | filter:searchQuery">
       <td data-title="'Street'" sortable="'street'">{{ property.street }}</td>
-      <td data-title="'Owner'" sortable="'owner'">OWNER</td>
+      <td data-title="'Owner'" sortable="'owner'">{{ property.owner }}</td>
     </tr>
   </table>
 </admin-only>
