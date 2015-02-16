@@ -1522,10 +1522,12 @@ img.forgot-password {
   .btn-large {
     font-size: 150%;
     height: 56px;
+    line-height: 56px;
   }
   .btn-medium {
     font-size: 110%;
     height: 46px;
+    line-height: 46px;
   }
   #multi-progress {
     width: 100%;
@@ -1788,10 +1790,12 @@ img.forgot-password {
   .btn-large {
     font-size: 120%;
     height: 46px;
+    line-height: 46px;
   }
   .btn-medium {
     font-size: 105%;
     height: 44px;
+    line-height: 44px;
   }
   .password-requirements .requirement {
     width: 100%;
