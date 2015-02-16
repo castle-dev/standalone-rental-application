@@ -1808,7 +1808,33 @@ img.forgot-password {
 	margin: 0 auto 20px auto;
 	}
   
- 
+
+@media only screen and (max-width: 1092px) {
+
+// Add property
+#multi-progress {
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  text-align: center;
+  margin: 30px auto;
+  }
+  
+#multi-progress:after {
+	width: 70%;
+	}
+  
+#multi-progress.four-items .item {
+  margin-right: 15px;
+  }
+  
+#multi-progress.four-items .item:last-child {
+  margin-right: 0;
+  }
+  
+}
+
   
 @media only screen and (max-width: 1024px) {
 
@@ -1857,28 +1883,6 @@ p.small {
   font-size: 110%;
   height: 46px;
   line-height: 46px;
-  }
-  
-// First run
-#multi-progress {
-  width: 100%;
-  position: relative;
-  top: 0;
-  left: 0;
-  text-align: center;
-  margin: 30px auto;
-  }
-  
-#multi-progress:after {
-	width: 70%;
-	}
-  
-#multi-progress.four-items .item {
-  margin-right: 15px;
-  }
-  
-#multi-progress.four-items .item:last-child {
-  margin-right: 0;
   }
   
 .need-help {
