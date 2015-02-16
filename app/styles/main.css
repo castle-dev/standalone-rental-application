@@ -840,8 +840,8 @@ select.ng-touched.ng-invalid:not(.ng-valid) {
   border-color: #e15e5b;
 }
 input[type="text"].ng-valid-required.ng-valid:not(.ng-invalid),
-input[type="email"].ng-valid-required.ng-valid:not(.ng-invalid),
 input[type="number"].ng-valid-required.ng-valid:not(.ng-invalid),
+input[type="email"].ng-valid-required.ng-valid:not(.ng-invalid),
 input[type="password"].ng-valid-required.ng-valid:not(.ng-invalid),
 input[type="tel"].ng-valid-required.ng-valid:not(.ng-invalid),
 textarea.ng-valid-required.ng-valid:not(.ng-invalid),
@@ -849,24 +849,24 @@ select.ng-valid-required.ng-valid:not(.ng-invalid) {
   border-color: #3ab4ad;
 }
 .btn-file {
-    position: relative;
-    overflow: hidden;
-    display: block;
+  position: relative;
+  overflow: hidden;
+  display: block;
 }
 .btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
 }
 .btn-file + .progress-bar {
   border-radius: 10px;
@@ -1494,6 +1494,25 @@ img.forgot-password {
   display: block;
   margin: 0 auto 20px auto;
 }
+@media only screen and (max-width: 1092px) {
+  #multi-progress {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+    margin: 30px auto;
+  }
+  #multi-progress:after {
+    width: 70%;
+  }
+  #multi-progress.four-items .item {
+    margin-right: 15px;
+  }
+  #multi-progress.four-items .item:last-child {
+    margin-right: 0;
+  }
+}
 @media only screen and (max-width: 1024px) {
   h1 {
     font-size: 230%;
@@ -1522,27 +1541,12 @@ img.forgot-password {
   .btn-large {
     font-size: 150%;
     height: 56px;
+    line-height: 56px;
   }
   .btn-medium {
     font-size: 110%;
     height: 46px;
-  }
-  #multi-progress {
-    width: 100%;
-    position: relative;
-    top: 0;
-    left: 0;
-    text-align: center;
-    margin: 30px auto;
-  }
-  #multi-progress:after {
-    width: 70%;
-  }
-  #multi-progress.four-items .item {
-    margin-right: 15px;
-  }
-  #multi-progress.four-items .item:last-child {
-    margin-right: 0;
+    line-height: 46px;
   }
   .need-help {
     display: none;
@@ -1617,7 +1621,7 @@ img.forgot-password {
     z-index: 1000;
   }
   #mobile-wrapper {
-    padding: 80px 20px 0 20px;
+    padding: 70px 10px 10px 10px;
   }
   #menu-toggle {
     display: inline-block;
@@ -1781,13 +1785,19 @@ img.forgot-password {
   .date-input fieldset:nth-child(3) {
     width: 45%;
   }
+  .credit-card {
+    max-width: 100%;
+    margin: 20px auto;
+  }
   .btn-large {
     font-size: 120%;
     height: 46px;
+    line-height: 46px;
   }
   .btn-medium {
     font-size: 105%;
     height: 44px;
+    line-height: 44px;
   }
   .password-requirements .requirement {
     width: 100%;
