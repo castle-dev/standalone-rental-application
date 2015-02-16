@@ -15,9 +15,11 @@ angular.module('propertyManagementApp')
       templateUrl: 'views/partials/propertyData.html',
       link: function (scope) {
         scope.mode = {};
-        Property.getPropertyData($routeParams.propertyId)
+        var id = $routeParams.propertyId;
+        Property.getPropertyData(id)
         .then(function (propertyData) {
           scope.property = propertyData;
+          scope.property.id = id;
           return Property.getTenants($routeParams.propertyId);
         })
         .then(function (tenants) {

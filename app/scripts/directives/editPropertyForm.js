@@ -9,10 +9,16 @@
  * for editing a property
  */
 angular.module('propertyManagementApp')
-.directive('editPropertyForm', function () {
+.directive('editPropertyForm', function (Geography) {
   return {
     restrict: 'E',
-    templateUrl: 'views/partials/editPropertyForm.html'
+    templateUrl: 'views/partials/editPropertyForm.html',
+    link: function (scope) {
+      scope.availableStates = Geography.getAvailableStates();
+      scope.submit = function () {
+        console.log('TODO: Store the updated property and tenant data');
+      };
+    }
   };
 });
 

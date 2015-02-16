@@ -4,6 +4,7 @@
     <li role="presentation" ng-class="{ active: mode.edit }"><a ng-click="mode.edit = true;">Edit</a></li>
   </ul>
 </admin-only>
+
 <div ng-show="!mode.edit">
   <div class="breadcrumbs">
     <a href="#/properties">Properties</a> <span class="breadcrumb-caret">></span> {{ property.street }}
