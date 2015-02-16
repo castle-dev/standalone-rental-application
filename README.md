@@ -14,9 +14,18 @@ When js files are saved, all js will be linted, unit tests will run, and if both
 
 
 ## Environment variables
+
+```
 export ENV=develop
 export FIREBASE_URL=https://castle-development.firebaseio.com/
 export STRIPE_PUBLISHABLE_KEY=pk_test_ezgQYWkPV0W4Npb6E5LpMngz
+export AMAZON_S3_PUBLIC_ACCESS_KEY=AKIAJDRTBGRFWMSEWWEQ
+export AMAZON_S3_PUBLIC_SECRET_KEY=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
+export AMAZON_S3_PUBLIC_BUCKET=uploads.entercastle.com
+
+On OS X: launchctl setenv VARIABLE VALUE
+Quit and relaunch Terminal
+```
 
 ## Firebase Schema
 * profile - user profiles, keyed by firebase-generated user id
