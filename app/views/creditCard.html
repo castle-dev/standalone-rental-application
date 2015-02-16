@@ -1,13 +1,19 @@
-<footer-wrapper>
-  <div class="solo-form">
+<div id="wrapper">
 
-    <img src="images/logo-solo.png" class="centered-logo" alt="Castle">
+  <div sidebar id="sidebar"></div>
 
-    <h1>You&rsquo;re almost there...</h1>
+  <div content id="content" ng-init="addPropertySteps = ['Basic Information', 'Maintenance and Utilities', 'Tenants', 'Miscellaneous']">
 
-    <h4>We just need your payment information.</h4>
+    <mobile-header>Link Your Credit Card</mobile-header>
+    
+    <div id="mobile-wrapper">
 
-    <credit-card-form></credit-card-form>
+	    <credit-card-form></credit-card-form>
+    
+    </div><!--mobile-content-->
+
+    <olark help="true"></olark>
 
   </div>
-</footer-wrapper>
+
+</div>
