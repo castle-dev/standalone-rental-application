@@ -1,38 +1,40 @@
-<form name="credit-card" stripe-form="callback" class="solo-form left">
+<div class="solo-form left">
 
-	<h3>Add Your Payment Information</h3>
+	<form name="credit-card" stripe-form="callback">
 
-  <fieldset>
-    <label for="name">Your name (as it appears on your card):</label>
-    <input type="text" name="name" placeholder="Ralph Rental" ng-model="cardholder.fullName" required>
-  </fieldset>
+	  <fieldset>
+		 <label for="name">Your name (as it appears on your card):</label>
+		 <input type="text" name="name" placeholder="Ralph Rental" ng-model="cardholder.fullName" required>
+	  </fieldset>
 
-  <div class="credit-card">
+	  <div class="credit-card">
 
-    <fieldset class="secure-fieldset">
-      <label for="name">Card number:</label>
-      <input type="tel" name="card-number" ng-model="number" ui-mask="9999-9999-9999-9999" required> <i class="fa fa-lock"></i>
-    </fieldset>
+		 <fieldset class="secure-fieldset">
+			<label for="name">Card number:</label>
+			<input type="tel" name="card-number" ng-model="number" ui-mask="9999-9999-9999-9999" required> <i class="fa fa-lock"></i>
+		 </fieldset>
 
-    <div class="expiration-and-code">
+		 <div class="expiration-and-code">
 
-      <fieldset class="expiration-date">
-        <label for="name">Expiration date:</label>
-        <input type="tel" name="expiration-month" placeholder="MM" maxlength="2" ng-model="expiryMonth" numeric required>
-        <input type="tel" name="expiration-year" placeholder="YYYY" maxlength="4" ng-model="expiryYear" numeric required>
-      </fieldset>
+			<fieldset class="expiration-date">
+			  <label for="name">Expiration date:</label>
+			  <input type="tel" name="expiration-month" placeholder="MM" maxlength="2" ng-model="expiryMonth" numeric required>
+			  <input type="tel" name="expiration-year" placeholder="YYYY" maxlength="4" ng-model="expiryYear" numeric required>
+			</fieldset>
 
-      <fieldset class="cvv-code">
-        <label for="name">CVV code:</label>
-        <input type="tel" name="security-code" maxlength="4" ng-model="cvc" numeric required>
-      </fieldset>
+			<fieldset class="cvv-code">
+			  <label for="name">CVV code:</label>
+			  <input type="tel" name="security-code" maxlength="4" ng-model="cvc" numeric required>
+			</fieldset>
 
-    </div><!--expiration-and-code-->
+		 </div><!--expiration-and-code-->
 
-  </div><!--credit-card-->
+	  </div><!--credit-card-->
 
-  <errors></errors>
+	  <errors></errors>
 
-  <button id="credit-card-submit-button" class="btn btn-medium btn-green">Save My Payment Information</button>
+	  <button id="credit-card-submit-button" class="btn btn-medium btn-green">Save My Payment Information</button>
 
-</form>
+	</form>
+
+</div><!--solo-form left-->
