@@ -1498,6 +1498,14 @@ img.forgot-password {
   max-width: 400px;
   margin-bottom: 10px;
 }
+.inline-inputs label {
+  float: left;
+  margin-top: 5px;
+}
+.inline-inputs input {
+  float: left;
+  max-width: 300px;
+}
 @media only screen and (max-width: 1092px) {
   #multi-progress {
     width: 100%;

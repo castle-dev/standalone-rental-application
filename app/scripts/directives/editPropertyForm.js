@@ -17,9 +17,11 @@ angular.module('propertyManagementApp')
       scope.availableStates = Geography.getAvailableStates();
       scope.rentStatuses = Property.getAvailableRentStatuses();
       scope.addIssue = function () {
+        if (!scope.property.issues) { scope.property.issues = []; }
         scope.property.issues.push('');
       };
       scope.addAlert = function () {
+        if (!scope.property.additionalInfo) { scope.property.additionalInfo = []; }
         scope.property.additionalInfo.push('');
       };
       scope.submit = function () {

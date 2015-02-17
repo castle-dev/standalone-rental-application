@@ -118,6 +118,11 @@ angular.module('propertyManagementApp')
       update: function (property, tenants) {
         var deferred = $q.defer();
         var id = property.id;
+        if (property.documents) {
+          property.documents.forEach(function (doc) {
+            delete doc.$$hashKey; // Hack to make firebase & angular play nice
+          });
+        }
         ref.child('indexes').child('properties').child(id).once('value', function (snapshot) {
           ref.child('properties').child(snapshot.val().uid).child(id).update(property, function (err) {
             if (err) { deferred.reject(err); }

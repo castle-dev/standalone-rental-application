@@ -20,7 +20,7 @@
       </fieldset>
     </div><!--address-input-->
 
-    <h2>Tenants</h2>
+    <h3>Tenants</h3>
     <div ng-repeat="tenant in tenants">
       <div class="both-names-input">
         <fieldset>
@@ -60,17 +60,25 @@
       </fieldset>
     </div>
 
-    <h2>Maintenance</h2>
+    <h3>Maintenance</h3>
     <div ng-repeat="issue in property.issues track by $index">
       <input type="text" ng-model="$parent.property.issues[$index]" />
     </div>
     <a ng-click="addIssue()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add issues</a>
 
-    <h2>Alerts</h2>
+    <h3>Alerts</h3>
     <div ng-repeat="alert in property.additionalInfo track by $index">
       <input type="text" ng-model="$parent.property.additionalInfo[$index]" />
     </div>
     <a ng-click="addAlert()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add alert</a>
+
+    <h3>Documents</h3>
+    <div ng-repeat="doc in property.documents track by $index" class="inline-inputs">
+      <label>Name:</label>
+      <input type="text" ng-model="$parent.property.documents[$index].name" />
+      <label>URL:</label>
+      <input type="text" ng-model="$parent.property.documents[$index].url" />
+    </div>
 
     <br/>
     <br/>
