@@ -16,6 +16,12 @@ angular.module('propertyManagementApp')
       link: function (scope) {
         scope.mode = {};
         var id = $routeParams.propertyId;
+        scope.$watch('property.images', function () {
+          if(scope.property && scope.property.images) {
+
+            scope.reloadSlider = !scope.reloadSlider;
+          }
+        }, true); // true for deep watch, as this is an array
         Property.getPropertyData(id)
         .then(function (propertyData) {
           scope.property = propertyData;
