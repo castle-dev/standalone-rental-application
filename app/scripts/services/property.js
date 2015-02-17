@@ -115,6 +115,28 @@ angular.module('propertyManagementApp')
           _newProperty = {};
         });
       },
+      update: function (property, tenants) {
+        var deferred = $q.defer();
+        var id = property.id;
+        ref.child('indexes').child('properties').child(id).once('value', function (snapshot) {
+          ref.child('properties').child(snapshot.val().uid).child(id).update(property, function (err) {
+            if (err) { deferred.reject(err); }
+            var count = 0;
+            tenants.forEach(function (tenant) {
+              if (isNaN(tenant.moveInDate)) {
+                delete tenant.moveInDate;
+              }
+              tenants.$save(tenant).then(function () {
+                count++;
+                if (count === tenants.length) {
+                  deferred.resolve();
+                }
+              });
+            });
+          });
+        });
+        return deferred.promise;
+      },
       getTypes: function () {
         return [
           'Single-family home',
