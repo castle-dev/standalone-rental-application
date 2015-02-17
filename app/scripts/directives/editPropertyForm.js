@@ -32,6 +32,13 @@ angular.module('propertyManagementApp')
           };
         });
       };
+      scope.$watch('newDoc', function () {
+        if (scope.newDoc && scope.newDoc.name && scope.newDoc.url) {
+          if (!scope.property.documents) { scope.property.documents = []; }
+          scope.property.documents.push(scope.newDoc);
+          scope.newDoc = {};
+        }
+      });
     }
   };
 });
