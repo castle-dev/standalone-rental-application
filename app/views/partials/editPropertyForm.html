@@ -20,6 +20,13 @@
       </fieldset>
     </div><!--address-input-->
 
+    <div class="row">
+      <fieldset>
+        <label for="lease">Upload a new image:</label>
+        <file-input for="newImage"></file-input>
+      </fieldset>
+    </div>
+
     <h3>Tenants</h3>
     <div ng-repeat="tenant in tenants">
       <div class="both-names-input">
@@ -86,8 +93,6 @@
       </fieldset>
     </div>
 
-    <br/>
-    <br/>
     <button class="btn btn-green btn-medium">Save Changes</button>
 
   </form>

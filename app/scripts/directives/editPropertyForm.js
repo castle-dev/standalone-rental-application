@@ -39,6 +39,13 @@ angular.module('propertyManagementApp')
           scope.newDoc = {};
         }
       });
+      scope.$watch('newImage', function () {
+        if (scope.newImage && scope.newImage.url) {
+          if (!scope.property.images) { scope.property.images = []; }
+          scope.property.images.push(scope.newImage.url);
+          scope.newImage = {};
+        }
+      });
     }
   };
 });
