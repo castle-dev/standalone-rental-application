@@ -1,3 +1,4 @@
+/*jshint newcap:false*/
 'use strict';
 
 /**
@@ -9,7 +10,7 @@
  * for displaying a list of properties
  */
 angular.module('propertyManagementApp')
-  .directive('propertiesList', function (Property) {
+  .directive('propertiesList', function (Property, ngTableParams, $filter) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/propertiesList.html',
@@ -17,7 +18,26 @@ angular.module('propertyManagementApp')
         Property.getCurrentUserProperties()
         .then(function (properties) {
           scope.properties = properties;
-        });
+          scope.tableParams = new ngTableParams({
+            page: 1,
+            count: scope.properties.length,
+            sorting: {
+              street: 'asc'
+            }
+          }, {
+            counts: [],
+            total: scope.properties.length, // length of scope.properties
+            getData: function($defer, params) {
+                var orderedData = params.sorting() ?
+                  $filter('orderBy')(scope.properties, params.orderBy()) :
+                  scope.properties;
+
+                $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+            }
+          });
+        })
+        .catch(function (err) { console.log(err); });
+
       }
     };
   });

@@ -14,12 +14,20 @@ angular.module('propertyManagementApp')
       restrict: 'E',
       templateUrl: 'views/partials/propertyData.html',
       link: function (scope) {
-        Property.getPropertyData($routeParams.propertyId)
+        scope.mode = {};
+        var id = $routeParams.propertyId;
+        scope.$watch('property.images', function () {
+          if(scope.property && scope.property.images) {
+
+            scope.reloadSlider = !scope.reloadSlider;
+          }
+        }, true); // true for deep watch, as this is an array
+        Property.getPropertyData(id)
         .then(function (propertyData) {
           scope.property = propertyData;
+          scope.property.id = id;
           return Property.getTenants($routeParams.propertyId);
         })
-
         .then(function (tenants) {
           scope.tenants = tenants;
         });
