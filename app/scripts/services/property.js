@@ -153,6 +153,14 @@ angular.module('propertyManagementApp')
           '1-5 years',
           'More than 5 years'
         ];
+      },
+      getAvailableRentStatuses: function () {
+        return [
+          'invited',
+          'linked',
+          'paid',
+          'late'
+        ];
       }
     };
 

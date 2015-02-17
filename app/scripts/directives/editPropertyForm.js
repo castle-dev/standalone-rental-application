@@ -15,11 +15,18 @@ angular.module('propertyManagementApp')
     templateUrl: 'views/partials/editPropertyForm.html',
     link: function (scope) {
       scope.availableStates = Geography.getAvailableStates();
+      scope.rentStatuses = Property.getAvailableRentStatuses();
+      scope.addIssue = function () {
+        scope.property.issues.push('');
+      };
+      scope.addAlert = function () {
+        scope.property.additionalInfo.push('');
+      };
       scope.submit = function () {
         Property.update(scope.property, scope.tenants)
         .then(function () {
           scope.mode = {
-            edit: true
+            edit: false
           };
         });
       };
