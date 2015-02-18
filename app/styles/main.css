@@ -38,6 +38,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.partialwidth-p {
+  max-width: 600px;
+}
 [ui-view="content"] {
   transition: all 0.5s;
   -moz-transition: all 0.5s;
