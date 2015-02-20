@@ -26,6 +26,7 @@ angular.module('propertyManagementApp')
         Uploader.saveFile(scope.file)
         .then(function (file) {
           scope.file.uploaded = true;
+          file.name = scope.file.name; // override the uploader factory's name
           scope.output = file;
         }, function (err) {
           if (err) { scope.errors.push('There was an error uploading your file, sorry about that! Please try again'); }

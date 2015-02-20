@@ -1,8 +1,9 @@
 <div>
   <span class="btn btn-default btn-file">
-    {{ file.name || 'Browse' }} <input type="file" name="lease">
+    {{ (file.name && !file.uploaded) ? file.name  : 'Browse' }} <input type="file" name="lease">
   </span>
-  <div class="progress-bar" role="progressbar" style="width: {{ progress }}%;">
+  <div class="progress-bar" role="progressbar" style="width: {{ progress }}%;" ng-show="file && !file.uploaded">
     {{ progress | number:0 }}%
   </div>
+  <div class="help-text" ng-show="file.uploaded">{{ file.name }} uploaded</div>
 </div>
