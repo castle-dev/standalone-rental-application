@@ -126,6 +126,7 @@ angular.module('propertyManagementApp')
         ref.child('indexes').child('properties').child(id).once('value', function (snapshot) {
           ref.child('properties').child(snapshot.val().uid).child(id).update(property, function (err) {
             if (err) { deferred.reject(err); }
+            if (!tenants.length) { deferred.resolve(); }
             var count = 0;
             tenants.forEach(function (tenant) {
               if (isNaN(tenant.moveInDate)) {
