@@ -38,9 +38,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.partialwidth-p {
-  max-width: 600px;
-}
 [ui-view="content"] {
   transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -231,6 +228,7 @@ p {
   line-height: 140%;
   color: #34495e;
   margin: 0;
+  max-width: 600px;
 }
 p + p {
   margin-top: 20px;
