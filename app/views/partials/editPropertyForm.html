@@ -27,6 +27,13 @@
       </fieldset>
     </div>
 
+    <div class="row">
+      <fieldset>
+        <label for="lease">Upload a new thumbnail:</label>
+        <file-input for="newThumbnail"></file-input>
+      </fieldset>
+    </div>
+
     <h3>Tenants</h3>
     <div ng-repeat="tenant in tenants">
       <div class="both-names-input">
@@ -53,12 +60,12 @@
 
       <fieldset class="money">
         <label for="current-rent">What is this property’s current monthly rent?</label>
-        <input ng-model="tenant.rent.share" type="number" name="current-rent">
+        <input ng-model="tenant.rent.share" type="number" name="current-rent" required>
       </fieldset>
 
       <fieldset>
         <label for="rent-label">Sup with rent (displayed to user)</label>
-        <input ng-model="tenant.rent.label" type="text" name="rent-label">
+        <input ng-model="tenant.rent.label" type="text" name="rent-label" required>
       </fieldset>
 
       <fieldset>
@@ -74,8 +81,8 @@
         </div><!--one-line-radio-->
       </fieldset>
     </div>
-    <fieldset ng-show="!tenants.length">
-      <label for="occupancy-unknown">No tenants!? Is the occupancy-unknown status unknown?</label>
+    <fieldset ng-if="!tenants.length">
+      <label for="occupancy-unknown">No tenants!? Is the occupancy status unknown?</label>
       <div class="one-line-radio">
         <input type="radio" name="occupancy-unknown" ng-value="true" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-yes" required><label for="occupancy-unknown-yes">Yes</label>
         <input type="radio" name="occupancy-unknown" ng-value="false" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-no" required><label for="occupancy-unknown-no">No, just vacant</label>
@@ -84,22 +91,22 @@
 
     <h3>Maintenance</h3>
     <div ng-repeat="issue in property.issues track by $index">
-      <input type="text" ng-model="$parent.property.issues[$index]" />
+      <input type="text" ng-model="$parent.property.issues[$index]" required />
     </div>
     <a ng-click="addIssue()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add issues</a>
 
     <h3>Alerts</h3>
     <div ng-repeat="alert in property.additionalInfo track by $index">
-      <input type="text" ng-model="$parent.property.additionalInfo[$index]" />
+      <input type="text" ng-model="$parent.property.additionalInfo[$index]" required />
     </div>
     <a ng-click="addAlert()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add alert</a>
 
     <h3>Documents</h3>
     <div ng-repeat="doc in property.documents track by $index" class="inline-inputs row">
       <label>Name:</label>
-      <input type="text" ng-model="$parent.property.documents[$index].name" />
+      <input type="text" ng-model="$parent.property.documents[$index].name" required />
       <label>URL:</label>
-      <input type="text" ng-model="$parent.property.documents[$index].url" />
+      <input type="text" ng-model="$parent.property.documents[$index].url" required />
     </div>
     <div class="row">
       <fieldset>
