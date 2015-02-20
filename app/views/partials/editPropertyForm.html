@@ -65,6 +65,14 @@
         <label for="rent-status">Current rent status (color of dot)</label>
         <select ng-model="tenant.rent.status" name="rent-status" required ng-options="o as o for o in rentStatuses"></select>
       </fieldset>
+
+      <fieldset>
+        <label for="lease">Is this tenant on a lease?</label>
+        <div class="one-line-radio">
+          <input type="radio" name="lease" ng-value="false" ng-model="tenant.needsLease" id="lease-yes" required><label for="lease-yes">Yes</label>
+          <input type="radio" name="lease" ng-value="true" ng-model="tenant.needsLease" id="lease-no" required><label for="lease-no">No</label>
+        </div><!--one-line-radio-->
+      </fieldset>
     </div>
 
     <h3>Maintenance</h3>
