@@ -18,6 +18,7 @@ angular.module('propertyManagementApp')
       scope.propertyTypes = Property.getTypes();
       scope.ownershipDurations = Property.getOwnershipDurations();
       scope.newProperty = Property.getNewProperty();
+      scope.newProperty.stateAbbreviation = 'MI';
       scope.submit = function () {
 
         if (scope.currentStep === scope.addPropertySteps[scope.addPropertySteps.length - 1]) {
