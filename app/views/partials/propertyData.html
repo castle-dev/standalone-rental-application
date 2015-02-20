@@ -53,7 +53,8 @@
       </tbody>
     </table>
   </div>
-  <p ng-show="!tenants.length">{{ property.street }} is currently vacant.</p>
+  <p ng-show="!tenants.length && !property.occupancyStatusUnknown">{{ property.street }} is currently vacant.</p>
+  <p ng-show="!tenants.length && property.occupancyStatusUnknown">The occupancy status of {{ property.street }} is currently unknown.</p>
 
   <h3>Maintenance</h3>
   <div class="maintenance-status">
