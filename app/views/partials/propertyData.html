@@ -20,9 +20,9 @@
 
   <h3>Tenants</h3>
   <div ng-show="tenants.length">
-    <table class="tenant-overview">
+    <table class="tenant-overview" ng-repeat="tenant in tenants">
       <tbody>
-        <tr ng-repeat="tenant in tenants">
+        <tr>
           <td class="tenant-photo">
             <img ng-show="tenant.picture" ng-src="{{ tenant.picture }}" alt="{{ tenant.firstName + ' ' + tenant.lastName }}">
             <img ng-hide="tenant.picture" src="/images/generic_tenant.png" alt="{{ tenant.firstName + ' ' + tenant.lastName }}">
@@ -34,6 +34,9 @@
             <span class="tenant-item" ng-if="tenant.jobTitle && tenant.employer">Employment: {{ tenant.jobTitle }}, {{ tenant.employer }}</span>
             <span class="tenant-income" ng-if="tenant.rent.share && tenant.monthlyIncome">This property requires {{ tenant.rent.share / tenant.monthlyIncome | percentage }} of {{ tenant.firstName }}&rsquo;s yearly income.</span>
           </td>
+        </tr>
+        <tr class="tenant-no-lease" ng-if="tenant.needsLease">
+          <td colspan="2">{{ tenant.firstName }} is not currently on a lease.</td>
         </tr>
       </tbody>
     </table>
@@ -50,7 +53,8 @@
       </tbody>
     </table>
   </div>
-  <p ng-show="!tenants.length">{{ property.street }} is currently vacant.</p>
+  <p ng-show="!tenants.length && !property.occupancyStatusUnknown">{{ property.street }} is currently vacant.</p>
+  <p ng-show="!tenants.length && property.occupancyStatusUnknown">The occupancy status of {{ property.street }} is currently unknown.</p>
 
   <h3>Maintenance</h3>
   <div class="maintenance-status">

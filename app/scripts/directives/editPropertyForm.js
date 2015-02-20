@@ -9,7 +9,7 @@
  * for editing a property
  */
 angular.module('propertyManagementApp')
-.directive('editPropertyForm', function (Geography, Property) {
+.directive('editPropertyForm', function (Geography, Property, $anchorScroll) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/editPropertyForm.html',
@@ -30,6 +30,7 @@ angular.module('propertyManagementApp')
           scope.mode = {
             edit: false
           };
+          $anchorScroll();
         });
       };
       scope.$watch('newDoc', function () {

@@ -65,7 +65,22 @@
         <label for="rent-status">Current rent status (color of dot)</label>
         <select ng-model="tenant.rent.status" name="rent-status" required ng-options="o as o for o in rentStatuses"></select>
       </fieldset>
+
+      <fieldset>
+        <label for="lease">Is {{ tenant.firstName }} on a lease?</label>
+        <div class="one-line-radio">
+          <input type="radio" name="lease" ng-value="false" ng-model="tenant.needsLease" id="lease-yes" required><label for="lease-yes">Yes</label>
+          <input type="radio" name="lease" ng-value="true" ng-model="tenant.needsLease" id="lease-no" required><label for="lease-no">No</label>
+        </div><!--one-line-radio-->
+      </fieldset>
     </div>
+    <fieldset ng-show="!tenants.length">
+      <label for="occupancy-unknown">No tenants!? Is the occupancy-unknown status unknown?</label>
+      <div class="one-line-radio">
+        <input type="radio" name="occupancy-unknown" ng-value="true" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-yes" required><label for="occupancy-unknown-yes">Yes</label>
+        <input type="radio" name="occupancy-unknown" ng-value="false" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-no" required><label for="occupancy-unknown-no">No, just vacant</label>
+      </div><!--one-line-radio-->
+    </fieldset>
 
     <h3>Maintenance</h3>
     <div ng-repeat="issue in property.issues track by $index">
