@@ -27,6 +27,13 @@
       </fieldset>
     </div>
 
+    <div class="row">
+      <fieldset>
+        <label for="lease">Upload a new thumbnail:</label>
+        <file-input for="newThumbnail"></file-input>
+      </fieldset>
+    </div>
+
     <h3>Tenants</h3>
     <div ng-repeat="tenant in tenants">
       <div class="both-names-input">
@@ -75,7 +82,7 @@
       </fieldset>
     </div>
     <fieldset ng-show="!tenants.length">
-      <label for="occupancy-unknown">No tenants!? Is the occupancy-unknown status unknown?</label>
+      <label for="occupancy-unknown">No tenants!? Is the occupancy status unknown?</label>
       <div class="one-line-radio">
         <input type="radio" name="occupancy-unknown" ng-value="true" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-yes" required><label for="occupancy-unknown-yes">Yes</label>
         <input type="radio" name="occupancy-unknown" ng-value="false" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-no" required><label for="occupancy-unknown-no">No, just vacant</label>

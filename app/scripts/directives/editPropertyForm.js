@@ -47,6 +47,12 @@ angular.module('propertyManagementApp')
           scope.newImage = {};
         }
       });
+      scope.$watch('newThumbnail', function () {
+        if (scope.newThumbnail && scope.newThumbnail.url) {
+          scope.property.thumbnail = scope.newThumbnail.url;
+          scope.newThumbnail = {};
+        }
+      });
     }
   };
 });
