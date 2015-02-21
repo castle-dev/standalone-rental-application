@@ -1400,9 +1400,6 @@ ul.properties li.add-property {
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.maintenance-status {
-  margin-bottom: 40px;
-}
 ul.maintenance {
   border: 1px solid #ececec;
   border-radius: 10px;
