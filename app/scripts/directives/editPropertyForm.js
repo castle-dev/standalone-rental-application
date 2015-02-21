@@ -20,6 +20,10 @@ angular.module('propertyManagementApp')
         if (!scope.property.issues) { scope.property.issues = []; }
         scope.property.issues.push('');
       };
+      scope.deleteIssue = function ($index) {
+        console.log($index);
+        scope.property.issues.splice($index, 1);
+      };
       scope.addAlert = function () {
         if (!scope.property.additionalInfo) { scope.property.additionalInfo = []; }
         scope.property.additionalInfo.push('');

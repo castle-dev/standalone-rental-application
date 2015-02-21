@@ -90,8 +90,9 @@
     </fieldset>
 
     <h3>Maintenance</h3>
-    <div ng-repeat="issue in property.issues track by $index">
+    <div ng-repeat="issue in property.issues track by $index" class="deleteable">
       <input type="text" ng-model="$parent.property.issues[$index]" required />
+      <i ng-click="deleteIssue($index)" class="fa fa-times delete"></i>
     </div>
     <a ng-click="addIssue()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add issues</a>
 
