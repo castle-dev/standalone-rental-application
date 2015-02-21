@@ -247,6 +247,9 @@ p.small {
 p.tiny {
   font-size: 80%;
 }
+li {
+  margin-bottom: 6px;
+}
 .light-text,
 .light-text p,
 .light-text h1,
