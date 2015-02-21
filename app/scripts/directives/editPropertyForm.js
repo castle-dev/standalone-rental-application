@@ -20,13 +20,18 @@ angular.module('propertyManagementApp')
         if (!scope.property.issues) { scope.property.issues = []; }
         scope.property.issues.push('');
       };
-      scope.deleteIssue = function ($index) {
-        console.log($index);
-        scope.property.issues.splice($index, 1);
-      };
       scope.addAlert = function () {
         if (!scope.property.additionalInfo) { scope.property.additionalInfo = []; }
         scope.property.additionalInfo.push('');
+      };
+      scope.deleteIssue = function ($index) {
+        scope.property.issues.splice($index, 1);
+      };
+      scope.deleteAlert = function ($index) {
+        scope.property.additionalInfo.splice($index, 1);
+      };
+      scope.deleteDocument = function ($index) {
+        scope.property.documents.splice($index, 1);
       };
       scope.submit = function () {
         Property.update(scope.property, scope.tenants)

@@ -1513,7 +1513,7 @@ img.forgot-password {
   top: 3px;
   right: -24px;
 }
-.deleteable {
+.deletable {
   position: relative;
 }
 @media only screen and (max-width: 1092px) {
