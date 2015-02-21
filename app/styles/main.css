@@ -1295,6 +1295,9 @@ ul.properties li.add-property {
   line-height: 100%;
   color: #6a8186;
 }
+.property-section {
+  margin-bottom: 40px;
+}
 .image-carousel div {
   margin-right: 10px;
 }
