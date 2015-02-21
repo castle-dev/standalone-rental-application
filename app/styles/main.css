@@ -249,6 +249,7 @@ p.tiny {
 }
 li {
   margin-bottom: 6px;
+  max-width: 600px;
 }
 .light-text,
 .light-text p,
