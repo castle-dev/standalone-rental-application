@@ -129,15 +129,33 @@ angular.module('propertyManagementApp')
             if (!tenants.length) { deferred.resolve(); }
             var count = 0;
             tenants.forEach(function (tenant) {
+              delete tenant.$$hashKey;
               if (isNaN(tenant.moveInDate)) {
                 delete tenant.moveInDate;
               }
-              tenants.$save(tenant).then(function () {
-                count++;
-                if (count === tenants.length) {
-                  deferred.resolve();
-                }
-              });
+              if (tenant.$id) {
+                // updating existing tenant
+                tenants.$save(tenant).then(function () {
+                  count++;
+                  console.log(count,'tenants saved');
+                  if (count === tenants.length) {
+                    deferred.resolve();
+                  }
+                });
+              } else {
+                // creating new tenant
+                Tenant.saveNewTenant(id, tenant).then(function () {
+                  // remove the 'new tenant' object
+                  var i = tenants.indexOf(tenant);
+                  if (i !== -1 && typeof(tenants.$save) === 'function') {
+                    tenants.splice(i, 1);
+                  }
+                  count++;
+                  if (count === tenants.length) {
+                    deferred.resolve();
+                  }
+                });
+              }
             });
           });
         });

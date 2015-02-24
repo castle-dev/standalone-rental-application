@@ -9,7 +9,7 @@
  * for editing a property
  */
 angular.module('propertyManagementApp')
-.directive('editPropertyForm', function (Geography, Property, $anchorScroll) {
+.directive('editPropertyForm', function (Geography, Property, $route) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/editPropertyForm.html',
@@ -24,6 +24,10 @@ angular.module('propertyManagementApp')
         if (!scope.property.additionalInfo) { scope.property.additionalInfo = []; }
         scope.property.additionalInfo.push('');
       };
+      scope.addTenant = function () {
+        if (!(scope.tenants && scope.tenants.length)) { scope.tenants = []; }
+        scope.tenants.push({});
+      };
       scope.deleteIssue = function ($index) {
         scope.property.issues.splice($index, 1);
       };
@@ -36,10 +40,7 @@ angular.module('propertyManagementApp')
       scope.submit = function () {
         Property.update(scope.property, scope.tenants)
         .then(function () {
-          scope.mode = {
-            edit: false
-          };
-          $anchorScroll();
+          $route.reload();
         });
       };
       scope.$watch('newDoc', function () {
