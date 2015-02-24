@@ -61,7 +61,7 @@ angular.module('propertyManagementApp')
         return $firebase(ref.child('tenants').child('inherited').child(address)).$push(inheritedTenant);
       },
       saveNewTenant: function (propertyId, tenant) {
-        if (tenant.rent) {
+        if (tenant.rent && !tenant.rent.label) {
           tenant.rent.label = 'Unlinked';
         }
         return $firebase(ref.child('tenants').child(propertyId)).$push(tenant);

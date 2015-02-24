@@ -76,8 +76,8 @@
       <fieldset>
         <label for="lease">Is {{ tenant.firstName }} on a lease?</label>
         <div class="one-line-radio">
-          <input type="radio" name="lease" ng-value="false" ng-model="tenant.needsLease" id="lease-yes" required><label for="lease-yes">Yes</label>
-          <input type="radio" name="lease" ng-value="true" ng-model="tenant.needsLease" id="lease-no" required><label for="lease-no">No</label>
+          <input type="radio" name="lease-{{tenant.firstName + '-' + tenant.lastName}}" id="lease-{{tenant.firstName + '-' + tenant.lastName}}-yes" ng-value="false" ng-model="tenant.needsLease" required><label for="lease-{{tenant.firstName + '-' + tenant.lastName}}-yes">Yes</label>
+          <input type="radio" name="lease-{{tenant.firstName + '-' + tenant.lastName}}" id="lease-{{tenant.firstName + '-' + tenant.lastName}}-no" ng-value="true" ng-model="tenant.needsLease" required><label for="lease-{{tenant.firstName + '-' + tenant.lastName}}-no">No</label>
         </div><!--one-line-radio-->
       </fieldset>
     </div>
@@ -88,6 +88,7 @@
         <input type="radio" name="occupancy-unknown" ng-value="false" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-no" required><label for="occupancy-unknown-no">No, just vacant</label>
       </div><!--one-line-radio-->
     </fieldset>
+    <a ng-click="addTenant()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add New Tenant</a>
 
     <h3>Maintenance</h3>
     <div ng-repeat="issue in property.issues track by $index" class="deletable">
