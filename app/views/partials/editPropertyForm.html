@@ -1,127 +1,149 @@
-<div class="solo-form left">
-  <form name="editProperty" ng-submit="submit()">
+<div class="row">
+  <!-- Left column on desktop -->
+  <div class="col-xs-12 col-md-8">
+    <div class="solo-form left">
+      <form name="editProperty" ng-submit="submit()">
 
+        <fieldset>
+          <label for="property-address">Property address:</label>
+          <input ng-model="property.street" name="property-address" type="text" placeholder="Street Address" required>
+        </fieldset>
+
+        <div class="address-input">
+          <fieldset>
+            <input ng-model="property.city" name="city" type="text" placeholder="City" required>
+          </fieldset>
+
+          <fieldset>
+            <select ng-model="property.stateAbbreviation" name="state" required ng-options="o as o for o in availableStates"></select>
+          </fieldset>
+
+          <fieldset>
+            <input ng-model="property.zip" name="zip-code" type="text" class="zipcode" placeholder="ZIP" required numeric ng-minlength="5" ng-maxlength="5">
+          </fieldset>
+        </div><!--address-input-->
+
+        <div class="row">
+          <fieldset>
+            <label for="lease">Upload a new image:</label>
+            <file-input for="newImage"></file-input>
+          </fieldset>
+        </div>
+
+        <div class="row">
+          <fieldset>
+            <label for="lease">Upload a new thumbnail:</label>
+            <file-input for="newThumbnail"></file-input>
+          </fieldset>
+        </div>
+
+        <h3>Tenants</h3>
+        <div ng-repeat="tenant in tenants">
+          <div class="both-names-input">
+            <fieldset>
+              <label for="first-name">Tenant's name:</label>
+              <input type="text" name="first-name" placeholder="First" ng-model="tenant.firstName" required>
+            </fieldset>
+
+            <fieldset>
+              <label for="last-name"></label>
+              <input type="text" name="last-name" placeholder="Last" ng-model="tenant.lastName" required>
+            </fieldset>
+          </div><!--both-names-input-->
+
+          <fieldset>
+            <label for="tenant-phone">Tenant’s phone number:</label>
+            <input ng-model="tenant.phone" type="tel" name="tenant-phone" ui-mask="(999) 999-9999">
+          </fieldset>
+
+          <fieldset>
+            <label for="tenant-email">Tenant’s email address:</label>
+            <input ng-model="tenant.email" type="email" name="tenant-email">
+          </fieldset>
+
+          <fieldset class="money">
+            <label for="current-rent">What is this property’s current monthly rent?</label>
+            <input ng-model="tenant.rent.share" type="number" name="current-rent" required>
+          </fieldset>
+
+          <fieldset>
+            <label for="rent-label">Sup with rent (displayed to user)</label>
+            <input ng-model="tenant.rent.label" type="text" name="rent-label" required>
+          </fieldset>
+
+          <fieldset>
+            <label for="rent-status">Current rent status (color of dot)</label>
+            <select ng-model="tenant.rent.status" name="rent-status" required ng-options="o as o for o in rentStatuses"></select>
+          </fieldset>
+
+          <fieldset>
+            <label for="lease">Is {{ tenant.firstName }} on a lease?</label>
+            <div class="one-line-radio">
+              <input type="radio" name="lease-{{tenant.firstName + '-' + tenant.lastName}}" id="lease-{{tenant.firstName + '-' + tenant.lastName}}-yes" ng-value="false" ng-model="tenant.needsLease" required><label for="lease-{{tenant.firstName + '-' + tenant.lastName}}-yes">Yes</label>
+              <input type="radio" name="lease-{{tenant.firstName + '-' + tenant.lastName}}" id="lease-{{tenant.firstName + '-' + tenant.lastName}}-no" ng-value="true" ng-model="tenant.needsLease" required><label for="lease-{{tenant.firstName + '-' + tenant.lastName}}-no">No</label>
+            </div><!--one-line-radio-->
+          </fieldset>
+        </div>
+        <fieldset ng-if="!tenants.length">
+          <label for="occupancy-unknown">No tenants!? Is the occupancy status unknown?</label>
+          <div class="one-line-radio">
+            <input type="radio" name="occupancy-unknown" ng-value="true" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-yes" required><label for="occupancy-unknown-yes">Yes</label>
+            <input type="radio" name="occupancy-unknown" ng-value="false" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-no" required><label for="occupancy-unknown-no">No, just vacant</label>
+          </div><!--one-line-radio-->
+        </fieldset>
+        <a ng-click="addTenant()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add New Tenant</a>
+
+        <h3>Maintenance</h3>
+        <div ng-repeat="issue in property.issues track by $index" class="deletable">
+          <input type="text" ng-model="$parent.property.issues[$index]" required />
+          <i ng-click="deleteIssue($index)" class="fa fa-times delete"></i>
+        </div>
+        <a ng-click="addIssue()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add issues</a>
+
+        <h3>Alerts</h3>
+        <div ng-repeat="alert in property.additionalInfo track by $index" class="deletable">
+          <input type="text" ng-model="$parent.property.additionalInfo[$index]" required />
+          <i ng-click="deleteAlert($index)" class="fa fa-times delete"></i>
+        </div>
+        <a ng-click="addAlert()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add alert</a>
+
+        <h3>Documents</h3>
+        <div ng-repeat="doc in property.documents track by $index" class="inline-inputs row deletable">
+          <label>Name:</label>
+          <input type="text" ng-model="$parent.property.documents[$index].name" required />
+          <div class="row help-text">
+            <label>URL:</label>
+            <input type="text" ng-model="$parent.property.documents[$index].url" required />
+          </div>
+          <i ng-click="deleteDocument($index)" class="fa fa-times delete"></i>
+        </div>
+        <div class="row">
+          <fieldset>
+            <label for="lease">Upload a new document:</label>
+            <file-input for="newDoc"></file-input>
+          </fieldset>
+        </div>
+
+        <button class="btn btn-green btn-medium">Save Changes</button>
+
+      </form>
+    </div>
+  </div>
+  <!-- Right column on Desktop -->
+  <div class="col-xs-12 col-md-4">
+    <h3>Email Notifications</h3>
     <fieldset>
-      <label for="property-address">Property address:</label>
-      <input ng-model="property.street" name="property-address" type="text" placeholder="Street Address" required>
-    </fieldset>
-
-    <div class="address-input">
-      <fieldset>
-        <input ng-model="property.city" name="city" type="text" placeholder="City" required>
-      </fieldset>
-
-      <fieldset>
-        <select ng-model="property.stateAbbreviation" name="state" required ng-options="o as o for o in availableStates"></select>
-      </fieldset>
-
-      <fieldset>
-        <input ng-model="property.zip" name="zip-code" type="text" class="zipcode" placeholder="ZIP" required numeric ng-minlength="5" ng-maxlength="5">
-      </fieldset>
-    </div><!--address-input-->
-
-    <div class="row">
-      <fieldset>
-        <label for="lease">Upload a new image:</label>
-        <file-input for="newImage"></file-input>
-      </fieldset>
-    </div>
-
-    <div class="row">
-      <fieldset>
-        <label for="lease">Upload a new thumbnail:</label>
-        <file-input for="newThumbnail"></file-input>
-      </fieldset>
-    </div>
-
-    <h3>Tenants</h3>
-    <div ng-repeat="tenant in tenants">
-      <div class="both-names-input">
-        <fieldset>
-          <label for="first-name">Tenant's name:</label>
-          <input type="text" name="first-name" placeholder="First" ng-model="tenant.firstName" required>
-        </fieldset>
-
-        <fieldset>
-          <label for="last-name"></label>
-          <input type="text" name="last-name" placeholder="Last" ng-model="tenant.lastName" required>
-        </fieldset>
-      </div><!--both-names-input-->
-
-      <fieldset>
-        <label for="tenant-phone">Tenant’s phone number:</label>
-        <input ng-model="tenant.phone" type="tel" name="tenant-phone" ui-mask="(999) 999-9999">
-      </fieldset>
-
-      <fieldset>
-        <label for="tenant-email">Tenant’s email address:</label>
-        <input ng-model="tenant.email" type="email" name="tenant-email">
-      </fieldset>
-
-      <fieldset class="money">
-        <label for="current-rent">What is this property’s current monthly rent?</label>
-        <input ng-model="tenant.rent.share" type="number" name="current-rent" required>
-      </fieldset>
-
-      <fieldset>
-        <label for="rent-label">Sup with rent (displayed to user)</label>
-        <input ng-model="tenant.rent.label" type="text" name="rent-label" required>
-      </fieldset>
-
-      <fieldset>
-        <label for="rent-status">Current rent status (color of dot)</label>
-        <select ng-model="tenant.rent.status" name="rent-status" required ng-options="o as o for o in rentStatuses"></select>
-      </fieldset>
-
-      <fieldset>
-        <label for="lease">Is {{ tenant.firstName }} on a lease?</label>
-        <div class="one-line-radio">
-          <input type="radio" name="lease-{{tenant.firstName + '-' + tenant.lastName}}" id="lease-{{tenant.firstName + '-' + tenant.lastName}}-yes" ng-value="false" ng-model="tenant.needsLease" required><label for="lease-{{tenant.firstName + '-' + tenant.lastName}}-yes">Yes</label>
-          <input type="radio" name="lease-{{tenant.firstName + '-' + tenant.lastName}}" id="lease-{{tenant.firstName + '-' + tenant.lastName}}-no" ng-value="true" ng-model="tenant.needsLease" required><label for="lease-{{tenant.firstName + '-' + tenant.lastName}}-no">No</label>
-        </div><!--one-line-radio-->
-      </fieldset>
-    </div>
-    <fieldset ng-if="!tenants.length">
-      <label for="occupancy-unknown">No tenants!? Is the occupancy status unknown?</label>
-      <div class="one-line-radio">
-        <input type="radio" name="occupancy-unknown" ng-value="true" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-yes" required><label for="occupancy-unknown-yes">Yes</label>
-        <input type="radio" name="occupancy-unknown" ng-value="false" ng-model="property.occupancyStatusUnknown" id="occupancy-unknown-no" required><label for="occupancy-unknown-no">No, just vacant</label>
-      </div><!--one-line-radio-->
-    </fieldset>
-    <a ng-click="addTenant()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add New Tenant</a>
-
-    <h3>Maintenance</h3>
-    <div ng-repeat="issue in property.issues track by $index" class="deletable">
-      <input type="text" ng-model="$parent.property.issues[$index]" required />
-      <i ng-click="deleteIssue($index)" class="fa fa-times delete"></i>
-    </div>
-    <a ng-click="addIssue()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add issues</a>
-
-    <h3>Alerts</h3>
-    <div ng-repeat="alert in property.additionalInfo track by $index" class="deletable">
-      <input type="text" ng-model="$parent.property.additionalInfo[$index]" required />
-      <i ng-click="deleteAlert($index)" class="fa fa-times delete"></i>
-    </div>
-    <a ng-click="addAlert()" class="btn"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add alert</a>
-
-    <h3>Documents</h3>
-    <div ng-repeat="doc in property.documents track by $index" class="inline-inputs row deletable">
-      <label>Name:</label>
-      <input type="text" ng-model="$parent.property.documents[$index].name" required />
-      <div class="row help-text">
-        <label>URL:</label>
-        <input type="text" ng-model="$parent.property.documents[$index].url" required />
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-arrow-circle-right"></i> Send <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#"> New Maintenance Issue <i class="fa fa-wrench"></i></a></li>
+          <li><a href="#"> New Alert <i class="fa fa-exclamation"></i></a></li>
+          <li><a href="#"> New Document <i class="fa fa-file-text"></i></a></li>
+        </ul>
       </div>
-      <i ng-click="deleteDocument($index)" class="fa fa-times delete"></i>
-    </div>
-    <div class="row">
-      <fieldset>
-        <label for="lease">Upload a new document:</label>
-        <file-input for="newDoc"></file-input>
-      </fieldset>
-    </div>
-
-    <button class="btn btn-green btn-medium">Save Changes</button>
-
-  </form>
+    </fieldset>
+  </div>
 </div>
+
