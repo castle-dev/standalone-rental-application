@@ -9,7 +9,7 @@
  * for displaying a single property
  */
 angular.module('propertyManagementApp')
-  .directive('propertyData', function ($routeParams, Property) {
+  .directive('propertyData', function ($routeParams, $anchorScroll, $timeout, Property) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/propertyData.html',
@@ -30,6 +30,9 @@ angular.module('propertyManagementApp')
         })
         .then(function (tenants) {
           scope.tenants = tenants;
+        })
+        .then(function () {
+          $timeout($anchorScroll);
         });
       }
     };
