@@ -9,7 +9,7 @@
  * for editing a property
  */
 angular.module('propertyManagementApp')
-.directive('editPropertyForm', function (Geography, Property, $route) {
+.directive('editPropertyForm', function (Geography, Property, BackgroundJob, $route) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/editPropertyForm.html',
@@ -36,6 +36,21 @@ angular.module('propertyManagementApp')
       };
       scope.deleteDocument = function ($index) {
         scope.property.documents.splice($index, 1);
+      };
+      scope.sendNotificationEmail = function (template, callToAction) {
+        // function (to, slug, name, address, callToActionPath)
+        console.log('Sending notification email', template);
+        BackgroundJob.create({
+          jobType: 'notificationEmail',
+          template: template,
+          email: 'o.p@gmail.com', //TODO
+          name: 'Optimus', //TODO
+          address: scope.property.street + ' ' + scope.property.city + ', ' + scope.property.stateAbbreviation + ' ' + scope.property.zip,
+          callToActionPath: callToAction
+        })
+        .then(function (ref) {
+          console.log('New background job created:', ref.key());
+        });
       };
       scope.submit = function () {
         Property.update(scope.property, scope.tenants)
