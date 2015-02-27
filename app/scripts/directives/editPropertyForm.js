@@ -9,7 +9,7 @@
  * for editing a property
  */
 angular.module('propertyManagementApp')
-.directive('editPropertyForm', function (Geography, Property, BackgroundJob, $route) {
+.directive('editPropertyForm', function (Geography, Property, BackgroundJob, $route, $timeout) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/editPropertyForm.html',
@@ -39,7 +39,6 @@ angular.module('propertyManagementApp')
       };
       scope.sendNotificationEmail = function (template, callToAction) {
         // function (to, slug, name, address, callToActionPath)
-        console.log('Sending notification email', template);
         BackgroundJob.create({
           jobType: 'notificationEmail',
           template: template,
@@ -49,7 +48,10 @@ angular.module('propertyManagementApp')
           callToActionPath: callToAction
         })
         .then(function (ref) {
-          console.log('New background job created:', ref.key());
+          scope.notificationSent = true;
+          $timeout(function () {
+            scope.notificationSent = false;
+          }, 3000);
         });
       };
       scope.submit = function () {
