@@ -23,6 +23,12 @@
           </fieldset>
         </div><!--address-input-->
 
+        <h3>Images</h3>
+        <p ng-if="!property.images.length">None yet! Why not upload some?</p>
+        <div ng-repeat="image in property.images track by $index" class="deletable">
+          <input type="text" ng-model="$parent.property.images[$index]" required />
+          <i ng-click="deleteImage($index)" class="fa fa-times delete"></i>
+        </div>
         <div class="row">
           <fieldset>
             <label for="lease">Upload a new image:</label>
@@ -31,6 +37,10 @@
         </div>
 
         <div class="row">
+          <fieldset ng-if="property.thumbnail">
+            <label for="thumbnail">Current Thumbnail:</label>
+            <img ng-src="{{ property.thumbnail }}" class="thumbnail">
+          </fieldset>
           <fieldset>
             <label for="lease">Upload a new thumbnail:</label>
             <file-input for="newThumbnail"></file-input>

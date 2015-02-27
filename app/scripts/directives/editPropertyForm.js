@@ -37,6 +37,9 @@ angular.module('propertyManagementApp')
       scope.deleteDocument = function ($index) {
         scope.property.documents.splice($index, 1);
       };
+      scope.deleteImage = function ($index) {
+        scope.property.images.splice($index, 1);
+      };
       scope.sendNotificationEmail = function (template, callToAction) {
         Property.getOwnerInfo(scope.property).then(function (ownerInfo) {
           return BackgroundJob.create({
