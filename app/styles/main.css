@@ -1269,7 +1269,7 @@ ul.properties li a:hover {
 ul.properties li a:active {
   background: #2e8d88;
 }
-ul.properties li a img {
+ul.properties li a img, .thumbnail {
   display: inline;
   max-width: 90px;
   max-height: 100px;
