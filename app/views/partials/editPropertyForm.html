@@ -23,6 +23,11 @@
           </fieldset>
         </div><!--address-input-->
 
+        <h3>Images</h3>
+        <div ng-repeat="image in property.images track by $index" class="deletable">
+          <input type="text" ng-model="$parent.property.images[$index]" required />
+          <i ng-click="deleteImage($index)" class="fa fa-times delete"></i>
+        </div>
         <div class="row">
           <fieldset>
             <label for="lease">Upload a new image:</label>

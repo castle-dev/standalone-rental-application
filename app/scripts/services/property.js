@@ -137,7 +137,6 @@ angular.module('propertyManagementApp')
                 // updating existing tenant
                 tenants.$save(tenant).then(function () {
                   count++;
-                  console.log(count,'tenants saved');
                   if (count === tenants.length) {
                     deferred.resolve();
                   }
