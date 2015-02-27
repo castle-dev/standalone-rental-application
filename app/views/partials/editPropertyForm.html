@@ -134,16 +134,15 @@
     <h3>Email Notifications</h3>
     <fieldset>
       <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          <i class="fa fa-arrow-circle-right"></i> Send <span class="caret"></span>
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ng-class="{ 'btn-green': notificationSent, 'btn-default': !notificationSent }">
+          <i class="fa fa-arrow-circle-right"></i> {{ notificationSent ? ' Sent! ' : ' Send  ' }}<span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
           <li><a ng-click="sendNotificationEmail('new-maintenance-issue', '/#/properties/' + property.id + '#maintenance-issues')"> New Maintenance Issue <i class="fa fa-wrench"></i></a></li>
-          <li><a href="#"> New Alert <i class="fa fa-exclamation"></i></a></li>
-          <li><a href="#"> New Document <i class="fa fa-file-text"></i></a></li>
+          <li><a ng-click="sendNotificationEmail('new-alert', '/#/properties/' + property.id + '#alerts')"> New Alert <i class="fa fa-exclamation"></i></a></li>
+          <li><a ng-click="sendNotificationEmail('new-document', '/#/properties/' + property.id + '#documents')"> New Document <i class="fa fa-file-text"></i></a></li>
         </ul>
       </div>
-      <p class="help-text" ng-if="notificationSent">Notification sent</p>
     </fieldset>
   </div>
 </div>

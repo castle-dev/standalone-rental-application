@@ -38,16 +38,17 @@ angular.module('propertyManagementApp')
         scope.property.documents.splice($index, 1);
       };
       scope.sendNotificationEmail = function (template, callToAction) {
-        // function (to, slug, name, address, callToActionPath)
-        BackgroundJob.create({
-          jobType: 'notificationEmail',
-          template: template,
-          email: 'o.p@gmail.com', //TODO
-          name: 'Optimus', //TODO
-          address: scope.property.street + ' ' + scope.property.city + ', ' + scope.property.stateAbbreviation + ' ' + scope.property.zip,
-          callToActionPath: callToAction
+        Property.getOwnerInfo(scope.property).then(function (ownerInfo) {
+          return BackgroundJob.create({
+            jobType: 'notificationEmail',
+            template: template,
+            email: ownerInfo.email,
+            name: ownerInfo.name,
+            address: scope.property.street + ' ' + scope.property.city + ', ' + scope.property.stateAbbreviation + ' ' + scope.property.zip,
+            callToActionPath: callToAction
+          });
         })
-        .then(function (ref) {
+        .then(function () {
           scope.notificationSent = true;
           $timeout(function () {
             scope.notificationSent = false;
