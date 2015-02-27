@@ -161,6 +161,19 @@ angular.module('propertyManagementApp')
         });
         return deferred.promise;
       },
+      getOwnerInfo: function (property) {
+        var deferred = $q.defer();
+        ref.child('indexes').child('properties').child(property.id).once('value', function (indexSnapshot) {
+          ref.child('profile').child(indexSnapshot.val().uid).once('value', function (profileSnapshot) {
+            var profile = profileSnapshot.val();
+            deferred.resolve({
+              email: profile.email,
+              name: profile.firstName
+            });
+          }, deferred.reject);
+        }, deferred.reject);
+        return deferred.promise;
+      },
       getTypes: function () {
         return [
           'Single-family home',
