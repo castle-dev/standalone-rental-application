@@ -266,7 +266,7 @@ li {
 }
 a {
   color: #198e85;
-  text-decoration: none;
+  text-decoration: none !important;
   border-bottom: 1px dotted #C4C4C4;
   transition: all 0.1s ease;
   -moz-transition: all 0.1s ease;
