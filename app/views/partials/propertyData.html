@@ -46,13 +46,13 @@
 
 	<div class="property-section">
     <h3>Rent Status</h3>
-    <table class="rent-status rent-status-small">
+    <table class="rent-status-table rent-status-small">
       <tbody>
         <tr ng-repeat="tenant in tenants">
-          <td>{{ tenant.firstName + ' ' + tenant.lastName }}</td>
-          <td class="amount">${{ tenant.rent.share | number }}</td>
-          <td><div class="rent-circle rent-circle-{{ tenant.rent.status }}"></div></td>
-          <td class="status">{{ tenant.rent.label }}</td>
+          <td class="rent-status-cell rent-status-name">{{ tenant.firstName + ' ' + tenant.lastName }}</td>
+          <td class="rent-status-cell rent-status-amount">${{ tenant.rent.share | number }}</td>
+          <td class="rent-status-cell rent-status-circle"><div class="rent-circle rent-circle-{{ tenant.rent.status }}"></div></td>
+          <td class="rent-status-cell rent-status-status">{{ tenant.rent.label }}</td>
         </tr>
       </tbody>
     </table>
