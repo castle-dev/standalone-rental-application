@@ -1259,7 +1259,8 @@ ul.properties li a:hover {
 ul.properties li a:active {
   background: #d3d3d3;
 }
-ul.properties li a img {
+ul.properties li a img,
+.thumbnail {
   display: inline;
   max-width: 90px;
   max-height: 100px;
@@ -1415,6 +1416,9 @@ img.forgot-password {
 }
 .deletable {
   position: relative;
+}
+ul.dropdown-menu a {
+  border: none;
 }
 @media only screen and (max-width: 1100px) {
   .property-section {
