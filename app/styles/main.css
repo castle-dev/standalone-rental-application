@@ -1357,68 +1357,6 @@ ul.properties li.add-property {
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-ul.maintenance {
-  border: 1px solid #ececec;
-  border-radius: 10px;
-  padding: 0;
-  margin-top: 10px;
-  margin-left: -10px;
-  width: 100%;
-  max-width: 700px;
-}
-ul.maintenance li {
-  list-style-type: none;
-  padding: 6px 10px;
-  border-bottom: 1px solid #ececec;
-}
-ul.maintenance li:last-child {
-  border: 0;
-}
-li.maintenance-title {
-  background: #5f7378;
-  color: #f9f9f9;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  font-weight: 400;
-  font-size: 110%;
-}
-.maintenance .maintenance-item:hover {
-  background: #f1f1f1;
-}
-.maintenance li a {
-  display: block;
-  width: 100%;
-  color: #34495e;
-  border: 0;
-  transition: 0;
-  -moz-transition: 0;
-  -webkit-transition: 0;
-  -ms-transition: 0;
-  -o-transition: 0;
-}
-.maintenance a:hover {
-  color: #4ca7d4;
-}
-.maintenance span {
-  color: #8ea0a5;
-  font-style: italic;
-  font-size: 80%;
-  margin-left: 15px;
-}
-.maintenance-author {
-  color: #5f7378;
-  font-size: 85%;
-}
-.maintenance-future {
-  font-size: 90%;
-}
-.maintenance-future span {
-  text-transform: uppercase;
-  font-weight: 400;
-  color: #5f7378;
-  font-style: normal;
-  margin-left: 0;
-}
 img.forgot-password {
   display: block;
   margin: 0 auto 20px auto;
