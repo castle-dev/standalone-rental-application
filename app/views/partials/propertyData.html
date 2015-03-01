@@ -61,7 +61,9 @@
 	<div class="property-section">
 	  <h3>Maintenance</h3>
 	  <div class="maintenance-status">
-		 <p ng-repeat="issue in property.issues">{{ issue }}</p>
+	  	<ul>
+		 <li ng-repeat="issue in property.issues">{{ issue }}</li>
+		</ul>
 		 <p ng-show="!property.issues">{{ property.street }} currently has no open maintenance issues.</p>
 	  </div>
 	</div><!--property-section-->
