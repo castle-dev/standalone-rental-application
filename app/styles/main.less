@@ -1362,73 +1362,71 @@ fieldset.cvv-code input {
 
 
 // Rent Status
-.rent-status-date {
-	font-size: 50%;
-	display: inline-block;
-	margin-left: 40px;
-	}
-
-table.rent-status {
-	width: auto;
-	min-width: 700px;
-	margin: 10px 0px 40px -10px;
-	border: 1px solid darken(@basecolor,6%);
+.rent-status-table {
+	width: 540px;
+	margin: 50px 0px 10px -10px;
 	border-radius: 10px;
+	background: lighten(@basecolor, 5%);
 	}
 	
-table.rent-status-small {
-	min-width: 0;
-	width: 450px;
-	max-width: 100%;
-	}
-	
-table.rent-status + table.rent-status {
-	margin-top: 40px;
-	}
-	
-.rent-status tr.rent-status-header:nth-child(even),
-.rent-status tr.rent-status-header:nth-child(odd) {
-	font-size: 120%;
-	white-space: nowrap;
-	font-weight: 400;
-	line-height: 110%;
-	vertical-align: bottom;
-	background: @grey;
-	color: @basecolor;
-	}
-		
-.rent-status td.month {
-	font-size: 60%;
-	text-align: center;
-	text-transform: uppercase;
-	padding-top: 15px;
-	line-height: 110%;
-	}
-		
-.rent-status tr:nth-child(even) {
-	background: darken(@basecolor,3%);
-	}
-	
-.rent-status td {
-	padding: 5px 10px;
-	}
-	
-.rent-status td.name {
-	min-width: 240px;
+.rent-status-small {
+	width: 100%;
+	margin-top: 0;
+	font-size: 90%;
 	}
 
-.rent-status td.amount {
+.rent-status-small,
+.rent-status-small td {
+	border-radius: 10px;
+	border-collapse: separate;
+	}
+	
+.rent-status-table:nth-child(1) {
+	margin-top: 20px;
+	}
+	
+.rent-status-cell {
+	padding: 5px 10px;
+	border: 1px solid darken(@basecolor,6%);
+	}
+	
+.rent-status-header {
+	padding: 6px 12px;
+	background: @grey;
+	font-size: 110%;
+	font-weight: 400;
+	color: @basecolor;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	}
+
+.rent-status-name {
+	border-right: 0;
+	}
+	
+.rent-status-amount {
 	color: lighten(@grey, 15%);
 	padding-right: 20px;
 	font-size: 85%;
+	border-right: 0;
+	border-left: 0;
+	width: 15%;
 	}
-	
-.rent-status td.status {
+
+.rent-status-circle {
+	border-right: 0;
+	border-left: 0;
+	width: 6%;
+	}
+		
+.rent-status-status {
 	font-size: 85%;
 	text-align: center;
 	border: 1px solid darken(@basecolor, 6%);
 	padding: 5px 25px;
 	text-transform: uppercase;
+	width: 28%;
+	border-left: 0;	
 	}
 	
 .rent-circle {
@@ -1474,16 +1472,6 @@ table.rent-status + table.rent-status {
 	
 .rent-status tr.past-due {
 	background: lighten(@yellow, 30%);
-	}
-	
-tr.rent-status-spacer {
-	border: 1px solid darken(@basecolor, 6%);
-	}
-	
-tr.rent-status-spacer,
-tr.rent-status-spacer td {
-	background: 0 !important;
-	height: 40px;
 	}
 	
 	
@@ -1570,6 +1558,7 @@ ul.properties li.add-property {
 	margin-bottom: 0;
 	width: 48%;
 	display: inline-block;
+	vertical-align: top;
 	}	
 
 // Image carousel
