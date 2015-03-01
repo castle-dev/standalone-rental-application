@@ -1296,6 +1296,11 @@ ul.properties li.add-property {
   color: #6a8186;
 }
 .property-section {
+  margin-bottom: 0;
+  width: 48%;
+  display: inline-block;
+}
+.image-carousel {
   margin-bottom: 40px;
 }
 .image-carousel div {
@@ -1482,7 +1487,12 @@ img.forgot-password {
 .deletable {
   position: relative;
 }
-@media only screen and (max-width: 1092px) {
+@media only screen and (max-width: 1100px) {
+  .property-section {
+    display: block;
+    margin-bottom: 0;
+    width: 100%;
+  }
   #multi-progress {
     width: 100%;
     position: relative;
