@@ -166,7 +166,8 @@
     <p>To sign this agreement, type your name below and click “Sign and Continue.”</p>
 
     <fieldset>
-      <input type="text" placeholder="Your name here">
+      <input type="text" placeholder="Your name here" required ng-model="newProperty.agreement.signor" ng-pattern="{{ user.profile.firstName + ' ' + user.profile.lastName }}" validation-msg-pattern="Please type your name exactly as it appears below">
+      <span class="pull-right">{{ user.profile.firstName }} {{ user.profile.lastName }}</span>
     </fieldset>
 
     <button class="btn btn-green btn-medium">Sign and Continue</button>
@@ -286,25 +287,11 @@
         </tbody></table>
     </fieldset>
 
-    <fieldset class="money">
-      <label for="avg-bill">What is this property’s average monthly utility bill?</label>
-      <div class="help-text">For all utilities combined.</div>
-      <input ng-model="newProperty.averageMonthlyUtilities" type="text" name="avg-bill">
-    </fieldset>
-
     <fieldset>
       <label for="has-tenants">Do you have a Certificate of Occupancy for this property?</label>
       <div class="one-line-radio">
         <input ng-model="newProperty.hasCertificateOfOccupancy" ng-value="true" type="radio" name="has-coo" id="has-coo-yes" required><label for="has-coo-yes">Yes</label>
         <input ng-model="newProperty.hasCertificateOfOccupancy" ng-value="false" type="radio" name="has-coo" id="has-coo-no" required><label for="has-coo-no">No</label>
-      </div><!--one-line-radio-->
-    </fieldset>
-
-    <fieldset>
-      <label for="hasPaidTaxes">Are you up-to-date on your taxes for this property?</label>
-      <div class="one-line-radio">
-        <input ng-model="newProperty.hasPaidTaxes" ng-value="true" type="radio" name="paid-taxes" id="paid-taxes-yes" required><label for="paid-taxes-yes">Yes</label>
-        <input ng-model="newProperty.hasPaidTaxes" ng-value="false" type="radio" name="paid-taxes" id="paid-taxes-no" required><label for="paid-taxes-no">No</label>
       </div><!--one-line-radio-->
     </fieldset>
 
