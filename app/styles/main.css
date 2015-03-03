@@ -148,6 +148,7 @@ input::-webkit-inner-spin-button {
   line-height: 50px;
   text-indent: 10px;
   height: 50px;
+  margin: 0;
 }
 .sidebar-nav li i {
   margin-right: 15px;
@@ -265,7 +266,7 @@ li {
 }
 a {
   color: #198e85;
-  text-decoration: none;
+  text-decoration: none !important;
   border-bottom: 1px dotted #C4C4C4;
   transition: all 0.1s ease;
   -moz-transition: all 0.1s ease;
@@ -1207,63 +1208,61 @@ fieldset.cvv-code input {
   display: inline-block;
   width: 50px;
 }
-.rent-status-date {
-  font-size: 50%;
-  display: inline-block;
-  margin-left: 40px;
-}
-table.rent-status {
-  width: auto;
-  min-width: 700px;
-  margin: 10px 0px 40px -10px;
-  border: 1px solid #eaeaea;
+.rent-status-table {
+  width: 540px;
+  margin: 50px 0px 10px -10px;
   border-radius: 10px;
+  background: #ffffff;
 }
-table.rent-status-small {
-  min-width: 0;
-  width: 450px;
-  max-width: 100%;
+.rent-status-small {
+  width: 100%;
+  margin-top: 0;
+  font-size: 90%;
+  border: 1px solid #eaeaea;
 }
-table.rent-status + table.rent-status {
-  margin-top: 40px;
+.rent-status-small,
+.rent-status-small td {
+  border-radius: 10px;
+  border-collapse: separate;
 }
-.rent-status tr.rent-status-header:nth-child(even),
-.rent-status tr.rent-status-header:nth-child(odd) {
-  font-size: 120%;
-  white-space: nowrap;
-  font-weight: 400;
-  line-height: 110%;
-  vertical-align: bottom;
-  background: #5f7378;
-  color: #f9f9f9;
+.rent-status-table:nth-child(1) {
+  margin-top: 20px;
 }
-.rent-status td.month {
-  font-size: 60%;
-  text-align: center;
-  text-transform: uppercase;
-  padding-top: 15px;
-  line-height: 110%;
-}
-.rent-status tr:nth-child(even) {
-  background: #f1f1f1;
-}
-.rent-status td {
+.rent-status-cell {
   padding: 5px 10px;
 }
-.rent-status td.name {
-  min-width: 240px;
+.rent-status-header {
+  padding: 6px 12px;
+  background: #5f7378;
+  font-size: 110%;
+  font-weight: 400;
+  color: #f9f9f9;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
-.rent-status td.amount {
+.rent-status-name {
+  border-right: 0;
+}
+.rent-status-amount {
   color: #85999e;
   padding-right: 20px;
   font-size: 85%;
+  border-right: 0;
+  border-left: 0;
+  width: 15%;
 }
-.rent-status td.status {
+.rent-status-circle {
+  border-right: 0;
+  border-left: 0;
+  width: 6%;
+}
+.rent-status-status {
   font-size: 85%;
   text-align: center;
-  border: 1px solid #eaeaea;
   padding: 5px 25px;
   text-transform: uppercase;
+  width: 28%;
+  border-left: 0;
 }
 .rent-circle {
   display: block;
@@ -1301,14 +1300,6 @@ table.rent-status + table.rent-status {
 .rent-status tr.past-due {
   background: #fdefcd;
 }
-tr.rent-status-spacer {
-  border: 1px solid #eaeaea;
-}
-tr.rent-status-spacer,
-tr.rent-status-spacer td {
-  background: 0 !important;
-  height: 40px;
-}
 ul.properties {
   padding-left: 6px;
   margin-top: 20px;
@@ -1342,13 +1333,13 @@ ul.properties li a {
 ul.properties li a:hover {
   display: block;
   border: 0;
-  background: #3ab4ad;
-  color: #f9f9f9;
+  background: #e7e7e7;
 }
 ul.properties li a:active {
-  background: #2e8d88;
+  background: #d3d3d3;
 }
-ul.properties li a img, .thumbnail {
+ul.properties li a img,
+.thumbnail {
   display: inline;
   max-width: 90px;
   max-height: 100px;
@@ -1375,6 +1366,12 @@ ul.properties li.add-property {
   color: #6a8186;
 }
 .property-section {
+  margin-bottom: 0;
+  width: 48%;
+  display: inline-block;
+  vertical-align: top;
+}
+.image-carousel {
   margin-bottom: 40px;
 }
 .image-carousel div {
@@ -1440,68 +1437,6 @@ ul.properties li.add-property {
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-ul.maintenance {
-  border: 1px solid #ececec;
-  border-radius: 10px;
-  padding: 0;
-  margin-top: 10px;
-  margin-left: -10px;
-  width: 100%;
-  max-width: 700px;
-}
-ul.maintenance li {
-  list-style-type: none;
-  padding: 6px 10px;
-  border-bottom: 1px solid #ececec;
-}
-ul.maintenance li:last-child {
-  border: 0;
-}
-li.maintenance-title {
-  background: #5f7378;
-  color: #f9f9f9;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  font-weight: 400;
-  font-size: 110%;
-}
-.maintenance .maintenance-item:hover {
-  background: #f1f1f1;
-}
-.maintenance li a {
-  display: block;
-  width: 100%;
-  color: #34495e;
-  border: 0;
-  transition: 0;
-  -moz-transition: 0;
-  -webkit-transition: 0;
-  -ms-transition: 0;
-  -o-transition: 0;
-}
-.maintenance a:hover {
-  color: #4ca7d4;
-}
-.maintenance span {
-  color: #8ea0a5;
-  font-style: italic;
-  font-size: 80%;
-  margin-left: 15px;
-}
-.maintenance-author {
-  color: #5f7378;
-  font-size: 85%;
-}
-.maintenance-future {
-  font-size: 90%;
-}
-.maintenance-future span {
-  text-transform: uppercase;
-  font-weight: 400;
-  color: #5f7378;
-  font-style: normal;
-  margin-left: 0;
-}
 img.forgot-password {
   display: block;
   margin: 0 auto 20px auto;
@@ -1562,9 +1497,14 @@ img.forgot-password {
   position: relative;
 }
 ul.dropdown-menu a {
- border: none;
+  border: none;
 }
-@media only screen and (max-width: 1092px) {
+@media only screen and (max-width: 1100px) {
+  .property-section {
+    display: block;
+    margin-bottom: 0;
+    width: 100%;
+  }
   #multi-progress {
     width: 100%;
     position: relative;
@@ -1844,9 +1784,6 @@ ul.dropdown-menu a {
   }
   p.small {
     font-size: 110%;
-  }
-  h3.rent-title {
-    font-size: 120%;
   }
   .both-names-input fieldset {
     margin-right: 10px;

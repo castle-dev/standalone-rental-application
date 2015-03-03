@@ -16,7 +16,7 @@
   <slick infinite="true" slides-to-show="2" slides-to-scroll="1" dots="true" init-onload="true" data="reloadSlider" class="image-carousel">
     <div ng-repeat="imageUrl in property.images"><img ng-src="{{ imageUrl }}" /></div>
   </slick>
-  <div ng-if="!property.images"><img ng-src="{{ property | propertyImageUrl : '500' : '300' }}" /></div>
+  <div ng-if="!property.images" class="image-carousel"><img ng-src="{{ property | propertyImageUrl : '500' : '300' }}" /></div>
 
 	<div class="property-section">
 	  <h3>Tenants</h3>
@@ -41,15 +41,18 @@
 			  </tr>
 			</tbody>
 		 </table>
+		</div><!--ng-show tenants.length-->
+	</div><!--property-section-->
 
+	<div class="property-section">
     <h3>Rent Status</h3>
-    <table class="rent-status rent-status-small">
+    <table class="rent-status-table rent-status-small">
       <tbody>
         <tr ng-repeat="tenant in tenants">
-          <td>{{ tenant.firstName + ' ' + tenant.lastName }}</td>
-          <td class="amount">${{ tenant.rent.share | number }}</td>
-          <td><div class="rent-circle rent-circle-{{ tenant.rent.status }}"></div></td>
-          <td class="status">{{ tenant.rent.label }}</td>
+          <td class="rent-status-cell rent-status-name">{{ tenant.firstName + ' ' + tenant.lastName }}</td>
+          <td class="rent-status-cell rent-status-amount">${{ tenant.rent.share | number }}</td>
+          <td class="rent-status-cell rent-status-circle"><div class="rent-circle rent-circle-{{ tenant.rent.status }}"></div></td>
+          <td class="rent-status-cell rent-status-status">{{ tenant.rent.label }}</td>
         </tr>
       </tbody>
     </table>
@@ -61,7 +64,9 @@
 	<div class="property-section">
 	  <h3 id="maintenance-issues">Maintenance Issues</h3>
 	  <div class="maintenance-status">
-		 <p ng-repeat="issue in property.issues">{{ issue }}</p>
+	  	<ul>
+		 <li ng-repeat="issue in property.issues">{{ issue }}</li>
+		</ul>
 		 <p ng-show="!property.issues">{{ property.street }} currently has no open maintenance issues.</p>
 	  </div>
 	</div><!--property-section-->

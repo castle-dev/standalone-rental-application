@@ -181,6 +181,7 @@ input::-webkit-inner-spin-button {
   line-height: 50px;
   text-indent: 10px;
   height: 50px;
+  margin: 0;
   }
   
 .sidebar-nav li i {
@@ -336,7 +337,7 @@ li {
 // Links
 a {
   color: #198e85;
-  text-decoration: none;
+  text-decoration: none !important;
   border-bottom: 1px dotted #C4C4C4;
   .transition(all .1s ease);
   }
@@ -1450,73 +1451,70 @@ fieldset.cvv-code input {
 
 
 // Rent Status
-.rent-status-date {
-	font-size: 50%;
-	display: inline-block;
-	margin-left: 40px;
+.rent-status-table {
+	width: 540px;
+	margin: 50px 0px 10px -10px;
+	border-radius: 10px;
+	background: lighten(@basecolor, 5%);
+	}
+	
+.rent-status-small {
+	width: 100%;
+	margin-top: 0;
+	font-size: 90%;
+	border: 1px solid darken(@basecolor,6%);
 	}
 
-table.rent-status {
-	width: auto;
-	min-width: 700px;
-	margin: 10px 0px 40px -10px;
-	border: 1px solid darken(@basecolor,6%);
+.rent-status-small,
+.rent-status-small td {
 	border-radius: 10px;
+	border-collapse: separate;
 	}
 	
-table.rent-status-small {
-	min-width: 0;
-	width: 450px;
-	max-width: 100%;
+.rent-status-table:nth-child(1) {
+	margin-top: 20px;
 	}
 	
-table.rent-status + table.rent-status {
-	margin-top: 40px;
-	}
-	
-.rent-status tr.rent-status-header:nth-child(even),
-.rent-status tr.rent-status-header:nth-child(odd) {
-	font-size: 120%;
-	white-space: nowrap;
-	font-weight: 400;
-	line-height: 110%;
-	vertical-align: bottom;
-	background: @grey;
-	color: @basecolor;
-	}
-		
-.rent-status td.month {
-	font-size: 60%;
-	text-align: center;
-	text-transform: uppercase;
-	padding-top: 15px;
-	line-height: 110%;
-	}
-		
-.rent-status tr:nth-child(even) {
-	background: darken(@basecolor,3%);
-	}
-	
-.rent-status td {
+.rent-status-cell {
 	padding: 5px 10px;
 	}
 	
-.rent-status td.name {
-	min-width: 240px;
+.rent-status-header {
+	padding: 6px 12px;
+	background: @grey;
+	font-size: 110%;
+	font-weight: 400;
+	color: @basecolor;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
 	}
 
-.rent-status td.amount {
+.rent-status-name {
+	border-right: 0;
+	}
+	
+.rent-status-amount {
 	color: lighten(@grey, 15%);
 	padding-right: 20px;
 	font-size: 85%;
+	border-right: 0;
+	border-left: 0;
+	width: 15%;
 	}
-	
-.rent-status td.status {
+
+.rent-status-circle {
+	border-right: 0;
+	border-left: 0;
+	width: 6%;
+	}
+		
+.rent-status-status {
 	font-size: 85%;
 	text-align: center;
-	border: 1px solid darken(@basecolor, 6%);
 	padding: 5px 25px;
 	text-transform: uppercase;
+	width: 28%;
+	border-left: 0;	
 	}
 	
 .rent-circle {
@@ -1564,16 +1562,6 @@ table.rent-status + table.rent-status {
 	background: lighten(@yellow, 30%);
 	}
 	
-tr.rent-status-spacer {
-	border: 1px solid darken(@basecolor, 6%);
-	}
-	
-tr.rent-status-spacer,
-tr.rent-status-spacer td {
-	background: 0 !important;
-	height: 40px;
-	}
-	
 	
 
 // Properties
@@ -1614,12 +1602,11 @@ ul.properties li a {
 ul.properties li a:hover {
 	display: block;
 	border: 0;
-	background: @green;
-	color: @basecolor;
+	background: darken(@basecolor, 7%);
 	}
 	
 ul.properties li a:active {
-	background: darken(@green, 10%);
+	background: darken(@basecolor, 15%);
 	}
 	
 ul.properties li a img, .thumbnail {
@@ -1656,10 +1643,17 @@ ul.properties li.add-property {
 
 // Individual property
 .property-section {
-	margin-bottom: 40px;
+	margin-bottom: 0;
+	width: 48%;
+	display: inline-block;
+	vertical-align: top;
 	}	
 
 // Image carousel
+.image-carousel {
+	margin-bottom: 40px;
+	}
+	
 .image-carousel div {
 	margin-right: 10px;
 	}
@@ -1740,77 +1734,6 @@ ul.properties li.add-property {
 	border-bottom-left-radius: 10px;
 	}	
 	
-	
-// Maintenance
-ul.maintenance {
-	border: 1px solid darken(@basecolor, 5%);
-	border-radius: 10px;
-	padding: 0;
-	margin-top: 10px;
-	margin-left: -10px;
-	width: 100%;
-	max-width: 700px;
-	}
-	
-ul.maintenance li {
-	list-style-type: none;
-	padding: 6px 10px;
-	border-bottom: 1px solid darken(@basecolor, 5%);
-	}
-	
-ul.maintenance li:last-child {
-	border: 0;
-	}
-	
-li.maintenance-title {
-	background: @grey;
-	color: @basecolor;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	font-weight: 400;
-	font-size: 110%;
-	}
-		
-.maintenance .maintenance-item:hover {
-	background: darken(@basecolor, 3%);
-	}
-	
-.maintenance li a {
-	display: block;
-	width: 100%;
-	color: @bodytext;
-	border: 0;
-	.transition(0);
-	}
-
-.maintenance a:hover {
-	color: darken(@blue, 10%);
-	}	
-
-.maintenance span {
-	color: lighten(@grey, 18%);
-	font-style: italic;
-	font-size: 80%;
-	margin-left: 15px;
-	}
-	
-.maintenance-author {
-	color: @grey;
-	font-size: 85%;
-	}
-	
-.maintenance-future {
-	font-size: 90%;
-	}
-	
-.maintenance-future span {
-	text-transform: uppercase;
-	font-weight: 400;
-	color: @grey;
-	font-style: normal;
-	margin-left: 0;
-	}
-
 // Password Reset
 img.forgot-password {
   display: block;
@@ -1885,7 +1808,13 @@ ul.dropdown-menu a {
  border: none;
 }
 
-@media only screen and (max-width: 1092px) {
+@media only screen and (max-width: 1100px) {
+
+.property-section {
+	display: block;
+	margin-bottom: 0;
+	width: 100%;
+	}	
 
 // Add property
 #multi-progress {
@@ -2204,10 +2133,6 @@ p.medium {
   
 p.small {
   font-size: 110%;
-  }
-  
-h3.rent-title {
-  font-size: 120%;
   }
 
 
