@@ -1108,6 +1108,95 @@ input[type="tel"].ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid
 	font-weight: 400;
 	margin: 5px 0 10px 0;
 	}
+	
+	
+// Management Agreement
+.solo-form .agreement-form {
+	max-width: 500px;
+	}
+	
+.agreement-intro {
+	margin-bottom: 40px;
+	}
+
+.small-intro {
+	font-size: 90%;
+	}
+		
+.agreement-address td {
+	vertical-align: top;
+	padding-right: 20px;
+	}
+
+ol.management-agreement {
+	counter-reset: li; /* Initiate a counter */
+	list-style: none; /* Remove default numbering */
+	*list-style: decimal; /* Keep using default numbering for IE6/7 */
+	padding: 0;
+	margin-bottom: 60px;
+	}
+
+.management-agreement li {
+	position: relative;
+	padding: 10px 0 10px 30px;
+   margin: 30px 0;
+   background: darken(@basecolor, 3%);
+   border-radius: 5px;
+   width: 94%;
+	}
+	
+.management-agreement li:before{
+   content: counter(li);
+   counter-increment: li;
+   position: absolute; 
+   left: -15px;
+   top: 50%;
+   margin-top: -16px;
+   background: lighten(@blue, 10%);
+   height: 32px;
+	width: 32px;
+   line-height: 32px;
+   border-radius: 16px;
+   font-size: 22px;
+   text-align: center;
+   font-weight: 600;
+	}
+	
+.management-agreement li.has-alert:before {
+	top: 25%;
+	}
+	
+.agreement-spacer {
+	height: 10px;
+	}
+
+.agreement-alert {
+	background: lighten(@yellow, 32%);
+	padding: 15px 0;
+	font-size: 80%;
+	border-radius: 5px;
+	margin: 20px 0 20px -10px;
+	width: 410px;
+	max-width: 100%;
+	}
+	
+.agreement-alert-bang,
+.agreement-alert-text {
+	display: inline-block;
+	vertical-align: top;
+	}
+	
+.agreement-alert-bang {
+	width: 15%;
+	font-size: 350%;
+	color: @yellow;
+	text-align: center;
+	}
+	
+.agreement-alert-text {
+	width: 83%;
+	}
+
 
 
 // Signup
@@ -1914,6 +2003,12 @@ p.medium {
 p.small {
   font-size: 110%;
   }
+  
+
+// Management Agreement
+.management-agreement li {
+	margin: 30px auto;
+	}
   
 }
 

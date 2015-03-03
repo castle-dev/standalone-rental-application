@@ -9,7 +9,7 @@
  * for updating a user's profile
  */
 angular.module('propertyManagementApp')
-.directive('addPropertyForm', function ($location, Property, Geography, Flash) {
+.directive('addPropertyForm', function ($location, Property, Geography, Flash, Auth) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/addPropertyForm.html',
@@ -19,6 +19,7 @@ angular.module('propertyManagementApp')
       scope.ownershipDurations = Property.getOwnershipDurations();
       scope.newProperty = Property.getNewProperty();
       scope.newProperty.stateAbbreviation = 'MI';
+      scope.user = Auth.getCurrentUser();
       scope.submit = function () {
 
         if (scope.currentStep === scope.addPropertySteps[scope.addPropertySteps.length - 1]) {

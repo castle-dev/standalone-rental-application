@@ -96,24 +96,34 @@ angular.module('propertyManagementApp')
         return _newProperty;
       },
       saveNewProperty: function () {
-        var uid = Auth.getCurrentUser().uid;
-        var propertiesSync = $firebase(ref.child('properties').child(uid));
-        if (_newProperty.lease && _newProperty.lease.url) {
-          _newProperty.documents = [];
-          _newProperty.documents.push({
-            name: 'Uploaded Lease',
-            url: _newProperty.lease.url
-          });
-        }
-        return propertiesSync.$asArray().$add(_newProperty).then(function (ref) {
-          var tenant = _newProperty.tenant;
-          var propertyId = ref.key();
-          if (tenant.firstName && tenant.lastName) {
-            return Tenant.saveNewTenant(propertyId, tenant);
+        var deferred = $q.defer();
+
+        // Set the agreement timestamp
+        ref.child('.info/serverTimeOffset').once('value', function (ss) {
+          var offset = ss.val();
+          _newProperty.agreement.timestamp = new Date().getTime() + offset;
+
+          var uid = Auth.getCurrentUser().uid;
+          var propertiesSync = $firebase(ref.child('properties').child(uid));
+          if (_newProperty.lease && _newProperty.lease.url) {
+            _newProperty.documents = [];
+            _newProperty.documents.push({
+              name: 'Uploaded Lease',
+              url: _newProperty.lease.url
+            });
           }
-        }).then(function () {
-          _newProperty = {};
+          propertiesSync.$asArray().$add(_newProperty).then(function (ref) {
+            var tenant = _newProperty.tenant;
+            var propertyId = ref.key();
+            if (tenant.firstName && tenant.lastName) {
+              return Tenant.saveNewTenant(propertyId, tenant);
+            }
+          }).then(function () {
+            _newProperty = {};
+            deferred.resolve();
+          });
         });
+        return deferred.promise;
       },
       update: function (property, tenants) {
         var deferred = $q.defer();
