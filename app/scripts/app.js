@@ -75,6 +75,9 @@ angular
       })
       .when('/properties/:propertyId', {
         templateUrl: 'views/property.html',
+        resolve: {
+          'requiresAuth': function (Auth) { return Auth.require(); }
+        }
       })
       .when('/tenants/:tenantId', {
         templateUrl: 'views/tenant.html',
@@ -87,5 +90,10 @@ angular
     $window.Stripe.setPublishableKey(STRIPE_PUBLISHABLE_KEY);
     $rootScope.$on('$routeChangeSuccess', function () {
       $window.ga('send', 'pageview', { page: $location.path() });
+    });
+    $rootScope.$on('$routeChangeError', function (event, next, previous, err) {
+      if (err === 'AUTH_REQUIRED') {
+        $location.path('/login');
+      }
     });
   });

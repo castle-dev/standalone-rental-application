@@ -10,7 +10,7 @@
  * authenticating users
  */
 angular.module('propertyManagementApp')
-  .factory('Auth', function ($firebase, FIREBASE_URL, $window, $location, $q) {
+  .factory('Auth', function ($firebase, $firebaseAuth, FIREBASE_URL, $window, $location, $q) {
     var ref = new $window.Firebase(FIREBASE_URL); // firebase plugin attaches Firebase object to window
     var currentUser = {};
     var redirect = null;
@@ -81,8 +81,10 @@ angular.module('propertyManagementApp')
         } else {
           return err;
         }
+      },
+      require: function() {
+        return $firebaseAuth(ref).$requireAuth();
       }
-
     };
 
     ref.onAuth(function (authData) {
