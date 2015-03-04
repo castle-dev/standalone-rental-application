@@ -296,6 +296,14 @@
     </fieldset>
 
     <fieldset>
+      <label for="hasPaidTaxes">Are you up-to-date on your taxes for this property?</label>
+      <div class="one-line-radio">
+        <input ng-model="newProperty.hasPaidTaxes" ng-value="true" type="radio" name="paid-taxes" id="paid-taxes-yes" required><label for="paid-taxes-yes">Yes</label>
+        <input ng-model="newProperty.hasPaidTaxes" ng-value="false" type="radio" name="paid-taxes" id="paid-taxes-no" required><label for="paid-taxes-no">No</label>
+      </div><!--one-line-radio-->
+    </fieldset>
+
+    <fieldset>
       <label for="anything-else">Anything else we should know?</label>
       <textarea ng-model="newProperty.additionalComments" id="anthing-else"></textarea>
     </fieldset>
