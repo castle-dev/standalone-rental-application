@@ -47,7 +47,7 @@ angular.module('propertyManagementApp')
             template: template,
             email: ownerInfo.email,
             name: ownerInfo.name,
-            address: scope.property.street + ' ' + scope.property.city + ', ' + scope.property.stateAbbreviation + ' ' + scope.property.zip,
+            address: scope.property.street,
             callToActionPath: callToAction
           });
         })
