@@ -1517,9 +1517,21 @@ img.forgot-password {
   margin: 0 auto 20px auto;
   width: 250px;
 }
+.side-image,
+.side-image-text {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.side-image {
+  padding-right: 40px;
+}
+.castle-guy-on-phone {
+  width: 150px;
+}
 .how-it-works {
   width: 670px;
-  margin: 20px -145px;
+  max-width: 100%;
+  margin: 20px 0;
   padding: 20px 0;
   background: #f1f1f1;
   border-radius: 10px;
@@ -1544,11 +1556,19 @@ img.forgot-password {
   width: 140px;
 }
 .security-notice {
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 12px;
   margin: 30px 0;
 }
 .security-seal {
   display: block;
   margin: 0 auto 20px auto;
+}
+.tenant-tiny-details {
+  font-size: 75%;
+  margin-top: 10px;
+  text-align: center;
 }
 .search-box {
   max-width: 400px;
@@ -1652,6 +1672,9 @@ ul.dropdown-menu a {
     position: relative;
     top: 0;
     left: 0;
+  }
+  .how-it-works {
+    text-align: center;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -1780,17 +1803,6 @@ ul.dropdown-menu a {
   slick button.slick-prev {
     display: none !important;
   }
-  .how-it-works {
-    width: 260px;
-    margin: 20px auto;
-  }
-  .how-it-works-sub {
-    display: block;
-    margin: 0 auto 20px;
-  }
-  .how-it-works-sub:nth-child(3) {
-    margin-bottom: 0;
-  }
 }
 @media only screen and (max-width: 500px) {
   .col-xs-1,
@@ -1905,5 +1917,16 @@ ul.dropdown-menu a {
   }
   table.rent-status {
     max-width: 320px;
+  }
+  .how-it-works {
+    width: 260px;
+    margin: 20px auto;
+  }
+  .how-it-works-sub {
+    display: block;
+    margin: 0 auto 20px;
+  }
+  .how-it-works-sub:nth-child(3) {
+    margin-bottom: 0;
   }
 }
