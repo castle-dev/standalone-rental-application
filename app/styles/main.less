@@ -1099,11 +1099,6 @@ input[type="tel"].ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid
 .errors-text {
 	width: 75%;
 	}
-
-.errors h3,
-.errors p {
-	color: @darkgrey;
-	}
 	
 .errors h3 {
 	font-size: 130%;
@@ -1111,6 +1106,27 @@ input[type="tel"].ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid
 	line-height: 100%;
 	font-weight: 400;
 	margin: 5px 0 10px 0;
+	}
+	
+.errors h3,
+.errors p {
+	color: @darkgrey;
+	}
+
+.errors-good {
+	background: lighten(@blue, 26%);
+	}
+	
+.errors-good .errors-bang {
+	color: @blue;
+	}
+	
+.errors-bad {
+	background: lighten(@red, 32%);
+	}
+	
+.errors-bad .errors-bang {
+	color: @red;
 	}
 	
 	

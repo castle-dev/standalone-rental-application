@@ -914,16 +914,28 @@ select.ng-valid-required.ng-valid:not(.ng-invalid) {
 .errors-text {
   width: 75%;
 }
-.errors h3,
-.errors p {
-  color: #444444;
-}
 .errors h3 {
   font-size: 130%;
   text-align: left;
   line-height: 100%;
   font-weight: 400;
   margin: 5px 0 10px 0;
+}
+.errors h3,
+.errors p {
+  color: #444444;
+}
+.errors-good {
+  background: #e0f0f8;
+}
+.errors-good .errors-bang {
+  color: #75bbde;
+}
+.errors-bad {
+  background: #fae5e5;
+}
+.errors-bad .errors-bang {
+  color: #e15e5b;
 }
 .solo-form .agreement-form {
   max-width: 500px;
