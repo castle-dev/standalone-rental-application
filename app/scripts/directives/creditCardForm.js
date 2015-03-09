@@ -34,12 +34,8 @@ angular.module('propertyManagementApp')
           return Property.getCurrentUserProperties();
         }, function (err) {
           scope.errors.push(err);
-        }).then(function (properties) {
-          if (properties.length) {
-            $location.path('/properties');
-          } else {
-            $location.path('/welcome');
-          }
+        }).then(function () {
+          $location.path('/bank-account');
         });
       };
     }

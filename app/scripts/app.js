@@ -45,10 +45,16 @@ angular
         }
       })
       .when('/creditCard', {
+        redirectTo: '/credit-card'
+      })
+      .when('/credit-card', {
         templateUrl: 'views/creditCard.html',
         resolve: { 'requiresAuth': function (Auth) { return Auth.require(); } }
       })
       .when('/bankAccount', {
+        redirectTo: '/bank-account'
+      })
+      .when('/bank-account', {
         templateUrl: 'views/bankAccount.html',
         resolve: { 'requiresAuth': function (Auth) { return Auth.require(); } }
       })
