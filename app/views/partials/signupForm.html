@@ -22,7 +22,7 @@
 
   <fieldset>
     <label for="phone-number">Your cell phone number:</label>
-    <input type="tel" name="phone-number" ng-model="newUser.phoneNumber" numeric required>
+    <input type="tel" name="phone-number" ng-model="newUser.phoneNumber" international-phone-number default-country="us" required>
   </fieldset>
 
   <fieldset>

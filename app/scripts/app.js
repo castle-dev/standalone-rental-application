@@ -24,7 +24,8 @@ angular
     'slick',
     'ngFabForm',
     'ngMessages',
-    'ngTable'
+    'ngTable',
+    'internationalPhoneNumber'
   ])
   .config(function ($routeProvider, ngFabFormProvider) {
     ngFabFormProvider.extendConfig({

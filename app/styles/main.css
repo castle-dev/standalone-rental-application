@@ -1577,6 +1577,9 @@ ul.dropdown-menu a {
 .center {
   text-align: center;
 }
+.intl-tel-input .selected-flag .iti-flag {
+  top: 17px !important;
+}
 @media only screen and (max-width: 1100px) {
   .property-section {
     display: block;
