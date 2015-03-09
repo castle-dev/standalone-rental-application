@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc function
- * @name propertyManagementApp.controller:PasswordresetCtrl
+ * @name propertyManagementApp.controller:PasswordResetController
  * @description
- * # PasswordresetCtrl
+ * # PasswordResetController
  * Controller of the propertyManagementApp
  */
 angular.module('propertyManagementApp')
-  .controller('PasswordResetCtrl', function ($scope) {
-    $scope.awesomeThings = [
+  .controller('PasswordResetController', function ($scope) {
+    this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'

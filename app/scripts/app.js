@@ -82,6 +82,10 @@ angular
       .when('/tenants/:tenantId', {
         templateUrl: 'views/tenant.html',
       })
+      .when('/password-reset/:token', {
+        controller: 'PasswordResetController as vm',
+        templateUrl: 'views/passwordreset.html',
+      })
       .otherwise({
         redirectTo: '/properties'
       });
