@@ -1099,11 +1099,6 @@ input[type="tel"].ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid
 .errors-text {
 	width: 75%;
 	}
-
-.errors h3,
-.errors p {
-	color: @darkgrey;
-	}
 	
 .errors h3 {
 	font-size: 130%;
@@ -1111,6 +1106,27 @@ input[type="tel"].ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid
 	line-height: 100%;
 	font-weight: 400;
 	margin: 5px 0 10px 0;
+	}
+	
+.errors h3,
+.errors p {
+	color: @darkgrey;
+	}
+
+.errors-good {
+	background: lighten(@blue, 26%);
+	}
+	
+.errors-good .errors-bang {
+	color: @blue;
+	}
+	
+.errors-bad {
+	background: lighten(@red, 32%);
+	}
+	
+.errors-bad .errors-bang {
+	color: @red;
 	}
 	
 	
@@ -1238,6 +1254,75 @@ ul.signup-pointers {
 	
 	
 // First Run
+.first-run-steps {
+	display: block;
+	width: 100%;
+	max-width: 500px;
+	border: 1px solid @green;
+	border-radius: 6px;
+	height: 60px;
+	line-height: 60px;
+	font-weight: 400;
+	font-size: 120%;
+	text-indent: 70px;
+	background: lighten(@basecolor, 1%);
+	position: relative;
+	margin-top: 20px;
+	}
+	
+.first-run-steps-one:before,
+.first-run-steps-two:before {
+	position: absolute;
+	left: -54px;
+	font-weight: 300;
+	font-size: 180%;
+	padding-right: 16px;
+	border-right: 1px solid @green;
+	height: 59px;
+	}
+
+.first-run-steps-one:before {
+	content: '1';
+	}
+
+.first-run-steps-two:before {
+	content: '2';
+	}
+		
+.first-run-steps:after {
+	content: '\f054';
+	font-family: 'FontAwesome';
+	color: @green;
+	line-height: 60px;
+	font-size: 120%;
+	position: absolute;
+	right: 10px;
+	}
+	
+.first-run-steps:hover,
+.first-run-steps:hover:after,
+.first-run-steps:hover:before {
+	color: @blue;
+	border-color: @blue;
+	}
+
+.first-run-steps-disabled,
+.first-run-steps-disabled:before,
+.first-run-steps-disabled:after,
+.first-run-steps-disabled:hover,
+.first-run-steps-disabled:before:hover,
+.first-run-steps-disabled:after:hover {
+	cursor: default;
+	color: darken(@basecolor, 10%) !important;
+	border-color: darken(@basecolor, 10%) !important;
+	}
+	
+.first-run-steps-complete:before {
+	content: '\f00c';
+	font-family: 'FontAwesome';
+	font-size: 85%;
+	}
+
 .first-run-guy {
 	max-width: 200px;
 	}
@@ -2182,7 +2267,12 @@ p.small {
 .password-requirements .requirement:nth-child(even) {
   text-align: left;
   }
-    
+
+
+// First run
+.first-run-steps {
+	font-size: 100%;
+	}    
 
 // Rent Status
 table.rent-status {

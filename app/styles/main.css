@@ -914,16 +914,28 @@ select.ng-valid-required.ng-valid:not(.ng-invalid) {
 .errors-text {
   width: 75%;
 }
-.errors h3,
-.errors p {
-  color: #444444;
-}
 .errors h3 {
   font-size: 130%;
   text-align: left;
   line-height: 100%;
   font-weight: 400;
   margin: 5px 0 10px 0;
+}
+.errors h3,
+.errors p {
+  color: #444444;
+}
+.errors-good {
+  background: #e0f0f8;
+}
+.errors-good .errors-bang {
+  color: #75bbde;
+}
+.errors-bad {
+  background: #fae5e5;
+}
+.errors-bad .errors-bang {
+  color: #e15e5b;
 }
 .solo-form .agreement-form {
   max-width: 500px;
@@ -1029,6 +1041,67 @@ ul.signup-pointers {
 .signup-thanks {
   max-width: 400px;
   margin: 0 auto;
+}
+.first-run-steps {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #3ab4ad;
+  border-radius: 6px;
+  height: 60px;
+  line-height: 60px;
+  font-weight: 400;
+  font-size: 120%;
+  text-indent: 70px;
+  background: #fcfcfc;
+  position: relative;
+  margin-top: 20px;
+}
+.first-run-steps-one:before,
+.first-run-steps-two:before {
+  position: absolute;
+  left: -54px;
+  font-weight: 300;
+  font-size: 180%;
+  padding-right: 16px;
+  border-right: 1px solid #3ab4ad;
+  height: 59px;
+}
+.first-run-steps-one:before {
+  content: '1';
+}
+.first-run-steps-two:before {
+  content: '2';
+}
+.first-run-steps:after {
+  content: '\f054';
+  font-family: 'FontAwesome';
+  color: #3ab4ad;
+  line-height: 60px;
+  font-size: 120%;
+  position: absolute;
+  right: 10px;
+}
+.first-run-steps:hover,
+.first-run-steps:hover:after,
+.first-run-steps:hover:before {
+  color: #75bbde;
+  border-color: #75bbde;
+}
+.first-run-steps-disabled,
+.first-run-steps-disabled:before,
+.first-run-steps-disabled:after,
+.first-run-steps-disabled:hover,
+.first-run-steps-disabled:before:hover,
+.first-run-steps-disabled:after:hover {
+  cursor: default;
+  color: #e0e0e0 !important;
+  border-color: #e0e0e0 !important;
+}
+.first-run-steps-complete:before {
+  content: '\f00c';
+  font-family: 'FontAwesome';
+  font-size: 85%;
 }
 .first-run-guy {
   max-width: 200px;
@@ -1817,6 +1890,9 @@ ul.dropdown-menu a {
   }
   .password-requirements .requirement:nth-child(even) {
     text-align: left;
+  }
+  .first-run-steps {
+    font-size: 100%;
   }
   table.rent-status {
     max-width: 320px;

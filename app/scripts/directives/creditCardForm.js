@@ -9,15 +9,16 @@
  * for updating a user's profile
  */
 angular.module('propertyManagementApp')
-.directive('creditCardForm', function (Auth, Bank, Property, $location) {
+.directive('creditCardForm', function (Auth, Bank, Property, Flash, $location) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/creditCardForm.html',
     link: function (scope) {
       scope.cardholder = { };
-
+      var hasBankAccountLinked = false;
       Auth.getCurrentUser().profile.$loaded().then(function (profileData) {
         scope.cardholder.fullName = profileData.firstName + ' ' + profileData.lastName;
+        hasBankAccountLinked = profileData.bankAccountToken || profileData.balancedBankAccountId;
       });
 
       scope.$watch('expiryMonth', function (newValue) {
@@ -34,11 +35,12 @@ angular.module('propertyManagementApp')
           return Property.getCurrentUserProperties();
         }, function (err) {
           scope.errors.push(err);
-        }).then(function (properties) {
-          if (properties.length) {
+        }).then(function () {
+          if (hasBankAccountLinked) { // all done, back to dashboard
+            Flash.setMessage('Your payment information has been linked successfully.');
             $location.path('/properties');
-          } else {
-            $location.path('/welcome');
+          } else { // on to the next one
+            $location.path('/bank-account');
           }
         });
       };

@@ -20,7 +20,7 @@ angular.module('propertyManagementApp')
         Bank
         .tokenizeBankAccount(scope.bankAccount)
         .then(function (token) { return Bank.storeBankAccountToken(token); })
-        .then(function () { Flash.setMessage('Your bank account has been linked successfully.'); })
+        .then(function () { Flash.setMessage('Your payment information has been linked successfully.'); })
         .then(function () { $location.path('/properties'); })
         .catch(function (errors) { scope.errors = errors; });
       };

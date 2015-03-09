@@ -10,11 +10,12 @@
  * for displaying a list of properties
  */
 angular.module('propertyManagementApp')
-  .directive('propertiesList', function (Property, ngTableParams, $filter) {
+  .directive('propertiesList', function (Property, ngTableParams, $filter, $location) {
     return {
       restrict: 'E',
       templateUrl: 'views/partials/propertiesList.html',
       link: function (scope) {
+        scope.isOnboarding = $location.search().onboarding;
         Property.getCurrentUserProperties()
         .then(function (properties) {
           scope.properties = properties;
