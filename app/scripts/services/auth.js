@@ -31,8 +31,10 @@ angular.module('propertyManagementApp')
         var deferred = $q.defer();
         ref.authWithPassword(user, function (err) {
           if (err) { deferred.reject(Auth.translateError(err)); }
-          deferred.resolve(redirect || '/properties');
-          redirect = null;
+          else {
+            deferred.resolve(redirect || '/properties');
+            redirect = null;
+          }
         });
         return deferred.promise;
       },
@@ -91,21 +93,19 @@ angular.module('propertyManagementApp')
           email: email,
           oldPassword: token,
           newPassword: newPassword
-        }, function(error) {
-          if (error) {
-            switch (error.code) {
-              case 'INVALID_PASSWORD':
-                deferred.reject('The specified user account password is incorrect.');
-              break;
-              case 'INVALID_USER':
-                deferred.reject('The specified user account does not exist.');
-              break;
-              default:
-                deferred.reject('Error changing password:', error);
-            }
-          } else {
-            deferred.resolve();
-          }
+        }, function(err) {
+          if (err) { deferred.reject(Auth.translateError(err)); }
+          else { deferred.resolve(); }
+        });
+        return deferred.promise;
+      },
+      sendPasswordResetEmail: function (email) {
+        var deferred = $q.defer();
+        ref.resetPassword({
+          email: email,
+        }, function(err) {
+          if (err) { deferred.reject(Auth.translateError(err)); }
+          else { deferred.resolve(); }
         });
         return deferred.promise;
       }

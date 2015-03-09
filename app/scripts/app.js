@@ -92,6 +92,10 @@ angular
         controller: 'PasswordResetController as vm',
         templateUrl: 'views/passwordreset.html',
       })
+      .when('/password-reset/send', {
+        controller: 'PasswordResetEmailController as vm',
+        templateUrl: 'views/passwordresetemail.html'
+      })
       .otherwise({
         redirectTo: '/properties'
       });
