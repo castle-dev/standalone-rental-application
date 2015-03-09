@@ -82,7 +82,7 @@ angular
       .when('/tenants/:tenantId', {
         templateUrl: 'views/tenant.html',
       })
-      .when('/password-reset/:token', {
+      .when('/password-reset/:email/:token', {
         controller: 'PasswordResetController as vm',
         templateUrl: 'views/passwordreset.html',
       })
