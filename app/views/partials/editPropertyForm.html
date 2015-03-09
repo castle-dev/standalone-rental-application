@@ -6,12 +6,12 @@
 
         <fieldset>
           <label for="property-address">Property address:</label>
-          <input ng-model="property.street" name="property-address" type="text" placeholder="Street Address" required>
+          <input ng-model="property.street" name="property-address" type="text" placeholder="Street Address" required proper-noun>
         </fieldset>
 
         <div class="address-input">
           <fieldset>
-            <input ng-model="property.city" name="city" type="text" placeholder="City" required>
+            <input ng-model="property.city" name="city" type="text" placeholder="City" required proper-noun>
           </fieldset>
 
           <fieldset>
@@ -52,12 +52,12 @@
           <div class="both-names-input">
             <fieldset>
               <label for="first-name">Tenant's name:</label>
-              <input type="text" name="first-name" placeholder="First" ng-model="tenant.firstName" required>
+              <input type="text" name="first-name" placeholder="First" ng-model="tenant.firstName" required proper-noun>
             </fieldset>
 
             <fieldset>
               <label for="last-name"></label>
-              <input type="text" name="last-name" placeholder="Last" ng-model="tenant.lastName" required>
+              <input type="text" name="last-name" placeholder="Last" ng-model="tenant.lastName" required proper-noun>
             </fieldset>
           </div><!--both-names-input-->
 

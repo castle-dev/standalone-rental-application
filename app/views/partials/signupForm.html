@@ -4,13 +4,13 @@
 
   <div class="both-names-input">
     <fieldset>
-      <label for="first-name">Your name:</label>
-      <input type="text" name="first-name" placeholder="Ralph" ng-model="newUser.firstName" required>
+      <label for="firstName">Your name:</label>
+      <input type="text" name="firstName" placeholder="Ralph" ng-model="newUser.firstName" required proper-noun>
     </fieldset>
 
     <fieldset>
       <label for="last-name"></label>
-      <input type="text" name="last-name" placeholder="Rental" ng-model="newUser.lastName" required>
+      <input type="text" name="last-name" placeholder="Rental" ng-model="newUser.lastName" required proper-noun>
     </fieldset>
   </div><!--both-names-input-->
 
@@ -22,7 +22,7 @@
 
   <fieldset>
     <label for="phone-number">Your cell phone number:</label>
-    <input type="tel" name="phone-number" ng-model="newUser.phoneNumber" numeric required>
+    <input type="tel" name="phone-number" ng-model="newUser.phoneNumber" international-phone-number default-country="us" required>
   </fieldset>
 
   <fieldset>
