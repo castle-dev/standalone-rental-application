@@ -20,19 +20,13 @@
   </div>
 
   <div ng-show="properties && !properties.length">
-
-<!--      <img src="images/happy-castle-guy.png" class="first-run-guy"> -->
-
-      <h2>Welcome, <current-user-name></current-user-name>!</h2>
-
-      <p class="small partialwidth-p">To get started, add the properties you&rsquo;d like Castle to manage. We&rsquo;ll collect the basic information we need, including ownership history and occupancy status.</p>
-
-      <p class="small partialwidth-p">After you add a property, a member of the Castle team will reach out via email to finalize your onboarding.</p>
-
-      <p><a href="#/properties/add" class="btn btn-green btn-medium"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;Add your first property</a></p>
-
-
-    </div>
-
+    <h2>Welcome, <current-user-name><current-user-name>!</h2>
+    <p class="small">To get started, add the properties you'd like Castle to manage. We'll collect the basic information we need, including ownership history and occupancy status.</p>
+    <a ng-href="#/properties/add" class="first-run-steps first-run-steps-one">
+      Add your first property
+    </a>
+    <a ng-href="" class="first-run-steps first-run-steps-two first-run-steps-disabled">
+      Link your payment information
+    </a>
   </div>
 </owner-only>
