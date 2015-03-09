@@ -82,8 +82,32 @@ angular.module('propertyManagementApp')
           return err;
         }
       },
-      require: function() {
+      require: function () {
         return $firebaseAuth(ref).$requireAuth();
+      },
+      resetPassword: function (email, token, newPassword) {
+        var deferred = $q.defer();
+        ref.changePassword({
+          email: email,
+          oldPassword: token,
+          newPassword: newPassword
+        }, function(error) {
+          if (error) {
+            switch (error.code) {
+              case 'INVALID_PASSWORD':
+                deferred.reject('The specified user account password is incorrect.');
+              break;
+              case 'INVALID_USER':
+                deferred.reject('The specified user account does not exist.');
+              break;
+              default:
+                deferred.reject('Error changing password:', error);
+            }
+          } else {
+            deferred.resolve();
+          }
+        });
+        return deferred.promise;
       }
     };
 
