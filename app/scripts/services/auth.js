@@ -107,7 +107,7 @@ angular.module('propertyManagementApp')
             deferred.resolve();
           }
         });
-      return deferred.promise;
+        return deferred.promise;
       }
     };
 
