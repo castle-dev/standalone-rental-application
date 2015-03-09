@@ -8,10 +8,6 @@
  * Controller of the propertyManagementApp
  */
 angular.module('propertyManagementApp')
-  .controller('PasswordResetController', function ($scope) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('PasswordResetController', function ($scope, $routeParams) {
+    this.token = $routeParams.token;
   });
