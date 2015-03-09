@@ -82,7 +82,7 @@ describe('Property Management App ::', function() {
         firstNameInput.sendKeys('Optimus');
         lastNameInput.sendKeys('Prime');
         emailInput.sendKeys(testUser.email);
-        phoneNumberInput.sendKeys('1011011100');
+        phoneNumberInput.sendKeys('3132142663');
         passwordInput.sendKeys(testUser.password + '\n');
         waitForUrlToChangeTo(/properties/);
         expect(browser.getCurrentUrl()).toMatch(/properties/);
