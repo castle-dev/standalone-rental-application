@@ -42,6 +42,15 @@ angular.module('propertyManagementApp')
         .catch(deferred.reject);
         return deferred.promise;
       },
+      getUsersProperties: function (uid) {
+        var deferred = $q.defer();
+        $firebase(ref.child('properties').child(uid))
+          .$asArray()
+          .$loaded()
+          .then(function (properties) { deferred.resolve(properties); })
+          .catch(function (err) { deferred.reject(err); });
+        return deferred.promise;
+      },
       getCurrentUserProperties: function () {
         var deferred = $q.defer();
         Auth.isUserAdmin()
@@ -176,6 +185,7 @@ angular.module('propertyManagementApp')
           ref.child('profile').child(indexSnapshot.val().uid).once('value', function (profileSnapshot) {
             var profile = profileSnapshot.val();
             deferred.resolve({
+              id: profileSnapshot.key(),
               email: profile.email,
               name: profile.firstName,
               fullName: profile.firstName + ' ' + profile.lastName,

@@ -19,6 +19,10 @@ angular.module('propertyManagementApp')
         Property.getOwnerInfo(propertyId)
           .then(function (owner) {
             scope.owner = owner;
+            return Property.getUsersProperties(owner.id);
+          })
+          .then(function (properties) {
+            scope.properties = properties;
           });
       }
     };

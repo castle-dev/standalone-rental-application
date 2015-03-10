@@ -1,10 +1,11 @@
 <admin-only>
-<h1>Properties ({{ properties.length }} total)</h1>
+<h2>Properties </h2>
+<p class="medium property-address">({{ properties.length }} total)</p>
   <search-box query="searchQuery"></search-box>
   <table ng-table="tableParams" class="table">
     <tr ng-repeat="property in $data | filter:searchQuery">
       <td data-title="'Street'" sortable="'street'"><a ng-href="#/properties/{{ property.$id }}">{{ property.street }}</a></td>
-      <td data-title="'Owner'" sortable="'owner'">{{ property.owner }}</td>
+      <td ng-hide="hideOwners" data-title="!hideOwners && 'Owner'" sortable="!hideOwners && 'owner'">{{ property.owner }}</td>
     </tr>
   </table>
 </admin-only>

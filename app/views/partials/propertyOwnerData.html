@@ -1,13 +1,20 @@
 <admin-only>
-  <h1>{{ owner.fullName }}</h1>
-  <dl>
-    <dt>Email</dt>
-    <dd>{{ owner.email }}</dd>
-    <dt>Phone</dt>
-    <dd>{{ owner.phoneNumber }}</dd>
-    <dt>Credit Card Linked?</dt>
-    <dd>{{ owner.isCreditCardLinked  | json }}</dd>
-    <dt>Bank Account Linked?</dt>
-    <dd>{{ owner.isBankAccountLinked | json }}</dd>
-  </dl>
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>{{ owner.fullName }}</h1>
+      <dl>
+        <dt>Email</dt>
+        <dd>{{ owner.email }}</dd>
+        <dt>Phone</dt>
+        <dd>{{ owner.phoneNumber }}</dd>
+        <dt>Credit Card Linked?</dt>
+        <dd>{{ owner.isCreditCardLinked  | json }}</dd>
+        <dt>Bank Account Linked?</dt>
+        <dd>{{ owner.isBankAccountLinked | json }}</dd>
+      </dl>
+    </div>
+    <div class="col-sm-6">
+      <properties-list properties="properties" hide-owners="true"></properties-list>
+    </div>
+  </div>
 </admin-only>
