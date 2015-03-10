@@ -14,7 +14,10 @@ angular.module('propertyManagementApp')
       restrict: 'E',
       templateUrl: 'views/partials/propertyData.html',
       link: function (scope) {
-        scope.mode = {};
+        scope.mode = 'preview';
+        scope.setMode = function (mode) {
+          scope.mode = mode;
+        };
         var id = $routeParams.propertyId;
         scope.$watch('property.images', function () {
           if(scope.property && scope.property.images) {
