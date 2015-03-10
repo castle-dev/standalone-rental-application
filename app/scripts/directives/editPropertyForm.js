@@ -41,7 +41,7 @@ angular.module('propertyManagementApp')
         scope.property.images.splice($index, 1);
       };
       scope.sendNotificationEmail = function (template, callToAction) {
-        Property.getOwnerInfo(scope.property).then(function (ownerInfo) {
+        Property.getOwnerInfo(scope.property.id).then(function (ownerInfo) {
           return BackgroundJob.create({
             jobType: 'notificationEmail',
             template: template,
