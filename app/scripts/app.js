@@ -75,6 +75,7 @@ angular
         templateUrl: 'views/inherited.html',
       })
       .when('/properties', {
+        controller: 'PropertiesController as vm',
         templateUrl: 'views/properties.html',
         resolve: { 'requiresAuth': function (Auth) { return Auth.require(); } }
       })

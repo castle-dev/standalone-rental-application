@@ -1,11 +1,12 @@
 <admin-only>
   <ul class="nav nav-tabs">
-    <li role="presentation" ng-class="{ active : !mode.edit }"><a ng-click="mode.edit = false;">Preview</a></li>
-    <li role="presentation" ng-class="{ active: mode.edit }"><a ng-click="mode.edit = true;">Edit</a></li>
+    <li role="presentation" ng-class="{ active : mode === 'preview' }"><a ng-click="setMode('preview')">Preview</a></li>
+    <li role="presentation" ng-class="{ active: mode === 'edit' }"><a ng-click="setMode('edit')">Edit</a></li>
+    <li role="presentation" ng-class="{ active: mode === 'owner' }"><a ng-click="setMode('owner')">Owner</a></li>
   </ul>
 </admin-only>
 
-<div ng-show="!mode.edit">
+<div ng-show="mode === 'preview'">
   <div class="breadcrumbs">
     <a href="#/properties">Properties</a> <span class="breadcrumb-caret">></span> {{ property.street }}
   </div><!--breadcrumb-->
@@ -18,33 +19,33 @@
   </slick>
   <div ng-if="!property.images" class="image-carousel"><img ng-src="{{ property | propertyImageUrl : '500' : '300' }}" /></div>
 
-	<div class="property-section">
-	  <h3>Tenants</h3>
-	  <div ng-show="tenants.length">
-		 <table class="tenant-overview" ng-repeat="tenant in tenants">
-			<tbody>
-			  <tr>
-				 <td class="tenant-photo">
-					<img ng-show="tenant.picture" ng-src="{{ tenant.picture }}" alt="{{ tenant.firstName + ' ' + tenant.lastName }}">
-					<img ng-hide="tenant.picture" src="/images/generic_tenant.png" alt="{{ tenant.firstName + ' ' + tenant.lastName }}">
-				 </td>
-				 <td class="tenant-description">
-					<span class="tenant-name">{{ tenant.firstName + ' ' + tenant.lastName }}</span>
-					<span class="tenant-item" ng-if="tenant.moveInDate">Moved in on: {{ tenant.moveInDate | date }}</span>
-					<span class="tenant-item" ng-if="tenant.monthlyIncome">Salary: ${{ tenant.monthlyIncome | number }}/month</span>
-					<span class="tenant-item" ng-if="tenant.jobTitle && tenant.employer">Employment: {{ tenant.jobTitle }}, {{ tenant.employer }}</span>
-					<span class="tenant-income" ng-if="tenant.rent.share && tenant.monthlyIncome">This property requires {{ tenant.rent.share / tenant.monthlyIncome | percentage }} of {{ tenant.firstName }}&rsquo;s yearly income.</span>
-				 </td>
-			  </tr>
-			  <tr class="tenant-no-lease" ng-if="tenant.needsLease">
-				 <td colspan="2">{{ tenant.firstName }} is not currently on a lease.</td>
-			  </tr>
-			</tbody>
-		 </table>
-		</div><!--ng-show tenants.length-->
-	</div><!--property-section-->
+  <div class="property-section">
+    <h3>Tenants</h3>
+    <div ng-show="tenants.length">
+     <table class="tenant-overview" ng-repeat="tenant in tenants">
+      <tbody>
+        <tr>
+         <td class="tenant-photo">
+          <img ng-show="tenant.picture" ng-src="{{ tenant.picture }}" alt="{{ tenant.firstName + ' ' + tenant.lastName }}">
+          <img ng-hide="tenant.picture" src="/images/generic_tenant.png" alt="{{ tenant.firstName + ' ' + tenant.lastName }}">
+         </td>
+         <td class="tenant-description">
+          <span class="tenant-name">{{ tenant.firstName + ' ' + tenant.lastName }}</span>
+          <span class="tenant-item" ng-if="tenant.moveInDate">Moved in on: {{ tenant.moveInDate | date }}</span>
+          <span class="tenant-item" ng-if="tenant.monthlyIncome">Salary: ${{ tenant.monthlyIncome | number }}/month</span>
+          <span class="tenant-item" ng-if="tenant.jobTitle && tenant.employer">Employment: {{ tenant.jobTitle }}, {{ tenant.employer }}</span>
+          <span class="tenant-income" ng-if="tenant.rent.share && tenant.monthlyIncome">This property requires {{ tenant.rent.share / tenant.monthlyIncome | percentage }} of {{ tenant.firstName }}&rsquo;s yearly income.</span>
+         </td>
+        </tr>
+        <tr class="tenant-no-lease" ng-if="tenant.needsLease">
+         <td colspan="2">{{ tenant.firstName }} is not currently on a lease.</td>
+        </tr>
+      </tbody>
+     </table>
+    </div><!--ng-show tenants.length-->
+  </div><!--property-section-->
 
-	<div class="property-section">
+  <div class="property-section">
     <h3>Rent Status</h3>
     <table class="rent-status-table rent-status-small">
       <tbody>
@@ -59,24 +60,23 @@
   </div>
   <p ng-show="!tenants.length && !property.occupancyStatusUnknown">{{ property.street }} is currently vacant.</p>
   <p ng-show="!tenants.length && property.occupancyStatusUnknown">The occupancy status of {{ property.street }} is currently unknown.</p>
-</div><!--property-section-->
  
-	<div class="property-section">
-	  <h3 id="maintenance-issues">Maintenance Issues</h3>
-	  <div class="maintenance-status">
-	  	<ul>
-		 <li ng-repeat="issue in property.issues">{{ issue }}</li>
-		</ul>
-		 <p ng-show="!property.issues">{{ property.street }} currently has no open maintenance issues.</p>
-	  </div>
-	</div><!--property-section-->
+  <div class="property-section">
+    <h3 id="maintenance-issues">Maintenance Issues</h3>
+    <div class="maintenance-status">
+      <ul>
+     <li ng-repeat="issue in property.issues">{{ issue }}</li>
+    </ul>
+     <p ng-show="!property.issues">{{ property.street }} currently has no open maintenance issues.</p>
+    </div>
+  </div><!--property-section-->
 
   <div class="property-section additional-info" ng-if="property.additionalInfo.length">
-		 <h3 id="alerts">Alerts</h3>
-		 <ul>
-			<li ng-repeat="info in property.additionalInfo">{{ info }}</li>
-		 </ul>
-	  </div><!--property-section additional-info-->
+     <h3 id="alerts">Alerts</h3>
+     <ul>
+      <li ng-repeat="info in property.additionalInfo">{{ info }}</li>
+     </ul>
+    </div><!--property-section additional-info-->
 
   <div class="property-section documents" ng-if="property.documents.length">
     <h3 id="documents">Documents</h3>
@@ -86,6 +86,10 @@
   </div><!--property-section documents-->
 </div>
 
-<div ng-show="mode.edit">
+<div ng-show="mode === 'edit'">
   <edit-property-form></edit-property-form>
+</div>
+
+<div ng-show="mode === 'owner'">
+  <property-owner-data></property-owner-data>
 </div>

@@ -12,33 +12,35 @@
 angular.module('propertyManagementApp')
   .directive('propertiesList', function (Property, ngTableParams, $filter, $location) {
     return {
+      scope: {
+        properties: '=',
+        hideOwners: '@'
+      },
       restrict: 'E',
       templateUrl: 'views/partials/propertiesList.html',
       link: function (scope) {
         scope.isOnboarding = $location.search().onboarding;
-        Property.getCurrentUserProperties()
-        .then(function (properties) {
-          scope.properties = properties;
-          scope.tableParams = new ngTableParams({
-            page: 1,
-            count: scope.properties.length,
-            sorting: {
-              street: 'asc'
-            }
-          }, {
-            counts: [],
-            total: scope.properties.length, // length of scope.properties
-            getData: function($defer, params) {
+        scope.$watch('properties', function (newVal) {
+          if (newVal && newVal.length) {
+            scope.tableParams = new ngTableParams({
+              page: 1,
+              count: scope.properties.length,
+              sorting: {
+                street: 'asc'
+              }
+            }, {
+              counts: [],
+              total: scope.properties.length, // length of scope.properties
+              getData: function($defer, params) {
                 var orderedData = params.sorting() ?
                   $filter('orderBy')(scope.properties, params.orderBy()) :
                   scope.properties;
 
                 $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-            }
-          });
-        })
-        .catch(function (err) { console.log(err); });
-
+              }
+            });
+          }
+        });
       }
     };
   });

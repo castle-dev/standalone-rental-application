@@ -42,6 +42,15 @@ angular.module('propertyManagementApp')
         .catch(deferred.reject);
         return deferred.promise;
       },
+      getUsersProperties: function (uid) {
+        var deferred = $q.defer();
+        $firebase(ref.child('properties').child(uid))
+          .$asArray()
+          .$loaded()
+          .then(function (properties) { deferred.resolve(properties); })
+          .catch(function (err) { deferred.reject(err); });
+        return deferred.promise;
+      },
       getCurrentUserProperties: function () {
         var deferred = $q.defer();
         Auth.isUserAdmin()
@@ -170,14 +179,19 @@ angular.module('propertyManagementApp')
         });
         return deferred.promise;
       },
-      getOwnerInfo: function (property) {
+      getOwnerInfo: function (propertyId) {
         var deferred = $q.defer();
-        ref.child('indexes').child('properties').child(property.id).once('value', function (indexSnapshot) {
+        ref.child('indexes').child('properties').child(propertyId).once('value', function (indexSnapshot) {
           ref.child('profile').child(indexSnapshot.val().uid).once('value', function (profileSnapshot) {
             var profile = profileSnapshot.val();
             deferred.resolve({
+              id: profileSnapshot.key(),
               email: profile.email,
-              name: profile.firstName
+              name: profile.firstName,
+              fullName: profile.firstName + ' ' + profile.lastName,
+              phoneNumber: profile.phoneNumber,
+              isBankAccountLinked: !!(profile.bankAccountToken || profile.balancedBankAccountId),
+              isCreditCardLinked: !!(profile.creditCardToken || profile.stripeCustomerId)
             });
           }, deferred.reject);
         }, deferred.reject);
