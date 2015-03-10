@@ -18,7 +18,7 @@ angular.module('propertyManagementApp')
 
         var matches;
         ngModel.$parsers.unshift(function(viewValue) {
-          matches = viewValue.match(/(^[A-Z][a-z]+\s?)+/);
+          matches = viewValue.match(/(^[A-Z]{2}|[A-Z][a-z]+\s?)+$/);
           if (matches === null) {
             ngModel.$setValidity('properNouns', false);
           } else {
