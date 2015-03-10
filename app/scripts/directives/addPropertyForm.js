@@ -26,7 +26,9 @@ angular.module('propertyManagementApp')
         if (scope.currentStep === scope.addPropertySteps[scope.addPropertySteps.length - 1]) {
           // Submitting on the last step, so save the new property
           Property.saveNewProperty()
-          .then(function () { Flash.setMessage('Your property has been added. A member of the Castle Team will be in touch soon to talk next steps!'); })
+          .then(function () { 
+            if (!isOnboarding) { Flash.setMessage('Your property has been added. A member of the Castle Team will be in touch soon to talk next steps!'); }
+          })
           .then(function () {
             if (isOnboarding) {
               $location.path('/properties').search({ onboarding: true });
