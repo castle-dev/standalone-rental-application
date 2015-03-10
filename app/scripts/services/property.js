@@ -177,7 +177,11 @@ angular.module('propertyManagementApp')
             var profile = profileSnapshot.val();
             deferred.resolve({
               email: profile.email,
-              name: profile.firstName
+              name: profile.firstName,
+              fullName: profile.firstName + ' ' + profile.lastName,
+              phoneNumber: profile.phoneNumber,
+              isBankAccountLinked: !!(profile.bankAccountToken || profile.balancedBankAccountId),
+              isCreditCardLinked: !!(profile.creditCardToken || profile.stripeCustomerId)
             });
           }, deferred.reject);
         }, deferred.reject);
