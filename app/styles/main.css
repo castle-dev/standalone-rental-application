@@ -1577,6 +1577,9 @@ ul.dropdown-menu a {
 .center {
   text-align: center;
 }
+.intl-tel-input {
+  width: 100%;
+}
 .intl-tel-input .selected-flag .iti-flag {
   top: 17px !important;
 }
