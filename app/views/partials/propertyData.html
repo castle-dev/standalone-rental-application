@@ -46,7 +46,7 @@
     </div><!--ng-show tenants.length-->
   </div><!--property-section-->
 
-  <div class="property-section">
+  <div class="property-section" ng-hide="!tenants.length">
     <h3>Rent Status</h3>
     <table class="rent-status-table rent-status-small">
       <tbody>
