@@ -3,6 +3,7 @@
     <li role="presentation" ng-class="{ active : mode === 'preview' }"><a ng-click="setMode('preview')">Preview</a></li>
     <li role="presentation" ng-class="{ active: mode === 'edit' }"><a ng-click="setMode('edit')">Edit</a></li>
     <li role="presentation" ng-class="{ active: mode === 'owner' }"><a ng-click="setMode('owner')">Owner</a></li>
+    <li role="presentation" ng-class="{ active: mode === 'details' }"><a ng-click="setMode('details')">Details</a></li>
   </ul>
 </admin-only>
 
@@ -92,4 +93,11 @@
 
 <div ng-show="mode === 'owner'">
   <property-owner-data></property-owner-data>
+</div>
+
+<div ng-show="mode === 'details'">
+  <h3>Details</h3>
+  <div ng-repeat="(key, value) in property">
+    <strong>{{ key }}:</strong> {{ value }}
+  </div>
 </div>
