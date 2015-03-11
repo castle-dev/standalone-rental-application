@@ -121,12 +121,19 @@ angular.module('propertyManagementApp')
               url: _newProperty.lease.url
             });
           }
+          var tenants = _newProperty.newTenants;
+          delete _newProperty.newTenants;
           propertiesSync.$asArray().$add(_newProperty).then(function (ref) {
-            var tenant = _newProperty.tenant;
             var propertyId = ref.key();
-            if (tenant.firstName && tenant.lastName) {
-              return Tenant.saveNewTenant(propertyId, tenant);
-            }
+            var promises = [];
+            tenants.forEach(function (tenant) {
+              if (tenant.phoneNumber === '') {
+                delete tenant.phoneNumber;
+              }
+              delete tenant.$$hashKey; // Hack to make firebase & angular play nice
+              promises.push(Tenant.saveNewTenant(propertyId, tenant));
+            });
+            return $q.all(promises);
           }).then(function () {
             _newProperty = {};
             deferred.resolve();

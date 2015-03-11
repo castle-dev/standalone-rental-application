@@ -9,7 +9,7 @@
  * for updating a user's profile
  */
 angular.module('propertyManagementApp')
-.directive('addPropertyForm', function ($location, Property, Geography, Flash, Auth) {
+.directive('addPropertyForm', function ($location, $anchorScroll, Property, Geography, Flash, Auth) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/addPropertyForm.html',
@@ -19,8 +19,15 @@ angular.module('propertyManagementApp')
       scope.propertyTypes = Property.getTypes();
       scope.ownershipDurations = Property.getOwnershipDurations();
       scope.newProperty = Property.getNewProperty();
+      scope.newProperty.newTenants = [{}];
       scope.newProperty.stateAbbreviation = 'MI';
       scope.user = Auth.getCurrentUser();
+      scope.addTenant = function () {
+        scope.newProperty.newTenants.push({});
+      };
+      scope.deleteTenant = function ($index) {
+        scope.newProperty.newTenants.splice($index, 1);
+      };
       scope.submit = function () {
 
         if (scope.currentStep === scope.addPropertySteps[scope.addPropertySteps.length - 1]) {
@@ -38,6 +45,7 @@ angular.module('propertyManagementApp')
           });
         } else {
           scope.nextStep();
+          $anchorScroll();
         }
       };
     }
