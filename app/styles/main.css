@@ -1202,6 +1202,10 @@ table.utility-providers {
 }
 table.utility-providers label {
   font-weight: 300;
+  margin-top: 8px;
+}
+table.utility-providers td:nth-child(2) {
+  padding-left: 10px;
 }
 .credit-card {
   width: 430px;
