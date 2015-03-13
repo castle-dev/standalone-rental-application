@@ -51,7 +51,7 @@
 
     <management-agreement></management-agreement>
 
-    <p>To sign this agreement, type your name as it appears below and click "Sign and Continue."</p>
+    <p>To sign this agreement, type your name as it appears below and click &ldquo;Sign and Continue.&rdquo;</p>
 
     <fieldset>
       <input type="text" placeholder="Your name here" required ng-model="newProperty.agreement.signor" ng-pattern="{{ user.profile.firstName + ' ' + user.profile.lastName }}" validation-msg-pattern="Please type your name exactly as it appears below">
@@ -79,7 +79,7 @@
         <i ng-click="deleteTenant($index)" class="fa fa-times delete" ng-show="$index !== 0"></i>
         <div class="both-names-input">
           <fieldset>
-            <label for="first-name">Tenant's name:</label>
+            <label for="first-name">Tenant&rsquo;s name:</label>
             <input type="text" name="first-name" placeholder="First" ng-model="tenant.firstName" ng-required="newProperty.occupied" />
           </fieldset>
 
