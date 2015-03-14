@@ -633,6 +633,15 @@ input[type="url"] {
   width: 100%;
   max-width: 400px;
   }
+  
+.intl-tel-input {
+	width: 100%;
+	margin-bottom: 5px;
+	}
+
+.intl-tel-input .selected-flag .iti-flag {
+	top: 17px !important;
+	}
 
 select {
   background-image: url('../images/select-bg.png');
@@ -699,7 +708,7 @@ input[type="radio"]:checked:after {
 	}
 
 fieldset {
-  margin: 15px 0;
+  margin: 20px 0;
   }
     
 label {
@@ -722,8 +731,7 @@ input[type="file"] {
 .top-help-text {
   font-size: 80%;
   color: darken(@grey, 10%);
-  margin-top: -4px;
-  margin-bottom: 6px;
+  margin: -4px 0 0 0;
   font-style: italic;
   }
 
@@ -839,7 +847,7 @@ input.zipcode {
   
 // Puts first and last name on the same line
 .both-names-input {
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	}
 	
 .both-names-input label[for="last-name"],
@@ -1032,6 +1040,7 @@ input[type="password"].ng-valid-required.ng-valid:not(.ng-invalid),
 input[type="tel"].ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid-required.ng-valid:not(.ng-invalid), select.ng-valid-required.ng-valid:not(.ng-invalid) {
   border-color: @green;
   }
+  
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -1897,12 +1906,6 @@ ul.dropdown-menu a {
 }
 .center {
   text-align: center;
-}
-.intl-tel-input {
-  width: 100%;
-}
-.intl-tel-input .selected-flag .iti-flag {
-  top: 17px !important;
 }
 @media only screen and (max-width: 1100px) {
 

@@ -530,6 +530,13 @@ input[type="url"] {
   width: 100%;
   max-width: 400px;
 }
+.intl-tel-input {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.intl-tel-input .selected-flag .iti-flag {
+  top: 17px !important;
+}
 select {
   background-image: url('../images/select-bg.png');
   background-repeat: no-repeat;
@@ -585,7 +592,7 @@ input[type="radio"]:checked:after {
   font-weight: 300;
 }
 fieldset {
-  margin: 15px 0;
+  margin: 20px 0;
 }
 label {
   font-weight: 400;
@@ -604,8 +611,7 @@ input[type="file"] {
 .top-help-text {
   font-size: 80%;
   color: #48585c;
-  margin-top: -4px;
-  margin-bottom: 6px;
+  margin: -4px 0 0 0;
   font-style: italic;
 }
 .right-help-text {
@@ -695,7 +701,7 @@ input.zipcode {
   font-size: 90%;
 }
 .both-names-input {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .both-names-input label[for="last-name"],
 .both-names-input label[for="lastName"] {
@@ -1576,12 +1582,6 @@ ul.dropdown-menu a {
 }
 .center {
   text-align: center;
-}
-.intl-tel-input {
-  width: 100%;
-}
-.intl-tel-input .selected-flag .iti-flag {
-  top: 17px !important;
 }
 @media only screen and (max-width: 1100px) {
   .property-section {
