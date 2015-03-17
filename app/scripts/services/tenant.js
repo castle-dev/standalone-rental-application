@@ -92,7 +92,7 @@ angular.module('propertyManagementApp')
           return Auth.loginUser(tenant);
         })
         .then(function () { // Index the new tenant user account
-          return ref.child('indexes').child('tenants').child(uid).set({
+          return ref.child('indexes').child('roles').child('tenants').child(uid).set({
             id: tenant.id,
             propertyId: tenant.propertyId
           }, function (err) {
