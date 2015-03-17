@@ -9,21 +9,21 @@
       <div class="both-names-input">
         <fieldset>
           <label for="first-name">Your name:</label>
-          <input type="text" name="first-name" ng-model="vm.tenant.firstName">
+          <input type="text" name="first-name" ng-model="vm.tenant.firstName" required>
         </fieldset>
         <fieldset>
           <label for="last-name"></label>
-          <input type="text" name="last-name" ng-model="vm.tenant.lastName">
+          <input type="text" name="last-name" ng-model="vm.tenant.lastName" required>
         </fieldset>
       </div><!--both-names-input-->
       <fieldset>
         <label for="email-address">Your email address:</label>
-        <input type="email" name="email-address" ng-model="vm.tenant.email">
+        <input type="email" name="email-address" ng-model="vm.tenant.email" required>
         <div class="help-text">We won’t send you spam or anything lame.</div>
       </fieldset>
       <fieldset>
         <label for="phone-number">Your cell phone number:</label>
-        <input type="tel" name="phone-number" ng-model="vm.tenant.phoneNumber">
+        <input type="tel" name="phone-number" ng-model="vm.tenant.phoneNumber" required ui-mask="(999) 999-9999">
       </fieldset>
       <fieldset>
         <label for="password">Choose a password:</label>
