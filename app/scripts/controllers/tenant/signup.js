@@ -8,7 +8,7 @@
  * Controller of the propertyManagementApp
  */
 angular.module('propertyManagementApp')
-  .controller('TenantSignupController', function ($routeParams, $scope, $window, Tenant) {
+  .controller('TenantSignupController', function ($routeParams, $scope, $location, Tenant) {
     var vm = this;
     var id = $routeParams.tenantId;
     Tenant.getById(id)
@@ -20,11 +20,11 @@ angular.module('propertyManagementApp')
     vm.submit = function () {
       vm.errors = [];
        Tenant.createUser(vm.tenant)
-      .then( function (uid) {
+      .then(function (uid) {
         vm.tenant.uid = uid;
         return Tenant.update(vm.tenant);
       })
-      .then(function () { $window.location.href = 'http://entercastle.com'; })
+      .then(function () { $location.path('/tenants/dashboard'); })
       .catch(function (err) {
         vm.errors.push(err);
       });
