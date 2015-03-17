@@ -88,6 +88,7 @@ angular
         resolve: { 'requiresAuth': function (Auth) { return Auth.require(); } }
       })
       .when('/tenants/dashboard', {
+        controller: 'TenantDashboardController as vm',
         templateUrl: 'views/tenant/dashboard.html',
         resolve: { 'requiresAuth': function (Auth) { return Auth.require(); } }
       })
