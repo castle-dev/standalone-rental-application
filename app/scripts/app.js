@@ -87,12 +87,19 @@ angular
         templateUrl: 'views/property.html',
         resolve: { 'requiresAuth': function (Auth) { return Auth.require(); } }
       })
-      .when('/tenants/:tenantId', {
-        templateUrl: 'views/tenant.html',
+      .when('/tenants/dashboard', {
+        templateUrl: 'views/tenant/dashboard.html',
+        resolve: { 'requiresAuth': function (Auth) { return Auth.require(); } }
+      })
+      .when('/tenants/contact', {
+        templateUrl: 'views/tenant/contact.html',
       })
       .when('/tenants/:tenantId/signup', {
         controller: 'TenantSignupController as vm',
-        templateUrl: 'views/tenantsignup.html',
+        templateUrl: 'views/tenant/signup.html',
+      })
+      .when('/tenants/:tenantId', {
+        templateUrl: 'views/tenant.html',
       })
       .when('/password-reset/:email/:token', {
         controller: 'PasswordResetController as vm',
