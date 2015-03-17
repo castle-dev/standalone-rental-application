@@ -25,7 +25,19 @@ angular.module('propertyManagementApp')
           .$asObject()
           .$loaded()
           .then(function (tenant) {
-            deferred.resolve(tenant);
+
+            $firebase(ref.child('indexes').child('properties').child(snapshot.propertyId))
+            .$asObject()
+            .$loaded()
+            .then(function (propertyIndex) {
+              $firebase(ref.child('properties').child(propertyIndex.uid).child(propertyIndex.$id))
+              .$asObject()
+              .$loaded()
+              .then(function (property) {
+                tenant.property = property;
+                deferred.resolve(tenant);
+              }, function (err) { deferred.reject(err); });
+            }, function (err) { deferred.reject(err); });
           }, function (err) { deferred.reject(err); });
         }, function (err) { deferred.reject(err); });
         return deferred.promise;
