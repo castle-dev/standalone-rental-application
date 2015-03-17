@@ -47,11 +47,11 @@
   <!-- Management Agreement -->
   <form name="addproperty2" ng-submit="submit()" ng-if="currentStep === addPropertySteps[1]">
 
-    <p class="small agreement-intro">Here’s our management agreement. Please read it carefully, then sign by typing your name in the box at the bottom of this page.</p>
+    <p class="small agreement-intro">Here&rsquo;s our management agreement. Please read it carefully, then sign by typing your name in the box at the bottom of this page.</p>
 
     <management-agreement></management-agreement>
 
-    <p>To sign this agreement, type your name as it appears below and click "Sign and Continue."</p>
+    <p>To sign this agreement, type your name as it appears below and click &ldquo;Sign and Continue.&rdquo;</p>
 
     <fieldset>
       <input type="text" placeholder="Your name here" required ng-model="newProperty.agreement.signor" ng-pattern="{{ user.profile.firstName + ' ' + user.profile.lastName }}" validation-msg-pattern="Please type your name exactly as it appears below">
@@ -79,7 +79,7 @@
         <i ng-click="deleteTenant($index)" class="fa fa-times delete" ng-show="$index !== 0"></i>
         <div class="both-names-input">
           <fieldset>
-            <label for="first-name">Tenant's name:</label>
+            <label for="first-name">Tenant&rsquo;s name:</label>
             <input type="text" name="first-name" placeholder="First" ng-model="tenant.firstName" ng-required="newProperty.occupied" />
           </fieldset>
 
@@ -90,12 +90,12 @@
         </div><!--both-names-input-->
 
         <fieldset>
-          <label for="tenant-phone">Tenant’s phone number:</label>
+          <label for="tenant-phone">Tenant&rsquo;s phone number:</label>
           <input ng-model="tenant.phoneNumber" type="tel" name="tenant-phone" ui-mask="(999) 999-9999">
         </fieldset>
 
         <fieldset>
-          <label for="tenant-email">Tenant’s email address:</label>
+          <label for="tenant-email">Tenant&rsquo;s email address:</label>
           <input ng-model="tenant.email" type="email" name="tenant-email">
         </fieldset>
 
@@ -117,7 +117,7 @@
     </fieldset>
 
     <fieldset ng-show="newProperty.occupied || newProperty.everHadTenants">
-      <label for="current-lease">If you have it, please upload a copy of the property’s most recent lease.</label>
+      <label for="current-lease">If you have it, please upload a copy of the property&rsquo;s most recent lease.</label>
       <file-input for="newProperty.lease"></file-input>
     </fieldset>
 
