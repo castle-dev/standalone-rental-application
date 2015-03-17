@@ -9,7 +9,7 @@
  * for updating a tenant's bank account info
  */
 angular.module('propertyManagementApp')
-.directive('tenantBankAccountForm', function ($routeParams, $window, Tenant) {
+.directive('tenantBankAccountForm', function ($routeParams, $window, $location, Tenant) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/tenantBankAccountForm.html',
@@ -37,7 +37,7 @@ angular.module('propertyManagementApp')
         if (scope.confirmationMatches) {
           Tenant.updatePhoneNumber(tenant)
           .then(function () { return Tenant.linkBankAccount(tenant, bankAccount); })
-          .then( function () { scope.linked = true; })
+          .then( function () { $location.path('/tenants/dashboard'); })
           .catch(function (err) { scope.errors.push(err); });
         } else {
           scope.errors.push('Your bank account confirmation doesn\'t match!');
