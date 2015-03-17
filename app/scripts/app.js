@@ -90,7 +90,10 @@ angular
       .when('/tenants/dashboard', {
         controller: 'TenantDashboardController as vm',
         templateUrl: 'views/tenant/dashboard.html',
-        resolve: { 'requiresAuth': function (Auth) { return Auth.require(); } }
+        resolve: {
+          'requiresAuth': function (Auth) { return Auth.require(); },
+          'requireBankAccount': function (Tenant) { return Tenant.requireBankAccount(); }
+        }
       })
       .when('/tenants/contact', {
         templateUrl: 'views/tenant/contact.html',

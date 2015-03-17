@@ -14,8 +14,43 @@ angular.module('propertyManagementApp')
     var ref = new $window.Firebase(FIREBASE_URL);
 
     var Tenant = {
+      getAuthenticatedTenant: function () {
+        var deferred = $q.defer();
+        var user = Auth.getCurrentUser();
+        $firebase(ref.child('indexes').child('roles').child('tenants').child(user.uid))
+        .$asObject()
+        .$loaded()
+        .then(function (snapshot) {
+          $firebase(ref.child('tenants').child(snapshot.propertyId).child(snapshot.id))
+          .$asObject()
+          .$loaded()
+          .then(function (tenant) {
+            deferred.resolve(tenant);
+          }, function (err) { deferred.reject(err); });
+        }, function (err) { deferred.reject(err); });
+        return deferred.promise;
+      },
+      requireBankAccount: function () {
+        var deferred = $q.defer();
+        var user = Auth.getCurrentUser();
+        $firebase(ref.child('indexes').child('roles').child('tenants').child(user.uid))
+        .$asObject()
+        .$loaded()
+        .then(function (snapshot) {
+          $firebase(ref.child('tenants').child(snapshot.propertyId).child(snapshot.id))
+          .$asObject()
+          .$loaded()
+          .then(function (tenant) {
+            if (!tenant.bankAccountToken && !tenant.balancedBankAccountId) {
+              $location.path('/tenants/' + tenant.$id);
+            } else {
+              deferred.resolve();
+            }
+          }, function (err) { deferred.reject(err); });
+        }, function (err) { deferred.reject(err); });
+        return deferred.promise;
+      },
       getById: function (id) {
-
         var deferred = $q.defer();
         var propertiesSyncRef = $firebase(ref.child('tenants')).$asArray();
         propertiesSyncRef.$loaded()

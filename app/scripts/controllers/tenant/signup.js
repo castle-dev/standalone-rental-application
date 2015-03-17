@@ -17,7 +17,8 @@ angular.module('propertyManagementApp')
       vm.tenant = tenant;
       vm.tenant.password = '';
     });
-    vm.greeting = id;
+    vm.passwordContainsNumber = false;
+    vm.passwordIsLongEnough = false;
     vm.submit = function () {
       vm.errors = [];
        Tenant.createUser(vm.tenant)

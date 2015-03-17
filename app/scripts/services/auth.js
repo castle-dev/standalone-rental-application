@@ -69,7 +69,7 @@ angular.module('propertyManagementApp')
         .$loaded()
         .then(function (data) {
           if (data.$value === null) { deferred.reject(); }
-          else { deferred.resolve(); }
+          else { deferred.resolve(data.$value); }
         });
         return deferred.promise;
       },
