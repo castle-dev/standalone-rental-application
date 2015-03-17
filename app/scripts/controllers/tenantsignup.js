@@ -19,9 +19,13 @@ angular.module('propertyManagementApp')
     vm.greeting = id;
     vm.submit = function () {
       vm.errors = [];
-      Tenant.createUser(vm.tenant)
-      .then(function () { $window.location.href = 'https://google.com'; })
-      .catch(function (err) { 
+       Tenant.createUser(vm.tenant)
+      .then( function (uid) {
+        vm.tenant.uid = uid;
+        return Tenant.update(vm.tenant);
+      })
+      .then(function () { $window.location.href = 'http://entercastle.com'; })
+      .catch(function (err) {
         vm.errors.push(err);
       });
     };

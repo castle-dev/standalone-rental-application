@@ -10,7 +10,7 @@
  * reading and writing tenant data
  */
 angular.module('propertyManagementApp')
-  .factory('Tenant', function ($firebase, FIREBASE_URL, $window, $location, $q, Bank) {
+  .factory('Tenant', function ($firebase, FIREBASE_URL, $window, $location, $q, Bank, Auth) {
     var ref = new $window.Firebase(FIREBASE_URL);
 
     var Tenant = {
@@ -30,6 +30,23 @@ angular.module('propertyManagementApp')
           }
           deferred.reject('Tenant not found');
         });
+        return deferred.promise;
+      },
+      update: function (tenant) {
+        var deferred = $q.defer();
+        var id = tenant.id;
+        var propertyId = tenant.propertyId;
+        var data = {};
+        angular.copy(tenant, data);
+        if (id && propertyId) {
+          delete data.id;
+          delete data.propertyId;
+          delete data.password;
+          ref.child('tenants').child(propertyId).child(id).update(data, function (err) {
+            if (err) { deferred.reject(err); }
+            else { deferred.resolve(tenant); }
+          });
+        } else { deferred.reject('There was an error updating your information. Please refresh the page and try again'); }
         return deferred.promise;
       },
       updatePhoneNumber: function (tenant) {
@@ -68,7 +85,22 @@ angular.module('propertyManagementApp')
       },
       createUser: function (tenant) {
         var deferred = $q.defer();
-        deferred.reject('Error: unimplemented (id:' + tenant.id +')');
+        var uid;
+        Auth.registerUser(tenant)
+        .then(function (authData) { // Grab the uid and log in
+          uid = authData.uid;
+          return Auth.loginUser(tenant);
+        })
+        .then(function () { // Index the new tenant user account
+          return ref.child('indexes').child('tenants').child(uid).set({
+            id: tenant.id,
+            propertyId: tenant.propertyId
+          }, function (err) {
+            if (err) { return deferred.reject(err); }
+            return deferred.resolve(uid);
+          });
+        },
+        function (err) { deferred.reject(err); });
         return deferred.promise;
       }
     };

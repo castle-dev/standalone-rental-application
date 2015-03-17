@@ -21,9 +21,9 @@ angular.module('propertyManagementApp')
         ref.createUser({
           email: newUser.email,
           password: newUser.password
-        }, function (err) {
+        }, function (err, authData) {
           if (err) { deferred.reject(Auth.translateError(err)); }
-          deferred.resolve(newUser);
+          deferred.resolve(authData);
         });
         return deferred.promise;
       },
