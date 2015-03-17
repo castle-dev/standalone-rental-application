@@ -13,6 +13,7 @@ angular.module('propertyManagementApp')
     var id = $routeParams.tenantId;
     Tenant.getById(id)
     .then(function (tenant) {
+      if (tenant.uid) { $location.path('/login'); }
       vm.tenant = tenant;
       vm.tenant.password = '';
     });
