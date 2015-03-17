@@ -65,6 +65,11 @@ angular.module('propertyManagementApp')
           tenant.rent.label = 'Unlinked';
         }
         return $firebase(ref.child('tenants').child(propertyId)).$push(tenant);
+      },
+      createUser: function (tenant) {
+        var deferred = $q.defer();
+        deferred.reject('Error: unimplemented (id:' + tenant.id +')');
+        return deferred.promise;
       }
     };
 

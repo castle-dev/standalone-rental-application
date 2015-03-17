@@ -90,6 +90,10 @@ angular
       .when('/tenants/:tenantId', {
         templateUrl: 'views/tenant.html',
       })
+      .when('/tenants/:tenantId/signup', {
+        controller: 'TenantSignupController as vm',
+        templateUrl: 'views/tenantsignup.html',
+      })
       .when('/password-reset/:email/:token', {
         controller: 'PasswordResetController as vm',
         templateUrl: 'views/passwordreset.html',

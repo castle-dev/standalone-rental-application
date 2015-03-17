@@ -1,0 +1,45 @@
+<footer-wrapper>
+  <div class="solo-form">
+
+    <img src="images/logo-solo.png" class="centered-logo" alt="Castle">
+
+    <h1>Welcome, {{ vm.tenant.firstName }}.</h1>
+    <h4>Let’s get started.</h4>
+    <form name="vm.form" ng-submit="vm.submit()">
+      <div class="both-names-input">
+        <fieldset>
+          <label for="first-name">Your name:</label>
+          <input type="text" name="first-name" ng-model="vm.tenant.firstName">
+        </fieldset>
+        <fieldset>
+          <label for="last-name"></label>
+          <input type="text" name="last-name" ng-model="vm.tenant.lastName">
+        </fieldset>
+      </div><!--both-names-input-->
+      <fieldset>
+        <label for="email-address">Your email address:</label>
+        <input type="email" name="email-address" ng-model="vm.tenant.email">
+        <div class="help-text">We won’t send you spam or anything lame.</div>
+      </fieldset>
+      <fieldset>
+        <label for="phone-number">Your cell phone number:</label>
+        <input type="tel" name="phone-number" ng-model="vm.tenant.phoneNumber">
+      </fieldset>
+      <fieldset>
+        <label for="password">Choose a password:</label>
+        <input type="password" name="password" placeholder="Easy to remember, hard to guess" ng-model="vm.tenant.password" ng-minlength="8" ng-pattern="/[0-9]/" ng-required="true" validation-msg-pattern="Still needs a number!">
+        <div class="password-requirements">
+          <div class="requirement">
+            <input type="checkbox" ng-model="vm.passwordIsLongEnough" ng-disabled="true"> At least eight characters
+          </div><!--requirement-->
+          <div class="requirement">
+            <input type="checkbox" ng-model="vm.passwordContainsNumber" ng-disabled="true"> At least one number
+          </div><!--requirement-->
+        </div><!--password-requirements-->
+      </fieldset>
+      <errors></errors>
+      <button type="submit" class="btn btn-medium btn-green">Create My Account →</button>
+    </form>
+
+  </div>
+</footer-wrapper>
