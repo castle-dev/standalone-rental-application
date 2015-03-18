@@ -16,7 +16,7 @@ angular.module('propertyManagementApp')
     Tenant.getAuthenticatedTenant()
     .then(function (tenant) {
       vm.tenant = tenant;
-      if (!tenant.bankAccountToken && !tenant.balanacedBankAccountId) {
+      if (!tenant.bankAccountToken && !tenant.balancedBankAccountId) {
         $location.path('/tenants/' + tenant.$id);
       }
     });
