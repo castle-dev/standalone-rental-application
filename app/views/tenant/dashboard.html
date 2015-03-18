@@ -5,11 +5,12 @@
   <div content id="content">
     <mobile-header>Rent Status</mobile-header>
     <div id="mobile-wrapper">
+      <flash-message></flash-message>
 
-      <h2>{{ vm.tenant.property.street }}</h2>
-      <p class="medium property-address">{{ vm.tenant.property.city }}, {{ vm.tenant.property.stateAbbreviation}} {{ vm.tenant.property.zip }}</p>
+      <h2>{{ vm.property.street }}</h2>
+      <p class="medium property-address">{{ vm.property.city }}, {{ vm.property.stateAbbreviation}} {{ vm.property.zip }}</p>
 
-      <div ng-show="vm.tenant.payments.length">
+      <div ng-show="vm.tenant.payments.rent.length">
         <h3>Last Payment</h3>
         <p>Your last payment of <strong>$XXX</strong> was received on <strong>XXXXX X, XXXX</strong>.</p>
       </div>
@@ -17,10 +18,11 @@
       <h3>Next Payment</h3>
       <p>Your next payment of <strong>${{ vm.tenant.rent.share }}</strong> is due on <strong>{{ vm.nextPaymentDueDate | date:'longDate' }}</strong>.</p>
 
-      <p class="center-contents"><a class="btn btn-green btn-medium">Pay Now</a></p>
+      <div ng-show="tenant.balancedBankAccountId && tenant.bankAccountVerificationAttempts === null">
+        <p class="center-contents"><a class="btn btn-green btn-medium">Pay Now</a></p>
 
-      <p class="tiny">When you click “Pay Now,” a payment of ${{ vm.tenant.rent.share }} will be made from your bank account.</p>
-
+        <p class="tiny">When you click “Pay Now,” a payment of ${{ vm.tenant.rent.share }} will be made from your bank account.</p>
+      </div>
     </div>
   </div><!--content-->
 
