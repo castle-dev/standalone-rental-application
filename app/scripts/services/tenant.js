@@ -25,19 +25,7 @@ angular.module('propertyManagementApp')
           .$asObject()
           .$loaded()
           .then(function (tenant) {
-
-            $firebase(ref.child('indexes').child('properties').child(snapshot.propertyId))
-            .$asObject()
-            .$loaded()
-            .then(function (propertyIndex) {
-              $firebase(ref.child('properties').child(propertyIndex.uid).child(propertyIndex.$id))
-              .$asObject()
-              .$loaded()
-              .then(function (property) {
-                tenant.property = property;
-                deferred.resolve(tenant);
-              }, function (err) { deferred.reject(err); });
-            }, function (err) { deferred.reject(err); });
+            deferred.resolve(tenant);
           }, function (err) { deferred.reject(err); });
         }, function (err) { deferred.reject(err); });
         return deferred.promise;
@@ -77,6 +65,21 @@ angular.module('propertyManagementApp')
           }
           deferred.reject('Tenant not found');
         });
+        return deferred.promise;
+      },
+      getProperty: function (tenant) {
+        var deferred = $q.defer();
+        $firebase(ref.child('indexes').child('properties').child(tenant.propertyId))
+        .$asObject()
+        .$loaded()
+        .then(function (propertyIndex) {
+          $firebase(ref.child('properties').child(propertyIndex.uid).child(propertyIndex.$id))
+          .$asObject()
+          .$loaded()
+          .then(function (property) {
+            deferred.resolve(property);
+          }, function (err) { deferred.reject(err); });
+        }, function (err) { deferred.reject(err); });
         return deferred.promise;
       },
       update: function (tenant) {

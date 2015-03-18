@@ -19,5 +19,9 @@ angular.module('propertyManagementApp')
       if (!tenant.bankAccountToken && !tenant.balancedBankAccountId) {
         $location.path('/tenants/' + tenant.$id);
       }
+      return Tenant.getProperty(tenant);
+    })
+    .then(function (property) {
+      vm.property = property;
     });
   });
