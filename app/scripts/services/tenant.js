@@ -172,6 +172,30 @@ angular.module('propertyManagementApp')
           deferred.resolve($filter('date')(tenant.accountCreatedAt + offset, 'longDate'));
         });
         return deferred.promise;
+      },
+      makeRentPayment: function (tenant, createdBy) {
+        var deferred = $q.defer();
+        var tenantRef = ref.child('tenants').child(tenant.propertyId).child(tenant.$id);
+        tenantRef
+          .child('rent')
+          .child('payments')
+          .push({
+            createdAt: new Date().getTime(),
+            amount: tenant.rent.share,
+            createdBy: createdBy || 'tenant'
+          }, function (err) {
+            if (err) { deferred.reject(err); }
+            tenantRef
+              .child('rent')
+              .update({
+                label: 'paid',
+                status: 'paid'
+              }, function (err) {
+                if (err) { deferred.reject(err); }
+                deferred.resolve();
+              });
+          });
+        return deferred.promise;
       }
     };
 

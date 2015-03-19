@@ -12,7 +12,9 @@ angular.module('propertyManagementApp')
     var vm = this;
     var now = new Date();
     vm.nextPaymentDueDate = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-
+    vm.payRent = function () {
+      Tenant.makeRentPayment(vm.tenant);
+    };
     Tenant.getAuthenticatedTenant()
     .then(function (tenant) {
       vm.tenant = tenant;

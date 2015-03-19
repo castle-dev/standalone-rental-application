@@ -19,7 +19,7 @@
       <p>Your next payment of <strong>${{ vm.tenant.rent.share }}</strong> is due on <strong>{{ vm.nextPaymentDueDate | date:'longDate' }}</strong>.</p>
 
       <div ng-show="vm.tenant.balancedBankAccountId && vm.tenant.bankAccountVerificationAttempts === undefined">
-        <p class="center-contents"><a class="btn btn-green btn-medium">Pay Now</a></p>
+        <p class="center-contents"><a class="btn btn-green btn-medium" ng-click="vm.payRent()">Pay Now</a></p>
 
         <p class="tiny">When you click “Pay Now,” a payment of ${{ vm.tenant.rent.share }} will be made from your bank account.</p>
       </div>
