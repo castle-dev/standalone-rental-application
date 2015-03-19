@@ -140,17 +140,26 @@ angular.module('propertyManagementApp')
         .then(function (authData) { // Grab the uid and log in
           uid = authData.uid;
           return Auth.loginUser(tenant);
-        })
+        }, function (err) { deferred.reject(err); })
         .then(function () { // Index the new tenant user account
+          if (!uid) { return; }
           return ref.child('indexes').child('roles').child('tenants').child(uid).set({
             id: tenant.id,
             propertyId: tenant.propertyId
           }, function (err) {
             if (err) { return deferred.reject(err); }
-            return deferred.resolve(uid);
           });
-        },
-        function (err) { deferred.reject(err); });
+        }, function (err) { deferred.reject(err); })
+        .then(function () { // Store the createdAt timestamp
+          if (!uid) { return; }
+          ref.child('.info/serverTimeOffset').once('value', function (ss) {
+            var offset = ss.val();
+            ref.child('tenants').child(tenant.propertyId).child(tenant.id).child('accountCreatedAt').set(new Date().getTime() + offset, function (err) {
+              if (err) { return deferred.reject(err); }
+              return deferred.resolve(uid);
+            });
+          });
+        });
         return deferred.promise;
       }
     };
