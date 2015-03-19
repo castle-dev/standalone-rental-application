@@ -10,7 +10,7 @@
  * reading and writing tenant data
  */
 angular.module('propertyManagementApp')
-  .factory('Tenant', function ($firebase, FIREBASE_URL, $window, $location, $q, Bank, Auth) {
+  .factory('Tenant', function ($firebase, FIREBASE_URL, $window, $location, $q, Bank, Auth, $filter) {
     var ref = new $window.Firebase(FIREBASE_URL);
 
     var Tenant = {
@@ -159,6 +159,17 @@ angular.module('propertyManagementApp')
               return deferred.resolve(uid);
             });
           });
+        });
+        return deferred.promise;
+      },
+      getAccountCreatedDate: function (tenant) {
+        var deferred = $q.defer();
+        $firebase(ref.child('.info/serverTimeOffset'))
+        .$asObject()
+        .$loaded()
+        .then(function (snapshot) {
+          var offset = snapshot.$value;
+          deferred.resolve($filter('date')(tenant.accountCreatedAt + offset, 'longDate'));
         });
         return deferred.promise;
       }
