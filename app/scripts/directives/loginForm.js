@@ -16,7 +16,11 @@ angular.module('propertyManagementApp')
       link: function (scope) {
         scope.redirect = Auth.getRedirect();
         if (Auth.isUserAuthenticated()) {
-          $location.path('/');
+          Auth.isUserTenant()
+          .then(
+            function () { $location.path('/tenants/dashboard'); },
+            function () { $location.path('/properties'); }
+          );
         }
         scope.submit = function (user) {
           scope.errors = [];
