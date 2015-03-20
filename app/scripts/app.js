@@ -87,6 +87,21 @@ angular
         templateUrl: 'views/property.html',
         resolve: { 'requiresAuth': function (Auth) { return Auth.require(); } }
       })
+      .when('/tenants/dashboard', {
+        controller: 'TenantDashboardController as vm',
+        templateUrl: 'views/tenant/dashboard.html',
+        resolve: {
+          'requiresAuth': function (Auth) { return Auth.require(); },
+          'requireBankAccount': function (Tenant) { return Tenant.requireBankAccount(); }
+        }
+      })
+      .when('/tenants/contact', {
+        templateUrl: 'views/tenant/contact.html',
+      })
+      .when('/tenants/:tenantId/signup', {
+        controller: 'TenantSignupController as vm',
+        templateUrl: 'views/tenant/signup.html',
+      })
       .when('/tenants/:tenantId', {
         templateUrl: 'views/tenant.html',
       })

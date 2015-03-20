@@ -9,7 +9,7 @@
  * Factory for displaying flash messages to users
  */
 angular.module('propertyManagementApp')
-  .factory('Flash', function () {
+  .factory('Flash', function ($rootScope) {
     var queue = [];
 
     return {
@@ -18,6 +18,9 @@ angular.module('propertyManagementApp')
       },
       getMessage: function () {
         return queue.shift() || '';
+      },
+      setMessageWithoutReload: function (message) {
+        $rootScope.$broadcast('flash', message);
       }
     };
   });

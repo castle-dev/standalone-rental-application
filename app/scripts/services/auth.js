@@ -21,9 +21,9 @@ angular.module('propertyManagementApp')
         ref.createUser({
           email: newUser.email,
           password: newUser.password
-        }, function (err) {
+        }, function (err, authData) {
           if (err) { deferred.reject(Auth.translateError(err)); }
-          deferred.resolve(newUser);
+          deferred.resolve(authData);
         });
         return deferred.promise;
       },
@@ -31,10 +31,8 @@ angular.module('propertyManagementApp')
         var deferred = $q.defer();
         ref.authWithPassword(user, function (err) {
           if (err) { deferred.reject(Auth.translateError(err)); }
-          else {
-            deferred.resolve(redirect || '/properties');
-            redirect = null;
-          }
+          deferred.resolve(redirect);
+          redirect = null;
         });
         return deferred.promise;
       },
@@ -63,6 +61,17 @@ angular.module('propertyManagementApp')
         return deferred.promise.then(function (data) {
           return !!data;
         });
+      },
+      isUserTenant: function () {
+        var deferred = $q.defer();
+        $firebase(ref.child('indexes').child('roles').child('tenants').child(currentUser.uid))
+        .$asObject()
+        .$loaded()
+        .then(function (data) {
+          if (data.$value === null) { deferred.reject(); }
+          else { deferred.resolve(data.$value); }
+        });
+        return deferred.promise;
       },
       updateProfile: function (profile) {
         var profileRef = $firebase(ref.child('profile'));

@@ -8,7 +8,7 @@
  * Directive containing template for the sidebar
  */
 angular.module('propertyManagementApp')
-  .directive('sidebar', function (Sidebar, $location) {
+  .directive('sidebar', function (Sidebar, Auth, $location) {
     return {
       restrict: 'A',
       templateUrl: 'views/partials/sidebar.html',
@@ -28,6 +28,9 @@ angular.module('propertyManagementApp')
         scope.$on('$destroy', function () {
           unwatch();
         });
+        Auth.isUserTenant()
+        .then(function () { scope.isTenant = true; },
+              function () { scope.isTenant = false; });
       }
     };
   })

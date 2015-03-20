@@ -25,8 +25,8 @@ angular.module('propertyManagementApp')
         scope.submit = function () {
           scope.errors = [];
           Auth.registerUser(scope.newUser)
-            .then(function (user) { // log the new user in
-              return Auth.loginUser(user);
+            .then(function () { // log the new user in
+              return Auth.loginUser(scope.newUser);
             })
             .then(function () { // update the user's profile
               return Auth.updateProfile({

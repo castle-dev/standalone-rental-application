@@ -13,11 +13,14 @@ angular.module('propertyManagementApp')
     return {
       restrict: 'E',
       templateUrl: 'views/partials/flashMessage.html',
-      link: function (scope, elem) {
+      link: function (scope) {
         scope.message = Flash.getMessage();
         scope.dismiss = function () {
-          elem.addClass('hidden');
+          delete scope.message;
         };
+        scope.$on('flash', function (e, message) {
+          scope.message = message;
+        });
       }
     };
   });
