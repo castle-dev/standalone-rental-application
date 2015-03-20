@@ -173,7 +173,7 @@ angular.module('propertyManagementApp')
         });
         return deferred.promise;
       },
-      makeRentPayment: function (tenant, createdBy) {
+      makeRentPayment: function (tenant, amount, dueDate, createdBy) {
         var deferred = $q.defer();
         var tenantRef = ref.child('tenants').child(tenant.propertyId).child(tenant.$id);
         tenantRef
@@ -181,7 +181,8 @@ angular.module('propertyManagementApp')
           .child('payments')
           .push({
             createdAt: new Date().getTime(),
-            amount: tenant.rent.share,
+            amount: amount,
+            dueDate: dueDate.getTime(),
             createdBy: createdBy || 'tenant'
           }, function (err) {
             if (err) { deferred.reject(err); }
@@ -207,7 +208,7 @@ angular.module('propertyManagementApp')
           var accountCreatedDate = new Date(timestamp);
           var nextRentPaymentDueDate = new Date(accountCreatedDate.getFullYear(), accountCreatedDate.getMonth() + 1 + rentPayments.length, 1);
           deferred.resolve({
-            date: nextRentPaymentDueDate,
+            dueDate: nextRentPaymentDueDate,
             amount: tenant.rent.share
           });
         });

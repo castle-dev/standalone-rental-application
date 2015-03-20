@@ -17,7 +17,7 @@ angular.module('propertyManagementApp')
       vm.lastRentPayment = vm.rentPayments[vm.rentPayments.length - 1];
     };
     vm.payRent = function () {
-      Tenant.makeRentPayment(vm.tenant)
+      Tenant.makeRentPayment(vm.tenant, vm.nextRentPayment.amount, vm.nextRentPayment.dueDate)
       .then(function () {
         Flash.setMessageWithoutReload('<h3>Thanks!</h3>'
                         +'<p>Your payment has been made successfully.</p>');
