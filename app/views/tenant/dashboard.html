@@ -13,13 +13,13 @@
 
       <flash-message></flash-message>
 
-      <div ng-show="vm.tenant.payments.rent.length">
+      <div ng-show="vm.rentPayments.length">
         <h3>Last Payment</h3>
-        <p>Your last payment of <strong>$XXX</strong> was received on <strong>XXXXX X, XXXX</strong>.</p>
+        <p>Your last payment of <strong>${{ vm.lastRentPayment.amount }}</strong> was received on <strong>{{ vm.lastRentPayment.createdAt | date:'longDate' }}</strong>.</p>
       </div>
 
       <h3>Next Payment</h3>
-      <p>Your next payment of <strong>${{ vm.tenant.rent.share }}</strong> is due on <strong>{{ vm.nextPaymentDueDate | date:'longDate' }}</strong>.</p>
+      <p>Your next payment of <strong>${{ vm.tenant.rent.share }}</strong> is due on <strong>{{ vm.nextRentPayment.date | date:'longDate' }}</strong>.</p>
 
       <div ng-show="vm.tenant.balancedBankAccountId && vm.tenant.bankAccountVerificationAttempts === undefined">
         <p class="center-contents"><a class="btn btn-green btn-medium" ng-click="vm.payRent()">Pay Now</a></p>

@@ -11,7 +11,11 @@ angular.module('propertyManagementApp')
   .controller('TenantDashboardController', function ($location, Tenant, Flash) {
     var vm = this;
     var now = new Date();
-    vm.nextPaymentDueDate = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    function calculateRentData () {
+      Tenant.getNextRentPayment(vm.tenant, vm.rentPayments)
+      .then(function (nextRentPayment) { vm.nextRentPayment = nextRentPayment });
+      vm.lastRentPayment = vm.rentPayments[vm.rentPayments.length - 1];
+    };
     vm.payRent = function () {
       Tenant.makeRentPayment(vm.tenant)
       .then(function () {
@@ -29,5 +33,11 @@ angular.module('propertyManagementApp')
     })
     .then(function (property) {
       vm.property = property;
+      vm.rentPayments = Tenant.getRentPayments(vm.tenant);
+      vm.rentPayments
+        .$loaded()
+        .then(calculateRentData);
+      vm.rentPayments.$watch(calculateRentData);
     });
+
   });

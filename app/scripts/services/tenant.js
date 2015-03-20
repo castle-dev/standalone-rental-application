@@ -10,7 +10,7 @@
  * reading and writing tenant data
  */
 angular.module('propertyManagementApp')
-  .factory('Tenant', function ($firebase, FIREBASE_URL, $window, $location, $q, Bank, Auth, $filter) {
+  .factory('Tenant', function ($firebase, FIREBASE_URL, $window, $location, $q, Bank, Auth) {
     var ref = new $window.Firebase(FIREBASE_URL);
 
     var Tenant = {
@@ -169,7 +169,7 @@ angular.module('propertyManagementApp')
         .$loaded()
         .then(function (snapshot) {
           var offset = snapshot.$value;
-          deferred.resolve($filter('date')(tenant.accountCreatedAt + offset, 'longDate'));
+          deferred.resolve(tenant.accountCreatedAt + offset);
         });
         return deferred.promise;
       },
@@ -195,6 +195,22 @@ angular.module('propertyManagementApp')
                 deferred.resolve();
               });
           });
+        return deferred.promise;
+      },
+      getRentPayments: function (tenant) {
+        return $firebase(ref.child('tenants').child(tenant.propertyId).child(tenant.$id).child('rent').child('payments')).$asArray();
+      },
+      getNextRentPayment: function (tenant, rentPayments) {
+        var deferred = $q.defer();
+        Tenant.getAccountCreatedDate(tenant)
+        .then(function (timestamp) {
+          var accountCreatedDate = new Date(timestamp);
+          var nextRentPaymentDueDate = new Date(accountCreatedDate.getFullYear(), accountCreatedDate.getMonth() + 1 + rentPayments.length, 1);
+          deferred.resolve({
+            date: nextRentPaymentDueDate,
+            amount: tenant.rent.share
+          });
+        });
         return deferred.promise;
       }
     };
