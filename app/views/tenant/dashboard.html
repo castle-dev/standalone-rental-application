@@ -5,10 +5,13 @@
   <div content id="content">
     <mobile-header>Rent Status</mobile-header>
     <div id="mobile-wrapper">
-      <flash-message></flash-message>
 
-      <h2>{{ vm.property.street }}</h2>
-      <p class="medium property-address">{{ vm.property.city }}, {{ vm.property.stateAbbreviation}} {{ vm.property.zip }}</p>
+      <div ng-show="vm.property">
+        <h2>{{ vm.property.street }}</h2>
+        <p class="medium property-address">{{ vm.property.city }}, {{ vm.property.stateAbbreviation}} {{ vm.property.zip }}</p>
+      </div>
+
+      <flash-message></flash-message>
 
       <div ng-show="vm.tenant.payments.rent.length">
         <h3>Last Payment</h3>
