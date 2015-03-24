@@ -237,6 +237,19 @@
       </table>
     </fieldset>
 
+    <fieldset ng-show="!newProperty.occupied">
+      <label for="has-laundry">Does this property have a washer and dryer?</label>
+      <div class="multi-line-radio">
+        <input type="radio" ng-model="newProperty.laundry" ng-value="'Yes, in-unit'" name="has-laundry" id="has-laundry-in-unit" required=""><label for="has-tenants-in-unit">Yes, in-unit</label>
+      </div><!--multi-line-radio-->
+      <div class="multi-line-radio">
+        <input type="radio" ng-model="newProperty.laundry" ng-value="'Yes, shared with other tenants'" name="has-laundry" id="has-laundry-shared" required=""><label for="has-laundry-shared">Yes, shared with other tenants</label>
+      </div><!--multi-line-radio-->
+      <div class="multi-line-radio">
+        <input type="radio" ng-model="newProperty.laundry" ng-value="'No'" name="has-laundry" id="has-laundry-no" required=""><label for="has-laundry-no">No</label>
+      </div><!--multi-line-radio-->
+    </fieldset>
+
     <fieldset>
       <label for="has-tenants">Do you have a Certificate of Occupancy for this property?</label>
       <div class="one-line-radio">
