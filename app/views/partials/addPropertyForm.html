@@ -119,8 +119,8 @@
         <fieldset>
           <label for="is-rent-late">Is the rent late?</label>
           <div class="one-line-radio">
-            <input type="radio" ng-model="tenant.rent.status" ng-value="'late'" name="is-rent-late" id="is-rent-late-yes" required><label for="is-rent-late-yes">Yes</label>
-            <input type="radio" ng-model="tenant.rent.status" ng-value="'paid'" name="is-rent-late" id="is-rent-late-no" required><label for="is-rent-late-no">No</label>
+            <input type="radio" ng-model="tenant.rent.status" ng-value="'late'" name="is-rent-late" id="is-rent-late-yes" ng-required="newProperty.occupied" ><label for="is-rent-late-yes">Yes</label>
+            <input type="radio" ng-model="tenant.rent.status" ng-value="'paid'" name="is-rent-late" id="is-rent-late-no" ng-required="newProperty.occupied" ><label for="is-rent-late-no">No</label>
           </div><!--one-line-radio-->
         </fieldset>
 
@@ -137,8 +137,8 @@
         <fieldset>
           <label for="security-deposit">Did this tenant pay a security deposit?</label>
           <div class="one-line-radio">
-            <input type="radio" ng-model="tenant.securityDeposit.paid" ng-value="true" name="security-deposit" id="security-deposit-yes" required><label for="security-deposit-yes">Yes</label>
-            <input type="radio" ng-model="tenant.securityDeposit.paid" ng-value="false" name="security-deposit" id="security-deposit-no" required><label for="security-deposit-no">No</label>
+            <input type="radio" ng-model="tenant.securityDeposit.paid" ng-value="true" name="security-deposit" id="security-deposit-yes" ng-required="newProperty.occupied"><label for="security-deposit-yes">Yes</label>
+            <input type="radio" ng-model="tenant.securityDeposit.paid" ng-value="false" name="security-deposit" id="security-deposit-no" ng-required="newProperty.occupied"><label for="security-deposit-no">No</label>
           </div><!--one-line-radio-->
         </fieldset>
 
