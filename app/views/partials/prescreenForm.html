@@ -20,7 +20,7 @@
     <fieldset>
       <label for="email-address">Your email address:</label>
       <input type="email" name="email-address" placeholder="tommytenant@gmail.com" ng-model="applicant.email" required>
-      <div class="help-text">We won&rsquo;t send you spam or anything lame</div>
+      <div class="help-text">We&rsquo;ll keep this private, and we&rsquo;ll never spam you.</div>
     </fieldset>
 
     <fieldset>
@@ -72,12 +72,12 @@
     </fieldset>
 
     <fieldset>
-      <input type="checkbox" ng-model="isFirstRental">
+      <input type="checkbox" ng-model="isFirstRental" id="firstRental">
       <label for="firstRental">This is my first time renting</label>
     </fieldset>
     
-    <fieldset>
-      <label><input type="checkbox" ng-model="isTrue" required>I hereby certify that the information above is true and accurate</label>
+    <fieldset class="long-checkbox">
+      <input type="checkbox" ng-model="isTrue" id="certify" required><label for="certify">I hereby certify that the information above is true and accurate</label>
     </fieldset>
 
 
