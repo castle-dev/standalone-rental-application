@@ -39,6 +39,18 @@
       <select ng-model="newProperty.ownershipDuration" name="what-type" required ng-options="o as o for o in ownershipDurations"></select>
     </fieldset>
 
+    <fieldset>
+      <label for="owner-has-keys">Do you have the keys to this property?</label>
+      <div class="one-line-radio">
+        <input ng-model="newProperty.keys.heldByOwner" ng-value="true" type="radio" name="owner-has-keys-yes" id="owner-has-keys-yes" required><label for="owner-has-keys-yes">Yes</label>
+        <input ng-model="newProperty.keys.heldByOwner" ng-value="false" type="radio" name="owner-has-keys-no" id="owner-has-keys-no" required><label for="owner-has-keys-no">No</label>
+      </div><!--one-line-radio-->
+    </fieldset>
+    <fieldset ng-show="newProperty.keys.heldByOwner === false">
+      <label for="keys-details">Who does have the keys, and how can we contact them?</label>
+      <textarea ng-model="newProperty.keys.heldBy" name="keys-details"></textarea>
+    </fieldset>
+
     <button class="btn btn-green btn-medium">Save and Continue</button>
 
   </form>
