@@ -710,7 +710,8 @@ input[type="radio"]:checked:after {
 	margin-left: 15px;
 	}
 
-.one-line-radio label {
+.one-line-radio label,
+.multi-line-radio label {
 	font-weight: 300;
 	}
 
@@ -1441,8 +1442,13 @@ table.utility-providers {
 	
 table.utility-providers label {
 	font-weight: 300;
+	margin-top: 8px;
 	}
-  
+	
+table.utility-providers td:nth-child(2) {
+	padding-left: 10px;
+	}
+
 
 // Credit card
 .credit-card {
