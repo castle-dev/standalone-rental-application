@@ -105,6 +105,24 @@
         </fieldset>
 
         <fieldset>
+          <label for="is-rent-late">Is the rent late?</label>
+          <div class="one-line-radio">
+            <input type="radio" ng-model="tenant.rent.status" ng-value="'late'" name="is-rent-late" id="is-rent-late-yes" required><label for="is-rent-late-yes">Yes</label>
+            <input type="radio" ng-model="tenant.rent.status" ng-value="'paid'" name="is-rent-late" id="is-rent-late-no" required><label for="is-rent-late-no">No</label>
+          </div><!--one-line-radio-->
+        </fieldset>
+
+        <fieldset class="money" ng-show="tenant.rent.status === 'late'">
+          <label for="rent-late-amount">How much back rent is due?</label>
+          <input type="number" ng-model="tenant.rent.lateAmount" name="rent-late-amount">
+        </fieldset>
+
+        <fieldset ng-show="tenant.rent.status === 'paid'">
+          <label for="rent-due-next">When is rent due next?</label>
+          <input type="text" ng-model="tenant.rent.dueNext" name="rent-due-next">
+        </fieldset>
+
+        <fieldset>
           <label for="security-deposit">Did this tenant pay a security deposit?</label>
           <div class="one-line-radio">
             <input type="radio" ng-model="tenant.securityDeposit.paid" ng-value="true" name="security-deposit" id="security-deposit-yes" required><label for="security-deposit-yes">Yes</label>
