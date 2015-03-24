@@ -142,11 +142,6 @@
     </fieldset>
 
     <fieldset>
-      <label for="utilities-name">In whose name are the utilities at this property?</label>
-      <input ng-model="newProperty.utilitiesName" type="text" name="utilities-name">
-    </fieldset>
-
-    <fieldset>
       <label for="utility-bills">Does this property have any unpaid utility bills or utility shutoffs?</label>
       <div class="one-line-radio">
         <input ng-model="newProperty.hasUnpaidUtilities" ng-value="true" type="radio" name="utility-bills" id="utility-bills-yes" required=""><label for="utility-bills-yes">Yes</label>
@@ -159,25 +154,40 @@
     </fieldset>
 
     <fieldset>
-      <label for="utility-providers">Who are the utility providers for this property?</label>
+      <label for="utility-providers">For each utility below, please let us know who the utility provider is and whose name the bill is in.</label>
       <table class="utility-providers">
-        <tbody><tr>
-            <td><label for="utility-heat">Heat:</label></td>
-            <td><input ng-model="newProperty.utilities.heat" type="text" name="utility-heat"></td>
-          </tr>
-          <tr>
-            <td><label for="utility-electric">Electric:</label></td>
-            <td><input ng-model="newProperty.utilities.electric" type="text" name="utility-electric"></td>
-          </tr>
-          <tr>
-            <td><label for="utility-water">Water:</label></td>
-            <td><input ng-model="newProperty.utilities.water" type="text" name="utility-water"></td>
-          </tr>
-          <tr>
-            <td><label for="utility-sewage">Sewage:</label></td>
-            <td><input ng-model="newProperty.utilities.sewage" type="text" name="utility-sewage"></td>
-          </tr>
-        </tbody></table>
+        <tr>
+          <td><label for="utility-heat">Heat:</label></td>
+        </tr>
+        <tr>
+          <td><input ng-model="newProperty.utilities.heat.provider" type="text" name="utility-heat" placeholder="Provider" /></td>
+          <td><input ng-model="newProperty.utilities.heat.nameOnBill" type="text" name="utility-heat-name" placeholder="Name on bill" /></td>
+        </tr>
+        <tr>
+          <td><label for="utility-electric">Electric:</label></td>
+        </tr>
+        <tr>
+          <td><input ng-model="newProperty.utilities.electric.provider" type="text" name="utility-electric" placeholder="Provider" /></td>
+          <td><input ng-model="newProperty.utilities.electric.nameOnBill" type="text" name="utility-electric-name" placeholder="Name on bill" /></td>
+        </tr>
+
+        <tr>
+          <td><label for="utility-water">Water:</label></td>
+        </tr>
+        <tr>
+          <td><input ng-model="newProperty.utilities.water.provider" type="text" name="utility-water" placeholder="Provider" /></td>
+          <td><input ng-model="newProperty.utilities.water.nameOnBill" type="text" name="utility-water-name" placeholder="Name on bill" /></td>
+        </tr>
+
+        <tr>
+          <td><label for="utility-sewage">Sewage:</label></td>
+        </tr>
+        <tr>
+          <td><input ng-model="newProperty.utilities.sewage.provider" type="text" name="utility-sewage" placeholder="Provider" /></td>
+          <td><input ng-model="newProperty.utilities.sewage.nameOnBill" type="text" name="utility-sewage-name" placeholder="Name on bill" /></td>
+        </tr>
+
+      </table>
     </fieldset>
 
     <fieldset>
