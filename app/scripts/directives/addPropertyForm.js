@@ -18,6 +18,10 @@ angular.module('propertyManagementApp')
       scope.availableStates = Geography.getAvailableStates();
       scope.propertyTypes = Property.getTypes();
       scope.ownershipDurations = Property.getOwnershipDurations();
+      scope.keysHeldByOwnerOptions = [
+        { label: 'Me', value: true },
+        { label: 'Someone else', value: false }
+      ];
       scope.newProperty = Property.getNewProperty();
       scope.newProperty.newTenants = [{}];
       scope.newProperty.stateAbbreviation = 'MI';
