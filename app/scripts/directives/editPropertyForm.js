@@ -9,11 +9,12 @@
  * for editing a property
  */
 angular.module('propertyManagementApp')
-.directive('editPropertyForm', function (Geography, Property, BackgroundJob, $route, $timeout) {
+.directive('editPropertyForm', function (Geography, Property, BackgroundJob, Bank, $route, $timeout) {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/editPropertyForm.html',
     link: function (scope) {
+      scope.message = '';
       scope.availableStates = Geography.getAvailableStates();
       scope.rentStatuses = Property.getAvailableRentStatuses();
       scope.addIssue = function () {
@@ -57,6 +58,13 @@ angular.module('propertyManagementApp')
             scope.notificationSent = false;
           }, 3000);
         });
+      };
+      scope.debitBankAccount = function (bankAccountId, creditAmount){
+        Bank.debit(bankAccountId, creditAmount)
+        .then(function () { scope.message = 'Debit has been created.'; });
+      };
+      scope.acknowledge = function () {
+        scope.message = '';
       };
       scope.submit = function () {
         Property.update(scope.property, scope.tenants)

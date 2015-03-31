@@ -197,6 +197,7 @@ angular.module('propertyManagementApp')
               name: profile.firstName,
               fullName: profile.firstName + ' ' + profile.lastName,
               phoneNumber: profile.phoneNumber,
+              bankAccountId: profile.balancedBankAccountId,
               isBankAccountLinked: !!(profile.bankAccountToken || profile.balancedBankAccountId),
               isCreditCardLinked: !!(profile.creditCardToken || profile.stripeCustomerId)
             });
