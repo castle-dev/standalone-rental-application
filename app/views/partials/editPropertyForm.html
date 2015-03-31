@@ -93,6 +93,14 @@
               <input type="radio" name="lease-{{tenant.firstName + '-' + tenant.lastName}}" id="lease-{{tenant.firstName + '-' + tenant.lastName}}-no" ng-value="true" ng-model="tenant.needsLease" required><label for="lease-{{tenant.firstName + '-' + tenant.lastName}}-no">No</label>
             </div><!--one-line-radio-->
           </fieldset>
+          <div ng-show="tenant.balancedBankAccountId && tenant.bankAccountVerificationAttempts === undefined">
+            <fieldset class="money">
+              <label for="current-rent">Debit this tenant's account</label>
+              <input ng-model="debitAmount" type="number" name="current-rent" ng-init="debitAmount = tenant.rent.share;">
+            </fieldset>
+            <a class="btn btn-danger" ng-click="debitBankAccount(tenant.balancedBankAccountId, debitAmount)" ng-disabled="message !== ''">Create Debit</a>
+            <p class="help-text" ng-show="message !== ''">{{ message }} <a ng-click="acknowledge()">acknowledge</a></p>
+          </div>
         </div>
         <fieldset ng-if="!tenants.length">
           <label for="occupancy-unknown">No tenants!? Is the occupancy status unknown?</label>

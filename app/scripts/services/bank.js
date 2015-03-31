@@ -10,7 +10,7 @@
  * money stuff
  */
 angular.module('propertyManagementApp')
-  .factory('Bank', function ($location, $window, $q, Auth) {
+  .factory('Bank', function ($location, $window, $q, Auth, BackgroundJob) {
 
     var Bank = {
       storeCreditCardToken: function (code, result) {
@@ -56,6 +56,20 @@ angular.module('propertyManagementApp')
           deferred.reject(['Bank accounts require name, routing number, and account number']);
         }
         return deferred.promise;
+      },
+      credit: function (bankAccountId, amount) {
+        return BackgroundJob.create({
+          jobType: 'creditBankAccount',
+          bankAccountId: bankAccountId,
+          amount: amount
+        });
+      },
+      debit: function (bankAccountId, amount) {
+        return BackgroundJob.create({
+          jobType: 'debitBankAccount',
+          bankAccountId: bankAccountId,
+          amount: amount
+        });
       }
     };
 

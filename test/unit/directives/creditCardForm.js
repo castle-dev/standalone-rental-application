@@ -28,6 +28,7 @@ describe('Directive: creditCardForm', function() {
     }
     $provide.value('Auth', mockedAuth);
     $provide.value('Property', mockedProperty);
+    $provide.value('BackgroundJob', {});
   }));
   // load the cached templates
   beforeEach(module('partials'));
