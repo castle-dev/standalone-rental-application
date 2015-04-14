@@ -1,8 +1,12 @@
 node_modules
-dist
 .tmp
 .sass-cache
 bower_components
 /app/scripts/config.js
 npm-debug.log
 *.swp
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
