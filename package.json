@@ -3,7 +3,7 @@
   "version": "0.12.2",
   "scripts": {
     "test": "grunt test",
-    "start": "npm install && grunt build && node index.js"
+    "start": "grunt build && sudo node index.js"
   },
   "dependencies": {
     "express": "^4.12.3"
