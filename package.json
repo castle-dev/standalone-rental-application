@@ -2,8 +2,7 @@
   "name": "propertymanagementapp",
   "version": "0.12.2",
   "scripts": {
-    "test": "grunt test",
-    "start": "npm install && grunt build && node index.js"
+    "test": "grunt test"
   },
   "dependencies": {
     "express": "^4.12.3"
