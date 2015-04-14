@@ -11,7 +11,7 @@ server.get('/*', function(req, res){
   res.sendFile(__dirname + '/dist/index.html');
 });
 
-var port = 80;
+var port = 8000;
 server.listen(port, function() {
   console.log('server listening on port ' + port);
 });
