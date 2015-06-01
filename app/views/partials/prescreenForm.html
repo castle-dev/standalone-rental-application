@@ -70,6 +70,12 @@
         <input type="radio" name="bank-account" ng-value="false" ng-model="applicant.hasBankAccount" id="bank-account-no" required><label for="bank-account-no">No</label>
       </div><!--one-line-radio-->
     </fieldset>
+    
+    <fieldset>
+      <label for="move-in-date">What is your anticipated move-in date?</label>
+      <div class="help-text">Just give us your best guess</div>
+      <input type="date" name="move-in-date" ng-model="applicant.moveInDate" id="move-in-date" required>
+    </fieldset>
 
     <fieldset>
       <input type="checkbox" ng-model="isFirstRental" id="firstRental">
